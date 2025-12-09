@@ -44,10 +44,10 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md"
+                "file": "Excalidraw/parking_model_arch.excalidraw"
               },
               "icon": "excalidraw-icon",
-              "title": "Drawing 2025-12-09 20.19.29.excalidraw"
+              "title": "parking_model_arch"
             }
           }
         ],
@@ -124,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
+                "file": "Excalidraw/parking_model_arch.excalidraw",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +134,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Drawing 2025-12-09 20.19.29.excalidraw"
+              "title": "Backlinks for parking_model_arch"
             }
           },
           {
@@ -143,12 +143,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
+                "file": "Excalidraw/parking_model_arch.excalidraw",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Drawing 2025-12-09 20.19.29.excalidraw"
+              "title": "Outgoing links from parking_model_arch"
             }
           },
           {
@@ -186,13 +186,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
+                "file": "Excalidraw/parking_model_arch.excalidraw",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Drawing 2025-12-09 20.19.29.excalidraw"
+              "title": "Outline of parking_model_arch"
             }
           },
           {
@@ -210,7 +210,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -227,8 +228,10 @@
   },
   "active": "1cf7ceb998771d71",
   "lastOpenFiles": [
-    "Test.md",
     "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
+    "Excalidraw/parking_model_arch.excalidraw",
+    "parking_model_arch.excalidraw",
+    "Test.md",
     "Excalidraw",
     "Untitled.canvas"
   ]
