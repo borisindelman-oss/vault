@@ -37,9 +37,21 @@
               "icon": "lucide-file",
               "title": "Test"
             }
+          },
+          {
+            "id": "1cf7ceb998771d71",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-12-09 20.19.29.excalidraw"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -112,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Test.md",
+                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +134,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Test"
+              "title": "Backlinks for Drawing 2025-12-09 20.19.29.excalidraw"
             }
           },
           {
@@ -131,12 +143,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Test.md",
+                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Test"
+              "title": "Outgoing links from Drawing 2025-12-09 20.19.29.excalidraw"
             }
           },
           {
@@ -174,13 +186,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Test.md",
+                "file": "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Test"
+              "title": "Outline of Drawing 2025-12-09 20.19.29.excalidraw"
             }
           },
           {
@@ -213,9 +225,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "bc7268be10da423d",
+  "active": "1cf7ceb998771d71",
   "lastOpenFiles": [
-    "Untitled.canvas",
-    "Test.md"
+    "Test.md",
+    "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
+    "Excalidraw",
+    "Untitled.canvas"
   ]
 }
