@@ -12978,7 +12978,7 @@
 		{
 			"id": "KnWATjtC_V_iU7GgaW9JJ",
 			"type": "freedraw",
-			"x": 958.6316066568351,
+			"x": 958.5127371922564,
 			"y": 883.6751764195533,
 			"width": 81.51006094582578,
 			"height": 17.028405750776756,
@@ -12995,11 +12995,11 @@
 			"index": "b0i",
 			"roundness": null,
 			"seed": 1115865999,
-			"version": 100,
-			"versionNonce": 2070418255,
+			"version": 101,
+			"versionNonce": 1641177506,
 			"isDeleted": false,
 			"boundElements": [],
-			"updated": 1765282976078,
+			"updated": 1765360093372,
 			"link": null,
 			"locked": false,
 			"points": [
