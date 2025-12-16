@@ -25,6 +25,18 @@
             }
           },
           {
+            "id": "c4b8525be046546b",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-12-16 11.02.08.excalidraw"
+            }
+          },
+          {
             "id": "bc7268be10da423d",
             "type": "leaf",
             "state": {
@@ -51,7 +63,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -210,8 +222,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -226,13 +237,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "1a16fc30b0b3500c",
+  "active": "c4b8525be046546b",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "Excalidraw/parking_model_arch.excalidraw",
     "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
     "parking_model_arch.excalidraw",
     "Test.md",
-    "Excalidraw",
-    "Untitled.canvas"
+    "Excalidraw"
   ]
 }
