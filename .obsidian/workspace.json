@@ -37,6 +37,18 @@
             }
           },
           {
+            "id": "62085bbc9588ab4c",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-12-21 16.01.42.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-12-21 16.01.42.excalidraw"
+            }
+          },
+          {
             "id": "bc7268be10da423d",
             "type": "leaf",
             "state": {
@@ -63,7 +75,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -237,11 +249,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "c4b8525be046546b",
+  "active": "62085bbc9588ab4c",
   "lastOpenFiles": [
+    "Excalidraw/parking_model_arch.excalidraw",
+    "Excalidraw/Drawing 2025-12-21 16.01.42.excalidraw.md",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "Untitled.canvas",
-    "Excalidraw/parking_model_arch.excalidraw",
     "Excalidraw/Drawing 2025-12-09 20.19.29.excalidraw.md",
     "parking_model_arch.excalidraw",
     "Test.md",
