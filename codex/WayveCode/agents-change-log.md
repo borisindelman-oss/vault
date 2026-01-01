@@ -62,6 +62,17 @@
   - Added `wayve/ai/parking/tools/assets/wayve_icon_navy.png` and wired it as the default logo.
   - Added `wayve/ai/parking/tools/BUILD` with `py_binary` target.
 
+#### 2026-01-01 — Refine Wayve logo animation framing
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/parking/tools/`
+- Changes:
+  - Cropped the logo to its alpha bounds and square-cropped for 1:1 aspect.
+  - Switched to rows-only sizing with auto cols and top-left anchoring.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
