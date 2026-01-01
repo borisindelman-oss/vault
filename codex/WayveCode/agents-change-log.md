@@ -72,7 +72,6 @@
 - Areas: `wayve/ai/zoo/sampling/`, `wayve/ai/zoo/test/sampling/`
 - Changes:
   - [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]]: moved task summary into the vault.
-  - [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-change-log]]: moved change log into the vault.
 
 #### 2025-12-29 — Trace BC release model
 - Topic: Release BC model trace
