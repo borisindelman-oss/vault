@@ -1,4 +1,4 @@
-# Task Summary — Add parking maneuver filter for pred_park_type
+# 2025-12-30 — Task Summary — Add parking maneuver filter for pred_park_type
 
 - Status: In progress
 - Goal: Port experimental parking maneuver windowing logic into SI materialization as a reusable filter and add a unit test.

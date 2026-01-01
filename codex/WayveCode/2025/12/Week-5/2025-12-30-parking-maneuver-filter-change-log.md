@@ -1,4 +1,4 @@
-# Codex Change Log
+# 2025-12-30 — Parking Maneuver Filter Change Log
 
 ## 2025-12-30 — Add parking maneuver filter for pred_park_type
 - Status: In progress
