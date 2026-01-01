@@ -57,9 +57,10 @@
 > - Branch: unknown
 > - PR: none
 > - Change type: add
-> - Areas: `wayve/ai/parking/tools/`
+> - Areas: `wayve/ai/parking/tools/`, `wayve/ai/parking/tools/assets/`
 > - Changes:
 >   - Added `wayve/ai/parking/tools/wayve_logo_3d_terminal.py` (stdlib PNG loader, no Pillow).
+>   - Added `wayve/ai/parking/tools/assets/wayve_icon_navy.png` and wired it as the default logo.
 >   - Added `wayve/ai/parking/tools/BUILD` with `py_binary` target.
 
 ## 2025-12
