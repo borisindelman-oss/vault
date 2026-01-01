@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
+                "file": "codex/WayveCode/agents-change-log.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-12-30-parking-maneuver-filter-task-summary"
+              "title": "agents-change-log"
             }
           },
           {
@@ -219,7 +219,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -236,9 +237,9 @@
   },
   "active": "62085bbc9588ab4c",
   "lastOpenFiles": [
+    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-change-log.md",
-    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "codex/WayveCode/2025/12/Week-4/2025-12-28-latent-actions-behavior-control-guide.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-summary.md",
