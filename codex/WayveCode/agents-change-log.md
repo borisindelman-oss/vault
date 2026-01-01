@@ -73,6 +73,17 @@
   - Cropped the logo to its alpha bounds and square-cropped for 1:1 aspect.
   - Switched to rows-only sizing with auto cols and top-left anchoring.
 
+#### 2026-01-01 — Adjust Wayve logo rotation behavior
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/parking/tools/`
+- Changes:
+  - Centered the rotation axis and shifted extrusion to the right.
+  - Made the animation rotate rightward only and run indefinitely when duration is 0.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
