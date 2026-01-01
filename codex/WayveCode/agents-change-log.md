@@ -6,50 +6,50 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
-> [!summary]- 2026-01 entries
-> #### 2026-01-01 — Move Codex notes into Obsidian vault
-> - Topic: Vault organization
-> - Labels: #vault #obsidian #codex
-> - Branch: unknown
-> - PR: none
-> - Change type: move/rename
-> - Areas: `codex/WayveCode/`
-> - Changes:
->   - Moved the change log into `/home/borisindelman/git/vault/codex/WayveCode/`.
->   - Renamed task summaries to include dates and updated links: [[2025/12/Week-5/2025-12-29-release-bc-model-summary]], [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]].
->
-> #### 2026-01-01 — Move latent actions behavior control guide into Obsidian vault
-> - Topic: Vault organization
-> - Labels: #vault #obsidian #notes
-> - Branch: unknown
-> - PR: none
-> - Change type: move/rename
-> - Areas: `codex/WayveCode/2025/12/Week-4/`
-> - Changes:
->   - [[2025/12/Week-4/2025-12-28-latent-actions-behavior-control-guide]]: moved from repo docs and renamed with date.
->
-> #### 2026-01-01 — Add Obsidian vault sync scripts
-> - Topic: Vault sync
-> - Labels: #git #sync #automation
-> - Branch: unknown
-> - PR: none
-> - Change type: add
-> - Areas: `/home/borisindelman/git/vault/`, `/home/borisindelman/.config/systemd/user/`
-> - Changes:
->   - Added `/home/borisindelman/git/vault/.vault-sync.sh`.
->   - Added `/home/borisindelman/git/vault/.vault-sync-watch.py`.
->   - Added `/home/borisindelman/.config/systemd/user/vault-sync-watch.service` (not enabled here due to missing user bus).
->
-> #### 2026-01-01 — Restructure Codex notes by month and week
-> - Topic: Vault structure
-> - Labels: #vault #organization
-> - Branch: unknown
-> - PR: none
-> - Change type: restructure
-> - Areas: `codex/WayveCode/2025/12/Week-*`
-> - Changes:
->   - Adopted `YYYY/MM/Week-N/` folders with date-prefixed filenames.
->   - Moved 2025-12 notes into week folders and updated links.
+
+ #### 2026-01-01 — Move Codex notes into Obsidian vault
+ - Topic: Vault organization
+ - Labels: #vault #obsidian #codex
+ - Branch: unknown
+ - PR: none
+ - Change type: move/rename
+ - Areas: `codex/WayveCode/`
+ - Changes:
+   - Moved the change log into `/home/borisindelman/git/vault/codex/WayveCode/`.
+   - Renamed task summaries to include dates and updated links: [[2025/12/Week-5/2025-12-29-release-bc-model-summary]], [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]].
+
+ #### 2026-01-01 — Move latent actions behavior control guide into Obsidian vault
+ - Topic: Vault organization
+ - Labels: #vault #obsidian #notes
+ - Branch: unknown
+ - PR: none
+ - Change type: move/rename
+ - Areas: `codex/WayveCode/2025/12/Week-4/`
+ - Changes:
+   - [[2025/12/Week-4/2025-12-28-latent-actions-behavior-control-guide]]: moved from repo docs and renamed with date.
+
+ #### 2026-01-01 — Add Obsidian vault sync scripts
+ - Topic: Vault sync
+ - Labels: #git #sync #automation
+ - Branch: unknown
+ - PR: none
+ - Change type: add
+ - Areas: `/home/borisindelman/git/vault/`, `/home/borisindelman/.config/systemd/user/`
+ - Changes:
+   - Added `/home/borisindelman/git/vault/.vault-sync.sh`.
+   - Added `/home/borisindelman/git/vault/.vault-sync-watch.py`.
+   - Added `/home/borisindelman/.config/systemd/user/vault-sync-watch.service` (not enabled here due to missing user bus).
+
+ #### 2026-01-01 — Restructure Codex notes by month and week
+ - Topic: Vault structure
+ - Labels: #vault #organization
+ - Branch: unknown
+ - PR: none
+ - Change type: restructure
+ - Areas: `codex/WayveCode/2025/12/Week-*`
+ - Changes:
+   - Adopted `YYYY/MM/Week-N/` folders with date-prefixed filenames.
+   - Moved 2025-12 notes into week folders and updated links.
 
 ## 2025-12
 > [!summary]- 2025-12 entries
