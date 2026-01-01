@@ -8,6 +8,7 @@
 ## Progress
 - Added shared helper for parking transition entry/exit indices.
 - Reused shared transition logic in parking indices and maneuver windowing.
+- Consolidated gear cleanup into a single parking-specific helper.
 - Kept maneuver window filtering based on label presence within the window.
 - Added a focused unit test for transition duration filtering.
 
