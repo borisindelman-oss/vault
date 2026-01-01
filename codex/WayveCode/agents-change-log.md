@@ -127,6 +127,17 @@
 - Changes:
   - Added `--char-aspect` and auto-calculated cols from rows to correct non-square character cells.
 
+#### 2026-01-01 — Move terminal logo tool to standalone repo
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: move
+- Areas: `/home/borisindelman/git/wayve_terimnal_logo/`
+- Changes:
+  - Moved the implementation and logo asset into `/home/borisindelman/git/wayve_terimnal_logo/`.
+  - Added `pyproject.toml` and README for uv-based usage.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
