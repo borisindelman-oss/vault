@@ -84,6 +84,17 @@
   - Centered the rotation axis and shifted extrusion to the right.
   - Made the animation rotate rightward only and run indefinitely when duration is 0.
 
+#### 2026-01-01 — Improve Wayve logo spin framing
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/parking/tools/`
+- Changes:
+  - Allowed full coin-style spin with signed skew and left/right depth shift.
+  - Reserved room for skew/depth to avoid right-edge clipping during rotation.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
