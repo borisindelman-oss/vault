@@ -11,6 +11,13 @@
 - Changes:
   - [[2025-12-28-latent-actions-behavior-control-guide]]: moved from repo docs and renamed with date.
 
+## 2026-01-01 — Add Obsidian vault sync scripts
+- Context: Enable event-based Git sync for the vault from this environment.
+- Changes:
+  - Added `/home/borisindelman/git/vault/.vault-sync.sh`.
+  - Added `/home/borisindelman/git/vault/.vault-sync-watch.py`.
+  - Added `/home/borisindelman/.config/systemd/user/vault-sync-watch.service` (not enabled here due to missing user bus).
+
 ## 2025-03-09 — Add Codex change-log workflow
 - Context: Update repository guidelines to require an Obsidian change log.
 - Changes:
