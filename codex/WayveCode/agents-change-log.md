@@ -50,6 +50,17 @@
 > - Changes:
 >   - Adopted `YYYY/MM/Week-N/` folders with date-prefixed filenames.
 >   - Moved 2025-12 notes into week folders and updated links.
+>
+> #### 2026-01-01 — Add Wayve logo terminal animation tool
+> - Topic: Terminal animation
+> - Labels: #tools #terminal #branding
+> - Branch: unknown
+> - PR: none
+> - Change type: add
+> - Areas: `wayve/ai/parking/tools/`
+> - Changes:
+>   - Added `wayve/ai/parking/tools/wayve_logo_3d_terminal.py` (stdlib PNG loader, no Pillow).
+>   - Added `wayve/ai/parking/tools/BUILD` with `py_binary` target.
 
 ## 2025-12
 > [!summary]- 2025-12 entries
