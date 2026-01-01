@@ -5,9 +5,9 @@
 - [[#2025-12|2025-12]]
 - [[#2025-03|2025-03]]
 
-<a id="2026-01"></a>
+## 2026-01
 <details open>
-<summary>2026-01</summary>
+<summary>2026-01 entries</summary>
 
 ### 2026-01-01 — Move Codex notes into Obsidian vault
 - Topic: Vault organization
@@ -46,9 +46,9 @@
   - Moved 2025-12 notes into week folders and updated links.
 </details>
 
-<a id="2025-12"></a>
+## 2025-12
 <details open>
-<summary>2025-12</summary>
+<summary>2025-12 entries</summary>
 
 ### 2025-12-29 — Trace BC release model
 - Topic: Release BC model trace
@@ -121,9 +121,9 @@
   - AGENTS.md: updated vault path.
 </details>
 
-<a id="2025-03"></a>
+## 2025-03
 <details open>
-<summary>2025-03</summary>
+<summary>2025-03 entries</summary>
 
 ### 2025-03-09 — Add Codex change-log workflow
 - Topic: Documentation workflow
