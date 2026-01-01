@@ -133,9 +133,9 @@
 - Branch: unknown
 - PR: none
 - Change type: move
-- Areas: `/home/borisindelman/git/wayve_terimnal_logo/`
+- Areas: `/home/borisindelman/git/wayve_terminal_logo/`
 - Changes:
-  - Moved the implementation and logo asset into `/home/borisindelman/git/wayve_terimnal_logo/`.
+  - Moved the implementation and logo asset into `/home/borisindelman/git/wayve_terminal_logo/`.
   - Added `pyproject.toml` and README for uv-based usage.
 
 #### 2026-01-01 — Add static render option
@@ -144,7 +144,7 @@
 - Branch: unknown
 - PR: none
 - Change type: update
-- Areas: `/home/borisindelman/git/wayve_terimnal_logo/`
+- Areas: `/home/borisindelman/git/wayve_terminal_logo/`
 - Changes:
   - Added `--disable-spin` to render a single frame and exit.
 
