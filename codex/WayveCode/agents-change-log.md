@@ -117,6 +117,16 @@
   - Added auto padding and optional `--scale` to keep the logo visible at small sizes.
   - Made the base color bluer and clamped skew to avoid edge clipping.
 
+#### 2026-01-01 — Fix terminal aspect ratio compensation
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/parking/tools/`
+- Changes:
+  - Added `--char-aspect` and auto-calculated cols from rows to correct non-square character cells.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
