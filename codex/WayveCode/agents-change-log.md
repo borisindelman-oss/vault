@@ -148,6 +148,16 @@
 - Changes:
   - Added `--disable-spin` to render a single frame and exit.
 
+#### 2026-01-01 — Update defaults for terminal logo
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: update
+- Areas: `/home/borisindelman/git/wayve_terminal_logo/`
+- Changes:
+  - Default rows set to 60 and depth set to 1.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
