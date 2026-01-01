@@ -4,12 +4,12 @@
 - Context: Relocate prior Codex task notes into the Obsidian vault and normalize filenames.
 - Changes:
   - Moved the change log into `/home/borisindelman/git/vault/codex/WayveCode/`.
-  - Renamed task summaries to include dates and updated links: [[2025-12-29-release-bc-model-summary]], [[2025-12-29-release-bc-model-mermaid-summary]].
+  - Renamed task summaries to include dates and updated links: [[2025/12/Week-5/2025-12-29-release-bc-model-summary]], [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]].
 
 ## 2026-01-01 — Move latent actions behavior control guide into Obsidian vault
 - Context: Bring prior latent-actions guide into the vault for Obsidian use.
 - Changes:
-  - [[2025-12-28-latent-actions-behavior-control-guide]]: moved from repo docs and renamed with date.
+  - [[2025/12/Week-4/2025-12-28-latent-actions-behavior-control-guide]]: moved from repo docs and renamed with date.
 
 ## 2026-01-01 — Add Obsidian vault sync scripts
 - Context: Enable event-based Git sync for the vault from this environment.
@@ -17,6 +17,12 @@
   - Added `/home/borisindelman/git/vault/.vault-sync.sh`.
   - Added `/home/borisindelman/git/vault/.vault-sync-watch.py`.
   - Added `/home/borisindelman/.config/systemd/user/vault-sync-watch.service` (not enabled here due to missing user bus).
+
+## 2026-01-01 — Restructure Codex notes by month and week
+- Context: Make the vault easier to scan and keep date-based grouping.
+- Changes:
+  - Adopted `YYYY/MM/Week-N/` folders with date-prefixed filenames.
+  - Moved 2025-12 notes into week folders and updated links.
 
 ## 2025-03-09 — Add Codex change-log workflow
 - Context: Update repository guidelines to require an Obsidian change log.
@@ -38,12 +44,12 @@
 - Context: Add per-task summary file requirement and capture release BC summary.
 - Changes:
   - AGENTS.md: added requirement to maintain per-task summaries in the vault.
-  - [[2025-12-29-release-bc-model-summary]]: added task summary.
+  - [[2025/12/Week-5/2025-12-29-release-bc-model-summary]]: added task summary.
 
 ## 2025-12-29 — Add release BC mermaid summary
 - Context: Provide a high-level mermaid diagram of the release BC model.
 - Changes:
-  - [[2025-12-29-release-bc-model-mermaid-summary]]: added task summary.
+  - [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: added task summary.
 
 ## 2025-12-29 — Fix Mermaid labels
 - Context: Mermaid parse error due to label formatting.
@@ -53,17 +59,17 @@
 ## 2025-12-29 — Add Mermaid to task summary
 - Context: User asked to include the Mermaid diagram in the summary.
 - Changes:
-  - [[2025-12-29-release-bc-model-mermaid-summary]]: appended Mermaid diagram.
+  - [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: appended Mermaid diagram.
 
 ## 2025-12-29 — Add tensor shapes to Mermaid summary
 - Context: Provide a Mermaid diagram with tensor shapes.
 - Changes:
-  - [[2025-12-29-release-bc-model-mermaid-summary]]: appended Mermaid diagram with shapes.
+  - [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: appended Mermaid diagram with shapes.
 
 ## 2025-12-29 — Add ST transformer diagram
 - Context: Provide a component-level diagram for the space-time transformer.
 - Changes:
-  - [[2025-12-29-release-bc-model-mermaid-summary]]: appended ST transformer components diagram.
+  - [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: appended ST transformer components diagram.
 
 ## 2025-12-29 — Move Obsidian vault to workspace
 - Context: Relocate the vault to avoid sandbox escalation.
