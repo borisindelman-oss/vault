@@ -10,6 +10,8 @@
 > #### 2026-01-01 — Move Codex notes into Obsidian vault
 > - Topic: Vault organization
 > - Labels: #vault #obsidian #codex
+> - Branch: unknown
+> - PR: none
 > - Change type: move/rename
 > - Areas: `codex/WayveCode/`
 > - Changes:
@@ -19,6 +21,8 @@
 > #### 2026-01-01 — Move latent actions behavior control guide into Obsidian vault
 > - Topic: Vault organization
 > - Labels: #vault #obsidian #notes
+> - Branch: unknown
+> - PR: none
 > - Change type: move/rename
 > - Areas: `codex/WayveCode/2025/12/Week-4/`
 > - Changes:
@@ -27,6 +31,8 @@
 > #### 2026-01-01 — Add Obsidian vault sync scripts
 > - Topic: Vault sync
 > - Labels: #git #sync #automation
+> - Branch: unknown
+> - PR: none
 > - Change type: add
 > - Areas: `/home/borisindelman/git/vault/`, `/home/borisindelman/.config/systemd/user/`
 > - Changes:
@@ -37,6 +43,8 @@
 > #### 2026-01-01 — Restructure Codex notes by month and week
 > - Topic: Vault structure
 > - Labels: #vault #organization
+> - Branch: unknown
+> - PR: none
 > - Change type: restructure
 > - Areas: `codex/WayveCode/2025/12/Week-*`
 > - Changes:
@@ -48,6 +56,8 @@
 > #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 > - Topic: Parking maneuver filter
 > - Labels: #parking #sampling #tests
+> - Branch: unknown
+> - PR: none
 > - Change type: docs/move
 > - Areas: `wayve/ai/zoo/sampling/`, `wayve/ai/zoo/test/sampling/`
 > - Changes:
@@ -57,6 +67,8 @@
 > #### 2025-12-29 — Trace BC release model
 > - Topic: Release BC model trace
 > - Labels: #model #config #data
+> - Branch: unknown
+> - PR: none
 > - Change type: analysis
 > - Areas: `wayve/ai/si/`
 > - Changes:
@@ -69,6 +81,8 @@
 > #### 2025-12-29 — Add per-task summary requirement
 > - Topic: Documentation workflow
 > - Labels: #docs #process #vault
+> - Branch: unknown
+> - PR: none
 > - Change type: update
 > - Areas: `AGENTS.md`, `codex/WayveCode/`
 > - Changes:
@@ -78,6 +92,8 @@
 > #### 2025-12-29 — Add release BC mermaid summary
 > - Topic: Model diagram
 > - Labels: #docs #mermaid #model
+> - Branch: unknown
+> - PR: none
 > - Change type: add
 > - Areas: `codex/WayveCode/2025/12/Week-5/`
 > - Changes:
@@ -86,6 +102,8 @@
 > #### 2025-12-29 — Fix Mermaid labels
 > - Topic: Model diagram
 > - Labels: #mermaid #docs
+> - Branch: unknown
+> - PR: none
 > - Change type: update
 > - Areas: chat-only (no file change)
 > - Changes:
@@ -94,6 +112,8 @@
 > #### 2025-12-29 — Add Mermaid to task summary
 > - Topic: Model diagram
 > - Labels: #mermaid #docs
+> - Branch: unknown
+> - PR: none
 > - Change type: update
 > - Areas: `codex/WayveCode/2025/12/Week-5/`
 > - Changes:
@@ -102,6 +122,8 @@
 > #### 2025-12-29 — Add tensor shapes to Mermaid summary
 > - Topic: Model diagram
 > - Labels: #mermaid #docs
+> - Branch: unknown
+> - PR: none
 > - Change type: update
 > - Areas: `codex/WayveCode/2025/12/Week-5/`
 > - Changes:
@@ -110,6 +132,8 @@
 > #### 2025-12-29 — Add ST transformer diagram
 > - Topic: Model diagram
 > - Labels: #mermaid #docs
+> - Branch: unknown
+> - PR: none
 > - Change type: update
 > - Areas: `codex/WayveCode/2025/12/Week-5/`
 > - Changes:
@@ -118,6 +142,8 @@
 > #### 2025-12-29 — Move Obsidian vault to workspace
 > - Topic: Vault setup
 > - Labels: #vault #obsidian #sandbox
+> - Branch: unknown
+> - PR: none
 > - Change type: move
 > - Areas: `/workspace/WayveCode/vault/codex`, `AGENTS.md`
 > - Changes:
@@ -129,6 +155,8 @@
 > #### 2025-03-09 — Add Codex change-log workflow
 > - Topic: Documentation workflow
 > - Labels: #docs #process #vault
+> - Branch: unknown
+> - PR: none
 > - Change type: update
 > - Areas: `AGENTS.md`
 > - Changes:
