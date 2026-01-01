@@ -47,9 +47,9 @@
 > [!summary]- 2025-12 entries
 > #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 > - Topic: Parking maneuver filter
-> - Labels: parking, sampling, tests
+> - Labels: #parking #sampling #tests
 > - Change type: docs/move
-> - Areas: `codex/WayveCode/2025/12/Week-5/`
+> - Areas: `wayve/ai/zoo/sampling/`, `wayve/ai/zoo/test/sampling/`
 > - Changes:
 >   - [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]]: moved task summary into the vault.
 >   - [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-change-log]]: moved change log into the vault.
