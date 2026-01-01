@@ -12,7 +12,7 @@
 - Added a focused unit test for transition duration filtering.
 
 ## Tests
-- Not run (new test added for transition filtering).
+- `bazel test //wayve/ai/zoo:test_sampling_py_test --test_output=errors` (PASS)
 
 ## Next
 - Run `bazel test //wayve/ai/zoo:test_sampling_py_test`.
