@@ -19,3 +19,9 @@
 
 ## Tests
 - `bazel test //wayve/ai/zoo:test_sampling_py_test //wayve/ai/zoo:test_sampling_py_lint_pylint --test_output=errors` (PASS)
+
+## References (zmurez/trt)
+- `wayve/ai/experimental/dataset/single_run.py#L321`: gear cleanup to remove false gear changes (e.g., neutral shifts). https://github.com/wayveai/WayveCode/blob/zmurez/trt/wayve/ai/experimental/dataset/single_run.py#L321
+- `wayve/ai/experimental/dataset/single_run.py#L332`: parking mask creation (frames considered parking). https://github.com/wayveai/WayveCode/blob/zmurez/trt/wayve/ai/experimental/dataset/single_run.py#L332
+- `wayve/ai/experimental/dataset/single_run.py#L478`: dataloader get_item logic that uses parking signals. https://github.com/wayveai/WayveCode/blob/zmurez/trt/wayve/ai/experimental/dataset/single_run.py#L478
+- `wayve/ai/experimental/samplers/sampler.py#L996`: filter to avoid sampling bad parking. https://github.com/wayveai/WayveCode/blob/zmurez/trt/wayve/ai/experimental/samplers/sampler.py#L996
