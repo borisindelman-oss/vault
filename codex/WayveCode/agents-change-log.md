@@ -45,6 +45,15 @@
 
 ## 2025-12
 > [!summary]- 2025-12 entries
+> #### 2025-12-30 — Parking maneuver filter (pred_park_type)
+> - Topic: Parking maneuver filter
+> - Labels: parking, sampling, tests
+> - Change type: docs/move
+> - Areas: `codex/WayveCode/2025/12/Week-5/`
+> - Changes:
+>   - [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]]: moved task summary into the vault.
+>   - [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-change-log]]: moved change log into the vault.
+>
 > #### 2025-12-29 — Trace BC release model
 > - Topic: Release BC model trace
 > - Labels: model, config, data
