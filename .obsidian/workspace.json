@@ -53,12 +53,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/agents-change-log.md",
+                "file": "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agents-change-log"
+              "title": "2025-12-30-parking-maneuver-filter-task-summary"
             }
           },
           {
@@ -250,8 +250,8 @@
   },
   "active": "bc7268be10da423d",
   "lastOpenFiles": [
-    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "codex/WayveCode/agents-change-log.md",
+    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "wayve_logo_3d_terminal.py",
     "conflict-files-obsidian-git.md",
     "codex/WayveCode/README.md",
