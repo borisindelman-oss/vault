@@ -6,6 +6,18 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-01 — Parking maneuver filter refactor
+- Topic: Parking maneuver filter
+- Labels: #parking #sampling #refactor #tests
+- Branch: boris/2025-12-30/zak-classifiers-parking-maneuver
+- PR: none
+- Change type: refactor/test
+- Areas: `wayve/ai/zoo/sampling/`, `wayve/ai/zoo/test/sampling/`, `codex/WayveCode/2026/01/Week-1/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor]]: new task note (see [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]]).
+  - Added shared parking transition helper and refactored parking window logic.
+  - Added test coverage for transition duration filtering.
+
 #### 2026-01-01 — Move Codex notes into Obsidian vault
 - Topic: Vault organization
 - Labels: #vault #obsidian #codex
