@@ -95,6 +95,17 @@
   - Allowed full coin-style spin with signed skew and left/right depth shift.
   - Reserved room for skew/depth to avoid right-edge clipping during rotation.
 
+#### 2026-01-01 — Fix Wayve logo full spin illusion
+- Topic: Terminal animation
+- Labels: #tools #terminal #branding
+- Branch: unknown
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/parking/tools/`
+- Changes:
+  - Flipped the logo on the backface to avoid the 180° “bounce” effect.
+  - Adjusted front-face brightness curve for clearer 360° rotation.
+
 ## 2025-12
 #### 2025-12-30 — Parking maneuver filter (pred_park_type)
 - Topic: Parking maneuver filter
