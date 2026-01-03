@@ -6,6 +6,17 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-03 — Add /plan slash command
+- Topic: ExecPlan workflow
+- Labels: #codex #prompts #process
+- Branch: none
+- PR: none
+- Change type: add
+- Areas: `~/.codex/prompts/`, `codex/WayveCode/2026/01/Week-1/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-03-plan-slash-command]]: added task note.
+  - Added `~/.codex/prompts/plan.md` to generate ExecPlans per `~/.codex/PLANS.md`.
+
 #### 2026-01-01 — Parking maneuver filter refactor
 - Topic: Parking maneuver filter
 - Labels: #parking #sampling #refactor #tests
