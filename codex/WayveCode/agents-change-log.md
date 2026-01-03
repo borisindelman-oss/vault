@@ -6,6 +6,16 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-03 — LessWrong definition (Notion)
+- Topic: LessWrong definition
+- Labels: #notion #shadow-gym #reference
+- Branch: none
+- PR: none
+- Change type: docs
+- Areas: `codex/WayveCode/2026/01/Week-1/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-03-lesswrong-definition]]: summary from Shadow Gym page.
+
 #### 2026-01-03 — Add /plan slash command
 - Topic: ExecPlan workflow
 - Labels: #codex #prompts #process
