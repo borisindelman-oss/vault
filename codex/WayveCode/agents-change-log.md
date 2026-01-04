@@ -6,6 +6,15 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-04 — Wayvecli status skill
+- Topic: Wayvecli status skill
+- Labels: #codex #skills #wayvecli
+- Branch: none
+- PR: none
+- Change type: add
+- Areas: `~/.codex/skills/`, `/home/borisindelman/git/assests/codex/skills/`, `/workspace/WayveCode/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-04-wayvecli-status-skill]]: skill creation, packaging, and run attempts.
 #### 2026-01-01 — Move Codex notes into Obsidian vault
 - Topic: Vault organization
 - Labels: #vault #obsidian #codex
