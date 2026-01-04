@@ -280,6 +280,9 @@
   },
   "active": "837c74f12076c2b7",
   "lastOpenFiles": [
+    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cron.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-setup-script.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-minute-pull.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-wayvecli-status-skill.md",
     "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/projects.md",
@@ -308,7 +311,6 @@
     "codex/WayveCode/projects/projects.json",
     "codex/WayveCode/projects",
     "codex/WayveCode/2026/01/Week-1/2026-01-03-lesswrong-definition.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-03-plan-slash-command.md",
     "codex/WayveCode/2026/01/Week-1",
     "codex/WayveCode/2026/01",
     "codex/WayveCode/2026",
@@ -324,8 +326,6 @@
     "Wayve_logo_Package/DIGITAL/PNG/Wayve_Stacked_logo_Navy.png",
     "Wayve_logo_Package/DIGITAL/PNG/Wayve_Landscape_logo_White.png",
     "Wayve_logo_Package/DIGITAL/PNG/Wayve_Landscape_logo_Navy.png",
-    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-change-log.md",
-    "codex/WayveCode/2025/12/Week-4/2025-12-28-latent-actions-behavior-control-guide.md",
     "Untitled.canvas"
   ]
 }
