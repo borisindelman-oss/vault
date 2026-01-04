@@ -10,6 +10,8 @@
 - Error: `write (No space left on device)` while downloading `cuda_12.8_x86_64.tar.gz` from Artifactory.
 - Command: `cd /workspace/WayveCode/ && bazel run --ui_event_filters=-info,-stdout,-stderr --noshow_progress //tools/wayvecli:wayvecli -- job list`
 - Error: `cannot open lockfile '/workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/lock' for writing: (error: 13): Permission denied`.
+- Command: `cd /workspace/WayveCode/ && bazel --output_user_root=/workspace/WayveCode/.bazel_root run --ui_event_filters=-info,-stdout,-stderr --noshow_progress //tools/wayvecli:wayvecli -- job list`
+- Error: `write (No space left on device)` while downloading `cuda_12.8_x86_64.tar.gz`; build aborted.
 
 ## Files
 - `/home/borisindelman/git/assests/codex/skills/wayvecli-status/SKILL.md`
