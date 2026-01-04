@@ -6,6 +6,17 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+
+#### 2026-01-04 — Vault project manager single-file format
+- Topic: Project manager skill
+- Labels: #codex #vault #obsidian #process
+- Branch: none
+- PR: none
+- Change type: update
+- Areas: `~/.codex/skills/`, `~/.codex/prompts/`, `codex/WayveCode/projects/`, `codex/WayveCode/2026/01/Week-1/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-04-vault-project-manager-single-file]]: summary and file list.
+  - Added `projects.md` index and moved projects to a single `project.md` file.
 #### 2026-01-03 — LessWrong definition (Notion)
 - Topic: LessWrong definition
 - Labels: #notion #shadow-gym #reference
