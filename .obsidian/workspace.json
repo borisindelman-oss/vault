@@ -53,12 +53,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
+                "file": "codex/WayveCode/agents-change-log.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-01-01-parking-maneuver-filter-refactor"
+              "title": "agents-change-log"
             }
           },
           {
@@ -251,24 +251,25 @@
   },
   "active": "bc7268be10da423d",
   "lastOpenFiles": [
+    "codex/WayveCode/projects/projects.json",
+    "codex/WayveCode/projects",
+    "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
+    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-03-lesswrong-definition.md",
+    "codex/WayveCode/README.md",
     "codex/WayveCode/todo-list.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-03-plan-slash-command.md",
-    "codex/WayveCode/agents-change-log.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
     "codex/WayveCode/2026/01/Week-1",
     "codex/WayveCode/2026/01",
     "codex/WayveCode/2026",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "wayve_logo_3d_terminal.py",
     "conflict-files-obsidian-git.md",
-    "codex/WayveCode/README.md",
     "Wayve_logo_Package/__MACOSX/PRINT/PDF",
     "Wayve_logo_Package/__MACOSX/PRINT/EPS",
     "Wayve_logo_Package/__MACOSX/PRINT",
     "Wayve_logo_Package/__MACOSX/DIGITAL",
     "Wayve_logo_Package/__MACOSX",
-    "Wayve_logo_Package/PRINT/PDF/Wayve_Stacked_logo_White.pdf",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_White.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_Navy.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Landscape_logo_White.svg",
