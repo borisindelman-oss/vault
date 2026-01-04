@@ -95,12 +95,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/projects.md",
+                "file": "codex/WayveCode/projects/dummy-project/project.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "projects"
+              "title": "project"
             }
           }
         ],
@@ -263,7 +263,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -280,19 +281,20 @@
   },
   "active": "837c74f12076c2b7",
   "lastOpenFiles": [
-    "test.md",
-    "codex/WayveCode/projects.md",
+    "codex/WayveCode/todo-list.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cleanup.md",
+    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cron.md",
+    "codex/WayveCode/projects.md",
+    "test.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-setup-script.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-minute-pull.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-wayvecli-status-skill.md",
-    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/projects/dummy-project/project.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-project-manager-single-file.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "Excalidraw/parking_model_arch.excalidraw",
-    "codex/WayveCode/todo-list.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "conflict-files-obsidian-git.md",
@@ -307,7 +309,6 @@
     "codex/WayveCode/projects/dummy-project/TECHNICAL_ARCHITECTURE.md",
     "codex/WayveCode/projects/dummy-project/STATUS.md",
     "codex/WayveCode/projects/dummy-project",
-    "codex/WayveCode/README.md",
     "codex/WayveCode/projects/active-project.txt",
     "codex/WayveCode/projects/projects.json",
     "codex/WayveCode/projects",
