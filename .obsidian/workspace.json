@@ -53,12 +53,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/agents-change-log.md",
+                "file": "codex/WayveCode/projects/dummy-project/BUILD_PHASES.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agents-change-log"
+              "title": "BUILD_PHASES"
             }
           },
           {
@@ -251,20 +251,21 @@
   },
   "active": "bc7268be10da423d",
   "lastOpenFiles": [
+    "codex/WayveCode/projects/dummy-project/project.md",
+    "codex/WayveCode/projects/dummy-project/API_INTEGRATIONS.md",
+    "codex/WayveCode/projects/dummy-project/BUILD_PHASES.md",
+    "codex/WayveCode/projects/dummy-project/DATABASE_SCHEMA.md",
+    "codex/WayveCode/projects/dummy-project/DEBUGGING_GUIDE.md",
+    "codex/WayveCode/projects/dummy-project/PROJECT_INSTRUCTIONS.md",
+    "codex/WayveCode/projects/dummy-project/PROJECT_OVERVIEW.md",
+    "codex/WayveCode/projects/dummy-project/RUN.md",
     "codex/WayveCode/projects/dummy-project/UI_SPECIFICATIONS.md",
     "codex/WayveCode/projects/dummy-project/TECHNICAL_ARCHITECTURE.md",
     "codex/WayveCode/projects/dummy-project/STATUS.md",
-    "codex/WayveCode/projects/dummy-project/RUN.md",
-    "codex/WayveCode/projects/dummy-project/PROJECT_OVERVIEW.md",
-    "codex/WayveCode/projects/dummy-project/PROJECT_INSTRUCTIONS.md",
-    "codex/WayveCode/projects/dummy-project/DEBUGGING_GUIDE.md",
-    "codex/WayveCode/projects/dummy-project/DATABASE_SCHEMA.md",
-    "codex/WayveCode/projects/dummy-project/BUILD_PHASES.md",
-    "codex/WayveCode/projects/dummy-project/API_INTEGRATIONS.md",
+    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/projects/dummy-project",
     "codex/WayveCode/README.md",
     "codex/WayveCode/todo-list.md",
-    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/projects/active-project.txt",
     "codex/WayveCode/projects/projects.json",
     "codex/WayveCode/projects",
@@ -296,7 +297,6 @@
     "Excalidraw/Drawing 2025-12-21 16.01.42.excalidraw.md",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "permission-check.md",
-    "Untitled.canvas",
-    "Test.md"
+    "Untitled.canvas"
   ]
 }
