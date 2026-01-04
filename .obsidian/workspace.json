@@ -48,33 +48,63 @@
             }
           },
           {
-            "id": "bc7268be10da423d",
+            "id": "1cf7ceb998771d71",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/projects/dummy-project/BUILD_PHASES.md",
+                "file": "codex/WayveCode/projects/dummy-project/project.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "BUILD_PHASES"
+              "title": "project"
             }
           },
           {
-            "id": "1cf7ceb998771d71",
+            "id": "5e8bf74501d35707",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "split-diff-view",
               "state": {
-                "file": "Excalidraw/parking_model_arch.excalidraw"
+                "aFile": "codex/WayveCode/projects.md",
+                "bFile": "codex/WayveCode/projects.md",
+                "aRef": ""
               },
-              "icon": "excalidraw-icon",
-              "title": "parking_model_arch"
+              "icon": "diff",
+              "title": "Diff: projects"
+            }
+          },
+          {
+            "id": "de1d51cf0c87b4c0",
+            "type": "leaf",
+            "state": {
+              "type": "split-diff-view",
+              "state": {
+                "aFile": "codex/WayveCode/projects.md",
+                "bFile": "codex/WayveCode/projects.md",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: projects"
+            }
+          },
+          {
+            "id": "837c74f12076c2b7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "codex/WayveCode/projects.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "projects"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -233,8 +263,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -249,11 +278,15 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "bc7268be10da423d",
+  "active": "837c74f12076c2b7",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "codex/WayveCode/projects.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-project-manager-single-file.md",
     "codex/WayveCode/projects/dummy-project/project.md",
-    "codex/WayveCode/projects/dummy-project/API_INTEGRATIONS.md",
+    "Excalidraw/parking_model_arch.excalidraw",
     "codex/WayveCode/projects/dummy-project/BUILD_PHASES.md",
+    "codex/WayveCode/projects/dummy-project/API_INTEGRATIONS.md",
     "codex/WayveCode/projects/dummy-project/DATABASE_SCHEMA.md",
     "codex/WayveCode/projects/dummy-project/DEBUGGING_GUIDE.md",
     "codex/WayveCode/projects/dummy-project/PROJECT_INSTRUCTIONS.md",
@@ -277,9 +310,7 @@
     "codex/WayveCode/2026",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "wayve_logo_3d_terminal.py",
-    "conflict-files-obsidian-git.md",
     "Wayve_logo_Package/__MACOSX/PRINT/PDF",
-    "Wayve_logo_Package/__MACOSX/PRINT/EPS",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_White.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_Navy.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Landscape_logo_White.svg",
@@ -295,8 +326,6 @@
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-summary.md",
     "Excalidraw/Drawing 2025-12-21 16.01.42.excalidraw.md",
-    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
-    "permission-check.md",
     "Untitled.canvas"
   ]
 }
