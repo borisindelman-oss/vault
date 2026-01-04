@@ -6,6 +6,15 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-04 — Git sync README
+- Topic: Git sync tool
+- Labels: #git #automation #docs
+- Branch: none
+- PR: none
+- Change type: docs
+- Areas: `/home/borisindelman/git/assests/vault/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-04-git-sync-readme]]: add usage README.
 #### 2026-01-04 — Git sync tool
 - Topic: Git sync tool
 - Labels: #git #automation #tools
