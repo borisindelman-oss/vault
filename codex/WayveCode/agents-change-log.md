@@ -6,6 +6,15 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-04 — Vault sync setup script
+- Topic: Vault auto sync setup
+- Labels: #vault #git #automation
+- Branch: none
+- PR: none
+- Change type: add
+- Areas: `/home/borisindelman/git/vault/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-04-vault-sync-setup-script]]: add setup script for other machines.
 #### 2026-01-04 — Vault sync every minute
 - Topic: Vault auto sync
 - Labels: #vault #git #automation
