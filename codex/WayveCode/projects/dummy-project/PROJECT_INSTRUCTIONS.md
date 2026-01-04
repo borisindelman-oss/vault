@@ -1,7 +1,7 @@
 # Dummy Project - Project Instructions
 
 ## Overview
-[Brief description of what this project does and why it exists]
+A sample project to demonstrate the vault-based project workflow.
 
 ## Build Rules
 1. **Check project docs first** - Review `STATUS.md` and `PROJECT_OVERVIEW.md` before starting work.
@@ -10,16 +10,16 @@
 4. **Test before marking complete** - Verify functionality works before closing tasks.
 
 ## Current Phase
-Phase [X]: [Phase Name]
+Phase 1: Foundation
 
-[Current priorities and focus areas]
+Current focus: define requirements, choose stack, and set up initial scaffolding.
 
 ## Tech Stack
-- Frontend:
-- Backend:
-- Database:
-- Hosting:
-- Key integrations:
+- Frontend: TBD
+- Backend: TBD
+- Database: TBD
+- Hosting: TBD
+- Key integrations: none yet
 
 ## Key Files
 - Technical docs: `TECHNICAL_ARCHITECTURE.md`
@@ -41,13 +41,13 @@ Phase [X]: [Phase Name]
 - [ ] Added next priorities
 
 ## Common Commands
-[List frequently used commands for this project]
+- TBD
 
 ## Environment Variables
-[List required environment variables and where to get them]
+- TBD
 
 ## Deployment
-[How to deploy this project]
+- TBD
 
 ## Support Contacts
-[Who to contact for questions about different parts of the system]
+- Boris Indleman (owner)
