@@ -6,6 +6,15 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-04 — Vault sync cleanup
+- Topic: Vault auto sync
+- Labels: #vault #git #automation
+- Branch: none
+- PR: none
+- Change type: update
+- Areas: `/home/borisindelman/git/vault/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-04-vault-sync-cleanup]]: removed watcher setup/log files.
 #### 2026-01-04 — Vault sync via cron
 - Topic: Vault auto sync
 - Labels: #vault #git #automation
