@@ -4,6 +4,7 @@
 - Created the `wayvecli-status` skill with the Bazel wrapper, examples, and help discovery guidance.
 - Packaged the skill to `/workspace/WayveCode/wayvecli-status.skill`.
 - Attempted `wayvecli job list`; build failed due to no disk space while downloading CUDA.
+- Removed the `wayvecli-status` skill and packaged artifact at the user's request.
 
 ## Details
 - Command: `cd /workspace/WayveCode/ && bazel --output_user_root=/workspace/WayveCode/.bazel_root run --ui_event_filters=-info,-stdout,-stderr --noshow_progress //tools/wayvecli:wayvecli -- job list`
