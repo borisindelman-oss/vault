@@ -13,6 +13,7 @@ import time
 VAULT = "/home/borisindelman/git/vault"
 SYNC_SCRIPT = os.path.join(VAULT, ".vault-sync.sh")
 DEBOUNCE_SECONDS = 2.0
+PULL_INTERVAL_SECONDS = 60.0
 
 # Edit these if you want to ignore additional paths
 IGNORE_DIR_NAMES = {".git"}
@@ -112,6 +113,7 @@ def main():
 
     # Initial sync on start
     run_sync()
+    next_periodic_sync = time.time() + PULL_INTERVAL_SECONDS
 
     next_sync_at = None
 
@@ -119,6 +121,9 @@ def main():
         timeout = None
         if next_sync_at is not None:
             timeout = max(0.0, next_sync_at - time.time())
+        if next_periodic_sync is not None:
+            periodic_timeout = max(0.0, next_periodic_sync - time.time())
+            timeout = periodic_timeout if timeout is None else min(timeout, periodic_timeout)
         rlist, _, _ = select.select([fd], [], [], timeout)
         if rlist:
             try:
@@ -152,10 +157,18 @@ def main():
                 if not should_ignore(full_path):
                     next_sync_at = time.time() + DEBOUNCE_SECONDS
         else:
-            # Timeout: run sync when quiet period elapsed
-            if next_sync_at is not None and time.time() >= next_sync_at:
+            now = time.time()
+            did_sync = False
+            if next_sync_at is not None and now >= next_sync_at:
                 run_sync()
                 next_sync_at = None
+                did_sync = True
+            if next_periodic_sync is not None and now >= next_periodic_sync:
+                if not did_sync:
+                    run_sync()
+                next_periodic_sync = time.time() + PULL_INTERVAL_SECONDS
+            elif did_sync:
+                next_periodic_sync = time.time() + PULL_INTERVAL_SECONDS
 
 
 if __name__ == "__main__":
