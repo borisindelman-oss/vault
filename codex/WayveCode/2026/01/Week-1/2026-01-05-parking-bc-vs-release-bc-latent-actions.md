@@ -152,3 +152,13 @@ flowchart TD
 - Release model base: WFMStOctober2025Cfg (StLargeModelCfg, Oct 2025 checkpoint, qk_norm="l2", use_step_and_lane_info_adaptor=True, temporal_encoding_in_video_adaptor=False).
 - Both use 5 cameras (TrainC5T4Cfg base) and override to camera_frames=6, camera_stride_sec=0.20 in their mode configs.
 - Parking adds gear-direction + parking-mode adaptors (1 token each per frame) and a gear-direction output head (1 query).
+
+## FLOPs intuition (token counts)
+- Preprocess output is 640x1024 and ViT downsampling is 64x -> ~10x16 tokens per camera per frame.
+- With 5 cameras and 6 frames: ~160 * 30 = ~4,800 video tokens.
+- Parking gear+parking adaptors add ~12 tokens total (~0.25% of video tokens).
+- Release step/lane adaptor adds 10 tokens per frame (~60 tokens, ~1.25%).
+- One extra output query or latent-action query costs O(N*D) vs ST attention O(N^2*D); negligible.
+
+## Note
+- Attempted to resolve Hydra configs programmatically but the local Python env lacks omegaconf/hydra deps; comparisons above are from code inspection.
