@@ -146,3 +146,9 @@ flowchart TD
 - Latent-action cross-attn is a single-query attention over tokens plus a small MLP head; its FLOPs are tiny vs ST layers.
 - Gear-direction output head adds one query and a small linear layer; negligible vs ST.
 - Parking deployment wrapper adds torch.where and small indexing; not a FLOP-heavy path.
+
+## Config comparison (parking vs release baseline)
+- Parking model base: WFMSt100xYoloCfg (StLargeModelCfg, YOLO checkpoint, qk_norm=None, use_automation_state=True).
+- Release model base: WFMStOctober2025Cfg (StLargeModelCfg, Oct 2025 checkpoint, qk_norm="l2", use_step_and_lane_info_adaptor=True, temporal_encoding_in_video_adaptor=False).
+- Both use 5 cameras (TrainC5T4Cfg base) and override to camera_frames=6, camera_stride_sec=0.20 in their mode configs.
+- Parking adds gear-direction + parking-mode adaptors (1 token each per frame) and a gear-direction output head (1 query).
