@@ -131,6 +131,18 @@ flowchart TD
   classDef latentAction fill:#d9f7e9,stroke:#1f7a4b,color:#0b3d1f;
   classDef behaviorControl fill:#ffe9cc,stroke:#a35a00,color:#5a2d00;
 
-  class LatentQ,LatentHead,LatentToken,OutputTokensP,WaypointsP,IndicatorOutP,GearOutP latentAction;
-  class BehaviorUncond,TopK,BehaviorLabel,BehaviorToken,OutputTokensR,WaypointsR,IndicatorOutR,BehaviorLogitsR,VarianceR behaviorControl;
+  class LatentQ,LatentHead,LatentToken latentAction;
+  class BehaviorUncond,TopK,BehaviorLabel,BehaviorToken behaviorControl;
+
+  subgraph Legend
+    LAKey["Latent-action path"]:::latentAction
+    BCKey["Behavior-control path"]:::behaviorControl
+  end
 ```
+
+## Perf estimate (inference)
+- Dominant FLOPs remain in the vision encoder + ST transformer attention (O(N^2) in token count per frame).
+- New gear/parking input adaptors add only a few tokens per frame, so the attention cost increase is small relative to video tokens.
+- Latent-action cross-attn is a single-query attention over tokens plus a small MLP head; its FLOPs are tiny vs ST layers.
+- Gear-direction output head adds one query and a small linear layer; negligible vs ST.
+- Parking deployment wrapper adds torch.where and small indexing; not a FLOP-heavy path.
