@@ -162,3 +162,13 @@ flowchart TD
 
 ## Note
 - Attempted to resolve Hydra configs programmatically but the local Python env lacks omegaconf/hydra deps; comparisons above are from code inspection.
+
+## parking.json vs release.json (key deltas)
+- Build targets: `model.model._target_` is `build_space_time_model` (parking) vs `build_fast_space_time_model` (release).
+- Preprocess: `model.model.preprocess._target_` uses `st.preprocess.Preprocessor` (parking) vs `st.fast.preprocess.Preprocessor` (release).
+- Output adaptor: `wayve.ai.zoo.outputs.output_adaptor.OutputAdaptor` (parking) vs legacy `latent_actions.models.outputs_behavior_control.OutputAdaptor` (release).
+- Behavior control vs latent action: `model.enable_behavior_control` False + `w_latent_action=1` (parking) vs True + `w_behavior_control=1` (release).
+- Indicator memory/state: parking disables `model.use_indicator_memory`/`model.use_indicator_state`; release enables both.
+- Temporal caching: `model.with_temporal_caching` False (parking) vs True (release).
+- Datamodule: parking enables parking/gear direction options (`datamodule.enable_parking`, `augment_gear_direction`, parking thresholds) and uses binary `2.7.68`; release uses `2.7.52` and `route_and_indicator_augmentation=True`.
+- Datasets: parking train/val partitions point at `2025_12_11_12_47_38_server_parking_bc_data`; release points at `2025_11_15_10_13_01_server_gen2_ipace` + DILC buckets.
