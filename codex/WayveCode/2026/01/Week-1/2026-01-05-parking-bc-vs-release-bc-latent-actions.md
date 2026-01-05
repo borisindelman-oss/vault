@@ -87,83 +87,50 @@ indicator = indicator_head(tokens)  # [B, Tf]
 gear_direction = gear_head(tokens)  # [B, Tf]
 ```
 
-## Mermaid — ParkingBcTrainCfg (latent action enabled)
+## Mermaid — Combined (latent action vs behavior control)
 ```mermaid
 flowchart TD
   Cam["Camera video frames<br/>T=6, stride 0.20s"]
   Route["Route map<br/>si_medium_noise"]
   Indicator["Indicator state"]
   Vehicle["Vehicle state"]
-  Gear["Gear direction"]
-  ParkMode["Parking mode"]
 
-  Cam --> Preprocess["YOLO preprocessor"]
+  Cam --> Preprocess["Preprocess"]
   Preprocess --> VideoTok["Video adaptor + vision encoder"]
   Route --> RouteTok["Route adaptor"]
   Indicator --> IndTok["Indicator adaptor"]
   Vehicle --> VehTok["Vehicle adaptors"]
-  Gear --> GearTok["Gear direction adaptor"]
-  ParkMode --> ParkTok["Parking mode adaptor"]
 
   VideoTok --> InputAdaptor["InputAdaptor<br/>token concat + temporal enc"]
   RouteTok --> InputAdaptor
   IndTok --> InputAdaptor
   VehTok --> InputAdaptor
-  GearTok --> InputAdaptor
-  ParkTok --> InputAdaptor
 
-  InputAdaptor --> ST["Space-Time Transformer<br/>WFM St100x YOLO"]
+  InputAdaptor --> ST["Space-Time Transformer"]
 
+  %% Parking latent-action path (green)
   ST --> LatentQ["Latent action query + cross-attn"]
   LatentQ --> LatentHead["Latent action logits"]
   LatentHead --> LatentToken["Latent action token<br/>ActionsDiscretizer"]
+  LatentToken --> OutputTokensP["Output queries + cross-attn"]
+  OutputTokensP --> WaypointsP["Waypoints"]
+  OutputTokensP --> IndicatorOutP["Indicator predictions"]
+  OutputTokensP --> GearOutP["Gear direction predictions"]
 
-  ST --> OutputTokens["Output queries + cross-attn"]
-  LatentToken --> OutputTokens
-
-  OutputTokens --> Waypoints["Waypoints"]
-  OutputTokens --> IndicatorOut["Indicator predictions"]
-  OutputTokens --> GearOut["Gear direction predictions"]
-  LatentHead --> LatentLogits["Latent action logits"]
-```
-
-## Mermaid — Release BC baseline in main (behavior control)
-```mermaid
-flowchart TD
-  Cam["Camera video frames<br/>T=6, stride 0.20s"]
-  Route["Route map<br/>si_medium_noise"]
-  Indicator["Indicator state"]
-  Vehicle["Vehicle state"]
-  StepLane["Step and lane info"]
-  WaypointsIn["Waypoints tokens<br/>dropped in BC"]
-
-  Cam --> Preprocess["Reduced blind-spot preprocessor"]
-  Preprocess --> VideoTok["Video adaptor + vision encoder"]
-  Route --> RouteTok["Route adaptor"]
-  Indicator --> IndTok["Indicator adaptor"]
-  Vehicle --> VehTok["Vehicle adaptors"]
-  StepLane --> StepLaneTok["Step/Lane adaptor"]
-  WaypointsIn --> WaypointsTok["Waypoints adaptor"]
-
-  VideoTok --> InputAdaptor["InputAdaptor<br/>token concat + temporal enc"]
-  RouteTok --> InputAdaptor
-  IndTok --> InputAdaptor
-  VehTok --> InputAdaptor
-  StepLaneTok --> InputAdaptor
-  WaypointsTok --> InputAdaptor
-
-  InputAdaptor --> ST["Space-Time Transformer<br/>WFM October 2025"]
-
+  %% Release behavior-control path (orange)
   ST --> BehaviorUncond["Behavior-unconditioned outputs"]
   BehaviorUncond --> TopK["Top-k latent action samples"]
   TopK --> BehaviorLabel["Behavior label"]
   BehaviorLabel --> BehaviorToken["Behavior token"]
+  BehaviorToken --> OutputTokensR["Output queries + cross-attn"]
+  OutputTokensR --> WaypointsR["Waypoints"]
+  OutputTokensR --> IndicatorOutR["Indicator predictions"]
+  OutputTokensR --> BehaviorLogitsR["Behavior control / latent action logits"]
+  OutputTokensR --> VarianceR["Waypoint variance"]
 
-  ST --> OutputTokens["Output queries + cross-attn"]
-  BehaviorToken --> OutputTokens
+  classDef latentAction fill:#d9f7e9,stroke:#1f7a4b,color:#0b3d1f;
+  classDef behaviorControl fill:#ffe9cc,stroke:#a35a00,color:#5a2d00;
 
-  OutputTokens --> Waypoints["Waypoints"]
-  OutputTokens --> IndicatorOut["Indicator predictions"]
-  OutputTokens --> BehaviorLogits["Behavior control / latent action logits"]
-  OutputTokens --> Variance["Waypoint variance"]
+  class LatentQ,LatentHead,LatentToken,OutputTokensP,WaypointsP,IndicatorOutP,GearOutP latentAction;
+  class BehaviorUncond,TopK,BehaviorLabel,BehaviorToken,OutputTokensR,WaypointsR,IndicatorOutR,BehaviorLogitsR,VarianceR behaviorControl;
 ```
