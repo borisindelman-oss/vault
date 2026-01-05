@@ -6,6 +6,15 @@
 - [2025-03](#2025-03)
 
 ## 2026-01
+#### 2026-01-05 — Parking BC vs release BC latent actions
+- Topic: Parking BC vs release BC
+- Labels: #parking #model #latent-actions #analysis #mermaid
+- Branch: soham/12-18-Parking-model
+- PR: none
+- Change type: analysis
+- Areas: `wayve/ai/si/configs/parking/`, `wayve/ai/si/configs/baseline/`, `wayve/ai/zoo/outputs/`, `wayve/ai/latent_actions/models/`
+- Changes:
+  - [[2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions]]: compare latent action pathways and add mermaid diagrams.
 #### 2026-01-04 — Git sync README
 - Topic: Git sync tool
 - Labels: #git #automation #docs
