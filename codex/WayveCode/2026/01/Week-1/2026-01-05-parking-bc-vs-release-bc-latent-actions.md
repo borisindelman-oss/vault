@@ -31,6 +31,62 @@
 - Parking latent action encoding flips target waypoint x for reverse gear; release behavior control adaptor does not apply gear-direction handling.
 - Parking enables gear-direction prediction and parking mode adaptor; release baseline does not enable these heads/adaptors.
 
+## Torch pseudocode (behavior-control vs latent-action)
+### Release baseline (behavior-control adaptor)
+```python
+# tokens: [B, T, N, D] from ST encoder
+tokens = outputs["output_tokens"]
+tokens = tokens.flatten(1, 2)  # [B, T*N, D]
+
+if policy_waypoints_present:  # training path
+    # Behavior-unconditioned policy (no behavior token)
+    latent_logits = latent_action_head(latent_query, tokens)  # [B, 1, K]
+    latent_embed = codebook(argmax_or_privileged(latent_logits))  # [B, 1, D]
+    tokens_bu = tokens + latent_embed.expand_as(tokens)  # [B, T*N, D]
+    waypoints_bu = waypoint_head(tokens_bu)  # [B, Tf, 2]
+
+    # Top-k latent action sampling to compute behavior label
+    topk_logits, topk_idx = topk(latent_logits, k=K)  # [B, 1, K]
+    topk_emb = codebook(topk_idx)  # [B, 1, K, D]
+    tokens_topk = tokens[:, None].expand(B, K, -1, -1).reshape(B*K, T*N, D)  # [B*K, T*N, D]
+    tokens_topk = tokens_topk + topk_emb.squeeze(1).reshape(B*K, 1, D).expand(B*K, T*N, D)
+    waypoints_topk = waypoint_head(tokens_topk).reshape(B, K, Tf, 2)  # [B, K, Tf, 2]
+    behavior_label = compute_behavior_label(waypoints_topk, policy_waypoints, topk_logits)  # [B]
+else:  # inference path
+    behavior_label = fixed_behavior_input * torch.ones(B)  # [B]
+
+# Behavior token conditions the final outputs
+behavior_token = behavior_codebook(behavior_label)  # [B, D]
+tokens = tokens + behavior_token[:, None, :].expand(B, T*N, D)  # [B, T*N, D]
+waypoints = waypoint_head(tokens)  # [B, Tf, 2]
+indicator = indicator_head(tokens)  # [B, Tf]
+```
+
+### Parking (latent-action adaptor)
+```python
+# tokens: [B, T, N, D] from ST encoder
+tokens = outputs["output_tokens"]
+tokens = tokens.flatten(1, 2)  # [B, T*N, D]
+
+if policy_waypoints_present:  # training path
+    target_wp = policy_waypoints[..., -1, :2]  # [B, 2]
+    if gear_direction_present:  # reverse: invert x
+        target_wp = invert_x_if_reverse(target_wp, gear_dir)  # [B, 2]
+    latent_idx = discretizer.encode(target_wp)  # [B]
+    privileged_latent = latent_idx[:, None]  # [B, 1]
+else:  # inference path
+    privileged_latent = None
+
+# Latent action conditioning (always active)
+latent_logits = latent_action_head(latent_query, tokens)  # [B, 1, K]
+latent_embed = codebook(privileged_latent or argmax(latent_logits))  # [B, 1, D]
+tokens = tokens + latent_embed.expand(B, T*N, D)  # [B, T*N, D]
+
+waypoints = waypoint_head(tokens)  # [B, Tf, 2]
+indicator = indicator_head(tokens)  # [B, Tf]
+gear_direction = gear_head(tokens)  # [B, Tf]
+```
+
 ## Mermaid — ParkingBcTrainCfg (latent action enabled)
 ```mermaid
 flowchart TD
