@@ -4,9 +4,17 @@
       "name": "Dummy Project",
       "slug": "dummy-project",
       "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/dummy-project",
-      "status": "active",
+      "status": "paused",
       "phase": "Phase 1",
       "last_updated": "2026-01-04"
+    },
+    {
+      "name": "Parking WFM Update",
+      "slug": "parking-wfm-update",
+      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/parking-wfm-update",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-01-06"
     }
   ]
 }
