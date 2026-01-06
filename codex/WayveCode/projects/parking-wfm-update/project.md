@@ -7,9 +7,10 @@
 
 ## Status
 - **Phase:** Phase 1 - Discovery
-- **Status:** active
+- **Status:** archived
 - **Last updated:** 2026-01-06
 - **Current priorities:**
+  - Project closed pending formal December WFM release.
   - Locate the December release world model config in Notion and confirm its name.
   - Compare BCWFMSt100xYoloCfg vs WFMStOctober2025Cfg defaults used in parking training.
   - Align training module config (STTrainingModuleCfg vs StBcCfg) and document differences.
@@ -41,5 +42,12 @@
   - **Rationale:** Keep project tracking light-weight and focused.
 
 ## Notes
+- Project closed after local revert; waiting for formal December release.
+- December re-creation checklist:
+  - Add WFMStDecember2025Cfg (checkpoint from release) in wayve/ai/si/config.py using load_multi_input_sttransformer_from_wfm_october_pretraining.
+  - Add wfm_space_time_december_2025_bc_cfg and BCWFMStDecember2025Cfg, then mode_store name wfm_december_2025_bc.
+  - Add parking_bc_wfm_december_2025_cfg + debug cfg using StBcCfg with parking overrides in wayve/ai/si/configs/parking/parking_config.py.
+  - Add parking_bc_train_wfm_december_2025 / parking_bc_debug_wfm_december_2025 modes for A/B comparison.
+- Reference: [[2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode]]
 - [[2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode]]
 - [[2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode]]

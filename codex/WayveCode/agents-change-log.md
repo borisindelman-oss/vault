@@ -5,6 +5,17 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-06 — Parking WFM Update closed
+- Topic: Parking WFM Update closure
+- Labels: #parking #project
+- Branch: soham/12-18-Parking-model
+- PR: none
+- Change type: update
+- Areas: `codex/WayveCode/projects/`
+- Project: [[codex/WayveCode/projects/parking-wfm-update/project]]
+- Changes:
+  - Closed the project pending formal December WFM release and added re-creation checklist.
+
 #### 2026-01-06 — Parking WFM December 2025 modes
 - Topic: Parking WFM December 2025 modes
 - Labels: #parking #model #config
