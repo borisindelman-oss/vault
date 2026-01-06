@@ -107,12 +107,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/agents-change-log.md",
+                "file": "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agents-change-log"
+              "title": "2026-01-05-parking-bc-vs-release-bc-latent-actions"
             }
           }
         ],
@@ -293,16 +293,17 @@
   },
   "active": "9273017eec3a283a",
   "lastOpenFiles": [
-    "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-reverse-constant-accel-waypoints.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode.md",
+    "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode.md",
     "codex/WayveCode/agents-change-log.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-reverse-constant-accel-waypoints.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
     "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/parking-wfm-update/project.md",
     "codex/WayveCode/projects/parking-wfm-update",
     "codex/WayveCode/projects/dummy-project/project.md",
-    "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-summary.md",
     "Plan.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
@@ -320,7 +321,6 @@
     "Excalidraw/parking_model_arch.excalidraw",
     "conflict-files-obsidian-git.md",
     "codex/WayveCode/projects/dummy-project/BUILD_PHASES.md",
-    "codex/WayveCode/projects/dummy-project/API_INTEGRATIONS.md",
     "codex/WayveCode/projects/dummy-project",
     "codex/WayveCode/projects/active-project.txt",
     "codex/WayveCode/projects/projects.json",
