@@ -41,4 +41,4 @@
   - **Rationale:** Keep project tracking light-weight and focused.
 
 ## Notes
--
+- [[2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode]]
