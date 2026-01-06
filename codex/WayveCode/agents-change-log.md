@@ -12,7 +12,7 @@
 - PR: none
 - Change type: update
 - Areas: `codex/WayveCode/projects/`
-- Project: [[codex/WayveCode/projects/parking-wfm-update/project]]
+- Project: [[codex/WayveCode/projects/parking-wfm-update]]
 - Changes:
   - Closed the project pending formal December WFM release and added re-creation checklist.
 
@@ -23,7 +23,7 @@
 - PR: none
 - Change type: update
 - Areas: `wayve/ai/si/config.py`, `wayve/ai/si/configs/parking/`
-- Project: [[codex/WayveCode/projects/parking-wfm-update/project]]
+- Project: [[codex/WayveCode/projects/parking-wfm-update]]
 - Changes:
   - [[2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode]]: added December 2025 WFM base and parking modes.
 
@@ -44,7 +44,7 @@
 - PR: none
 - Change type: update
 - Areas: `wayve/ai/si/configs/parking/`
-- Project: [[codex/WayveCode/projects/parking-wfm-update/project]]
+- Project: [[codex/WayveCode/projects/parking-wfm-update]]
 - Changes:
   - [[2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode]]: added October 2025 WFM parking configs and modes.
 
