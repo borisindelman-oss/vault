@@ -42,3 +42,4 @@
 
 ## Notes
 - [[2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode]]
+- [[2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode]]

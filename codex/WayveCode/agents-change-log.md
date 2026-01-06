@@ -5,6 +5,17 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-06 — Parking WFM December 2025 modes
+- Topic: Parking WFM December 2025 modes
+- Labels: #parking #model #config
+- Branch: soham/12-18-Parking-model
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/si/config.py`, `wayve/ai/si/configs/parking/`
+- Project: [[codex/WayveCode/projects/parking-wfm-update/project]]
+- Changes:
+  - [[2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode]]: added December 2025 WFM base and parking modes.
+
 #### 2026-01-06 — Parking reverse constant-accel waypoints
 - Topic: Parking reverse waypoint override
 - Labels: #parking #deployment #inference
