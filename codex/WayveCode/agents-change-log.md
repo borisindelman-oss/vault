@@ -12,7 +12,7 @@
 - PR: none
 - Change type: update
 - Areas: `codex/WayveCode/projects/`
-- Project: [[codex/WayveCode/projects/parking-wfm-update/project]]
+- Project: [[codex/WayveCode/projects/parking-wfm-update]]
 - Changes:
   - Closed the project pending formal December WFM release and added re-creation checklist.
 
