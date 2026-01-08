@@ -13,7 +13,7 @@
 - Change type: update
 - Areas: `wayve/ai/si/visualisation/bokeh/plotter/`, `wayve/ai/si/visualisation/bokeh/`, `codex/WayveCode/projects/`
 - Changes:
-  - [[2026/01/Week-2/2026-01-08-parking-waypoints-scatter-plot]]: added XY scatter plot for policy waypoints, live server mode with timestamp display, and paused the parking maneuver filter project.
+  - [[2026/01/Week-2/2026-01-08-parking-waypoints-scatter-plot]]: added XY scatter plot for policy waypoints, live on-demand server mode with slider/timestamps/buttons, and paused the parking maneuver filter project.
 
 #### 2026-01-06 — Parking WFM Update closed
 - Topic: Parking WFM Update closure
