@@ -10,6 +10,7 @@
 - Added live Bokeh server mode (no file) when `--output_path` is omitted, with on-demand frame loading, index slider with timestamp display, and prev/next buttons (pre-sized using dataloader length or duration-based estimate).
 - Wrapped visualisation models with the deployment wrapper (parking enabled) and routed wrapper forward calls with explicit inputs.
 - Handle OnBoardDrivingOutput in visualiser unbatching (convert NamedTuple to dict; preserve None).
+- Handle 0-d outputs in unbatching (use item instead of indexing).
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
