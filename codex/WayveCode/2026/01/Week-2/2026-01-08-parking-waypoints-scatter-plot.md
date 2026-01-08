@@ -9,6 +9,7 @@
 - Added a new "Policy Waypoints" plot and rendered policy waypoints as an XY scatter graph.
 - Added live Bokeh server mode (no file) when `--output_path` is omitted, with on-demand frame loading, index slider with timestamp display, and prev/next buttons (pre-sized using dataloader length or duration-based estimate).
 - Wrapped visualisation models with the deployment wrapper (parking enabled) and routed wrapper forward calls with explicit inputs.
+- Handle OnBoardDrivingOutput in visualiser unbatching (convert NamedTuple to dict; preserve None).
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
