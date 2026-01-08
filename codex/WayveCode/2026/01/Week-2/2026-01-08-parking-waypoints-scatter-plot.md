@@ -14,6 +14,7 @@
 - Fix camera_time_delta indexing to avoid out-of-bounds when time delta has camera dims.
 - Add rear camera panel when an extra camera is present (hide otherwise).
 - Add GT path scatter to waypoint plot (first ~2s of path based on current speed).
+- Use policy speed when available, and fallback to a minimum speed to avoid zero-length GT path.
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
