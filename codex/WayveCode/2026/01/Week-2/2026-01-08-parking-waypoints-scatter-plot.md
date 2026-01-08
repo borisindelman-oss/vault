@@ -2,14 +2,17 @@
 
 ## Scope
 - Add a simple XY scatter plot for policy waypoints in the parking Bokeh plotter.
+- Allow Bokeh visualiser to run as a server when no output path is provided.
 - Pause the parking maneuver filter project while switching to the visualization task.
 
 ## Changes
 - Added a new "Policy Waypoints" plot and rendered policy waypoints as an XY scatter graph.
+- Added server-mode output (no file) when `--output_path` is omitted.
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
 - /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/plotter/parking_plotter.py
+- /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/visualise.py
 - /home/borisindelman/git/vault/codex/WayveCode/projects/zak-classifiers-parking-maneuver.md
 - /home/borisindelman/git/vault/codex/WayveCode/projects/projects.json
 - /home/borisindelman/git/vault/codex/WayveCode/projects/projects.md
