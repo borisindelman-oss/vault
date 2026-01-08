@@ -11,6 +11,7 @@
 - Wrapped visualisation models with the deployment wrapper (parking enabled) and routed wrapper forward calls with explicit inputs.
 - Handle OnBoardDrivingOutput in visualiser unbatching (convert NamedTuple to dict; preserve None).
 - Handle 0-d outputs in unbatching (use item instead of indexing).
+- Fix camera_time_delta indexing to avoid out-of-bounds when time delta has camera dims.
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
