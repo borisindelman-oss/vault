@@ -13,6 +13,7 @@
 ## Files
 - /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/plotter/parking_plotter.py
 - /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/visualise.py
+- /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/README.md
 - /home/borisindelman/git/vault/codex/WayveCode/projects/zak-classifiers-parking-maneuver.md
 - /home/borisindelman/git/vault/codex/WayveCode/projects/projects.json
 - /home/borisindelman/git/vault/codex/WayveCode/projects/projects.md
