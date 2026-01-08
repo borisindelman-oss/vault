@@ -12,6 +12,7 @@
 - Handle OnBoardDrivingOutput in visualiser unbatching (convert NamedTuple to dict; preserve None).
 - Handle 0-d outputs in unbatching (use item instead of indexing).
 - Fix camera_time_delta indexing to avoid out-of-bounds when time delta has camera dims.
+- Add rear camera panel when an extra camera is present (hide otherwise).
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
@@ -19,6 +20,7 @@
 - /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/visualise.py
 - /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/README.md
 - /workspace/WayveCode/wayve/ai/si/visualisation/inference_model.py
+- /workspace/WayveCode/wayve/ai/si/visualisation/bokeh/plotter/input_plotter.py
 - /home/borisindelman/git/vault/codex/WayveCode/projects/zak-classifiers-parking-maneuver.md
 - /home/borisindelman/git/vault/codex/WayveCode/projects/projects.json
 - /home/borisindelman/git/vault/codex/WayveCode/projects/projects.md
