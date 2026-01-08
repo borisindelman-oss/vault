@@ -1,6 +1,14 @@
 {
   "projects": [
     {
+      "name": "Zak classifiers parking maneuver",
+      "slug": "zak-classifiers-parking-maneuver",
+      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
+      "status": "active",
+      "phase": "Phase 3",
+      "last_updated": "2026-01-08"
+    },
+    {
       "name": "Parking WFM Update",
       "slug": "parking-wfm-update",
       "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/parking-wfm-update.md",
