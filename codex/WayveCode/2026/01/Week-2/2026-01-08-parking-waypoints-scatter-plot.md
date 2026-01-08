@@ -7,7 +7,7 @@
 
 ## Changes
 - Added a new "Policy Waypoints" plot and rendered policy waypoints as an XY scatter graph.
-- Added server-mode output (no file) when `--output_path` is omitted.
+- Added live Bokeh server mode (no file) when `--output_path` is omitted, with index slider and timestamp display.
 - Updated project registry/status to paused for the parking maneuver filter project.
 
 ## Files
