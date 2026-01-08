@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-08 — Parking waypoints scatter plot
+- Topic: Parking waypoint plot
+- Labels: #parking #viz #bokeh
+- Branch: boris/parking_fixed_reverse_acc
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/si/visualisation/bokeh/plotter/`, `codex/WayveCode/projects/`
+- Changes:
+  - [[2026/01/Week-2/2026-01-08-parking-waypoints-scatter-plot]]: added XY scatter plot for policy waypoints and paused the parking maneuver filter project.
+
 #### 2026-01-06 — Parking WFM Update closed
 - Topic: Parking WFM Update closure
 - Labels: #parking #project
