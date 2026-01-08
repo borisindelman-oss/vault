@@ -7,7 +7,7 @@
 
 ## Status
 - **Phase:** Phase 3
-- **Status:** active
+- **Status:** paused
 - **Last updated:** 2026-01-08
 - **Current priorities:**
   - Validate the existing branch implementation and close any gaps vs experimental logic.
