@@ -105,18 +105,28 @@
             "id": "9273017eec3a283a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "codex/WayveCode/agents-change-log.md",
-                "mode": "source",
-                "source": false
+                "file": "Excalidraw/parking_model_arch.excalidraw"
               },
-              "icon": "lucide-file",
-              "title": "agents-change-log"
+              "icon": "excalidraw-icon",
+              "title": "parking_model_arch"
+            }
+          },
+          {
+            "id": "c32d7fa98d8036f7",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/head_options.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "head_options.excalidraw"
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -291,12 +301,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "9273017eec3a283a",
+  "active": "421689602b4afc34",
   "lastOpenFiles": [
+    "Excalidraw/parking_model_arch.excalidraw",
+    "Excalidraw/head_options.excalidraw.md",
+    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/parking-wfm-update.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
-    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/01/Week-2/2026-01-08-parking-waypoints-scatter-plot.md",
     "codex/WayveCode/README.md",
     "codex/WayveCode/2026/01/Week-2",
@@ -306,7 +318,6 @@
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode.md",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
-    "Excalidraw/parking_model_arch.excalidraw",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-reverse-constant-accel-waypoints.md",
@@ -320,8 +331,6 @@
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cleanup.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cron.md",
     "test.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-setup-script.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-minute-pull.md",
     "codex/WayveCode/projects/dummy-project",
     "codex/WayveCode/projects/active-project.txt",
     "codex/WayveCode/projects/projects.json",
