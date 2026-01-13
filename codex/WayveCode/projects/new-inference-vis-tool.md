@@ -24,9 +24,9 @@
 - **Success criteria:** Tool can run the model end-to-end, swap data sources, and produce interactive visualizations usable by engineers.
 
 ## Design
-- **Approach:**
-- **Key decisions:**
-- **Open questions:**
+- **Approach:** MVC split (InferenceModel + DataSource + InferenceController + Plotly views), reuse existing model wrapper/datapipe/plotter keys.
+- **Key decisions:** Prefer Dash + Plotly for the main tool; optionally add a lightweight Gradio demo reusing Plotly view builders.
+- **Open questions:** Plotter parity (InputOutput vs Parking), offline HTML/MP4 export parity, and train/val config resolution strategy.
 
 ## Build Phases
 - **Phase:**
