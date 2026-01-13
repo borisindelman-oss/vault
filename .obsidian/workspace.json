@@ -117,14 +117,12 @@
             "id": "c32d7fa98d8036f7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
-                "mode": "source",
-                "source": false
+                "file": "Excalidraw/head_options.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "2026-01-13-new-inference-vis-tool-initial-mapping"
+              "icon": "excalidraw-icon",
+              "title": "head_options.excalidraw"
             }
           }
         ],
@@ -305,12 +303,13 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
-    "codex/WayveCode/projects/new-inference-vis-tool.md",
+    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "codex/WayveCode/projects.md",
+    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
+    "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "codex/WayveCode/agents-change-log.md",
-    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-inference-model-design.md",
     "Excalidraw/parking_model_arch.excalidraw",
     "codex/WayveCode/2026/01/Week-3",
@@ -326,7 +325,6 @@
     "codex/WayveCode/projects/parking-wfm-update",
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode.md",
-    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-01-parking-maneuver-filter-refactor.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-reverse-constant-accel-waypoints.md",
