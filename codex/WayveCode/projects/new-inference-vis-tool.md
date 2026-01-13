@@ -25,6 +25,20 @@
 
 ## Design
 - **Approach:** MVC split (InferenceModel + DataSource + InferenceController + Plotly views), reuse existing model wrapper/datapipe/plotter keys.
+- **InferenceModel (initial):**
+  - Use existing SI visualisation stack for now: `load_model` + `VisualisationModelWrapper`.
+  - Support both deployment wrapper and TorchScript via existing loaders:
+    - Deployment wrapper path: `pack_model.load_inference_model_from_session_id` (unwraps training module).
+    - TorchScript path: `inference_model.load_ingested_model_from_session_id`.
+  - No caching/stateful inference for MVP.
+  - Interface goal: `infer_batch(inputs)` returns dict with standard DataKeys (Plotly view builders consume these).
+- **Test plan (smoke):**
+  - Load model from session path:
+    - `/mnt/remote/azure_session_dir/Parking/parking/session_2026_01_05_22_16_44_si_parking_bc_train_parking_bc_w_temporal_caching_reverse_fix___waypoints_reverse_amplification`
+  - Load one batch from run segment:
+    - `run_id=fme10008/2024-11-23--05-17-45--gen2-dc-b972e3fe-0cf7-4baf-bf99-a88f29f3b2dd`
+    - `from_unixus=1732339460424837`, `to_unixus=1732339474716245`
+  - Run `VisualisationModelWrapper(inputs)` and assert outputs include `DataKeys.POLICY_WAYPOINTS`.
 - **Key decisions:** Prefer Dash + Plotly for the main tool; optionally add a lightweight Gradio demo reusing Plotly view builders.
 - **Open questions:** Plotter parity (InputOutput vs Parking), offline HTML/MP4 export parity, and train/val config resolution strategy.
 

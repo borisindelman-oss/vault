@@ -5,6 +5,17 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-13 — Inference model design (MVC)
+- Topic: New inference visualization tool
+- Labels: #viz #inference #design
+- Branch: none
+- PR: none
+- Change type: docs
+- Areas: `codex/WayveCode/projects/`
+- Project: [[codex/WayveCode/projects/new-inference-vis-tool]]
+- Changes:
+  - [[2026/01/Week-3/2026-01-13-inference-model-design]]: documented InferenceModel plan and smoke test.
+
 #### 2026-01-13 — New inference vis tool mapping
 - Topic: New inference visualization tool
 - Labels: #viz #inference #planning
