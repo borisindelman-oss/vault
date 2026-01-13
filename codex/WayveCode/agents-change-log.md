@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-13 — Parking hazard filter updates
+- Topic: Parking maneuver hazard filter
+- Labels: #parking #sampling #filters #tests
+- Branch: boris/2025-12-30/zak-classifiers-parking-maneuver
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/zoo/sampling/`, `wayve/ai/zoo/test/sampling/`
+- Changes:
+  - [[2026/01/Week-3/2026-01-13-parking-hazard-filter-updates]]: added hazard indicator light filter, cleaned gear in parking indices, and aligned default hazard masking.
+
 #### 2026-01-13 — Inference model design (MVC)
 - Topic: New inference visualization tool
 - Labels: #viz #inference #design
