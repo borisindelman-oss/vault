@@ -5,6 +5,17 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-13 — New inference vis tool mapping
+- Topic: New inference visualization tool
+- Labels: #viz #inference #planning
+- Branch: none
+- PR: none
+- Change type: analysis
+- Areas: `wayve/ai/si/visualisation/`, `codex/WayveCode/projects/`
+- Project: [[codex/WayveCode/projects/new-inference-vis-tool]]
+- Changes:
+  - [[2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping]]: mapped current visualisation flow and proposed MVC reuse plan.
+
 #### 2026-01-08 — Parking waypoints scatter plot
 - Topic: Parking waypoint plot
 - Labels: #parking #viz #bokeh

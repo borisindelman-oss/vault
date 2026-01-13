@@ -8,7 +8,7 @@
 ## Status
 - **Phase:** Phase 1
 - **Status:** active
-- **Last updated:** 2026-01-12
+- **Last updated:** 2026-01-13
 - **Current priorities:**
   - Review existing `bokeh/visualise.py` under `wayve/ai/si` (data/model usage).
   - Map data source inputs (run id, bucket, train/val config) and model execution path (deployment wrapper + TorchScript).
@@ -40,4 +40,4 @@
   - **Rationale:**
 
 ## Notes
--
+- [[2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping]]
