@@ -119,10 +119,10 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/head_options.excalidraw.md"
+                "file": "Excalidraw/parking_model_arch.excalidraw"
               },
               "icon": "excalidraw-icon",
-              "title": "head_options.excalidraw"
+              "title": "parking_model_arch"
             }
           }
         ],
@@ -303,13 +303,15 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
+    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
+    "codex/WayveCode/2026/01/Week-3",
+    "Excalidraw/head_options.excalidraw.md",
+    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/new-inference-vis-tool.md",
     "Excalidraw/parking_model_arch.excalidraw",
     "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
-    "Excalidraw/head_options.excalidraw.md",
     "Pasted Image 20260111140517_906.png",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/parking-wfm-update.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
     "codex/WayveCode/2026/01/Week-2/2026-01-08-parking-waypoints-scatter-plot.md",
@@ -332,14 +334,12 @@
     "codex/WayveCode/todo-list.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cleanup.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-vault-sync-cron.md",
-    "test.md",
     "codex/WayveCode/projects/dummy-project",
     "codex/WayveCode/projects/active-project.txt",
     "codex/WayveCode/projects/projects.json",
     "codex/WayveCode/projects",
     "codex/WayveCode/2026/01/Week-1",
     "codex/WayveCode/2026/01",
-    "codex/WayveCode/2026",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_White.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_Navy.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Landscape_logo_White.svg",
