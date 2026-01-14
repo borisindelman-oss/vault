@@ -28,6 +28,40 @@
 - **Key decisions:** Use SI filter helper + targeted unit tests; keep changes localized; move hazard mask to defaults.
 - **Open questions:** Any remaining deltas between experimental sampler filters and SI filter behavior?
 
+## Filter Timeline (Mermaid)
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as Timeline (frames)
+    Note over T: get_parking_indices (gear transitions)
+    T->>T: Clean gear (remove short neutral/park, snap to stop)
+    T->>T: Detect gear==0 segments (entry/exit indices)
+    T->>T: Window before entry (sec + dist) and after exit (sec + dist)
+    Note over T: Output = union of entry/exit windows
+```
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as Timeline (frames)
+    Note over T: get_parking_maneuver_indices_from_pred_park_type
+    T->>T: Clean gear and detect park transitions
+    T->>T: Build maneuver window (before_sec/dist, after_sec)
+    T->>T: Optional extend start from left/right indicator
+    T->>T: Keep only windows containing pred_park_type label
+```
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as Timeline (frames)
+    Note over T: get_parking_maneuver_indices_from_hazard_indicator_light
+    T->>T: Clean gear; require hazard_light AND gear==0
+    T->>T: Build maneuver window (before_sec/dist, after_sec)
+    T->>T: Optional extend start from left/right indicator
+    T->>T: Keep only windows containing hazard+gear==0
+```
+
 ## Build Phases
 - **Phase:** Phase 3
   - **Goal:** Validate and finalize filter + tests.
