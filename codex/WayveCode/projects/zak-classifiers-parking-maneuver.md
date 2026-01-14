@@ -31,51 +31,66 @@
 ## Filter Timeline (Mermaid)
 ```mermaid
 flowchart LR
-    subgraph get_parking_indices["get_parking_indices (gear transitions)"]
-        A["t-Δ: before_entry window<br/>(sec OR dist)"] --> B["t0: gear==0 entry"]
-        B --> C["parking segment (gear==0)"]
-        C --> D["t1: gear!=0 exit"]
-        D --> E["t+Δ: after_exit window<br/>(sec OR dist)"]
-    end
-    F["Filter: require movement ahead OR gear change within 2s"] -.-> B
-    F -.-> D
-```
-
-```mermaid
-flowchart LR
-    subgraph pred_park_type_default["pred_park_type (indicator extension ON)"]
-        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
-        B --> C["t+Δ: window end (after_sec)"]
-        D["Optional: extend start to last left/right indicator-on<br/>if indicator-off close to park"] -.-> A
-        E["Label condition: pred_park_type in allowed set<br/>(or >0 if unspecified)"] -.-> A
+    subgraph GI["get_parking_indices (gear transitions)"]
+        A["t-Δ: before_entry (sec OR dist)"] --> B["t0: gear -> 0 (entry)"]
+        B --> C["gear==0 segment"]
+        C --> D["t1: gear -> !=0 (exit)"]
+        D --> E["t+Δ: after_exit (sec OR dist)"]
+        CLEAN["clean gear (remove short neutral/park + snap to stop)"] -.-> B
+        KEEP["keep if movement ahead OR gear change within 2s"] -.-> B
+        KEEP -.-> D
+        OUT["output = before_entry U after_exit"] -.-> A
+        OUT -.-> E
     end
 ```
 
 ```mermaid
 flowchart LR
-    subgraph pred_park_type_no_ext["pred_park_type (indicator extension OFF)"]
-        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+    subgraph PPT_ON["pred_park_type (indicator extension ON)"]
+        A["t-Δ: base window start (min of time/dist)"] --> B["t0: park transition (gear==0)"]
         B --> C["t+Δ: window end (after_sec)"]
-        E["Label condition: pred_park_type in allowed set<br/>(or >0 if unspecified)"] -.-> A
+        CLEAN["clean gear"] -.-> B
+        EXT["extend start to last LEFT/RIGHT indicator-on<br/>if indicator-off close to park"] -.-> A
+        LABEL["pred_park_type label in allowed set<br/>(or >0 if unspecified)"] --> KEEP["keep window"]
+        KEEP -.-> A
+        KEEP -.-> C
     end
 ```
 
 ```mermaid
 flowchart LR
-    subgraph hazard_default["hazard indicator light (extension ON)"]
-        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+    subgraph PPT_OFF["pred_park_type (indicator extension OFF)"]
+        A["t-Δ: base window start (min of time/dist)"] --> B["t0: park transition (gear==0)"]
         B --> C["t+Δ: window end (after_sec)"]
-        D["Optional: extend start to last left/right indicator-on<br/>(uses ground_truth__state__vehicle__indicator)"] -.-> A
-        E["Label condition: hazard_light AND gear==0 within window"] -.-> A
+        CLEAN["clean gear"] -.-> B
+        LABEL["pred_park_type label in allowed set<br/>(or >0 if unspecified)"] --> KEEP["keep window"]
+        KEEP -.-> A
+        KEEP -.-> C
     end
 ```
 
 ```mermaid
 flowchart LR
-    subgraph hazard_no_ext["hazard indicator light (extension OFF)"]
-        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+    subgraph HZ_ON["hazard indicator light (extension ON)"]
+        A["t-Δ: base window start (min of time/dist)"] --> B["t0: park transition (gear==0)"]
         B --> C["t+Δ: window end (after_sec)"]
-        E["Label condition: hazard_light AND gear==0 within window"] -.-> A
+        CLEAN["clean gear"] -.-> B
+        EXT["extend start using LEFT/RIGHT indicator<br/>(ground_truth__state__vehicle__indicator)"] -.-> A
+        LABEL["hazard_light AND gear==0 inside window"] --> KEEP["keep window"]
+        KEEP -.-> A
+        KEEP -.-> C
+    end
+```
+
+```mermaid
+flowchart LR
+    subgraph HZ_OFF["hazard indicator light (extension OFF)"]
+        A["t-Δ: base window start (min of time/dist)"] --> B["t0: park transition (gear==0)"]
+        B --> C["t+Δ: window end (after_sec)"]
+        CLEAN["clean gear"] -.-> B
+        LABEL["hazard_light AND gear==0 inside window"] --> KEEP["keep window"]
+        KEEP -.-> A
+        KEEP -.-> C
     end
 ```
 
