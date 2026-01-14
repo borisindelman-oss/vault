@@ -94,6 +94,36 @@ flowchart LR
     end
 ```
 
+## Parking Buckets (from `wayve/ai/zoo/sampling/buckets.py`)
+| Bucket name | Category | Func | Masks | Country | Platform | Auto |
+| --- | --- | --- | --- | --- | --- | --- |
+| `dc_parking_uk` | DC | `get_parking_indices` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
+| `dc_parking_usa` | DC | `get_parking_indices` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | no |
+| `dc_parking_deu` | DC | `get_parking_indices` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | no |
+| `dc_partner_mb_parking_uk` | DC (partner_mb) | `get_parking_indices` | `PARKING_DC_MASKS` | GBR | MB | no |
+| `dc_partner_mb_parking_usa` | DC (partner_mb) | `get_parking_indices` | `PARKING_DC_MASKS` | USA | MB | no |
+| `dc_partner_mb_parking_deu` | DC (partner_mb) | `get_parking_indices` | `PARKING_DC_MASKS` | DEU | MB | no |
+| `dc_parking_long_uk` | DC long | `get_parking_indices(30s/30m)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
+| `dc_parking_long_usa` | DC long | `get_parking_indices(30s/30m)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | no |
+| `dc_parking_long_deu` | DC long | `get_parking_indices(30s/30m)` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | no |
+| `dc_partner_mb_parking_long_uk` | DC long (partner_mb) | `get_parking_indices(30s/30m)` | `PARKING_DC_MASKS` | GBR | MB | no |
+| `dc_partner_mb_parking_long_usa` | DC long (partner_mb) | `get_parking_indices(30s/30m)` | `PARKING_DC_MASKS` | USA | MB | no |
+| `dc_partner_mb_parking_long_deu` | DC long (partner_mb) | `get_parking_indices(30s/30m)` | `PARKING_DC_MASKS` | DEU | MB | no |
+| `ca_short_parking_uk` | CA short | `intersection(short_ca, parking)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | yes |
+| `ca_short_parking_usa` | CA short | `intersection(short_ca, parking)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | yes |
+| `ca_short_parking_deu` | CA short | `intersection(short_ca, parking)` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | yes |
+| `ca_long_parking_uk` | CA long | `intersection(long_ca, parking)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | yes |
+| `ca_long_parking_usa` | CA long | `intersection(long_ca, parking)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | yes |
+| `pre_ca_parking_uk` | Pre-CA | `intersection(pre_ca, parking)` | `PARKING_AV_MASKS` | GBR | GEN2_MACHE | yes |
+| `pre_ca_parking_usa` | Pre-CA | `intersection(pre_ca, parking)` | `PARKING_AV_MASKS` | USA | GEN2_MACHE | yes |
+| `pre_ca_parking_deu` | Pre-CA | `intersection(pre_ca, parking)` | `PARKING_AV_MASKS` | DEU | GEN2_MACHE | yes |
+
+Notes:
+- `get_parking_indices(30s/30m)` means `before_entry_sec=30`, `after_exit_sec=30`, `before_entry_m=30`, `after_exit_m=30`.
+- `intersection(short_ca, parking)` = `get_corrective_action_indices_short` + `get_parking_indices`.
+- `intersection(long_ca, parking)` = `get_corrective_action_indices_long` + `get_parking_indices`.
+- `intersection(pre_ca, parking)` = `get_pre_intervention_indices` + `get_parking_indices`.
+
 ## Build Phases
 - **Phase:** Phase 3
   - **Goal:** Validate and finalize filter + tests.
