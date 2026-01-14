@@ -124,6 +124,39 @@ Notes:
 - `intersection(long_ca, parking)` = `get_corrective_action_indices_long` + `get_parking_indices`.
 - `intersection(pre_ca, parking)` = `get_pre_intervention_indices` + `get_parking_indices`.
 
+## Parking Mask Expansion
+- Auto column = `include_autonomous_runs` on the bucket.
+- `PARKING_DC_MASKS` expands to:
+  - `autonomous`
+  - `stopped_segment`
+  - `diversion_and_lens_obscured_interventions`
+  - `known_bad_runs_and_timestamps`
+  - `quarantined_runs_and_timestamps`
+  - `high_speed`
+  - `hazard_indicator`
+  - `long_stationary`
+  - `start_end_frames`
+  - `none_contiguous`
+  - `invalid_video_file_name`
+  - `constant_speed`
+- `PARKING_AV_MASKS` expands to:
+  - `out_of_scope_interventions`
+  - `known_bad_runs_and_timestamps`
+  - `quarantined_runs_and_timestamps`
+  - `high_speed`
+  - `hazard_indicator`
+  - `long_stationary`
+  - `start_end_frames`
+  - `none_contiguous`
+  - `invalid_video_file_name`
+  - `constant_speed`
+- Masks intentionally excluded from parking base masks:
+  - `reverse_or_neutral`, `parking_legacy`, `geofence`
+- Additional masks applied in `get_bucket_indices`:
+  - `invalid_video_file_name` always (already in defaults).
+  - `unknown_indicator` if `exclude_unknown_indicators=True` (default).
+  - `robotics_run_filter` if `apply_robotics_run_filters=True`.
+
 ## Build Phases
 - **Phase:** Phase 3
   - **Goal:** Validate and finalize filter + tests.
