@@ -119,12 +119,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
+                "file": "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-01-13-parking-hazard-filter-updates"
+              "title": "zak-classifiers-parking-maneuver"
             }
           }
         ],
@@ -304,9 +304,9 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
+    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/README.md",
