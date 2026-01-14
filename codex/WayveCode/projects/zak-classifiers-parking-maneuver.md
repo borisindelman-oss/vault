@@ -30,36 +30,53 @@
 
 ## Filter Timeline (Mermaid)
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant T as Timeline (frames)
-    Note over T: get_parking_indices (gear transitions)
-    T->>T: Clean gear (remove short neutral/park, snap to stop)
-    T->>T: Detect gear==0 segments (entry/exit indices)
-    T->>T: Window before entry (sec + dist) and after exit (sec + dist)
-    Note over T: Output = union of entry/exit windows
+flowchart LR
+    subgraph get_parking_indices["get_parking_indices (gear transitions)"]
+        A["t-Δ: before_entry window<br/>(sec OR dist)"] --> B["t0: gear==0 entry"]
+        B --> C["parking segment (gear==0)"]
+        C --> D["t1: gear!=0 exit"]
+        D --> E["t+Δ: after_exit window<br/>(sec OR dist)"]
+    end
+    F["Filter: require movement ahead OR gear change within 2s"] -.-> B
+    F -.-> D
 ```
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant T as Timeline (frames)
-    Note over T: get_parking_maneuver_indices_from_pred_park_type
-    T->>T: Clean gear and detect park transitions
-    T->>T: Build maneuver window (before_sec/dist, after_sec)
-    T->>T: Optional extend start from left/right indicator
-    T->>T: Keep only windows containing pred_park_type label
+flowchart LR
+    subgraph pred_park_type_default["pred_park_type (indicator extension ON)"]
+        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+        B --> C["t+Δ: window end (after_sec)"]
+        D["Optional: extend start to last left/right indicator-on<br/>if indicator-off close to park"] -.-> A
+        E["Label condition: pred_park_type in allowed set<br/>(or >0 if unspecified)"] -.-> A
+    end
 ```
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant T as Timeline (frames)
-    Note over T: get_parking_maneuver_indices_from_hazard_indicator_light
-    T->>T: Clean gear; require hazard_light AND gear==0
-    T->>T: Build maneuver window (before_sec/dist, after_sec)
-    T->>T: Optional extend start from left/right indicator
-    T->>T: Keep only windows containing hazard+gear==0
+flowchart LR
+    subgraph pred_park_type_no_ext["pred_park_type (indicator extension OFF)"]
+        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+        B --> C["t+Δ: window end (after_sec)"]
+        E["Label condition: pred_park_type in allowed set<br/>(or >0 if unspecified)"] -.-> A
+    end
+```
+
+```mermaid
+flowchart LR
+    subgraph hazard_default["hazard indicator light (extension ON)"]
+        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+        B --> C["t+Δ: window end (after_sec)"]
+        D["Optional: extend start to last left/right indicator-on<br/>(uses ground_truth__state__vehicle__indicator)"] -.-> A
+        E["Label condition: hazard_light AND gear==0 within window"] -.-> A
+    end
+```
+
+```mermaid
+flowchart LR
+    subgraph hazard_no_ext["hazard indicator light (extension OFF)"]
+        A["t-Δ: base window start<br/>(min of time/dist)"] --> B["t0: park transition (gear==0)"]
+        B --> C["t+Δ: window end (after_sec)"]
+        E["Label condition: hazard_light AND gear==0 within window"] -.-> A
+    end
 ```
 
 ## Build Phases
