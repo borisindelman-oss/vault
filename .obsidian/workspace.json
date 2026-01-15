@@ -185,7 +185,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5026054382324
+    "width": 200
   },
   "right": {
     "id": "2fc1190a7c137808",
@@ -287,7 +287,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -305,17 +306,17 @@
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
     "codex/WayveCode/projects.md",
+    "codex/WayveCode/agents-change-log.md",
+    "Excalidraw/parking_model_arch.excalidraw",
+    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
+    "Excalidraw/head_options.excalidraw.md",
+    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
+    "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
-    "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/README.md",
-    "Excalidraw/head_options.excalidraw.md",
-    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
-    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
-    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-inference-model-design.md",
-    "Excalidraw/parking_model_arch.excalidraw",
     "codex/WayveCode/2026/01/Week-3",
     "Pasted Image 20260111140517_906.png",
     "codex/WayveCode/projects/parking-wfm-update.md",
@@ -334,7 +335,6 @@
     "Plan.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-git-sync-readme.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-04-git-sync-tool.md",
-    "codex/WayveCode/todo-list.md",
     "codex/WayveCode/projects/dummy-project",
     "codex/WayveCode/projects/active-project.txt",
     "codex/WayveCode/projects/projects.json",
