@@ -8,11 +8,11 @@
 ## Status
 - **Phase:** Phase 3
 - **Status:** active
-- **Last updated:** 2026-01-13
+- **Last updated:** 2026-01-15
 - **Current priorities:**
-  - Validate hazard indicator bucket behavior with default mask changes.
+  - Validate the new parking-labeled + PUDO bucket inventory against experimental filters.
   - Run/repair tests for the parking maneuver filter path.
-  - Decide whether to add a hazard-specific mask set that keeps hazard frames.
+  - Sanity-check mask behavior for hazard-indicator vs PUDO sampling.
 - **Blockers:**
   - None
 
@@ -94,7 +94,14 @@ flowchart LR
     end
 ```
 
-## Parking Buckets (from `wayve/ai/zoo/sampling/buckets.py`)
+## Latest Results (2026-01-15)
+- Added `PARKING_LABELED_BUCKETS` (pred_park_type labels 1–4) and `PUDO_BUCKETS` (hazard indicator + drop-off label 7) and wired both into `ALL_BUCKETS`.
+- `get_pudo_indices` now unions hazard-indicator parking maneuvers with labeled drop-off maneuvers.
+- Added PUDO-specific mask sets with `pudo_geofence` included and `hazard_indicator` excluded; parking masks still exclude `reverse_or_neutral` and `parking_legacy`.
+
+## Bucket Inventory (current)
+
+### PARKING_BUCKETS
 | Bucket name | Category | Func | Masks | Country | Platform | Auto |
 | --- | --- | --- | --- | --- | --- | --- |
 | `dc_parking_uk` | DC | `get_parking_indices` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
@@ -118,97 +125,69 @@ flowchart LR
 | `pre_ca_parking_usa` | Pre-CA | `intersection(pre_ca, parking)` | `PARKING_AV_MASKS` | USA | GEN2_MACHE | yes |
 | `pre_ca_parking_deu` | Pre-CA | `intersection(pre_ca, parking)` | `PARKING_AV_MASKS` | DEU | GEN2_MACHE | yes |
 
-Notes:
-- `get_parking_indices(30s/30m)` means `before_entry_sec=30`, `after_exit_sec=30`, `before_entry_m=30`, `after_exit_m=30`.
-- `intersection(short_ca, parking)` = `get_corrective_action_indices_short` + `get_parking_indices`.
-- `intersection(long_ca, parking)` = `get_corrective_action_indices_long` + `get_parking_indices`.
-- `intersection(pre_ca, parking)` = `get_pre_intervention_indices` + `get_parking_indices`.
-
-## Parking Mask Expansion
-- Auto column = `include_autonomous_runs` on the bucket.
-- `PARKING_DC_MASKS` expands to:
-  - `autonomous`
-  - `stopped_segment`
-  - `diversion_and_lens_obscured_interventions`
-  - `known_bad_runs_and_timestamps`
-  - `quarantined_runs_and_timestamps`
-  - `high_speed`
-  - `hazard_indicator`
-  - `long_stationary`
-  - `start_end_frames`
-  - `none_contiguous`
-  - `invalid_video_file_name`
-  - `constant_speed`
-- `PARKING_AV_MASKS` expands to:
-  - `out_of_scope_interventions`
-  - `known_bad_runs_and_timestamps`
-  - `quarantined_runs_and_timestamps`
-  - `high_speed`
-  - `hazard_indicator`
-  - `long_stationary`
-  - `start_end_frames`
-  - `none_contiguous`
-  - `invalid_video_file_name`
-  - `constant_speed`
-- Masks intentionally excluded from parking base masks:
-  - `reverse_or_neutral`, `parking_legacy`, `geofence`
-- Additional masks applied in `get_bucket_indices`:
-  - `invalid_video_file_name` always (already in defaults).
-  - `unknown_indicator` if `exclude_unknown_indicators=True` (default).
-  - `robotics_run_filter` if `apply_robotics_run_filters=True`.
-
-## Proposed New Bucket Sets (draft)
-Notes:
-- Names below are proposed; confirm naming before implementation.
-- For “long” PUDO variants, I assumed `distance_before_m=30`, `before_sec=30`, `after_sec=30` for `get_parking_maneuver_indices_from_hazard_indicator_light` (no after-distance parameter exists).
-
-### PUDO_BUCKETS (hazard indicator light)
-| Bucket name (proposed) | Category | Func | Masks | Country | Platform | Auto |
+### PARKING_LABELED_BUCKETS
+| Bucket name | Category | Func | Masks | Country | Platform | Auto |
 | --- | --- | --- | --- | --- | --- | --- |
-| `dc_pudo_uk` | DC | `get_parking_maneuver_indices_from_hazard_indicator_light` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | no |
-| `dc_pudo_usa` | DC | `get_parking_maneuver_indices_from_hazard_indicator_light` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | no |
-| `dc_pudo_deu` | DC | `get_parking_maneuver_indices_from_hazard_indicator_light` | `PUDO_DC_MASKS` | DEU | GEN2_MACHE | no |
-| `dc_partner_mb_pudo_uk` | DC (partner_mb) | `get_parking_maneuver_indices_from_hazard_indicator_light` | `PUDO_DC_MASKS` | GBR | MB | no |
-| `dc_partner_mb_pudo_usa` | DC (partner_mb) | `get_parking_maneuver_indices_from_hazard_indicator_light` | `PUDO_DC_MASKS` | USA | MB | no |
-| `dc_partner_mb_pudo_deu` | DC (partner_mb) | `get_parking_maneuver_indices_from_hazard_indicator_light` | `PUDO_DC_MASKS` | DEU | MB | no |
-| `dc_pudo_long_uk` | DC long | `hazard_window(30s/30m)` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | no |
-| `dc_pudo_long_usa` | DC long | `hazard_window(30s/30m)` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | no |
-| `dc_pudo_long_deu` | DC long | `hazard_window(30s/30m)` | `PUDO_DC_MASKS` | DEU | GEN2_MACHE | no |
-| `dc_partner_mb_pudo_long_uk` | DC long (partner_mb) | `hazard_window(30s/30m)` | `PUDO_DC_MASKS` | GBR | MB | no |
-| `dc_partner_mb_pudo_long_usa` | DC long (partner_mb) | `hazard_window(30s/30m)` | `PUDO_DC_MASKS` | USA | MB | no |
-| `dc_partner_mb_pudo_long_deu` | DC long (partner_mb) | `hazard_window(30s/30m)` | `PUDO_DC_MASKS` | DEU | MB | no |
-| `ca_short_pudo_uk` | CA short | `intersection(short_ca, hazard)` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | yes |
-| `ca_short_pudo_usa` | CA short | `intersection(short_ca, hazard)` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | yes |
-| `ca_short_pudo_deu` | CA short | `intersection(short_ca, hazard)` | `PUDO_DC_MASKS` | DEU | GEN2_MACHE | yes |
-| `ca_long_pudo_uk` | CA long | `intersection(long_ca, hazard)` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | yes |
-| `ca_long_pudo_usa` | CA long | `intersection(long_ca, hazard)` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | yes |
-| `pre_ca_pudo_uk` | Pre-CA | `intersection(pre_ca, hazard)` | `PUDO_AV_MASKS` | GBR | GEN2_MACHE | yes |
-| `pre_ca_pudo_usa` | Pre-CA | `intersection(pre_ca, hazard)` | `PUDO_AV_MASKS` | USA | GEN2_MACHE | yes |
-| `pre_ca_pudo_deu` | Pre-CA | `intersection(pre_ca, hazard)` | `PUDO_AV_MASKS` | DEU | GEN2_MACHE | yes |
+| `dc_parking_uk_labeled` | DC | `get_parking_labeled_indices` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
+| `dc_parking_usa_labeled` | DC | `get_parking_labeled_indices` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | no |
+| `dc_parking_deu_labeled` | DC | `get_parking_labeled_indices` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | no |
+| `dc_partner_mb_parking_uk_labeled` | DC (partner_mb) | `get_parking_labeled_indices` | `PARKING_DC_MASKS` | GBR | MB | no |
+| `dc_partner_mb_parking_usa_labeled` | DC (partner_mb) | `get_parking_labeled_indices` | `PARKING_DC_MASKS` | USA | MB | no |
+| `dc_partner_mb_parking_deu_labeled` | DC (partner_mb) | `get_parking_labeled_indices` | `PARKING_DC_MASKS` | DEU | MB | no |
+| `dc_parking_long_uk_labeled` | DC long | `get_parking_labeled_indices(30s/30m)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
+| `dc_parking_long_usa_labeled` | DC long | `get_parking_labeled_indices(30s/30m)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | no |
+| `dc_parking_long_deu_labeled` | DC long | `get_parking_labeled_indices(30s/30m)` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | no |
+| `dc_partner_mb_parking_long_uk_labeled` | DC long (partner_mb) | `get_parking_labeled_indices(30s/30m)` | `PARKING_DC_MASKS` | GBR | MB | no |
+| `dc_partner_mb_parking_long_usa_labeled` | DC long (partner_mb) | `get_parking_labeled_indices(30s/30m)` | `PARKING_DC_MASKS` | USA | MB | no |
+| `dc_partner_mb_parking_long_deu_labeled` | DC long (partner_mb) | `get_parking_labeled_indices(30s/30m)` | `PARKING_DC_MASKS` | DEU | MB | no |
+| `ca_short_parking_uk_labeled` | CA short | `intersection(short_ca, parking_labeled)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | yes |
+| `ca_short_parking_usa_labeled` | CA short | `intersection(short_ca, parking_labeled)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | yes |
+| `ca_short_parking_deu_labeled` | CA short | `intersection(short_ca, parking_labeled)` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | yes |
+| `ca_long_parking_uk_labeled` | CA long | `intersection(long_ca, parking_labeled)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | yes |
+| `ca_long_parking_usa_labeled` | CA long | `intersection(long_ca, parking_labeled)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | yes |
+| `pre_ca_parking_uk_labeled` | Pre-CA | `intersection(pre_ca, parking_labeled)` | `PARKING_AV_MASKS` | GBR | GEN2_MACHE | yes |
+| `pre_ca_parking_usa_labeled` | Pre-CA | `intersection(pre_ca, parking_labeled)` | `PARKING_AV_MASKS` | USA | GEN2_MACHE | yes |
+| `pre_ca_parking_deu_labeled` | Pre-CA | `intersection(pre_ca, parking_labeled)` | `PARKING_AV_MASKS` | DEU | GEN2_MACHE | yes |
 
-### PARKING_LABELED_BUCKETS (pred_park_type)
-| Bucket name (proposed) | Category | Func | Masks | Country | Platform | Auto |
+### PUDO_BUCKETS
+| Bucket name | Category | Func | Masks | Country | Platform | Auto |
 | --- | --- | --- | --- | --- | --- | --- |
-| `dc_parking_uk_labeled` | DC | `get_parking_maneuver_indices_from_pred_park_type` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
-| `dc_parking_usa_labeled` | DC | `get_parking_maneuver_indices_from_pred_park_type` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | no |
-| `dc_parking_deu_labeled` | DC | `get_parking_maneuver_indices_from_pred_park_type` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | no |
-| `dc_partner_mb_parking_uk_labeled` | DC (partner_mb) | `get_parking_maneuver_indices_from_pred_park_type` | `PARKING_DC_MASKS` | GBR | MB | no |
-| `dc_partner_mb_parking_usa_labeled` | DC (partner_mb) | `get_parking_maneuver_indices_from_pred_park_type` | `PARKING_DC_MASKS` | USA | MB | no |
-| `dc_partner_mb_parking_deu_labeled` | DC (partner_mb) | `get_parking_maneuver_indices_from_pred_park_type` | `PARKING_DC_MASKS` | DEU | MB | no |
-| `dc_parking_long_uk_labeled` | DC long | `pred_park_window(30s/30m)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | no |
-| `dc_parking_long_usa_labeled` | DC long | `pred_park_window(30s/30m)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | no |
-| `dc_parking_long_deu_labeled` | DC long | `pred_park_window(30s/30m)` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | no |
-| `dc_partner_mb_parking_long_uk_labeled` | DC long (partner_mb) | `pred_park_window(30s/30m)` | `PARKING_DC_MASKS` | GBR | MB | no |
-| `dc_partner_mb_parking_long_usa_labeled` | DC long (partner_mb) | `pred_park_window(30s/30m)` | `PARKING_DC_MASKS` | USA | MB | no |
-| `dc_partner_mb_parking_long_deu_labeled` | DC long (partner_mb) | `pred_park_window(30s/30m)` | `PARKING_DC_MASKS` | DEU | MB | no |
-| `ca_short_parking_uk_labeled` | CA short | `intersection(short_ca, pred_park)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | yes |
-| `ca_short_parking_usa_labeled` | CA short | `intersection(short_ca, pred_park)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | yes |
-| `ca_short_parking_deu_labeled` | CA short | `intersection(short_ca, pred_park)` | `PARKING_DC_MASKS` | DEU | GEN2_MACHE | yes |
-| `ca_long_parking_uk_labeled` | CA long | `intersection(long_ca, pred_park)` | `PARKING_DC_MASKS` | GBR | GEN2_MACHE | yes |
-| `ca_long_parking_usa_labeled` | CA long | `intersection(long_ca, pred_park)` | `PARKING_DC_MASKS` | USA | GEN2_MACHE | yes |
-| `pre_ca_parking_uk_labeled` | Pre-CA | `intersection(pre_ca, pred_park)` | `PARKING_AV_MASKS` | GBR | GEN2_MACHE | yes |
-| `pre_ca_parking_usa_labeled` | Pre-CA | `intersection(pre_ca, pred_park)` | `PARKING_AV_MASKS` | USA | GEN2_MACHE | yes |
-| `pre_ca_parking_deu_labeled` | Pre-CA | `intersection(pre_ca, pred_park)` | `PARKING_AV_MASKS` | DEU | GEN2_MACHE | yes |
+| `dc_pudo_uk` | DC | `get_pudo_indices` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | no |
+| `dc_pudo_usa` | DC | `get_pudo_indices` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | no |
+| `dc_pudo_deu` | DC | `get_pudo_indices` | `PUDO_DC_MASKS` | DEU | GEN2_MACHE | no |
+| `dc_partner_mb_pudo_uk` | DC (partner_mb) | `get_pudo_indices` | `PUDO_DC_MASKS` | GBR | MB | no |
+| `dc_partner_mb_pudo_usa` | DC (partner_mb) | `get_pudo_indices` | `PUDO_DC_MASKS` | USA | MB | no |
+| `dc_partner_mb_pudo_deu` | DC (partner_mb) | `get_pudo_indices` | `PUDO_DC_MASKS` | DEU | MB | no |
+| `dc_pudo_long_uk` | DC long | `get_pudo_indices(30s/30m)` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | no |
+| `dc_pudo_long_usa` | DC long | `get_pudo_indices(30s/30m)` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | no |
+| `dc_pudo_long_deu` | DC long | `get_pudo_indices(30s/30m)` | `PUDO_DC_MASKS` | DEU | GEN2_MACHE | no |
+| `dc_partner_mb_pudo_long_uk` | DC long (partner_mb) | `get_pudo_indices(30s/30m)` | `PUDO_DC_MASKS` | GBR | MB | no |
+| `dc_partner_mb_pudo_long_usa` | DC long (partner_mb) | `get_pudo_indices(30s/30m)` | `PUDO_DC_MASKS` | USA | MB | no |
+| `dc_partner_mb_pudo_long_deu` | DC long (partner_mb) | `get_pudo_indices(30s/30m)` | `PUDO_DC_MASKS` | DEU | MB | no |
+| `ca_short_pudo_uk` | CA short | `intersection(short_ca, pudo)` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | yes |
+| `ca_short_pudo_usa` | CA short | `intersection(short_ca, pudo)` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | yes |
+| `ca_short_pudo_deu` | CA short | `intersection(short_ca, pudo)` | `PUDO_DC_MASKS` | DEU | GEN2_MACHE | yes |
+| `ca_long_pudo_uk` | CA long | `intersection(long_ca, pudo)` | `PUDO_DC_MASKS` | GBR | GEN2_MACHE | yes |
+| `ca_long_pudo_usa` | CA long | `intersection(long_ca, pudo)` | `PUDO_DC_MASKS` | USA | GEN2_MACHE | yes |
+| `pre_ca_pudo_uk` | Pre-CA | `intersection(pre_ca, pudo)` | `PUDO_AV_MASKS` | GBR | GEN2_MACHE | yes |
+| `pre_ca_pudo_usa` | Pre-CA | `intersection(pre_ca, pudo)` | `PUDO_AV_MASKS` | USA | GEN2_MACHE | yes |
+| `pre_ca_pudo_deu` | Pre-CA | `intersection(pre_ca, pudo)` | `PUDO_AV_MASKS` | DEU | GEN2_MACHE | yes |
+
+Notes:
+- `get_parking_indices(30s/30m)` / `get_parking_labeled_indices(30s/30m)` / `get_pudo_indices(30s/30m)` mean `distance_before_m=30`, `before_sec=30`, `after_sec=30` (parking uses `before_entry_m`/`after_exit_m`).
+- `intersection(short_ca, X)` = `get_corrective_action_indices_short` + `X`.
+- `intersection(long_ca, X)` = `get_corrective_action_indices_long` + `X`.
+- `intersection(pre_ca, X)` = `get_pre_intervention_indices` + `X`.
+- `get_parking_labeled_indices` uses pred_park_type labels 1–4; `get_pudo_indices` unions hazard-indicator maneuvers with pred_park_type drop-off (label 7).
+
+## Mask Sets (current)
+- `PARKING_DC_MASKS` = `autonomous`, `stopped_segment`, `diversion_and_lens_obscured_interventions` + `_PARKING_BASE_MASKS`.
+- `PARKING_AV_MASKS` = `out_of_scope_interventions` + `_PARKING_BASE_MASKS`.
+- `_PARKING_BASE_MASKS` = `_DEFAULT_MASKS` minus `reverse_or_neutral`, `parking_legacy`.
+- `PUDO_DC_MASKS` = `autonomous`, `stopped_segment`, `diversion_and_lens_obscured_interventions` + `_PUDO_BASE_MASKS`.
+- `PUDO_AV_MASKS` = `out_of_scope_interventions` + `_PUDO_BASE_MASKS`.
+- `_PUDO_BASE_MASKS` = `pudo_geofence` + `_DEFAULT_MASKS` minus `reverse_or_neutral`, `parking_legacy`, `hazard_indicator`.
+- Additional masks applied in `get_bucket_indices`: `invalid_video_file_name` always; `unknown_indicator` if `exclude_unknown_indicators=True`; `robotics_run_filter` if `apply_robotics_run_filters=True`.
 
 ## Build Phases
 - **Phase:** Phase 3
