@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-17 — WFM→BC→RL mermaid diagrams
+- Topic: WFM/BC/RL architecture and losses
+- Labels: #model #wfm #bc #rl #mermaid #analysis
+- Branch: none
+- PR: none
+- Change type: analysis
+- Areas: `wayve/ai/foundation/models/world_model/`, `wayve/ai/zoo/`, `wayve/ai/si/`, `codex/WayveCode/2026/01/Week-3/`
+- Changes:
+  - [[2026/01/Week-3/2026-01-17-wfm-bc-rl-mermaid-diagrams]]: added mermaid diagrams for WFM→BC→RL flow, layer reuse, losses, and WFM model comparison (Oct 0.5B vs 7B vs Dec 2025 vs YOLO).
+
 #### 2026-01-13 — Parking hazard filter updates
 - Topic: Parking maneuver hazard filter
 - Labels: #parking #sampling #filters #tests
