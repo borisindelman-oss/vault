@@ -103,3 +103,6 @@ flowchart TB
 - Oct 0.5B and Oct 7B are foundation WFM release configs (world-model pretraining).
 - Dec 2025 and YOLO are SI WFM configs used for driving BC RL (space-time model + behavior control adaptor).
 - BC is initialized from Oct 2025 WFM by loading input_adaptor + encoder only (no WM head). RL then loads the full BC model and copies encoder weights into the critic.
+
+## Excalidraw
+- [[2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw]]
