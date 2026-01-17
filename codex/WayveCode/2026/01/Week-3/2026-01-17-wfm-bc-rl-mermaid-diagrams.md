@@ -17,7 +17,7 @@
 ```mermaid
 flowchart TB
   subgraph WFM_Oct_2025_0p5B[WFM v1_2_0_550M — World Model]
-    IN[Inputs\n- camera_images (T=16, stride 0.2s)\n- route_map, indicator, speed, speed_limit\n- pose, country, driving_side\n- waypoints, step/lane info] --> PRE[BatchPreprocessor + Image Preprocess]\n(crop/undistort/normalize)
+    IN[Inputs\n- camera_images (T=16, stride 0.2s)\n- route_map, indicator, speed, speed_limit\n- pose, country, driving_side\n- waypoints, step/lane info] --> PRE[BatchPreprocessor + Image Preprocess<br/>(crop/undistort/normalize)]
     PRE --> TOK[Image Tokenizer\nResNet101 VQ-8K (frozen)]
     TOK --> INAD[InputAdaptor\n(video + state tokens, dropout)]
     INAD --> ENC[ST Transformer Encoder\nlarge / 0.5B, cosine_attn_10, patch_stem]
@@ -32,9 +32,9 @@ flowchart TB
 flowchart TB
   subgraph BC_WFM_Oct[BC — WFM October 2025 backbone]
     IN[Inputs\n- 6 cameras (incl FFT)\n- route_map, speed, speed_limit, pose\n- indicator, step/lane info\n- waypoints + vehicle state] --> PRE[ReducedBlindSpot Preprocess]
-    PRE --> INAD[InputAdaptor]\n(video + state tokens)
+    PRE --> INAD[InputAdaptor<br/>(video + state tokens)]
     INAD --> ENC[ST Transformer Encoder\n(from WFM Oct checkpoint)]
-    ENC --> OA[BehaviorControl OutputAdaptor]\n(waypoints + indicator + behavior control)
+    ENC --> OA[BehaviorControl OutputAdaptor<br/>(waypoints + indicator + behavior control)]
     OA --> OUT[Outputs\n- POLICY_WAYPOINTS\n- POLICY_INDICATOR_WEIGHTS\n- POLICY_WAYPOINT_DELTA_LOG_VARIANCES\n- POLICY_LATENT_ACTION_LOGITS\n- BEHAVIOR_LABEL, POLICY_TIME_DELTA]
     OUT --> LOSS[BC Losses\nwaypoints + log-likelihood + indicator\n+ behavior_control]
   end
@@ -48,9 +48,9 @@ flowchart TB
     SE --> TOK[input_tokens (+ radar_tokens)]
     TOK --> POL[Policy\nBC encoder + BC output adaptor\n(trainable)]
     POL --> POUT[Policy Outputs\nwaypoints / indicator / latent action]
-    TOK --> CRIT[RLCriticNetwork\nSTPretrainedQTransformer]\n(encoder copied from BC)
+    TOK --> CRIT[RLCriticNetwork\nSTPretrainedQTransformer<br/>(encoder copied from BC)]
     POUT --> CRIT
-    CRIT --> Q[Q logits / Q values]\n(C51 optional)
+    CRIT --> Q[Q logits / Q values<br/>(C51 optional)]
     Q --> LOSS[RL Losses\nTD3/C51 critic + TD3 actor\n+ actor reg vs BC]
   end
 ```
@@ -79,7 +79,7 @@ flowchart LR
 ```mermaid
 flowchart TB
   subgraph OCT_0p5B[Oct 2025 — 0.5B (v1_2_0_550M)]
-    O05[st_transformer_size: large (0.5B/16 heads)\nqk_norm: cosine_attn_10\npatch_stem: true\nwm_head: transformer\nloss: image_tokens_ce\npreprocess: foundation batch_preprocessor]\n
+    O05[st_transformer_size: large (0.5B/16 heads)\nqk_norm: cosine_attn_10\npatch_stem: true\nwm_head: transformer\nloss: image_tokens_ce\npreprocess: foundation batch_preprocessor]
   end
 
   subgraph OCT_7B[Oct 2025 — 7B (v1_2_0_7B)]
