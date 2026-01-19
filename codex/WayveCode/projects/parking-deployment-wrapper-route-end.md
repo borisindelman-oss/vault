@@ -45,4 +45,5 @@
   - **Rationale:** Capture scope and plan changes from existing conversation.
 
 ## Notes
+- Route map colours: road fill black, road lines blue, route green; close-distance route can be red when distance_based_colour_coding is enabled. The end-of-route heuristic sums channels 0/1 (red+green), so it ignores blue road lines and reacts to route/ego/close-distance colouring.
 - Source branch reference: origin/zmurez/trt contains end-of-route parking trigger in experimental compile and parking wrapper.
