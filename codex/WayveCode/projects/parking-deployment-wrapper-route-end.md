@@ -7,7 +7,7 @@
 
 ## Status
 - **Phase:** Phase 1
-- **Status:** active
+- **Status:** paused
 - **Last updated:** 2026-01-19
 - **Current priorities:**
   - Confirm desired behavior and threshold for end-of-route detection from map_route.
@@ -45,6 +45,7 @@
   - **Rationale:** Capture scope and plan changes from existing conversation.
 
 ## Notes
+- Branch: `boris/train/parking_pudo`
 - Found in zmurez/trt: route-end parking heuristic in `wayve/ai/experimental/compile.py` (Zak flow).
 ```
 end_of_route = map_route[0, :2].sum() < 2.5e4
