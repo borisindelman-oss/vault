@@ -45,5 +45,10 @@
   - **Rationale:** Capture scope and plan changes from existing conversation.
 
 ## Notes
+- Found in zmurez/trt: route-end parking heuristic in `wayve/ai/experimental/compile.py` and `wayve/ai/zoo/deployment/deployment_wrapper.py` (ParkingWrapper).
+```
+end_of_route = map_route[0, :2].sum() < 2.5e4
+parking = (driving_controls[0, 0] == 1) | end_of_route | parking_position_selected
+```
 - Route map colours: road fill black, road lines blue, route green; close-distance route can be red when distance_based_colour_coding is enabled. The end-of-route heuristic sums channels 0/1 (red+green), so it ignores blue road lines and reacts to route/ego/close-distance colouring.
 - Source branch reference: origin/zmurez/trt contains end-of-route parking trigger in experimental compile and parking wrapper.
