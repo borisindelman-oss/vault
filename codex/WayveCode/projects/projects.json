@@ -31,6 +31,14 @@
       "status": "paused",
       "phase": "Phase 1",
       "last_updated": "2026-01-19"
+    },
+    {
+      "name": "Parking stopping_mode (DILC -> PUDO)",
+      "slug": "parking-stopping-mode-dilc",
+      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/parking-stopping-mode-dilc.md",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-01-20"
     }
   ]
 }
