@@ -117,14 +117,12 @@
             "id": "c32d7fa98d8036f7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
-                "mode": "source",
-                "source": false
+                "file": "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw"
               },
-              "icon": "lucide-file",
-              "title": "parking-deployment-wrapper-route-end"
+              "icon": "excalidraw-icon",
+              "title": "2026-01-05-parking-bc-vs-release-bc-latent-actions"
             }
           }
         ],
@@ -185,7 +183,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 327.5026054382324
+    "width": 520.5026054382324
   },
   "right": {
     "id": "2fc1190a7c137808",
@@ -304,12 +302,13 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
-    "codex/WayveCode/projects.md",
-    "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
-    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
-    "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
-    "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
+    "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
+    "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
+    "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
+    "codex/WayveCode/projects.md",
+    "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
+    "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-17-wfm-bc-rl-mermaid-diagrams.md",
     "codex/WayveCode/agents-change-log.md",
@@ -338,9 +337,7 @@
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-reverse-constant-accel-waypoints.md",
     "codex/WayveCode/projects/dummy-project/project.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-summary.md",
-    "Plan.md",
     "codex/WayveCode/projects/dummy-project",
-    "codex/WayveCode/projects/active-project.txt",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_White.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_Navy.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Landscape_logo_White.svg",
