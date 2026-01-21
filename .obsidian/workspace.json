@@ -119,12 +119,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/projects.md",
+                "file": "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "projects"
+              "title": "parking-stopping-mode-dilc"
             }
           }
         ],
@@ -304,10 +304,10 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
+    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
     "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
     "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
