@@ -10,7 +10,6 @@
 - **Status:** active
 - **Last updated:** 2026-01-21
 - **Current priorities:**
-  - Implement Stage 2 OTF augmentation (10% parking button, 90% map blackout)
   - Design Stage 3 route shortening near gear=0
   - Wire Stage 4 DILC → stopping_mode in parking wrapper
 - **Blockers:**
@@ -80,12 +79,13 @@ sequenceDiagram
 - **Stage 2: OTF augmentation (parking button vs end-of-route blackout)**
   - **Goal:** For parking-detected frames, 10% set parking_mode (simulate button), 90% keep parking_mode off and black out route map.
   - **Work items:**
-    - Identify parking-detected frames via existing `insert_parking_data` in `wayve/ai/zoo/data/parking.py` (called from `wayve/ai/si/datamodules/otf.py`).
-    - Add a new OTF map/parking augmentation hook after parking_mode insertion and before map fetch:
+    - Extend `insert_parking_data_with_end_of_route_blackout` in `wayve/ai/zoo/data/parking.py` (called from `wayve/ai/si/datamodules/otf.py`).
+    - Apply the augmentation after map insertion:
       - With probability 0.1: keep current behavior (parking_mode True).
       - With probability 0.9: set parking_mode False and replace map route with black image (zeros).
-    - Use `insert_map_data` / `fetch_route_map` path in `wayve/ai/zoo/data/driving.py` / `wayve/ai/lib/data/pipes/routes.py` to inject the blackout.
+    - Use `insert_map_data` / `fetch_route_map` path in `wayve/ai/zoo/data/driving.py` / `wayve/ai/lib/data/pipes/routes.py` so blackout runs post‑map.
   - **Validation:** Unit tests in `wayve/ai/si/datamodules/test/test_otf.py` covering parking_mode ratio and map blackout.
+  - **Status:** Implemented (2026-01-21). Added `enable_end_of_route_blackout` flag to OTF + parking datamodule, and extended the parking insert to blackout maps when enabled.
 - **Stage 3: Route shortening near stopping area (no blackout)**
   - **Goal:** Replace blackout with a shortened route ending near the gear=0 transition to simulate end-of-route in a realistic way.
   - **Work items:**

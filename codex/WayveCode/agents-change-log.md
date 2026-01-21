@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-21 — Parking OTF end-of-route blackout
+- Topic: parking OTF augmentation
+- Labels: #parking #otf #augmentation
+- Branch: boris/stopping_mode
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/zoo/data/`, `wayve/ai/si/datamodules/`, `wayve/ai/si/configs/parking/`, `codex/WayveCode/projects/`
+- Changes:
+  - [[2026/01/Week-4/2026-01-21-parking-otf-eor-blackout]]: added end-of-route blackout augmentation for parking frames.
+
 #### 2026-01-21 — stopping_mode adaptor (Stage 1)
 - Topic: stopping_mode input adaptor
 - Labels: #parking #model #input #stopping_mode
