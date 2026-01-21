@@ -117,12 +117,14 @@
             "id": "c32d7fa98d8036f7",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw"
+                "file": "codex/WayveCode/projects.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "2026-01-05-parking-bc-vs-release-bc-latent-actions"
+              "icon": "lucide-file",
+              "title": "projects"
             }
           }
         ],
@@ -302,11 +304,14 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
-    "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
+    "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
+    "codex/WayveCode/projects/new-inference-vis-tool.md",
+    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
+    "codex/WayveCode/projects.md",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
+    "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
     "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
     "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary.md",
@@ -320,8 +325,6 @@
     "Excalidraw/parking_model_arch.excalidraw",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "Excalidraw/head_options.excalidraw.md",
-    "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
-    "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/README.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-inference-model-design.md",
     "codex/WayveCode/2026/01/Week-3",
