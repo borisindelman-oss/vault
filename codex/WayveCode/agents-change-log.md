@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-21 — stopping_mode adaptor (Stage 1)
+- Topic: stopping_mode input adaptor
+- Labels: #parking #model #input #stopping_mode
+- Branch: boris/stopping_mode
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/zoo/st/`, `wayve/ai/zoo/data/`, `wayve/ai/si/configs/parking/`, `wayve/ai/si/models/`, `codex/WayveCode/projects/`
+- Changes:
+  - [[2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1]]: implemented the new stopping_mode adaptor and wired it through configs/tests.
+
 #### 2026-01-17 — WFM→BC→RL mermaid diagrams
 - Topic: WFM/BC/RL architecture and losses
 - Labels: #model #wfm #bc #rl #mermaid #analysis
