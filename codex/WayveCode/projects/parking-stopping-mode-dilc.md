@@ -1,9 +1,9 @@
 # Parking stopping_mode (DILC -> PUDO)
 
 ## Overview
-- **What it is:** Add a new model input `stopping_mode` for parking models, with a wrapper-side mapping from DILC to stop type (PARK vs PUDO).
-- **Why it matters:** Lets parking models distinguish park vs pick-up/drop-off using existing DMI plumbing (DILC) while enabling test-time overrides.
-- **Primary users:** Parking model training/inference owners; driver interaction / deployment wrapper owners.
+- **What it is:** Add a new model input `stopping_mode` for parking models and map DILC → stopping_mode inside the parking deployment wrapper (OFF→PARK, ON→PUDO).
+- **Why it matters:** Allows parking models to distinguish park vs pick-up/drop-off using existing DMI plumbing (DILC) while enabling test-time overrides that bypass DILC.
+- **Primary users:** Parking model training/inference owners; deployment wrapper owners.
 
 ## Status
 - **Phase:** Phase 1
@@ -20,7 +20,7 @@
 - **Problem statement:** Parking models need an explicit stop type input (park vs PUDO). Reuse DILC as the on-board toggle; at test time allow overriding via direct `stopping_mode` input.
 - **Target users:** Parking model owners, on-board deployment/inference, local tests.
 - **Integrations:** Parking deployment wrapper, DMI driving_controls tensor, driver interaction node (optional if adding real DMI field), ST input adaptors.
-- **Constraints:** Use parking model + parking deployment wrapper; keep DILC existing behavior intact unless explicitly repurposed for parking; avoid breaking DMI validation.
+- **Constraints:** Use parking model + parking deployment wrapper; keep DILC existing behavior intact for non-parking wrappers; avoid breaking DMI validation.
 - **Success criteria:**
   - Parking model accepts `stopping_mode` input (park=0, pudo=1)
   - On-board DILC bit maps to stopping_mode in ParkingDeploymentWrapper
@@ -32,7 +32,7 @@
   - Add DataKeys.STOPPING_MODE and a new ST adaptor (similar to parking_mode) with embedding over 2 states.
   - Extend parking model config + ST model builder to optionally include stopping_mode adaptor.
   - Extend ParkingDeploymentWrapperImpl to derive stopping_mode from driving_controls DILC (0=park, 1=pudo), with optional override if stopping_mode already provided in inputs (test path).
-  - Update deployment config driving_controls_keys for parking to include DILC (or add new DrivingControlKey if adopting Zak’s DMI changes).
+  - Update parking deployment config driving_controls_keys to include DILC so the on-board DMI emits it for parking.
 - **Key decisions:**
   - Map DILC OFF->PARK, ON->PUDO (explicit requirement).
   - Keep parking wrapper as source of stopping_mode for on-board; allow override in local tests.
@@ -75,16 +75,18 @@
 ## Notes
 - **Current DILC flow (main):**
   - DILC is `DrivingControlKey.DILC_MODE` in `wayve/interfaces/protobuf/driver_interaction.proto`.
-  - `DrivingControlsTensorizer` maps `dilc_mode` into the driving_controls tensor when DILC_MODE is present.
-  - `BehaviorCustomizer` uses DILC to mask `vehicle_indicator_state` (multiply by 0/1).
+  - DMI tensorizer maps `dilc_mode` into `driving_controls` when DILC_MODE is present: `wayve/robot/nodes/inference_node/model_runner/dmi/inputs/driver_interaction/driver_interaction_tensorizer.cpp`.
+  - `BehaviorCustomizer` masks `vehicle_indicator_state` by DILC (0/1) for behavior-control wrappers: `wayve/ai/zoo/deployment/behavior_customization.py`.
+  - `prepare_base_inputs` also zeros indicator state when `dilc_on=False`: `wayve/ai/zoo/deployment/deployment_wrapper.py`.
   - Parking wrapper does not currently include DILC in driving_controls keys (defaults to INITIATE_AUTO_PARKING, PARKING_DIRECTION, ENABLE_SHIFT_BY_WIRE), so DILC is ignored for parking.
 - **Parking wrapper inputs (main):**
-  - `ParkingDeploymentWrapperImpl` derives `PARKING_MODE`, `PARKING_DIRECTION`, `ENABLE_SHIFT_BY_WIRE` from driving_controls and passes them via DataKeys.
-  - `PARKING_MODE` is also inserted in training data via `insert_parking_data` (parking mode heuristic on neutral gear segments).
-- **Zak branch (remotes/origin/zmurez/dmi_stopping_mode):**
-  - `driver_interaction.proto` adds `StoppingMode` enum and `stopping_mode` field plus new driving controls `USER_INITIATED_AUTO_STOPPING` and `STOPPING_MODE`.
-  - `driver_interaction_tensorizer.cpp` maps those into driving_controls.
-  - Parking feature registers new parameters for STOPPING_MODE and USER_INITIATED_AUTO_STOPPING.
-  - Example snippet (branch):
-    - `DrivingControlKey.STOPPING_MODE = 6` and `StoppingMode { PARK=0, PUDO=1 }`.
-    - Tensorizer case uses `msg.model_inputs.stopping_mode` with default PARK.
+  - `ParkingDeploymentWrapperImpl` derives `PARKING_MODE`, `PARKING_DIRECTION`, `ENABLE_SHIFT_BY_WIRE` from driving_controls and passes them via DataKeys: `wayve/ai/zoo/deployment/deployment_wrapper.py`.
+  - `PARKING_MODE` is also inserted in training data via `insert_parking_data` (parking mode heuristic on neutral gear segments): `wayve/ai/zoo/data/parking.py`, wired in `wayve/ai/si/datamodules/otf.py`.
+- **Parking driving_controls keys (main):**
+  - Training deployment config only includes parking controls when `use_parking_mode` is enabled, and only includes DILC when `enable_behavior_control` is true: `wayve/ai/si/models/training.py#get_deployment_config`.
+  - `ensure_default_driving_keys` defaults to DILC if driving_controls_keys is empty: `wayve/ai/si/deploy.py`.
+- **Zak branch (remotes/origin/zmurez/dmi_stopping_mode, commit 549a4e14387):**
+  - `driver_interaction.proto` adds `StoppingMode` enum + `stopping_mode` field and driving controls `USER_INITIATED_AUTO_STOPPING` + `STOPPING_MODE`.
+  - `driver_interaction_tensorizer.cpp` maps those into `driving_controls`.
+  - Parking feature registers STOPPING_MODE + USER_INITIATED_AUTO_STOPPING parameters.
+  - Snippet: `DrivingControlKey.STOPPING_MODE = 6`; `StoppingMode { PARK=0, PUDO=1 }`; tensorizer defaults to PARK if unset.
