@@ -8,11 +8,11 @@
 ## Status
 - **Phase:** Phase 1
 - **Status:** active
-- **Last updated:** 2026-01-20
+- **Last updated:** 2026-01-21
 - **Current priorities:**
-  - Detail 4-stage plan (input adaptor → OTF aug → route shortening → DILC wiring)
-  - Identify all code touch points for stopping_mode, OTF augmentation, and route-map edits
-  - Add diagrams for model inputs and DILC routing
+  - Implement Stage 2 OTF augmentation (10% parking button, 90% map blackout)
+  - Design Stage 3 route shortening near gear=0
+  - Wire Stage 4 DILC → stopping_mode in parking wrapper
 - **Blockers:**
   - Unknown: source of PUDO labels / how to populate stopping_mode in training data
 
@@ -76,6 +76,7 @@ sequenceDiagram
     - Extend parking configs to enable it: `wayve/ai/si/configs/parking/parking_config.py`.
     - Pass through in training deployment config if needed: `wayve/ai/si/models/training.py`.
   - **Validation:** Unit tests for adaptor shape + input mapping (similar to parking_mode/gear_direction tests).
+  - **Status:** Implemented (2026-01-21).
 - **Stage 2: OTF augmentation (parking button vs end-of-route blackout)**
   - **Goal:** For parking-detected frames, 10% set parking_mode (simulate button), 90% keep parking_mode off and black out route map.
   - **Work items:**
