@@ -10,8 +10,7 @@
 - **Status:** active
 - **Last updated:** 2026-01-21
 - **Current priorities:**
-  - Design Stage 3 route shortening near gear=0
-  - Wire Stage 4 DILC → stopping_mode in parking wrapper
+  - Wire DILC → stopping_mode in parking wrapper
 - **Blockers:**
   - Unknown: source of PUDO labels / how to populate stopping_mode in training data
 
@@ -76,26 +75,15 @@ sequenceDiagram
     - Pass through in training deployment config if needed: `wayve/ai/si/models/training.py`.
   - **Validation:** Unit tests for adaptor shape + input mapping (similar to parking_mode/gear_direction tests).
   - **Status:** Implemented (2026-01-21).
-- **Stage 2: OTF augmentation (parking button vs end-of-route blackout)**
-  - **Goal:** For parking-detected frames, 10% set parking_mode (simulate button), 90% keep parking_mode off and black out route map.
+- **Stage 2: OTF augmentation (route shortening near stop)**
+  - **Goal:** For parking-detected frames, truncate the route polyline to end near the parking entry point.
   - **Work items:**
-    - Extend `insert_parking_data_with_end_of_route_blackout` in `wayve/ai/zoo/data/parking.py` (called from `wayve/ai/si/datamodules/otf.py`).
-    - Apply the augmentation after map insertion:
-      - With probability 0.1: keep current behavior (parking_mode True).
-      - With probability 0.9: set parking_mode False and replace map route with black image (zeros).
-    - Use `insert_map_data` / `fetch_route_map` path in `wayve/ai/zoo/data/driving.py` / `wayve/ai/lib/data/pipes/routes.py` so blackout runs post‑map.
-  - **Validation:** Unit tests in `wayve/ai/si/datamodules/test/test_otf.py` covering parking_mode ratio and map blackout.
-  - **Status:** Implemented (2026-01-21). Added `enable_end_of_route_blackout` flag to OTF + parking datamodule, and extended the parking insert to blackout maps when enabled.
-- **Stage 3: Route shortening near stopping area (no blackout)**
-  - **Goal:** Replace blackout with a shortened route ending near the gear=0 transition to simulate end-of-route in a realistic way.
-  - **Work items:**
-    - Use route map generator inputs from `wayve/ai/lib/data/pipes/routes.py`:
-      - `route_polyline`, `last_waypoint_index`, `fraction_to_next_waypoint`.
-    - When parking detected, sample a nearby point along the route polyline around the gear=0 transition and truncate route_polyline to that point.
-    - Implement a datapipe hook that mutates `route_polyline` (and matching speed limits) before `generate_route_map_from_config` runs.
-    - Ensure the truncated route is used only for augmented samples (leave original for others).
-  - **Validation:** Unit tests for truncated polyline length and non-empty map output; add visual sanity check in otf tests.
-- **Stage 4: Connect DILC → stopping_mode in parking wrapper**
+    - Extend `insert_parking_data_with_route_shortening` in `wayve/ai/zoo/data/parking.py` to compute parking entry distance.
+    - Pass `enable_route_shortening_for_parking` through OTF and into `insert_map_data`.
+    - Truncate route polyline (and speed limits) in `RouteMapFetcher` before `generate_route_map_from_config`.
+  - **Validation:** Optional unit tests for truncated polyline length and non-empty map output.
+  - **Status:** Implemented (2026-01-21). Route shortening now uses parking entry distance to truncate the polyline before map generation.
+- **Stage 3: Connect DILC → stopping_mode in parking wrapper**
   - **Goal:** On-board DILC toggles stopping_mode (OFF=park, ON=pudo).
   - **Work items:**
     - Add DILC to parking `deployment_driving_controls_keys` in `wayve/ai/si/models/training.py#get_deployment_config`.

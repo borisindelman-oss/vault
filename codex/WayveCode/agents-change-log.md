@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-21 — Parking route shortening
+- Topic: parking route shortening
+- Labels: #parking #otf #route-map
+- Branch: boris/stopping_mode
+- PR: none
+- Change type: update
+- Areas: `wayve/ai/lib/data/pipes/`, `wayve/ai/zoo/data/`, `wayve/ai/si/datamodules/`, `wayve/ai/si/configs/parking/`, `codex/WayveCode/projects/`
+- Changes:
+  - [[2026/01/Week-4/2026-01-21-parking-route-shortening]]: truncate route polyline near parking entry before map generation.
+
 #### 2026-01-21 — Parking OTF end-of-route blackout
 - Topic: parking OTF augmentation
 - Labels: #parking #otf #augmentation
