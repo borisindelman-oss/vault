@@ -9,6 +9,7 @@
 - **Phase:** Phase 1
 - **Status:** active
 - **Last updated:** 2026-01-21
+- **Branch:** boris/stopping_mode
 - **Current priorities:**
   - Wire DILC → stopping_mode in parking wrapper
 - **Blockers:**
@@ -94,6 +95,7 @@ sequenceDiagram
 
 ## Decisions
 - **2026-01-20:** Use DILC as the on-board toggle for stopping_mode (OFF->PARK, ON->PUDO); allow test-time override by setting stopping_mode directly.
+- **2026-01-21:** Steps 1–3 plan updated: (1) stopping_mode adaptor, (2) route shortening near parking entry (no blackout), (3) DILC → stopping_mode wiring.
 
 ## Notes
 - **Current DILC flow (main):**
