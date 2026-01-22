@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-22 — Timestamp offset conversion (Zak branch)
+- Topic: timestamp offset → timestamp_unixus
+- Labels: #timestamp #data #zak
+- Branch: none
+- PR: none
+- Change type: analysis
+- Areas: `codex/WayveCode/2026/01/Week-4/`
+- Changes:
+  - [[2026/01/Week-4/2026-01-22-timestamp-offset-conversion]]: documented Zak-branch conversion logic and microsecond offset note.
+
 #### 2026-01-21 — Parking route shortening
 - Topic: parking route shortening
 - Labels: #parking #otf #route-map
