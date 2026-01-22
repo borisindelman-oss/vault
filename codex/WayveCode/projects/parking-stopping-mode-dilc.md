@@ -11,7 +11,7 @@
 - **Last updated:** 2026-01-21
 - **Branch:** boris/stopping_mode
 - **Current priorities:**
-  - Add stopping_mode targets in OTF parking augmentation (hazard-based + random mix)
+  - Wire DILC → stopping_mode in parking wrapper
 - **Blockers:**
   - Unknown: source of PUDO labels / how to populate stopping_mode in training data
 
@@ -93,21 +93,23 @@ sequenceDiagram
     - Update visualization helper mapping (`wayve/ai/si/visualisation/inference_model.py`) if needed.
   - **Validation:** Wrapper unit tests and sanity inference test.
   - **Status:** Not started.
- - **Stage 4: OTF stopping_mode targets (hazard-based + random mix)**
+- **Stage 4: OTF stopping_mode targets (hazard-based + random mix)**
   - **Goal:** Populate stopping_mode for parking samples using hazard lights and randomization.
   - **Work items:**
     - In `insert_parking_data_with_route_shortening` / `_add_parking_mode`, when shortening applies (90%):
       - If hazard lights were used (indicator on), set `stopping_mode = 3` (PUDO); else `stopping_mode = 2` (PARK).
     - For the 10% no-shortening bucket, set `stopping_mode` randomly to `{1,2,3}`.
     - Default `stopping_mode` to `1` (not available) when no parking stop detected or route shortening disabled.
-    - Decide hazard source and indexing (likely `additional_indicator` / indicator state) and pass indices into parking augmentation.
+    - Use `ground_truth__state__vehicle__indicator_light` with parking lookahead indices to detect hazards.
     - Add/confirm DataKeys for `stopping_mode` values: 1=NA, 2=PARK, 3=PUDO.
   - **Validation:** Spot-check distributions in a small batch; ensure stopping_mode exists for both 90% and 10% branches.
+  - **Status:** Implemented (2026-01-22). Hazard is derived from `ground_truth__state__vehicle__indicator_light` at the entry frame.
 
 ## Decisions
 - **2026-01-20:** Use DILC as the on-board toggle for stopping_mode (OFF->PARK, ON->PUDO); allow test-time override by setting stopping_mode directly.
 - **2026-01-21:** Steps 1–3 plan updated: (1) stopping_mode adaptor, (2) route shortening near parking entry (no blackout), (3) DILC → stopping_mode wiring.
 - **2026-01-22:** Route shortening now anchors to neutral-segment entry; 90% shorten with parking_mode forced OFF, 10% keep parking_mode ON (no shortening). Balanced windows set to 120s/200m.
+- **2026-01-22:** OTF stopping_mode targets: 90% shorten → hazard-based park/pudo (2/3); 10% no-shorten → random {1,2,3}; default 1 when no stop.
 
 ## Notes
 - **Current DILC flow (main):**
