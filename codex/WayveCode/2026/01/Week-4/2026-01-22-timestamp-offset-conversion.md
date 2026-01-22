@@ -22,14 +22,10 @@ def get_corrected_timestamp_unixus(run_id: str, timestamp_or_offset_str: str) ->
 - The code treats small values as offsets since run start and snaps to the nearest recorded `timestamp_unixus`.
 - If your offsets are already in **microseconds**, skip the `* 1e6` conversion and match directly against `timestamp_offset`.
 
-## Standalone script (inline)
+## Notebook snippet
 ```python
-#!/usr/bin/env python3
-import argparse
 import asyncio
 import os
-from typing import Iterable, List
-
 import numpy as np
 
 import wayve.ai.lib.data.storage.binary_keys as BK
@@ -38,7 +34,7 @@ from wayve.ai.lib.data.pipes.utils import cache_and_load_npz_file_async
 from wayve.ai.lib.map_async import get_loop
 
 
-def _load_timestamps(run_id: str) -> np.ndarray:
+def load_timestamps_unixus(run_id: str) -> np.ndarray:
     meta_data = asyncio.run_coroutine_threadsafe(
         cache_and_load_npz_file_async(run_id, os.path.join(FRAME_PATH, "metadata"), "~/.cache/frame_meta_data"),
         get_loop(),
@@ -47,17 +43,11 @@ def _load_timestamps(run_id: str) -> np.ndarray:
     return np.sort(meta_data[key])
 
 
-def _resolve_offsets(
+def resolve_offsets_to_unixus(
     timestamps_unixus: np.ndarray,
-    offsets: Iterable[float],
-    offset_unit: str,
-) -> List[int]:
-    if offsets is None:
-        return []
-    offsets = list(offsets)
-    if not offsets:
-        return []
-
+    offsets,
+    offset_unit: str = "microseconds",
+):
     first_ts = int(timestamps_unixus[0])
     offset_us_values = []
     for value in offsets:
@@ -76,35 +66,9 @@ def _resolve_offsets(
     return resolved
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description=(
-            "Convert offsets since run start to nearest timestamp_unixus using run metadata. "
-            "If a value looks like absolute unix microseconds (>= 1e12), it is treated as absolute."
-        )
-    )
-    parser.add_argument("run_id", help="Run ID (e.g., fme10010/2024-12-12--05-22-42--...)")
-    parser.add_argument(
-        "offsets",
-        nargs="+",
-        type=float,
-        help="Offsets since run start, or absolute timestamp_unixus values.",
-    )
-    parser.add_argument(
-        "--offset-unit",
-        choices=("microseconds", "seconds"),
-        default="microseconds",
-        help="Unit for offset inputs when values are not absolute (default: microseconds).",
-    )
-    args = parser.parse_args()
-
-    timestamps_unixus = _load_timestamps(args.run_id)
-    resolved = _resolve_offsets(timestamps_unixus, args.offsets, args.offset_unit)
-
-    for offset_value, timestamp_unixus in zip(args.offsets, resolved):
-        print(f"{offset_value} -> {timestamp_unixus}")
-
-
-if __name__ == "__main__":
-    main()
+run_id = "<run_id>"
+offsets_us = [7322705269, 7351671913]
+timestamps_unixus = load_timestamps_unixus(run_id)
+resolved = resolve_offsets_to_unixus(timestamps_unixus, offsets_us, offset_unit="microseconds")
+list(zip(offsets_us, resolved))
 ```
