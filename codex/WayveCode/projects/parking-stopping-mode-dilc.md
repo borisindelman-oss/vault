@@ -83,7 +83,7 @@ sequenceDiagram
     - Pass `enable_route_shortening_for_parking` through OTF and into `insert_map_data`.
     - Truncate route polyline (and speed limits) in `RouteMapFetcher` before `generate_route_map_from_config`.
   - **Validation:** Optional unit tests for truncated polyline length and non-empty map output.
-  - **Status:** Implemented (2026-01-21). Route shortening now uses parking entry distance to truncate the polyline before map generation.
+  - **Status:** Implemented (2026-01-22). Route shortening now uses stop-route index (start of neutral segment) to truncate the polyline; distance-based shortening remains as fallback.
 - **Stage 3: Connect DILC → stopping_mode in parking wrapper**
   - **Goal:** On-board DILC toggles stopping_mode (OFF=park, ON=pudo).
   - **Work items:**
@@ -96,6 +96,7 @@ sequenceDiagram
 ## Decisions
 - **2026-01-20:** Use DILC as the on-board toggle for stopping_mode (OFF->PARK, ON->PUDO); allow test-time override by setting stopping_mode directly.
 - **2026-01-21:** Steps 1–3 plan updated: (1) stopping_mode adaptor, (2) route shortening near parking entry (no blackout), (3) DILC → stopping_mode wiring.
+- **2026-01-22:** Route shortening now anchors to neutral-segment entry; 90% shorten with parking_mode forced OFF, 10% keep parking_mode ON (no shortening). Balanced windows set to 120s/200m.
 
 ## Notes
 - **Current DILC flow (main):**
