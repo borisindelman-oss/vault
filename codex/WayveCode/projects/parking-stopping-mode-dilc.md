@@ -111,6 +111,10 @@ sequenceDiagram
   - `insert_map_data` calls `fetch_route_map`: `wayve/ai/zoo/data/driving.py`.
   - `RouteMapFetcher` builds maps from `route_polyline`, `last_waypoint_index`, `fraction_to_next_waypoint`: `wayve/ai/lib/data/pipes/routes.py`.
   - `generate_route_map_from_config` draws the route and returns a black map when polyline is empty: `wayve/ai/lib/routes.py`.
+- **Timestamp offset → timestamp_unixus (Zak branch):**
+  - Conversion logic: `origin/zmurez/trt:wayve/ai/language/action/demo/demo.py#get_corrected_timestamp_unixus`.
+  - Treat small values as offsets since run start; compute `timestamp_offset = timestamp_unixus - first_timestamp_unixus` and snap to nearest.
+  - If offsets are already in microseconds, do **not** multiply by `1e6`; use offset as-is when matching to `timestamp_offset`.
 - **Parking driving_controls keys (main):**
   - Training deployment config only includes parking controls when `use_parking_mode` is enabled, and only includes DILC when `enable_behavior_control` is true: `wayve/ai/si/models/training.py#get_deployment_config`.
   - `ensure_default_driving_keys` defaults to DILC if driving_controls_keys is empty: `wayve/ai/si/deploy.py`.
