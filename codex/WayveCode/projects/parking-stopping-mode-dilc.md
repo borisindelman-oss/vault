@@ -11,7 +11,7 @@
 - **Last updated:** 2026-01-21
 - **Branch:** boris/stopping_mode
 - **Current priorities:**
-  - Wire DILC → stopping_mode in parking wrapper
+  - Add stopping_mode targets in OTF parking augmentation (hazard-based + random mix)
 - **Blockers:**
   - Unknown: source of PUDO labels / how to populate stopping_mode in training data
 
@@ -92,6 +92,17 @@ sequenceDiagram
     - Allow local test overrides by respecting an existing stopping_mode input if present.
     - Update visualization helper mapping (`wayve/ai/si/visualisation/inference_model.py`) if needed.
   - **Validation:** Wrapper unit tests and sanity inference test.
+  - **Status:** Not started.
+ - **Stage 4: OTF stopping_mode targets (hazard-based + random mix)**
+  - **Goal:** Populate stopping_mode for parking samples using hazard lights and randomization.
+  - **Work items:**
+    - In `insert_parking_data_with_route_shortening` / `_add_parking_mode`, when shortening applies (90%):
+      - If hazard lights were used (indicator on), set `stopping_mode = 3` (PUDO); else `stopping_mode = 2` (PARK).
+    - For the 10% no-shortening bucket, set `stopping_mode` randomly to `{1,2,3}`.
+    - Default `stopping_mode` to `1` (not available) when no parking stop detected or route shortening disabled.
+    - Decide hazard source and indexing (likely `additional_indicator` / indicator state) and pass indices into parking augmentation.
+    - Add/confirm DataKeys for `stopping_mode` values: 1=NA, 2=PARK, 3=PUDO.
+  - **Validation:** Spot-check distributions in a small batch; ensure stopping_mode exists for both 90% and 10% branches.
 
 ## Decisions
 - **2026-01-20:** Use DILC as the on-board toggle for stopping_mode (OFF->PARK, ON->PUDO); allow test-time override by setting stopping_mode directly.
