@@ -119,12 +119,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/agents-change-log.md",
+                "file": "codex/WayveCode/2026/01/Week-4/2026-01-22-timestamp-offset-conversion.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agents-change-log"
+              "title": "2026-01-22-timestamp-offset-conversion"
             }
           }
         ],
@@ -304,15 +304,17 @@
   },
   "active": "c32d7fa98d8036f7",
   "lastOpenFiles": [
+    "codex/WayveCode/agents-change-log.md",
+    "codex/WayveCode/todo-list.md",
+    "codex/WayveCode/2026/01/Week-4/2026-01-22-timestamp-offset-conversion.md",
+    "codex/WayveCode/2026/01/Week-4/2026-01-21-parking-route-shortening.md",
     "codex/WayveCode/projects.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
     "codex/WayveCode/projects/new-inference-vis-tool.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
     "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
-    "codex/WayveCode/2026/01/Week-4/2026-01-21-parking-route-shortening.md",
     "codex/WayveCode/2026/01/Week-4/2026-01-21-parking-otf-eor-blackout.md",
-    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1.md",
     "codex/WayveCode/2026/01/Week-4",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
@@ -339,7 +341,6 @@
     "codex/WayveCode/projects/parking-wfm-update/project.md",
     "codex/WayveCode/projects/parking-wfm-update",
     "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode.md",
-    "codex/WayveCode/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode.md",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_White.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Stacked_logo_Navy.svg",
     "Wayve_logo_Package/DIGITAL/SVG/Wayve_Landscape_logo_White.svg",
