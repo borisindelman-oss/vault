@@ -110,6 +110,7 @@ sequenceDiagram
 - **2026-01-21:** Steps 1–3 plan updated: (1) stopping_mode adaptor, (2) route shortening near parking entry (no blackout), (3) DILC → stopping_mode wiring.
 - **2026-01-22:** Route shortening now anchors to neutral-segment entry; 90% shorten with parking_mode forced OFF, 10% keep parking_mode ON (no shortening). Balanced windows set to 120s/200m.
 - **2026-01-22:** OTF stopping_mode targets: 90% shorten → hazard-based park/pudo (2/3); 10% no-shorten → random {1,2,3}; default 1 when no stop.
+- **2026-01-22:** Added `VehicleStoppingMode` enum (1=NA, 2=PARK, 3=PUDO) and mapped OTF stopping_mode to enum values.
 
 ## Notes
 - **Current DILC flow (main):**
