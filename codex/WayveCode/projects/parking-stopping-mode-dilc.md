@@ -117,6 +117,7 @@ sequenceDiagram
 - **2026-01-22:** Bokeh visualisation: load checkpoints with missing stopping_mode weights (strict=False) and display stopping_mode in parking plot header.
 
 ## Notes
+- **First model with stopping_mode capability:** cryptic-heron-chocolate
 - **Current DILC flow (main):**
   - DILC is `DrivingControlKey.DILC_MODE` in `wayve/interfaces/protobuf/driver_interaction.proto`.
   - DMI tensorizer maps `dilc_mode` into `driving_controls` when DILC_MODE is present: `wayve/robot/nodes/inference_node/model_runner/dmi/inputs/driver_interaction/driver_interaction_tensorizer.cpp`.
