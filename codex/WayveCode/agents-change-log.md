@@ -5,6 +5,16 @@
 - [2025-12](#2025-12)
 
 ## 2026-01
+#### 2026-01-25 — How-to project writeups
+- Topic: project how-to writeups and index
+- Labels: #docs #how-to #projects
+- Branch: none
+- PR: none
+- Change type: docs
+- Areas: `codex/WayveCode/how_to/`
+- Changes:
+  - [[2026/01/Week-4/2026-01-25-how-to-writeups]]: added how-to index and writeups for active/paused projects.
+
 #### 2026-01-22 — Timestamp offset conversion (Zak branch)
 - Topic: timestamp offset → timestamp_unixus
 - Labels: #timestamp #data #zak
