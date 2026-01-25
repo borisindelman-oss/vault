@@ -10,5 +10,6 @@ Think of this as a living book: short, practical chapters that explain **how our
 
 ## How to Use This Book
 - Each chapter is a standalone `how_to_[topic].md` file.
+- All chapters live in the vault under `~/git/vault/codex/WayveCode/how_to/`.
 - Chapters focus on **plain language** explanations, the **actual code paths**, and **lessons learned**.
 - When you add a new project write-up, link it here and keep the ordering intentional (like chapters).
