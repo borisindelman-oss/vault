@@ -1,6 +1,14 @@
 {
   "projects": [
     {
+      "name": "Waypoint clamping in deployment wrapper",
+      "slug": "waypoint-clamping-deployment-wrapper",
+      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-02-01"
+    },
+    {
       "name": "New Inference Vis Tool",
       "slug": "new-inference-vis-tool",
       "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/new-inference-vis-tool.md",
