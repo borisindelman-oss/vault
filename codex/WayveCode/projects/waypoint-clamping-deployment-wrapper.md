@@ -48,3 +48,4 @@
 ## Notes
 - Discovery details skipped at user request.
 - Implemented shared clamp in deployment wrappers; removed head clamp.
+- Work is committed on branch `boris/general_waypoint_clamp`.
