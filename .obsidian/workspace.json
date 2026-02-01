@@ -145,12 +145,14 @@
             "id": "a96c13828a2426be",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.11.5"
+                "file": "codex/WayveCode/projects.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.5"
+              "icon": "lucide-file",
+              "title": "projects"
             }
           }
         ],
@@ -328,8 +330,9 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "a96c13828a2426be",
+  "active": "a6cdcc3493cdeb21",
   "lastOpenFiles": [
+    "codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
     "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
     "codex/WayveCode/how_to/how_to_parking-stopping-mode-dilc.md",
     "codex/WayveCode/projects.md",
