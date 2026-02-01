@@ -10,9 +10,7 @@
 - **Status:** active
 - **Last updated:** 2026-02-01
 - **Current priorities:**
-  - Define shared clamp helper in deployment wrapper base
-  - Apply helper to non-parking wrappers
-  - Remove clamp from waypoints head
+  - Verify tests and downstream behavior
 - **Blockers:**
   - None
 
@@ -43,6 +41,10 @@
 - **2026-02-01:**
   - **Decision:** Keep clamp centralized in deployment wrapper base and skip gear-direction check.
   - **Rationale:** Parking has dedicated clamp; default clamp should not be in head.
+- **2026-02-01:**
+  - **Decision:** Name helper `_clamp_waypoints_for_direction`.
+  - **Rationale:** Covers both gear-based and default clamp behavior.
 
 ## Notes
 - Discovery details skipped at user request.
+- Implemented shared clamp in deployment wrappers; removed head clamp.
