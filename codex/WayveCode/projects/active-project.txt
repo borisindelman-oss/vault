@@ -1,1 +1,1 @@
-waypoint-clamping-deployment-wrapper
+model-cli-tool

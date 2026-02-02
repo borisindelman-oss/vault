@@ -47,6 +47,14 @@
       "status": "active",
       "phase": "Phase 1",
       "last_updated": "2026-01-20"
+    },
+    {
+      "name": "Model CLI tool",
+      "slug": "model-cli-tool",
+      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/model-cli-tool.md",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-02-02"
     }
   ]
 }

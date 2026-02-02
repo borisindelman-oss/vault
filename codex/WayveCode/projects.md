@@ -2,6 +2,7 @@
 
 | Project                                                                                                            | Status   | Phase   | Last updated | no  |
 | ------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ------------ | --- |
+| [Model CLI tool](codex/WayveCode/projects/model-cli-tool) | active | Phase 1 | 2026-02-02 | no  |
 | [Waypoint clamping in deployment wrapper](codex/WayveCode/projects/waypoint-clamping-deployment-wrapper)           | active   | Phase 1 | 2026-02-01   | no  |
 | [Parking stopping_mode (DILC -> PUDO)](codex/WayveCode/projects/parking-stopping-mode-dilc)                        | active   | Phase 1 | 2026-01-20   | no  |
 | [New Inference Vis Tool](codex/WayveCode/projects/new-inference-vis-tool)                                          | active   | Phase 1 | 2026-01-13   | no  |
