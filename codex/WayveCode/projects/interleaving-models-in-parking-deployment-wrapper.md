@@ -42,11 +42,18 @@
 ## Notes
 - Testing plan not defined yet.
 
-### Deep dive: `zmurez/pudo` interleaving implementation
+### Summary: `zmurez/pudo` interleaving implementation
 - Adds an interleaved model runner backend that manages multiple model runners, warmup, and transition events.
 - Interleaving policy selection:
   - If model outputs include `interleave_control`, the runner uses a `ModelControlledSwitchPolicy` (falling-edge switch semantics).
   - Otherwise, it falls back to a `TimeBasedRandomSwitchPolicy`.
+- Switching happens in `InterleavedModelRunner::createForwardPass()`:
+  - Calls `policy_->next()` when `transition_state_ == IDLE`.
+  - Sets `primary_runner_` (old), `secondary_runner_` (new), and initializes the transition state.
+  - Alternates runners during transition and finalizes in `completeTransition()`.
+- Runner initialization and model selection live in `createModelRunner()`:
+  - `model_configs` (vector of `ModelDeploymentConfig`) define the runners and their indices.
+  - Each config becomes a `RunnerProfile` with `runner` + `artefact_id`.
 - Transition lifecycle is explicit (events): `SWITCH_START` → `MODEL_ACTIVE_WARMUP` → `SWITCH_FINISH_CACHE_WARMED`.
   - Secondary runner publishes events; driving plan is suppressed during warmup/transition except at `SWITCH_FINISH`.
   - Only the primary runner updates the interleave policy during transitions to avoid oscillation.
@@ -60,7 +67,7 @@
 
 ```mermaid
 flowchart TD
-    A[ParkingWrapper / model outputs] -->|interleave_control bool| B[InterleavedModelRunner]
+    A[ParkingWrapper (Python)] -->|interleave_control bool| B[InterleavedModelRunner]
     B --> C{InterleavePolicy}
     C -->|ModelControlledSwitchPolicy<br/>falling-edge switch| D[Runner selection]
     C -->|TimeBasedRandomSwitchPolicy| D
@@ -69,4 +76,7 @@ flowchart TD
     E --> G[InterleaveControl output]
     F --> H[InferenceNode outputs]
     G --> H
+
+    classDef py fill:#FFE8CC,stroke:#CC8B00,color:#000000;
+    class A py;
 ```
