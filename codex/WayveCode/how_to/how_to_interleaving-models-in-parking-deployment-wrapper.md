@@ -1,11 +1,13 @@
 # How to interleave baseline + parking/PUDA models in the deployment wrapper
 
-Think of interleaving like a relay race: the baseline model runs first, then hands the baton to the parking/PUDA model when the “end-of-route/parking” signal fires. The key is that **the wrapper emits the signal**, but **the runner performs the switch**.
+Think of interleaving like a relay race: the baseline model runs first, then hands the baton to the parking/PUDA model when the “end-of-route/parking” signal fires. There are **two paths** in the codebase:
+- **TRT interleaving:** wrapper emits `interleave_control`, C++ runner performs the switch.
+- **Wrapper-only interleaving (our project):** the wrapper switches internally and emits debug signals.
 
 ## The big idea
-- **Python wrapper** (parking deployment wrapper) computes a boolean `interleave_control` output.
-- **InterleavedModelRunner** (C++) consumes that output and decides when to switch between model runners.
-- **ROS `InterleaveControl`** is published for observability; it is not the switch trigger.
+- **TRT path:** Python wrapper computes `interleave_control` → `InterleavedModelRunner` switches.
+- **Wrapper-only path:** Python wrapper switches internally; no runner involvement.
+- **Debug visibility:** `interleaved_id` + `interleaved_event` are emitted for logging, not for switching.
 
 ## Architecture in practice (where to look)
 - Wrapper signal generation (Python):
@@ -17,6 +19,8 @@ Think of interleaving like a relay race: the baseline model runs first, then han
   - `wayve/interfaces/protobuf/interleave_control.proto`
   - `wayve/robot/nodes/inference_node/model_runner/dmi/outputs/interleave_control/*`
   - `wayve/robot/nodes/inference_node/types/forward_pass_result.hpp`
+- Torch wrapper interleaving + debug outputs:
+  - `wayve/ai/zoo/deployment/interleaved_wrapper.py` → `InterleavedModelWrapper`
 
 ## How switching works (short version)
 1. **Wrapper creates `interleave_control`**:
@@ -43,7 +47,7 @@ Think of interleaving like a relay race: the baseline model runs first, then han
 
 ## Why this matters for our project
 - For our use case, the **wrapper is the right place to implement the heuristic** (end-of-route, parking pose, etc).
-- The **runner is already designed to handle interleaving**, so we should wire the control output correctly and let the runner switch.
+- We will **switch inside the wrapper** and emit `interleaved_id`/`interleaved_event` for visibility.
 
 ## Testing ideas (early, lightweight)
 - Smoke test: verify `interleave_control` toggles when heuristics trigger.
@@ -56,6 +60,6 @@ Think of interleaving like a relay race: the baseline model runs first, then han
 - Ensure model interface formats match across configs; interleaving validates equality.
 
 ## Lessons learned
-- Treat the wrapper as a **signal generator**, not a switch.
-- The runner owns the actual handoff; keep the heuristics simple and deterministic.
+- TRT path: treat the wrapper as a **signal generator**, not a switch.
+- Wrapper-only path: the wrapper owns the handoff; keep heuristics simple and deterministic.
 - Interleaving has a warmup cost—plan for a brief DP suppression window.

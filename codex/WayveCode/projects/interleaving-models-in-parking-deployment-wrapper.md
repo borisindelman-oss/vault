@@ -64,6 +64,16 @@
 - Parking wrapper in that branch emits `interleave_control = ~parking` using heuristics.
 - Deployment ops note (per Naman Rawal, lead for this area): interleaving is standard for TRT models via a 2‑model experiment; Torchscript SW interleaving isn’t supported in console today.
 
+### Findings: interleaving wrapper on main (Torch)
+- `wayve/ai/zoo/deployment/interleaved_wrapper.py` defines `InterleavedModelWrapper` + `InterleavedDrivingOutput`.
+- Outputs include:
+  - `interleaved_id` → current model index.
+  - `interleaved_event` → swap flag (1 on swap, 0 otherwise).
+- These are **debug/telemetry outputs**, not switch triggers.
+  - Torch interleaved testing parses them from debug tensors to reconstruct model episodes.
+  - In contrast, TRT interleaving publishes **`InterleavedEvent` proto messages** (`SWITCH_START`, `MODEL_ACTIVE_WARMUP`, `SWITCH_FINISH_CACHE_WARMED`) from C++.
+- Actionable for this project: we should emit `interleaved_id`/`interleaved_event` for logging visibility, but switching stays inside the wrapper.
+
 ### Plan: wrapper‑level interleaving (our implementation)
 
 #### 1) New interleaving wrapper
@@ -74,6 +84,7 @@
 - Forward signature = union of inputs (parking needs gear position + driving_controls).
 - Switch predicate: `parking_mode` and/or end‑of‑route heuristic (TBD).
 - Output: `OnBoardDrivingOutput` (parking output already includes `policy_gear_position`).
+- Optional: include `interleaved_id` + `interleaved_event` for debug logging (swap visibility).
 
 #### 2) Model provisioning (session IDs → one artifact)
 - Load baseline + parking **TorchScript** models via `load_ingested_model(session_id)`.
