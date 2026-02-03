@@ -55,6 +55,14 @@
       "status": "active",
       "phase": "Phase 1",
       "last_updated": "2026-02-02"
+    },
+    {
+      "name": "Interleaving models in parking deployment wrapper",
+      "slug": "interleaving-models-in-parking-deployment-wrapper",
+      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-02-03"
     }
   ]
 }

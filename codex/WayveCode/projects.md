@@ -2,6 +2,7 @@
 
 | Project                                                                                                            | Status   | Phase   | Last updated | no  |
 | ------------------------------------------------------------------------------------------------------------------ | -------- | ------- | ------------ | --- |
+| [Interleaving models in parking deployment wrapper](codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper) | active | Phase 1 | 2026-02-03 | no  |
 | [Model CLI tool](codex/WayveCode/projects/model-cli-tool) | active | Phase 1 | 2026-02-02 | no  |
 | [Waypoint clamping in deployment wrapper](codex/WayveCode/projects/waypoint-clamping-deployment-wrapper)           | active   | Phase 1 | 2026-02-01   | no  |
 | [Parking stopping_mode (DILC -> PUDO)](codex/WayveCode/projects/parking-stopping-mode-dilc)                        | active   | Phase 1 | 2026-01-20   | no  |
