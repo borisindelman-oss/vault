@@ -69,14 +69,12 @@
 flowchart TD
     A[ParkingWrapper (Python)] -->|interleave_control bool| B[InterleavedModelRunner]
     B --> C{InterleavePolicy}
-    C -->|ModelControlledSwitchPolicy<br/>falling-edge switch| D[Runner selection]
+    C -->|ModelControlledSwitchPolicy (falling-edge switch)| D[Runner selection]
     C -->|TimeBasedRandomSwitchPolicy| D
     D --> E[InterleavingForwardPass]
     E --> F[Driving plan + InterleavedEvent]
     E --> G[InterleaveControl output]
     F --> H[InferenceNode outputs]
     G --> H
-
-    classDef py fill:#FFE8CC,stroke:#CC8B00,color:#000000;
-    class A py;
+    style A fill:#FFE8CC,stroke:#CC8B00,color:#000
 ```
