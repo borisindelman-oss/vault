@@ -38,6 +38,9 @@
 - **2026-02-03:**
   - **Decision:** Start from Zach's `zmurez/pudo` branch as the baseline reference.
   - **Rationale:** It already targets the parking/PUDA deployment path.
+- **2026-02-03:**
+  - **Decision:** Prefer TRT + `interleave_control` via a 2-model experiment; use wrapper-only switching only if console interleaving isn’t available.
+  - **Rationale:** This is the supported deployment path today; Torchscript SW interleaving lacks console support.
 
 ## Notes
 - Testing plan not defined yet.
