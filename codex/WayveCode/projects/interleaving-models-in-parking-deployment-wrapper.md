@@ -1,8 +1,8 @@
 # Interleaving models in parking deployment wrapper
 
 ## Overview
-- **What it is:** Extend the parking deployment wrapper to interleave the baseline driving model with the parking/PUDA model based on heuristics (e.g., end-of-route).
-- **Why it matters:** Enables correct model switching for parking scenarios on-vehicle.
+- **What it is:** Build a single deployable model that interleaves baseline driving and parking/PUDA models inside a new wrapper.
+- **Why it matters:** On‑vehicle inference should see a standard model session ID, while we switch between two models internally.
 - **Primary users:** Not specified yet.
 
 ## Status
@@ -10,68 +10,84 @@
 - **Status:** active
 - **Last updated:** 2026-02-03
 - **Current priorities:**
-  - Review `zmurez/pudo` and map the interleaving flow to our wrapper.
-  - Define the switching heuristics and model-selection interface.
-  - Confirm deployment path (TRT + 2-model experiment) vs wrapper-only fallback.
+  - Define the interleaving wrapper interface and switch predicate.
+  - Implement a packer that builds a new TorchScript artifact from two session IDs.
+  - Validate that deployment configs and input/output interfaces match.
 - **Blockers:**
   - None
 
 ## Requirements
-- **Problem statement:** Run two models on-vehicle (baseline + parking/PUDA) and switch to parking/PUDA when heuristics trigger. Extend the parking deployment wrapper to support this.
+- **Problem statement:** Use two already‑compiled TorchScript models (baseline + parking/PUDA) and ship a single deployable model that switches internally based on parking mode / route heuristics.
 - **Target users:** Not specified yet.
-- **Integrations:** Parking deployment wrapper; reference branch `zmurez/pudo`.
-- **Constraints:** TBD.
-- **Success criteria:** Demonstrate interleaving between baseline and parking/PUDA models in the deployment wrapper.
+- **Integrations:** Parking deployment wrapper; session‑ID loaded models; deploy upload pipeline.
+- **Constraints:**
+  - Session IDs load TorchScript artifacts; interleaving must produce a new TorchScript artifact.
+  - Both models must share an identical deployment interface.
+- **Success criteria:** A new session ID uploads successfully and behaves like a standard model, while switching internally.
 
 ## Design
-- **Approach:** Extend the parking deployment wrapper to emit `interleave_control`; rely on the interleaved runner to switch models when multiple model configs are deployed.
+- **Approach:**
+  - Create `InterleavingDeploymentWrapperImpl` that owns baseline + parking wrappers and switches at runtime.
+  - Package both models into a single TorchScript artifact and upload it like a normal deploy session.
 - **Key decisions:**
-  - Prefer TRT + 2-model experiment for interleaving; wrapper-only switching is a fallback.
+  - Use wrapper‑level interleaving (no `interleave_control`).
+  - Load both models from session IDs externally, then pass them into the wrapper.
 - **Open questions:**
-  - Testing strategy and rollout gates.
-  - Exact heuristics for switching (route end, parking pose, gear state, etc.).
+  - Exact switch predicate: parking mode only vs parking mode OR end‑of‑route.
+  - How strict to be on deployment_config mismatches.
 
 ## Build Phases
 - **Phase:** Phase 1
-  - **Goal:** Implement initial interleaving support in the wrapper.
-  - **Work items:** Review `zmurez/pudo`, map wrapper flow, add `interleave_control`, define config/heuristics (TBD).
-  - **Validation:** Demonstrate model switching in a test environment (details TBD).
+  - **Goal:** Wrapper‑level interleaving with a deployable combined model.
+  - **Work items:** Implement wrapper + packer + config checks.
+  - **Validation:** Smoke test compile + run + upload.
 
 ## Decisions
 - **2026-02-03:**
-  - **Decision:** Start from Zach's `zmurez/pudo` branch as the baseline reference.
-  - **Rationale:** It already targets the parking/PUDA deployment path.
+  - **Decision:** Use wrapper‑level interleaving and package as a single TorchScript artifact.
+  - **Rationale:** Vehicle/sim expect a standard model session; session IDs are TorchScript.
 - **2026-02-03:**
-  - **Decision:** Prefer TRT + `interleave_control` via a 2-model experiment; use wrapper-only switching only if console interleaving isn’t available.
-  - **Rationale:** This is the supported deployment path today; Torchscript SW interleaving lacks console support.
+  - **Decision:** Do not use `interleave_control` or InterleavedModelRunner for this path.
+  - **Rationale:** We are interleaving inside the wrapper and shipping a single model artifact.
 
 ## Notes
 - Testing plan not defined yet.
 
-### Summary: `zmurez/pudo` interleaving implementation
-- Interleaved model runner manages multiple model runners, warmup, and transition events.
+### Findings: how `zmurez/pudo` implements interleaving (reference)
+- Interleaving is done in C++ via `InterleavedModelRunner` with transition events and warmup.
 - Policy selection:
-  - If `interleave_control` output exists, use `ModelControlledSwitchPolicy` (falling-edge switch semantics).
-  - Otherwise, fall back to `TimeBasedRandomSwitchPolicy`.
-- Switching happens in `InterleavedModelRunner::createForwardPass()`:
-  - Calls `policy_->next()` when idle and initializes transition state.
-  - Alternates runners during transition and finalizes in `completeTransition()`.
-- Runner initialization and model selection live in `createModelRunner()`:
-  - `model_configs` (vector of `ModelDeploymentConfig`) define runner indices.
-  - Each config becomes a `RunnerProfile` with `runner` + `artefact_id`.
-- Transition lifecycle events: `SWITCH_START` → `MODEL_ACTIVE_WARMUP` → `SWITCH_FINISH_CACHE_WARMED`.
-  - Secondary runner publishes events; driving plan suppressed during warmup except at switch finish.
-  - Only the primary runner updates the interleave policy during transitions.
-- `InterleaveControl` end-to-end:
-  - New proto + DMI output handler + ROS publication on `robot/inference/interleave_control`.
-  - `ForwardPassResult` carries `interleave_control` for model-controlled policy.
-- Parking wrapper changes in the branch:
-  - `ParkingWrapper` creates `ParkingOutput` with `interleave_control`.
-  - Heuristic sets `interleave_control = ~parking` (end-of-route, parking pose present, non-drive gear, auto-parking control).
-  - `wayve/ai/si/models/deployment.py` hard-swaps wrapper to `ParkingWrapper`.
-- Deployment ops note (per Naman Rawal, lead for this area):
-  - Interleaving is standard for TRT models via a **2-model experiment**; console supports TRT export.
-  - Torchscript SW interleaving isn’t supported in console today; wrapper-side switching can be acceptable for now.
+  - `interleave_control` output → `ModelControlledSwitchPolicy` (falling‑edge switch).
+  - Otherwise → `TimeBasedRandomSwitchPolicy`.
+- Switching happens in `InterleavedModelRunner::createForwardPass()` and finalizes in `completeTransition()`.
+- Runner initialization lives in `createModelRunner()`; runner indices are based on `model_configs` ordering.
+- `InterleaveControl` is wired end‑to‑end (proto → DMI output handler → ROS publication).
+- Parking wrapper in that branch emits `interleave_control = ~parking` using heuristics.
+- Deployment ops note (per Naman Rawal, lead for this area): interleaving is standard for TRT models via a 2‑model experiment; Torchscript SW interleaving isn’t supported in console today.
+
+### Plan: wrapper‑level interleaving (our implementation)
+
+#### 1) New interleaving wrapper
+- Add `InterleavingDeploymentWrapperImpl` in `wayve/ai/zoo/deployment/deployment_wrapper.py`.
+- It holds two sub‑wrappers:
+  - Baseline: `DeploymentWrapperImpl`
+  - Parking: `ParkingDeploymentWrapperImpl`
+- Forward signature = union of inputs (parking needs gear position + driving_controls).
+- Switch predicate: `parking_mode` and/or end‑of‑route heuristic (TBD).
+- Output: `OnBoardDrivingOutput` (parking output already includes `policy_gear_position`).
+
+#### 2) Model provisioning (session IDs → one artifact)
+- Load baseline + parking **TorchScript** models via `load_ingested_model(session_id)`.
+- Validate both deployment configs are compatible (input/output keys, frames, radar, etc.).
+- Pass both ScriptModules into `InterleavingDeploymentWrapperImpl`.
+- Compile to a **single TorchScript artifact** (new session ID).
+
+#### 3) Deploy‑like packaging + upload
+- Add a new script (or extend packer) that mirrors deploy’s upload flow:
+  - Inputs: `--baseline_session_id`, `--parking_session_id`, `--output_dir`, `--suffix`, `--upload`.
+  - Uses `compile_and_save_model(...)` + `upload_compiled_model(...)` so it appears as a standard model.
+- Ensure we pass deploy‑time wrapper options consistently:
+  - `deployment_country`, `deployment_vehicle_model_override`, `dilc_on`, `deployment_driving_controls_keys`, `enable_radar_input`.
+- Temporal caching: must already match in the compiled session IDs (cannot be toggled post‑compile).
 
 ```mermaid
 flowchart TD
