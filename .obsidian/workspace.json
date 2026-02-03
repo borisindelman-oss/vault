@@ -147,12 +147,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
+                "file": "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "waypoint-clamping-deployment-wrapper"
+              "title": "zak-classifiers-parking-maneuver"
             }
           }
         ],
@@ -332,9 +332,11 @@
   },
   "active": "a96c13828a2426be",
   "lastOpenFiles": [
+    "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
+    "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
     "codex/WayveCode/projects/model-cli-tool.md",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
+    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
     "codex/WayveCode/how_to/how_to_parking-stopping-mode-dilc.md",
     "codex/WayveCode/how_to/how_to_route-end-parking-trigger.md",
@@ -362,9 +364,7 @@
     "codex/WayveCode/2026/01/Week-4",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
     "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
-    "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
     "codex/WayveCode/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary.md",
-    "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "2026/01/Week-3",
     "2026/01",
     "2026",
