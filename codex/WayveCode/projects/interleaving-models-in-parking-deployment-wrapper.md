@@ -64,6 +64,9 @@
   - New `ParkingWrapper` creates a `ParkingOutput` that includes `interleave_control`.
   - The wrapper sets `interleave_control = ~parking` using heuristics: end-of-route, parking pose present, non-drive gear, or auto-parking control.
   - In `wayve/ai/si/models/deployment.py`, the wrapper is hard-swapped to `ParkingWrapper` (commented out `make_wrapper_class`).
+- Deployment and ops note (per Naman Rawal, lead for this area):
+  - Interleaving is standard for TRT models via a **2-model experiment**; console supports TRT export.
+  - Torchscript SW interleaving isn’t supported in console today; wrapper-side switching can be acceptable for now.
 
 ```mermaid
 flowchart TD
