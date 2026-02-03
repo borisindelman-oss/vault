@@ -6,7 +6,8 @@ Think of this as a living book: short, practical chapters that explain **how our
 1. [How to teach parking models the difference between PARK and PUDO (stopping_mode)](how_to_parking-stopping-mode-dilc.md)
 2. [How to align parking maneuver sampling with real-world behavior (Zak classifiers)](how_to_parking-maneuver-filters.md)
 3. [How to trigger parking at end-of-route without retraining (wrapper route-end)](how_to_route-end-parking-trigger.md)
-4. [How to build an end-to-end inference visualization tool (new vis tool)](how_to_inference-visualization-tool.md)
+4. [How to interleave baseline + parking/PUDA models in the deployment wrapper](how_to_interleaving-models-in-parking-deployment-wrapper.md)
+5. [How to build an end-to-end inference visualization tool (new vis tool)](how_to_inference-visualization-tool.md)
 
 ## How to Use This Book
 - Each chapter is a standalone `how_to_[topic].md` file.

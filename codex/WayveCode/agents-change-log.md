@@ -1,8 +1,21 @@
 # Codex Change Log — WayveCode
 
 ## Table of Contents
+- [2026-02](#2026-02)
 - [2026-01](#2026-01)
 - [2025-12](#2025-12)
+
+## 2026-02
+> [!note] 2026-02
+> #### 2026-02-03 — Interleaving models project docs
+> - Topic: interleaving baseline + parking/PUDA models
+> - Labels: #parking #deployment #interleaving #docs
+> - Branch: none
+> - PR: none
+> - Change type: docs
+> - Areas: `codex/WayveCode/projects/`, `codex/WayveCode/how_to/`
+> - Changes:
+>   - [[2026/02/Week-1/2026-02-03-interleaving-models-project]]: added project deep dive, mermaid update, and new how-to chapter.
 
 ## 2026-01
 #### 2026-01-25 — How-to project writeups
