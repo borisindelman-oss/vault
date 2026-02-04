@@ -15,6 +15,7 @@
 - Inferred baseline input keys from TorchScript signature to decide whether gear/controls should be passed.
 - Prefer TorchScript `schema` when available to infer inputs reliably.
 - Fall back to detecting `ParkingDeploymentWrapper` by qualified name when inference is missing.
+- When schema is present but names are missing, scan the schema string for parking input names.
 
 ## Files
 - /workspace/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py
