@@ -13,6 +13,7 @@
 - Split interleaving wrapper into radar vs non-radar variants to avoid invalid argument counts during scripting.
 - Updated interleaved deploy script to regenerate output keys from the wrapper to include the new debug outputs.
 - Inferred baseline input keys from TorchScript signature to decide whether gear/controls should be passed.
+- Prefer TorchScript `schema` when available to infer inputs reliably.
 
 ## Files
 - /workspace/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py
