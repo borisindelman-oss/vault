@@ -16,6 +16,7 @@
 - Prefer TorchScript `schema` when available to infer inputs reliably.
 - Fall back to detecting `ParkingDeploymentWrapper` by qualified name when inference is missing.
 - When schema is present but names are missing, scan the schema string for parking input names.
+- Split interleaving wrappers by whether the baseline expects parking inputs to avoid invalid call signatures during scripting.
 
 ## Files
 - /workspace/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py
