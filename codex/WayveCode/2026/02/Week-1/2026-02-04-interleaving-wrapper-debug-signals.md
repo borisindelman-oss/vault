@@ -14,6 +14,7 @@
 - Updated interleaved deploy script to regenerate output keys from the wrapper to include the new debug outputs.
 - Inferred baseline input keys from TorchScript signature to decide whether gear/controls should be passed.
 - Prefer TorchScript `schema` when available to infer inputs reliably.
+- Fall back to detecting `ParkingDeploymentWrapper` by qualified name when inference is missing.
 
 ## Files
 - /workspace/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py
