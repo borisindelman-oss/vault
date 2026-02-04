@@ -16,7 +16,7 @@
 - Change type: code
 - Areas: `wayve/ai/zoo/deployment/`, `wayve/ai/si/`
 - Changes:
-  - [[2026/02/Week-1/2026-02-04-interleaving-wrapper-debug-signals]]: added interleaving debug outputs, split radar vs non-radar wrappers, and refreshed output keys.
+  - [[2026/02/Week-1/2026-02-04-interleaving-wrapper-debug-signals]]: added interleaving debug outputs, split radar and baseline-input wrapper variants, and refreshed output keys.
 > #### 2026-02-03 — Interleaving models project docs
 > - Topic: interleaving baseline + parking/PUDA models
 > - Labels: #parking #deployment #interleaving #docs
