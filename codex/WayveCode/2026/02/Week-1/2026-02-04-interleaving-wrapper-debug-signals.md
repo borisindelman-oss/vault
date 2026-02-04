@@ -12,6 +12,7 @@
 - Emitted `interleaved_id` (0 baseline / 1 parking) and `interleaved_event` (1 on switch, else 0) from `InterleavingDeploymentWrapperImpl`.
 - Split interleaving wrapper into radar vs non-radar variants to avoid invalid argument counts during scripting.
 - Updated interleaved deploy script to regenerate output keys from the wrapper to include the new debug outputs.
+- Inferred baseline input keys from TorchScript signature to decide whether gear/controls should be passed.
 
 ## Files
 - /workspace/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py
