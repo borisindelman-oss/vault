@@ -102,6 +102,17 @@
 
 ```mermaid
 flowchart TD
+    A[Baseline Session ID] --> B[Load TorchScript]
+    C[Parking/PUDA Session ID] --> D[Load TorchScript]
+    B --> E[InterleavingDeploymentWrapperImpl]
+    D --> E
+    E --> F[Compile to Single TorchScript]
+    F --> G[Upload as New Session ID]
+    G --> H[Vehicle Inference Uses Standard Session]
+```
+
+```mermaid
+flowchart TD
     A["ParkingWrapper - Python"] -->|interleave_control| B["InterleavedModelRunner"]
     B --> C{InterleavePolicy}
     C -->|ModelControlledSwitchPolicy| D["Runner selection"]
