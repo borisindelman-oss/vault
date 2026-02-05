@@ -15,7 +15,7 @@ Think of interleaving like a relay race: the baseline model runs first, then han
 - What it does:
   - Loads a **baseline TorchScript** model from session ID.
   - Loads the **primary parking wrapper** (or falls back to ingested TorchScript if config is missing).
-  - Generates a **TorchScript-friendly route interleaving wrapper** with a fixed forward signature.
+  - Uses a **static route interleaving wrapper** with a fixed forward signature for the baseline + parking pair.
   - Saves the combined model using `save_compiled_model`, just like a normal deploy.
 
 ### Example run (session ID path)
@@ -83,7 +83,7 @@ DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models
 - **Optional outputs typing:** TorchScript rejects Optional values in a `Tensor`-typed NamedTuple field.
   - **Fix:** mark optional fields as `Optional[Tensor]` in the generated NamedTuple, and keep required outputs mandatory.
 - **Return type resolution in `save_compiled_model`:** it parses TorchScript return types and re-imports them.
-  - **Fix:** register the generated module in `sys.modules` so the return type can be resolved.
+  - **Fix:** the static output class lives in the module and is importable, so `save_compiled_model` can resolve it.
 - **Input keys mismatch:** the deployment config sometimes omits inputs the wrapper *actually* requires (e.g., `navigation_instructions`).
   - **Fix:** infer the primary wrapper’s input keys from `model.forward` and override `deployment_config.input_keys`.
 - **Session config access on `/mnt/remote`:** `full_config.yml` can error, `config.yaml` can be missing.

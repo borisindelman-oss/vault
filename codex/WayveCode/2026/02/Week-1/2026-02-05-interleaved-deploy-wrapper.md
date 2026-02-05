@@ -16,11 +16,13 @@
 - Registered the generated wrapper module in `sys.modules` so `save_compiled_model` can resolve the return type.
 - Added an ingested-model fallback when the training session config is unavailable.
 - Inferred primary wrapper input keys from `model.forward` to ensure navigation instruction inputs are included when required.
+- Replaced the route interleaving codegen path with a static wrapper for the baseline + parking pair.
 
 ## Tests
 - `bazel build //wayve/ai/si:deploy_interleaved_models`
 - `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_path /mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --baseline_model_cache_dir /workspace/ai_lib_cache --output_dir /workspace/deploy_interleaved --suffix _retrace --dilc_on --enable_parking --with_temporal_caching true`
 - `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix _retrace2 --dilc_on --enable_parking --with_temporal_caching true`
+- `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix _retrace3 --dilc_on --enable_parking --with_temporal_caching true`
 
 ## Files
 - /workspace/WayveCode/wayve/ai/si/deploy_interleaved_models.py

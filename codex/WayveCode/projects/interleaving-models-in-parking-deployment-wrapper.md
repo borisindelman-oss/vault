@@ -27,7 +27,7 @@
 
 ## Design
 - **Approach:**
-  - Build a route‑interleaving wrapper with a TorchScript‑friendly signature using codegen.
+  - Build a route‑interleaving wrapper with a fixed, static signature for the baseline + parking pair.
   - Package baseline + parking TorchScript models into a single artifact and save via `save_compiled_model`.
   - Use unioned deployment config (inputs + outputs), with optional outputs filled via none tokens.
 - **Key decisions:**
@@ -58,6 +58,9 @@
 - **2026-02-05:**
   - **Decision:** Generate a wrapper with unioned output keys and optional fields filled using none tokens.
   - **Rationale:** Baseline and parking outputs differ; TorchScript requires a stable output schema.
+- **2026-02-05:**
+  - **Decision:** Replace codegen with a static wrapper class tied to the baseline + parking signatures.
+  - **Rationale:** We only need one model pair; static code is simpler and easier to reason about.
 - **2026-02-05:**
   - **Decision:** Infer primary wrapper input keys from `model.forward`.
   - **Rationale:** Deployment config input keys can omit nav‑instruction args required by the wrapper.
