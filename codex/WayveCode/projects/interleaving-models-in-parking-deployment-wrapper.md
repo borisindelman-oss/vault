@@ -93,6 +93,9 @@
   - `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix _retrace13 --dilc_on --enable_parking --with_temporal_caching true`
   - Output: `/mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc_retrace13/traces/model-000100000.torchscript`
 
+### Route map thresholds (new math)
+We now set **near‑end‑of‑route** using a route‑signal sum threshold. The route map input is a **uint8 image** and we compute:\n`route_signal = map_route.float()[:, :2].sum(dim=(1,2,3))` (red + green channels only).\n\n**Span in meters** comes directly from config: `map_scale_m` is the radius, so full span = `2 * map_scale_m`.\n\nFor `si_medium_noise` (parking default):\n- `image_size_px = 512`\n- `map_scale_m = 1200` → span ≈ 2400 m\n- `route_width_m = 4`\n\nApproximate pixel density: `px_per_m = image_size_px / (2 * map_scale_m) ≈ 0.213`.\n\nSo for a **50 m** long route line:\n```\nroute_pixels ≈ length_m * route_width_m * (px_per_m ** 2)\n             ≈ 50 * 4 * (0.213^2)\n             ≈ 9.1 pixels\nthreshold ≈ route_pixels * 255 ≈ 2.3e3\n```\n\n**Decision:** set `near_end_of_route_sum_thresh = 5e3` to give headroom for line thickness/antialiasing.\n\nFor **end‑of‑route**, 5 m is roughly:\n- `5 / 50` of the above → ≈ `230` → set `end_of_route_sum_thresh ≈ 2.5e2`.\n+
+
 ### Findings: how `zmurez/pudo` implements interleaving (reference)
 - Interleaving is done in C++ via `InterleavedModelRunner` with transition events and warmup.
 - Policy selection:
