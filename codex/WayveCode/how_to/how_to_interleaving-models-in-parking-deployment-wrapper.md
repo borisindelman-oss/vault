@@ -34,6 +34,9 @@ Near‑end‑of‑route can be noisy around the boundary. We latch it on first d
 ## End‑of‑route = no route
 We treat **end‑of‑route** as “no route available” (route signal is zero). When that happens the parking wrapper **forces parking mode on** so the system can auto‑stop gracefully.
 
+## Avoid double‑triggering
+For interleaved deploys we explicitly set `enable_end_of_route_parking = False` on the parking wrapper. The interleaving wrapper now owns all near‑end/end‑of‑route logic, so we don’t want two independent systems toggling parking.
+
 ## Gear output behavior
 The baseline model doesn’t output `policy_gear_position`. When baseline is active we fill that field with `get_none_tensor_token()`. This means “no gear prediction.” The parking model always supplies a real `policy_gear_position`.
 

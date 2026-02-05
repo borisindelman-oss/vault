@@ -16,7 +16,7 @@
 - Change type: code
 - Areas: `wayve/ai/si/`, `wayve/ai/zoo/deployment/`
 - Changes:
-  - [[2026/02/Week-1/2026-02-05-interleaved-deploy-wrapper]]: generated TorchScript-friendly route wrapper, updated deploy script to use it, added switching heuristics (latched near‑end‑of‑route, auto‑park, reverse gear, 5 mph hysteresis), wired parking nav inputs, and defined end‑of‑route as no‑route for parking mode.
+  - [[2026/02/Week-1/2026-02-05-interleaved-deploy-wrapper]]: generated TorchScript-friendly route wrapper, updated deploy script to use it, added switching heuristics (latched near‑end‑of‑route, auto‑park, reverse gear, 5 mph hysteresis), wired parking nav inputs, defined end‑of‑route as no‑route for parking mode, and disabled parking wrapper end‑of‑route triggering in interleaved deploys.
 > #### 2026-02-04 — Interleaving wrapper debug signals
 - Topic: interleaving wrapper debug outputs + radar arg fix
 - Labels: #parking #deployment #interleaving #torchscript

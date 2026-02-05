@@ -79,6 +79,9 @@
 - **2026-02-05:**
   - **Decision:** Treat **end‑of‑route** as “no route available” and force parking mode on in the parking wrapper.
   - **Rationale:** Avoids conflating near‑end with end‑of‑route and aligns auto‑park behavior with missing route data.
+- **2026-02-05:**
+  - **Decision:** Disable `enable_end_of_route_parking` in the parking wrapper for interleaved deploys.
+  - **Rationale:** The interleaving wrapper owns end‑of‑route/near‑end logic; avoids double‑triggering.
 
 ## Notes
 - Working deploy runs:
