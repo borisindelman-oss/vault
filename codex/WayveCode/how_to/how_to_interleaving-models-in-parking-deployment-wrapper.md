@@ -31,6 +31,9 @@ flowchart TD
 ## Latch behavior in plain English
 Near‑end‑of‑route can be noisy around the boundary. We latch it on first detection, then hold it until the vehicle has driven a configurable distance (default 50 m). Setting the distance to **0** disables the latch. The 5 mph hysteresis still applies.
 
+## End‑of‑route = no route
+We treat **end‑of‑route** as “no route available” (route signal is zero). When that happens the parking wrapper **forces parking mode on** so the system can auto‑stop gracefully.
+
 ## Gear output behavior
 The baseline model doesn’t output `policy_gear_position`. When baseline is active we fill that field with `get_none_tensor_token()`. This means “no gear prediction.” The parking model always supplies a real `policy_gear_position`.
 

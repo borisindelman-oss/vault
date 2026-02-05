@@ -76,6 +76,9 @@
 - **2026-02-05:**
   - **Decision:** Make end‑of‑route latch distance configurable (0 disables latch).
   - **Rationale:** Allows local tuning without re‑coding the heuristic.
+- **2026-02-05:**
+  - **Decision:** Treat **end‑of‑route** as “no route available” and force parking mode on in the parking wrapper.
+  - **Rationale:** Avoids conflating near‑end with end‑of‑route and aligns auto‑park behavior with missing route data.
 
 ## Notes
 - Working deploy runs:
