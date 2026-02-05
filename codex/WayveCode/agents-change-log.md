@@ -26,6 +26,15 @@
 - Areas: `codex/WayveCode/how_to/`
 - Changes:
   - [[2026/02/Week-1/2026-02-05-route-map-signal-thresholds]]: added newsletter-style how-to explaining map span, route signal sums, and `5e4` threshold intuition; updated how-to index.
+> #### 2026-02-05 — Bokeh visualise interleaving wrapper
+- Topic: bokeh visualise uses route-interleaving wrapper
+- Labels: #visualisation #interleaving #parking
+- Branch: current
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/si/visualisation/`
+- Changes:
+  - [[2026/02/Week-1/2026-02-05-visualise-interleaving-wrapper]]: added baseline session support and route thresholds for interleaved visualisation, disabled parking end-of-route trigger, and ensured driving parameters/controls are supplied when missing.
 > #### 2026-02-04 — Interleaving wrapper debug signals
 - Topic: interleaving wrapper debug outputs + radar arg fix
 - Labels: #parking #deployment #interleaving #torchscript
