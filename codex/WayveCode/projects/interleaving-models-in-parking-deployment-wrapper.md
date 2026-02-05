@@ -67,6 +67,15 @@
 - **2026-02-05:**
   - **Decision:** Fallback to ingested model when session config is unreadable on `/mnt/remote`.
   - **Rationale:** Config YAML can be missing or blocked by storage permissions; we still need a deploy path.
+- **2026-02-05:**
+  - **Decision:** Use latched **near‑end‑of‑route** (map_route sum threshold) + **initiate auto‑park** + **reverse gear** as parking triggers.
+  - **Rationale:** Keeps switching stable and aligns with parking wrapper semantics while avoiding route flicker.
+- **2026-02-05:**
+  - **Decision:** Keep 5 mph hysteresis to switch back to baseline only when no parking trigger is active.
+  - **Rationale:** Prevents rapid model flapping as parking triggers clear.
+- **2026-02-05:**
+  - **Decision:** Make end‑of‑route latch distance configurable (0 disables latch).
+  - **Rationale:** Allows local tuning without re‑coding the heuristic.
 
 ## Notes
 - Working deploy runs:
@@ -105,6 +114,18 @@
 - Switch predicate: `parking_mode` and/or end‑of‑route heuristic (TBD).
 - Output: `OnBoardDrivingOutput` (parking output already includes `policy_gear_position`).
 - Optional: include `interleaved_id` + `interleaved_event` for debug logging (swap visibility).
+
+### Switching logic (current)
+```mermaid
+flowchart TD
+    A["near_end_of_route (latched)"] --> D[parking_trigger]
+    B["initiate_auto_park"] --> D
+    C["reverse_gear"] --> D
+    D -->|true| E["use parking model"]
+    D -->|false| F{speed > 5 mph?}
+    F -->|true| G["use baseline model"]
+    F -->|false| H["keep current model"]
+```
 
 #### 2) Model provisioning (session IDs → one artifact)
 - Load baseline + parking **TorchScript** models via `load_ingested_model(session_id)`.
