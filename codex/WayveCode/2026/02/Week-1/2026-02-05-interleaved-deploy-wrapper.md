@@ -21,6 +21,7 @@
 - Added a latched near‑end‑of‑route trigger, auto‑park trigger, reverse gear trigger, and 5 mph hysteresis for model switching.
 - Made end‑of‑route latch distance configurable (0 disables latch).
 - Moved the generalized codegen wrapper into `interleaving_stopping_codegen.py` for future reuse.
+- Redefined end‑of‑route as “no route available” in the parking wrapper to force parking mode when route data is missing.
 
 ## Tests
 - `bazel build //wayve/ai/si:deploy_interleaved_models`
