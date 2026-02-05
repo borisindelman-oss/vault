@@ -45,6 +45,9 @@ We emit two additional debug outputs to mirror `interleaved_wrapper.py`:
 - `interleaved_id`: `0` = baseline, `1` = parking.
 - `interleaved_event`: `1` on a model switch, `0` otherwise.
 
+## Output schema
+`RouteInterleavingOutput` mirrors `OnBoardDrivingOutput` and adds the two debug fields above. That means the compiled artifact preserves the standard DMI‑compatible outputs plus telemetry for which model is active.
+
 ## Files to know
 - Wrapper: `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
 - Deploy script: `wayve/ai/si/deploy_interleaved_models.py`
