@@ -161,12 +161,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper.md",
+                "file": "codex/WayveCode/how_to/how_to_route-map-signal-thresholds.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "how_to_interleaving-models-in-parking-deployment-wrapper"
+              "title": "how_to_route-map-signal-thresholds"
             }
           }
         ],
@@ -346,8 +346,14 @@
   },
   "active": "20561bae802a9484",
   "lastOpenFiles": [
-    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+    "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
+    "codex/WayveCode/how_to/how_to_route-map-signal-thresholds.md",
+    "codex/WayveCode/2026/02/Week-1/2026-02-05-route-map-signal-thresholds.md",
+    "codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
+    "codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
+    "codex/WayveCode/how_to/how_to_route-end-parking-trigger.md",
     "codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper.md",
+    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-interleaved-deploy-wrapper.md",
     "codex/WayveCode/projects.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-04-deploy-interleaved-run.md",
@@ -359,10 +365,7 @@
     "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
     "codex/WayveCode/projects/model-cli-tool.md",
-    "codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
-    "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
     "codex/WayveCode/how_to/how_to_parking-stopping-mode-dilc.md",
-    "codex/WayveCode/how_to/how_to_route-end-parking-trigger.md",
     "Excalidraw/parking_model_arch.excalidraw",
     "Excalidraw/head_options.excalidraw.md",
     "codex/WayveCode/README.md",
@@ -375,9 +378,6 @@
     "codex/WayveCode/2026/01/Week-4/2026-01-25-how-to-writeups.md",
     "Excalidraw/Drawing 2026-01-22 23.21.09.excalidraw.md",
     "codex/WayveCode/2026/01/Week-4/2026-01-22-timestamp-offset-conversion.md",
-    "codex/WayveCode/agents-change-log.md",
-    "codex/WayveCode/todo-list.md",
-    "codex/WayveCode/2026/01/Week-4/2026-01-21-parking-route-shortening.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
     "codex/WayveCode/2026/01/Week-4",
