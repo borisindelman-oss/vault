@@ -17,6 +17,10 @@
 - Added an ingested-model fallback when the training session config is unavailable.
 - Inferred primary wrapper input keys from `model.forward` to ensure navigation instruction inputs are included when required.
 - Replaced the route interleaving codegen path with a static wrapper for the baseline + parking pair.
+- Added navigation instruction inputs to the parking wrapper to keep inputs consistent across models.
+- Added a latched near‑end‑of‑route trigger, auto‑park trigger, reverse gear trigger, and 5 mph hysteresis for model switching.
+- Made end‑of‑route latch distance configurable (0 disables latch).
+- Moved the generalized codegen wrapper into `interleaving_stopping_codegen.py` for future reuse.
 
 ## Tests
 - `bazel build //wayve/ai/si:deploy_interleaved_models`
@@ -28,5 +32,7 @@
 ## Files
 - /workspace/WayveCode/wayve/ai/si/deploy_interleaved_models.py
 - /workspace/WayveCode/wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py
+- /workspace/WayveCode/wayve/ai/zoo/deployment/interleaving_stopping_codegen.py
+- /workspace/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py
 - /workspace/WayveCode/wayve/ai/si/BUILD
 - /workspace/WayveCode/wayve/ai/zoo/deployment/BUILD
