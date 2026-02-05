@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-05 — Interleaved deploy wrapper
+- Topic: route interleaving deploy wrapper + session-id resolution
+- Labels: #parking #deployment #interleaving #torchscript
+- Branch: current
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/si/`, `wayve/ai/zoo/deployment/`
+- Changes:
+  - [[2026/02/Week-1/2026-02-05-interleaved-deploy-wrapper]]: generated TorchScript-friendly route wrapper, updated deploy script to use it, and added session-id lookup fallback.
 > #### 2026-02-04 — Interleaving wrapper debug signals
 - Topic: interleaving wrapper debug outputs + radar arg fix
 - Labels: #parking #deployment #interleaving #torchscript
