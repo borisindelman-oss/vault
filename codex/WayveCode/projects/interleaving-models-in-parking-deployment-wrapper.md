@@ -82,6 +82,9 @@
 - **2026-02-05:**
   - **Decision:** Disable `enable_end_of_route_parking` in the parking wrapper for interleaved deploys.
   - **Rationale:** The interleaving wrapper owns end‑of‑route/near‑end logic; avoids double‑triggering.
+- **2026-02-05:**
+  - **Decision:** Emit `interleaved_id` and `interleaved_event` debug outputs from the interleaving wrapper.
+  - **Rationale:** Exposes which model is active and when switches occur, matching the Torch interleaved wrapper telemetry.
 
 ## Notes
 - Working deploy runs:

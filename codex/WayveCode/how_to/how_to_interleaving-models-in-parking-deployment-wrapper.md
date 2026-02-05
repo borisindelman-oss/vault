@@ -40,6 +40,11 @@ For interleaved deploys we explicitly set `enable_end_of_route_parking = False` 
 ## Gear output behavior
 The baseline model doesn’t output `policy_gear_position`. When baseline is active we fill that field with `get_none_tensor_token()`. This means “no gear prediction.” The parking model always supplies a real `policy_gear_position`.
 
+## Debug visibility
+We emit two additional debug outputs to mirror `interleaved_wrapper.py`:
+- `interleaved_id`: `0` = baseline, `1` = parking.
+- `interleaved_event`: `1` on a model switch, `0` otherwise.
+
 ## Files to know
 - Wrapper: `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
 - Deploy script: `wayve/ai/si/deploy_interleaved_models.py`

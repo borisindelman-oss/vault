@@ -23,6 +23,7 @@
 - Moved the generalized codegen wrapper into `interleaving_stopping_codegen.py` for future reuse.
 - Redefined end‑of‑route as “no route available” in the parking wrapper to force parking mode when route data is missing.
 - Disabled `enable_end_of_route_parking` on the parking wrapper for interleaved deploys to avoid double triggers.
+- Emitted `interleaved_id` and `interleaved_event` debug outputs from the interleaving wrapper.
 
 ## Tests
 - `bazel build //wayve/ai/si:deploy_interleaved_models`
