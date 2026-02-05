@@ -6,13 +6,13 @@
 - **Primary users:** Not specified yet.
 
 ## Status
-- **Phase:** Phase 1
+- **Phase:** Phase 2
 - **Status:** active
-- **Last updated:** 2026-02-03
+- **Last updated:** 2026-02-05
 - **Current priorities:**
-  - Define the interleaving wrapper interface and switch predicate.
-  - Implement a packer that builds a new TorchScript artifact from two session IDs.
-  - Validate that deployment configs and input/output interfaces match.
+  - Validate upload path and DMI config generation for the interleaved wrapper.
+  - Decide final output directory strategy (`/mnt/remote` vs workspace output).
+  - Add regression checks for input/output key mismatches.
 - **Blockers:**
   - None
 
@@ -27,11 +27,13 @@
 
 ## Design
 - **Approach:**
-  - Create `InterleavingDeploymentWrapperImpl` that owns baseline + parking wrappers and switches at runtime.
-  - Package both models into a single TorchScript artifact and upload it like a normal deploy session.
+  - Build a route‑interleaving wrapper with a TorchScript‑friendly signature using codegen.
+  - Package baseline + parking TorchScript models into a single artifact and save via `save_compiled_model`.
+  - Use unioned deployment config (inputs + outputs), with optional outputs filled via none tokens.
 - **Key decisions:**
   - Use wrapper‑level interleaving (no `interleave_control`).
   - Load both models from session IDs externally, then pass them into the wrapper.
+  - Infer primary wrapper input keys from `model.forward` to avoid missing nav‑instruction inputs.
 - **Open questions:**
   - Exact switch predicate: parking mode only vs parking mode OR end‑of‑route.
   - How strict to be on deployment_config mismatches.
@@ -40,7 +42,11 @@
 - **Phase:** Phase 1
   - **Goal:** Wrapper‑level interleaving with a deployable combined model.
   - **Work items:** Implement wrapper + packer + config checks.
-  - **Validation:** Smoke test compile + run + upload.
+  - **Validation:** Smoke test compile + run.
+- **Phase:** Phase 2
+  - **Goal:** Harden deploy path for session IDs and production packaging.
+  - **Work items:** Upload validation, strict input/output matching, add regression guardrails.
+  - **Validation:** Successful upload + DMI config generation without manual fixes.
 
 ## Decisions
 - **2026-02-03:**
@@ -49,9 +55,20 @@
 - **2026-02-03:**
   - **Decision:** Do not use `interleave_control` or InterleavedModelRunner for this path.
   - **Rationale:** We are interleaving inside the wrapper and shipping a single model artifact.
+- **2026-02-05:**
+  - **Decision:** Generate a wrapper with unioned output keys and optional fields filled using none tokens.
+  - **Rationale:** Baseline and parking outputs differ; TorchScript requires a stable output schema.
+- **2026-02-05:**
+  - **Decision:** Infer primary wrapper input keys from `model.forward`.
+  - **Rationale:** Deployment config input keys can omit nav‑instruction args required by the wrapper.
+- **2026-02-05:**
+  - **Decision:** Fallback to ingested model when session config is unreadable on `/mnt/remote`.
+  - **Rationale:** Config YAML can be missing or blocked by storage permissions; we still need a deploy path.
 
 ## Notes
-- Testing plan not defined yet.
+- Working deploy runs:
+  - `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix _retrace2 --dilc_on --enable_parking --with_temporal_caching true`
+  - Output: `/mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc_retrace2/traces/model-000100000.torchscript`
 
 ### Findings: how `zmurez/pudo` implements interleaving (reference)
 - Interleaving is done in C++ via `InterleavedModelRunner` with transition events and warmup.

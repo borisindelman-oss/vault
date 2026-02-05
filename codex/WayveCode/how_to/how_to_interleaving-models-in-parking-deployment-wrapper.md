@@ -9,6 +9,23 @@ Think of interleaving like a relay race: the baseline model runs first, then han
 - **Wrapper-only path:** Python wrapper switches internally; no runner involvement.
 - **Debug visibility:** `interleaved_id` + `interleaved_event` are emitted for logging, not for switching.
 
+## Wrapper-only deploy path (current implementation)
+- Script: `wayve/ai/si/deploy_interleaved_models.py`
+- Wrapper: `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
+- What it does:
+  - Loads a **baseline TorchScript** model from session ID.
+  - Loads the **primary parking wrapper** (or falls back to ingested TorchScript if config is missing).
+  - Generates a **TorchScript-friendly route interleaving wrapper** with a fixed forward signature.
+  - Saves the combined model using `save_compiled_model`, just like a normal deploy.
+
+### Example run (session ID path)
+```
+DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- \
+  --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac \
+  --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc \
+  --suffix _retrace2 --dilc_on --enable_parking --with_temporal_caching true
+```
+
 ## Architecture in practice (where to look)
 - Wrapper signal generation (Python):
   - `wayve/ai/zoo/deployment/deployment_wrapper.py` → `ParkingWrapper`
@@ -58,6 +75,21 @@ Think of interleaving like a relay race: the baseline model runs first, then han
 - Switching logic in ROS is a dead end: ROS publishes for observability only.
 - Avoid updating policy from the secondary model during transitions (the code already prevents this).
 - Ensure model interface formats match across configs; interleaving validates equality.
+
+## TorchScript gotchas (and how we solved them)
+- **Output schema mismatch:** baseline and parking models don’t return the same number of outputs.
+  - **Fix:** build a union of output keys and generate a custom `RouteInterleavingOutput` NamedTuple.
+  - For missing optional outputs we insert `get_none_tensor_token()` so TorchScript sees a stable schema.
+- **Optional outputs typing:** TorchScript rejects Optional values in a `Tensor`-typed NamedTuple field.
+  - **Fix:** mark optional fields as `Optional[Tensor]` in the generated NamedTuple, and keep required outputs mandatory.
+- **Return type resolution in `save_compiled_model`:** it parses TorchScript return types and re-imports them.
+  - **Fix:** register the generated module in `sys.modules` so the return type can be resolved.
+- **Input keys mismatch:** the deployment config sometimes omits inputs the wrapper *actually* requires (e.g., `navigation_instructions`).
+  - **Fix:** infer the primary wrapper’s input keys from `model.forward` and override `deployment_config.input_keys`.
+- **Session config access on `/mnt/remote`:** `full_config.yml` can error, `config.yaml` can be missing.
+  - **Fix:** fallback to `load_ingested_model(session_id)` for the primary model so deploy can continue.
+- **Disk pressure in `/tmp`:** TorchScript codegen and downloads fail on full `/tmp`.
+  - **Fix:** run with `TMPDIR=/workspace/tmp` and a local cache dir.
 
 ## Lessons learned
 - TRT path: treat the wrapper as a **signal generator**, not a switch.
