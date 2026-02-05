@@ -17,6 +17,15 @@
 - Areas: `wayve/ai/si/`, `wayve/ai/zoo/deployment/`
 - Changes:
   - [[2026/02/Week-1/2026-02-05-interleaved-deploy-wrapper]]: generated TorchScript-friendly route wrapper, updated deploy script to use it, added switching heuristics (latched near‑end‑of‑route, auto‑park, reverse gear, 5 mph hysteresis), wired parking nav inputs, defined end‑of‑route as no‑route for parking mode, disabled parking wrapper end‑of‑route triggering, emitted `interleaved_id`/`interleaved_event` debug outputs, and validated `_retrace13` output.
+> #### 2026-02-05 — Route map signal thresholds
+- Topic: route map signal thresholds + map span interpretation
+- Labels: #route-map #docs #thresholds
+- Branch: none
+- PR: none
+- Change type: docs
+- Areas: `codex/WayveCode/how_to/`
+- Changes:
+  - [[2026/02/Week-1/2026-02-05-route-map-signal-thresholds]]: added newsletter-style how-to explaining map span, route signal sums, and `5e4` threshold intuition; updated how-to index.
 > #### 2026-02-04 — Interleaving wrapper debug signals
 - Topic: interleaving wrapper debug outputs + radar arg fix
 - Labels: #parking #deployment #interleaving #torchscript

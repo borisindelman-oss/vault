@@ -8,6 +8,7 @@ Think of this as a living book: short, practical chapters that explain **how our
 3. [How to trigger parking at end-of-route without retraining (wrapper route-end)](how_to_route-end-parking-trigger.md)
 4. [How to interleave baseline + parking/PUDA models in the deployment wrapper](how_to_interleaving-models-in-parking-deployment-wrapper.md)
 5. [How to build an end-to-end inference visualization tool (new vis tool)](how_to_inference-visualization-tool.md)
+6. [How to reason about route map signal thresholds (near-end-of-route)](how_to_route-map-signal-thresholds.md)
 
 ## How to Use This Book
 - Each chapter is a standalone `how_to_[topic].md` file.
