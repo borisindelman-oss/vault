@@ -1,8 +1,8 @@
 # Interleaving models in parking deployment wrapper
 
 ## Overview
-- **What it is:** A single deployable interleaving model that runs baseline driving or parking wrapper outputs behind one deployment wrapper interface.
-- **Why it matters:** Vehicle/sim consume one session ID, while model selection happens inside the wrapper.
+- **What it is:** A single deployable model session that interleaves baseline driving and parking behavior inside one deployment wrapper.
+- **Why it matters:** Runtime consumes one standard session/model artifact while branch selection happens internally.
 - **Primary users:** Parking + deployment validation workflows (sim/HIL/model CI).
 
 ## Status
@@ -10,71 +10,92 @@
 - **Status:** active
 - **Last updated:** 2026-02-08
 - **Current priorities:**
-  - Confirm switching-path stability in HIL (both trigger-based and periodic switch test mode).
-  - Keep deploy flow parity with `deploy.py` argument/init behavior.
-  - Track and resolve runtime failures related to flash-attention path on switch.
+  - Keep deploy-path parity with `deploy.py` initialization semantics.
+  - Validate robust branch switching in HIL under production switching conditions.
+  - Keep interleaving telemetry visible (`interleaved_id`, `interleaved_event`).
 - **Blockers:**
-  - HIL still failing in some switch-path variants (`This Python function is annotated to be ignored and cannot be run` from perceiver flash-attention path).
+  - None.
 
 ## Requirements
-- **Problem statement:** Build one model artifact that can switch between baseline driving and parking behavior while preserving deploy-time compatibility.
+- **Problem statement:** Build one deployable artifact that can switch baseline/parking behavior without changing downstream runtime integration.
 - **Target users:** Deployment engineers validating model behavior in sim/HIL.
-- **Integrations:** `deploy_interleaved_models.py`, `RouteInterleavingWrapperImpl`, model ingest/upload path, model CI.
+- **Integrations:** `deploy_interleaved_models.py`, `interleaving_stopping_wrapper.py`, deploy upload pipeline.
 - **Constraints:**
-  - Keep stable output schema for TorchScript.
-  - Keep wrapper interface compatible with existing deploy/runtime expectations.
-  - Preserve nav/gear/control input handling across both branches.
+  - Stable TorchScript-compatible input/output contract.
+  - Single deployment-wrapper interface.
+  - Correct handling of nav inputs, driving controls, gear-related fields, and optional outputs.
 - **Success criteria:**
-  - Upload succeeds and session is runnable by validation tools.
-  - No crash when branch switches.
-  - Debug telemetry (`interleaved_id`, `interleaved_event`) shows expected transitions.
+  - Successful compile/upload as a standard deploy model session.
+  - Correct switching under route/parking triggers.
+  - Stable behavior around switch boundaries.
 
 ## Design
-- **Approach:**
-  - `RouteInterleavingWrapperImpl` inherits `DeploymentWrapperBase` and implements `_forward_with_additional_inputs(...)`.
-  - `make_wrapper_class(...)` generates the public `forward(...)` signature.
-  - Wrapper decides model branch, calls chosen sub-wrapper, and emits a fixed `RouteInterleavingOutput`.
-- **Model load modes (current decision):**
-  - `--primary_model_load_mode`: `wrapper|ingested`
-  - `--baseline_model_load_mode`: `wrapper|ingested`
-  - `torchscript` mode removed for symmetry and simpler behavior.
-- **Switching modes:**
-  - Normal: heuristic-based decision (`near_end` latch, initiate auto-park, reverse gear, speed hysteresis).
-  - Debug: `--switch_every_n_forwards N` forces periodic branch toggles.
-- **Cache warmup:**
-  - `--num_cache_warmup_frames` controls how many frames return cached output after switch.
-  - `0` disables cached warmup output reuse.
-- **Debug outputs:**
-  - `interleaved_id`: active branch (`0` baseline, `1` parking).
-  - `interleaved_event`: `1` on switch frame, else `0`.
+- **Wrapper shape:**
+  - `RouteInterleavingWrapperImpl` inherits `DeploymentWrapperBase`.
+  - Interleaving logic lives in `_forward_with_additional_inputs(...)`.
+  - Public `forward(...)` is generated through `make_wrapper_class(...)`.
+- **Model loading (intended):**
+  - Both models support `wrapper|ingested` load modes.
+  - This keeps the configuration symmetric for primary and baseline models.
+- **Switching (intended production policy):**
+  - Enter parking branch if any trigger is active:
+    - near-end-of-route (latched),
+    - initiate-auto-park signal,
+    - reverse gear,
+    - end-of-route/no-route condition.
+  - Return to baseline only when parking triggers are inactive and speed hysteresis condition is satisfied.
+- **Switch stabilization:**
+  - `num_cache_warmup_frames` controls post-switch warmup output reuse.
+  - Warmup policy applies only immediately after actual branch transitions.
+- **Telemetry:**
+  - `interleaved_id` and `interleaved_event` are emitted as observability outputs for active branch and transition frames.
+
+### Switching flow (desired behavior)
+```mermaid
+flowchart TD
+    A["near_end_of_route (latched)"] --> E["parking_trigger"]
+    B["initiate_auto_park"] --> E
+    C["reverse_gear"] --> E
+    D["end_of_route (no-route)"] --> E
+    E -->|true| F["use parking model"]
+    E -->|false| G{"speed > hysteresis threshold?"}
+    G -->|true| H["use baseline model"]
+    G -->|false| I["keep current model"]
+    F --> J["if switched: reset warmup counter"]
+    H --> J
+    I --> J
+```
 
 ## Build Phases
 - **Phase:** Phase 1
   - **Goal:** First deployable interleaving wrapper and successful compile/upload.
-  - **Validation:** TorchScript compiles, deploy output generated.
+  - **Validation:** TorchScript compiles and upload succeeds.
 - **Phase:** Phase 2
-  - **Goal:** Runtime robustness during branch switching in model CI/HIL.
-  - **Validation:** Forward-pass stability for switching scenarios.
+  - **Goal:** Production-grade switching stability in sim/HIL.
+  - **Validation:** Switches occur correctly without runtime regressions.
 
 ## Decisions
 - **2026-02-05:**
   - **Decision:** Use wrapper-level interleaving and ship as one model artifact.
-  - **Rationale:** Keep runtime integration identical to single-session deploy model consumption.
+  - **Rationale:** Keeps runtime integration identical to standard single-session deploy consumption.
 - **2026-02-05:**
   - **Decision:** Emit `interleaved_id` and `interleaved_event`.
-  - **Rationale:** Provide direct observability of branch state and transitions.
+  - **Rationale:** Preserve direct visibility into active branch and switch events.
 - **2026-02-08:**
   - **Decision:** Standardize both model load modes to `wrapper|ingested`.
-  - **Rationale:** Remove asymmetric behavior and keep both model paths configurable in the same way.
-- **2026-02-08:**
-  - **Decision:** Keep periodic switch mode and cache warmup controls as first-class CLI options.
-  - **Rationale:** Needed for deterministic switch testing and switch-path debugging in HIL.
+  - **Rationale:** Remove asymmetric behavior and keep configuration consistent across both submodels.
+
+## Reference notes (kept)
+### `zmurez/pudo` reference
+- `wayve/ai/experimental/compile_with_baseline.py` is the key reference for interleaving compile/deploy behavior and flash-attention handling decisions in that branch.
+- It informed parity checks for deploy init behavior and runtime assumptions around switching.
+
+### `main` interleaving wrapper reference
+- `wayve/ai/zoo/deployment/interleaved_wrapper.py` is the reference for interleaving telemetry conventions:
+  - `interleaved_id`
+  - `interleaved_event`
+- We keep these signals aligned so model behavior remains inspectable in the same way.
 
 ## Notes
-- Notable upload variants used in validation:
-  - `__interleaved6`: known good reference for current branch behavior.
-  - `interleaved_every_30`: periodic switching variant (exposed switch-path runtime failure in HIL).
-  - `__interleaved_every_30_2`: follow-up periodic switching variant under test.
-  - `interleaving_30_no_cache`: periodic switching with `num_cache_warmup_frames=0`.
-- Console link (latest no-cache periodic upload):
+- Console link (latest no-cache periodic upload, retained for traceability):
   - `https://console.sso.wayve.ai/model/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bcinterleaving_30_no_cache`
