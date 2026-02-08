@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-08 — Model info finder skill
+- Topic: codex skill for model-catalogue lookup
+- Labels: #skill #model-catalogue #cli #automation
+- Branch: none
+- PR: none
+- Change type: code
+- Areas: `~/.codex/skills/model-info-finder/`
+- Changes:
+  - [[2026/02/Week-2/2026-02-08-model-info-finder-skill]]: created `model-info-finder` skill with nickname/author lookup, basic/deep output modes, endpoint reference, and validated smoke tests.
 > #### 2026-02-05 — Interleaved deploy wrapper
 - Topic: route interleaving deploy wrapper + session-id resolution
 - Labels: #parking #deployment #interleaving #torchscript
