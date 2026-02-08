@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-08 — Interleaved compile vs Zak comparison
+- Topic: route interleaving compile parity with `zmurez/pudo`
+- Labels: #parking #deployment #interleaving #torchscript #debug
+- Branch: current
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/zoo/deployment/`, `wayve/ai/si/`
+- Changes:
+  - [[2026/02/Week-2/2026-02-08-interleaved-compile-vs-zak]]: compared wrapper/compile flow with Zak’s `compile_with_baseline.py`, replaced `torch.jit.Attribute` routing state with plain Python attributes to match eager+script behavior, and validated deploy compile success with `__interleaved4_check2`.
 > #### 2026-02-08 — Model info finder skill
 - Topic: codex skill for model-catalogue lookup
 - Labels: #skill #model-catalogue #cli #automation
