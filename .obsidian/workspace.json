@@ -161,12 +161,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/projects/model-cli-tool.md",
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "model-cli-tool"
+              "title": "Untitled"
             }
           }
         ],
@@ -346,12 +346,14 @@
   },
   "active": "20561bae802a9484",
   "lastOpenFiles": [
+    "codex/WayveCode/2026/02/Week-2/2026-02-08-interleaved-compile-vs-zak.md",
+    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+    "codex/WayveCode/projects.md",
+    "codex/WayveCode/projects/model-cli-tool.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-08-model-info-finder-skill.md",
     "codex/WayveCode/2026/02/Week-2",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/todo-list.md",
-    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper.md",
     "Untitled.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-visualise-interleaving-wrapper.md",
@@ -369,7 +371,6 @@
     "codex/WayveCode/2026/02",
     "codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
     "codex/WayveCode/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates.md",
-    "codex/WayveCode/projects/model-cli-tool.md",
     "codex/WayveCode/how_to/how_to_parking-stopping-mode-dilc.md",
     "Excalidraw/parking_model_arch.excalidraw",
     "Excalidraw/head_options.excalidraw.md",
@@ -377,7 +378,6 @@
     "Pasted Image 20260111140517_906.png",
     "Pasted Image 20260122232147_461.png",
     "codex/WayveCode/how_to/how_to_index.md",
-    "codex/WayveCode/how_to/how_to_inference-visualization-tool.md",
     "codex/WayveCode/how_to",
     "codex/WayveCode/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
