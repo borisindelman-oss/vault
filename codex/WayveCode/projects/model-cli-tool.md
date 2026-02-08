@@ -8,7 +8,7 @@
 ## Status
 - **Phase:** Phase 1
 - **Status:** active
-- **Last updated:** 2026-02-02
+- **Last updated:** 2026-02-08
 - **Current priorities:**
   - Define CLI commands (search, details, author quick search).
   - Implement model-catalogue API client + auth handling.
@@ -51,6 +51,23 @@
 
 ## Notes
 - **Base examples (Jupyter snippets):**
+- **Run with curl only (no Bazel/Python deps):**
+
+```bash
+# Optional auth token (only if your environment requires it)
+export MODEL_CATALOGUE_TOKEN="<token>"
+
+# 1) Search model(s) by nickname/id/author-like string
+curl -sS -G "https://model-catalogue-api.azr.internal.wayve.ai/v2/models/search" \
+  --data-urlencode "search=idealistic-opossum-cyan" \
+  --data-urlencode "limit=5" \
+  --data-urlencode "ingested_only=true" \
+  ${MODEL_CATALOGUE_TOKEN:+-H "Authorization: Bearer $MODEL_CATALOGUE_TOKEN"}
+
+# 2) Fetch details for a specific model id (replace <model_id>)
+curl -sS "https://model-catalogue-api.azr.internal.wayve.ai/v3/model/<model_id>" \
+  ${MODEL_CATALOGUE_TOKEN:+-H "Authorization: Bearer $MODEL_CATALOGUE_TOKEN"}
+```
 
 ```python
 import os
