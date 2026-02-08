@@ -1,225 +1,184 @@
-```
-➜ bazel run //wayve/ai/si:deploy -- --session_path /mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix __test --enable_parking --with_temporal_caching true --upload --dilc_on
-INFO: Invocation ID: 953f36c5-2c60-433d-afb7-c7ba4a37109e
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:87:18: target 'grpc_cpp_plugin' is both a rule and a file; please choose another name for the rule
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:93:18: target 'grpc_csharp_plugin' is both a rule and a file; please choose another name for the rule
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:99:18: target 'grpc_node_plugin' is both a rule and a file; please choose another name for the rule
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:105:18: target 'grpc_objective_c_plugin' is both a rule and a file; please choose another name for the rule
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:111:18: target 'grpc_php_plugin' is both a rule and a file; please choose another name for the rule
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:117:18: target 'grpc_python_plugin' is both a rule and a file; please choose another name for the rule
-WARNING: /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/external/com_github_grpc_grpc/src/compiler/BUILD:123:18: target 'grpc_ruby_plugin' is both a rule and a file; please choose another name for the rule
-INFO: Analyzed target //wayve/ai/si:deploy (1723 packages loaded, 154909 targets configured).
-INFO: Found 1 target...
-Target //wayve/ai/si:deploy up-to-date:
-  bzl-build/bin/wayve/ai/si/deploy
-INFO: Elapsed time: 8.748s, Critical Path: 0.98s
-INFO: 1 process: 1 internal.
-INFO: Build completed successfully, 1 total action
-INFO: Running command line: bzl-build/bin/wayve/ai/si/deploy --session_path /mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix __test --enable_parking --with_temporal_caching true --upload --dilc_on
-INFO     09:24:27,003 azure.identity._credentials.environment No environment configuration found.
-WARNING  09:24:27,003 services.common.datadog_client datadog_missing_environment_setup api_key_present=True, app_key_present=False, statsd_host_present=False
-INFO     09:24:56,003 weightwatcher Using Scipy for SVD
-INFO     09:24:56,003 weightwatcher Torch CUDA available, using torch_wrapper
-INFO     09:24:56,003 weightwatcher Using EPSILON = 6e-05
-INFO     09:24:56,003 weightwatcher Using EVALS_THRESH = 0.0001
+Boris Indelman  [7:40 PM]  
+
+Hey Zak  
+  
+I want to implement interleaving for our model. I've looked in your branch and saw that you use `interleave_control` ?  
+But when I asked Naman he said it's not working with torchscript.  
+Are you converting to trt?
+
+Zak Murez  [8:06 PM]  
+
+Currently I am using the legacy torchscript interleaving. See [here](https://github.com/wayveai/WayveCode/blob/zmurez/pudo/wayve/ai/experimental/compile_with_baseline.py). Later we can switch to robot interleaving once that settles. Note that I don't currently output interleave outputs so we don't log which model is in control but this can be added if you want.
+
+  
+
+Boris Indelman  [8:08 PM]  
+
+thanks I didn't see that. That's what I was expecting to see.  
+how would you log that? I've been using prints but I rather see it in foxglove  
+  
+downside for me is that each combination of baseline and pudo model would need licensing ![:aaahh:](https://emoji.slack-edge.com/T6A5E9XGT/aaahh/572e5508d11ae33a.png)
+
+  
+
+[8:09 PM]
+
+also how do you calculate 100 m from pin? green pixels count?
+
+  
+
+Zak Murez  [8:25 PM]  
+
+Green pixel count (not actually calibrated to meters I just said that to make it easy)
+
+  
+
+Boris Indelman  [8:27 PM]  
+
+yes I figured
+
+  
+
+Zak Murez  [8:28 PM]  
+
+See [https://github.com/wayveai/WayveCode/blob/main/wayve/ai/scripts/interleaved/compile.py](https://github.com/wayveai/WayveCode/blob/main/wayve/ai/scripts/interleaved/compile.py)  
+[https://github.com/wayveai/WayveCode/blob/main/wayve/ai/zoo/deployment/interleaved_wrapper.py#L20](https://github.com/wayveai/WayveCode/blob/main/wayve/ai/zoo/deployment/interleaved_wrapper.py#L20)  
+  
+If you ingest your model by itself then interleave with this script then it will be logged in the mcaps and be ingested throughout (including showing on the console).
+
+  
+
+[8:29 PM]
+
+Licensing we always need to do 1 licensing route per new model. I don't see why this leads to more licensing routes?
+
+  
+
+[8:29 PM]
+
+So make your own interleave script but make sure the nicknames match the standard and then output these 2 signals
+
+  
+
+Boris Indelman  [8:31 PM]  
+
+I meant that if the interleaving was in the InterleavedModelRunner then there is no need for another licensing. We just specify in the experiment which 2 models to interleave
+
+  
+
+Zak Murez  [8:35 PM]  
+
+Oh, you mean for A/B comparison of 2 models? Or fix mixing baseline with a pudo model?
+
+  
+
+[8:38 PM]
+
+Regardless, I always just test the mix and never test the individual model. So no need for extra licnesing. Later if the model is good and we want to run it by itself we need to do an extra licensing route. Although here I use driving assertiveness as a hard switch. eco is only model 1, bold is only model 2, normal is the mix
+
+  
+
+Zak Murez  [8:47 PM]  
+
+Do you have 15mins to chat now? Got a question for you but a meeting in 15mins
+
+  
+
+Boris Indelman  [8:48 PM]  
+
+not right now. I'll try to catch you later today ![:pray::skin-tone-3:](https://a.slack-edge.com/production-standard-emoji-assets/14.0/apple-medium/1f64f-1f3fc@2x.png)
+
+  
+
+Zak Murez  [8:48 PM]  
+
+Sounds good.
+
+  
+
+Boris Indelman  [8:45 AM]  
+
+Hey Zak  
+  
+How does temporal caching works in your interleaving imp? Do you assume that it's ok when switching to use the previous model caching?
+
+  
+
+Zak Murez  [8:48 AM]  
+
+You get cache misses following the swap. Models are trained with temporal dropout to make them robust to this. But that doesn't fully resolve it so we continue to send the last waypoint plan (repeat the last valid one) for the first few forward passes. See [https://github.com/wayveai/WayveCode/blob/main/wayve/ai/zoo/deployment/interleaved_wrapper.py#L98](https://github.com/wayveai/WayveCode/blob/main/wayve/ai/zoo/deployment/interleaved_wrapper.py#L98)
 
 
-            [Deploy Script Configuration]
-            Session path:           /mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc
-            Output directory:       Not specified
-            Step:                   Latest
-            Suffix:                 __test
-            Upload to console:      True
-            Export to ONNX:         False
-            Temporal caching:       True
-            Speed limit clamp:      Same as trained model
-            Behavior control:       Default
-            Interface version:      dmi
-            Vehicle model:          None
-            Deployment country:     Auto-infer from GPS
-            Use prototype input:    None
-            DILC enabled:           True
-            Dtype override:         Same as trained model
-            Autocast dtype:         float16
-            Speed sign output:      Same as trained model
-            Road speed limit:       False
-            Road with set speed:    False
-            Supported platforms:    gen1, gen2
-            Spoofed speed signs:    False
-            Disable averager:       False
-            ODD output enabled:     Same as trained model
-            Backend optimisations:  NVIDIA optimisations
-            Enable parking:         True
 
-        
-ERROR    09:25:01,003 ..lib.session git_hash_mismatch message=
 
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  Currently running code is at a different git commit to when the session directory was created. Restoring training from this point may cause problems.
-  This is fully allowed for now, but may cause severe regression guarantee issues in the future.
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-WARNING  09:25:03,003 .configs.versioning.common config_migration message=config_version not found in config, setting to 0, but migrations may not be applied correctly
-INFO     09:25:06,003 ..zoo.st.checkpoints load_state_dict message=Checkpoint azure://wayveprodmlexperiments/training-session-store/WayveFoundationModel/wfm_yolo/session_2025_08_19_11_21_08_yolo_ablations_st-16-heads/checkpoints/model-checkpoint-001000000.ckpt
-INFO     09:25:06,003 ..lib.checkpoint get_checkpoint_path message=Checkpoint azure://wayveprodmlexperiments/training-session-store/WayveFoundationModel/wfm_yolo/session_2025_08_19_11_21_08_yolo_ablations_st-16-heads/checkpoints/model-checkpoint-001000000.ckpt already exists in cache at /workspace/.cache/ai_lib_cache/models/wayveprodmlexperiments/training-session-store/WayveFoundationModel/wfm_yolo/session_2025_08_19_11_21_08_yolo_ablations_st-16-heads/checkpoints/model-checkpoint-001000000.ckpt
-INFO     09:25:11,003 ..zoo.st.checkpoints load_state_dict message=Missing key adaptors.waypoints.dropout.dropout_token, adding default value for backward compatibility
-WARNING  09:25:11,003 ..zoo.st.input_adaptors.speed_limit continuous_speed_limit_adaptor message=Missing freqs buffer in checkpoint, setting to initialized value for backward compatibility
-WARNING  09:25:11,003 ..zoo.st.input_adaptors.speed_limit continuous_speed_limit_adaptor message=Missing max_val buffer in checkpoint, setting to initialized value for backward compatibility
-WARNING  09:25:11,003 ..zoo.st.input_adaptors.speed_limit continuous_speed_limit_adaptor message=Missing norm buffer in checkpoint, setting to initialized value for backward compatibility
-WARNING  09:25:11,003 ..zoo.st.input_adaptors.pose pose_adaptor message=Missing rotation_matrix buffer in checkpoint, setting to initialized value for backward compatibility
-WARNING  09:25:11,003 ..zoo.st.input_adaptors.temporal continuous_time_encoding message=Missing max_t buffer in checkpoint, setting to initialized value for backward compatibility
-WARNING  09:25:11,003 ..zoo.st.input_adaptors.temporal continuous_time_encoding message=Missing w buffer in checkpoint, setting to initialized value for backward compatibility
-INFO     09:25:11,003 ..compression.pruning.pruning init pruning_enabled=False, total_param_size=0, pruning_ratio=1.0, desired_total_param_size=0.0
-INFO     09:25:11,003 ..lib.checkpoint get_checkpoint_path message=Checkpoint https://wayveprodmlexperiments.blob.core.windows.net/training-session-store/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc/checkpoints/model-checkpoint-000100000.ckpt already exists in cache at /workspace/.cache/ai_lib_cache/models/wayveprodmlexperiments/training-session-store/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc/checkpoints/model-checkpoint-000100000.ckpt
-WARNING  09:25:14,003 __main__ checkpoint_load_non_strict message=Loaded checkpoint with strict=False; some keys did not match., missing_keys=[], unexpected_keys=['model.input_adaptor.adaptors.gear_direction.min_val', 'model.input_adaptor.adaptors.gear_direction.max_val', 'model.input_adaptor.adaptors.gear_direction.dropout.dropout_token', 'model.input_adaptor.adaptors.gear_direction.embedding.weight'], missing_count=0, unexpected_count=4
-INFO     09:25:15,003 .models.deployment enable_temporal_caching parent_model=MIMOSTTransformer, changed_modules=['VideoSTAdaptor']
-INFO     09:25:15,003 .models.deployment deployment_wrapper wrapper_impl_class=<class 'wayve.ai.zoo.deployment.deployment_wrapper.ParkingDeploymentWrapperImpl'>, wrapper_kwargs={'deployment_vehicle_model_override': None, 'max_tick_driving_plan': 0, 'deployment_country': None, 'dilc_on': True, 'deployment_driving_controls_keys': (0, 1, 3)}
-INFO     09:25:30,003 ..lib.deploy_decorators prune_model status=start, num_parameters=587882500, model_size_bytes=2351056857
-INFO     09:25:30,003 ..lib.deploy_decorators prune_model status=success, duration_ms=6.0, num_parameters=587882500, model_size_bytes=2351056857
-╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/si/deploy.py:673 in <module>                                                                                                 │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 673 │   deploy(                                                                                                                                                                                                                                                            │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/si/deploy.py:573 in deploy                                                                                                   │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 573 │   compile_and_save_model(                                                                                                                                                                                                                                            │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_lightning_utilities/site-packages/lightning_utilities/core/rank_zero.py:41 in wrapped_fn                                               │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  41 │   │   │   return fn(*args, **kwargs)                                                                                                                                                                                                                                 │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/lib/deploy.py:296 in compile_and_save_model                                                                                  │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 296 │   compiled_model, deployment_config = compile_model(module, deployment_config, jit_fre                                                                                                                                                                               │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_lightning_utilities/site-packages/lightning_utilities/core/rank_zero.py:41 in wrapped_fn                                               │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  41 │   │   │   return fn(*args, **kwargs)                                                                                                                                                                                                                                 │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/lib/deploy.py:372 in compile_model                                                                                           │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 372 │   │   model_jit = torch.jit.script(                                                                                                                                                                                                                                  │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_script.py:1443 in script                                                                                │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 1443 │   │   ret = _script_impl(                                                                                                                                                                                                                                           │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_script.py:1152 in _script_impl                                                                          │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 1152 │   │   return torch.jit._recursive.create_script_module(                                                                                                                                                                                                             │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:556 in create_script_module                                                                │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  556 │   return create_script_module_impl(nn_module, concrete_type, stubs_fn)                                                                                                                                                                                              │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:629 in create_script_module_impl                                                           │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  629 │   │   create_methods_and_properties_from_stubs(                                                                                                                                                                                                                     │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:465 in create_methods_and_properties_from_stubs                                            │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  465 │   concrete_type._create_methods_and_properties(                                                                                                                                                                                                                     │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:1026 in compile_unbound_method                                                             │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 1026 │   │   create_methods_and_properties_from_stubs(concrete_type, (stub,), ())                                                                                                                                                                                          │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:465 in create_methods_and_properties_from_stubs                                            │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  465 │   concrete_type._create_methods_and_properties(                                                                                                                                                                                                                     │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:1026 in compile_unbound_method                                                             │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 1026 │   │   create_methods_and_properties_from_stubs(concrete_type, (stub,), ())                                                                                                                                                                                          │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:465 in create_methods_and_properties_from_stubs                                            │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  465 │   concrete_type._create_methods_and_properties(                                                                                                                                                                                                                     │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_recursive.py:993 in try_compile_fn                                                                      │
-│                                                                                                                                                                                                                                                                              │
-│ ❱  993 │   return torch.jit.script(fn, _rcb=rcb)                                                                                                                                                                                                                             │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_script.py:1443 in script                                                                                │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 1443 │   │   ret = _script_impl(                                                                                                                                                                                                                                           │
-│                                                                                                                                                                                                                                                                              │
-│ /workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/pip-core_torch/site-packages/torch/jit/_script.py:1214 in _script_impl                                                                          │
-│                                                                                                                                                                                                                                                                              │
-│ ❱ 1214 │   │   fn = torch._C._jit_script_compile(                                                                                                                                                                                                                            │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-RuntimeError: 
-attribute lookup is not defined on python value of type 'EnumTypeWrapper':
-  File "/workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py", line 1732
-        # Require valid DrivePositionV2 values
-        valid_positions = (
-            DrivePositionV2.DRIVE_POSITION_V2_UNKNOWN,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ <--- HERE
-            DrivePositionV2.DRIVE_POSITION_V2_PARK,
-            DrivePositionV2.DRIVE_POSITION_V2_NEUTRAL,
-'_convert_gear_position_to_direction' is being compiled since it was called from 'ParkingDeploymentWrapper._add_vehicle_gear_direction_input'
-  File "/workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py", line 1794
-    def _add_vehicle_gear_direction_input(self, dict_inputs: SiInputs, vehicle_gear_position: Tensor) -> SiInputs:
-        """Add vehicle gear direction input derived from DrivePositionV2 gear position."""
-        gear_direction = self._convert_gear_position_to_direction(vehicle_gear_position)
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ <--- HERE
-        dict_inputs[DataKeys.VEHICLE_GEAR_DIRECTION] = gear_direction
-        return dict_inputs
-'ParkingDeploymentWrapper._add_vehicle_gear_direction_input' is being compiled since it was called from 'ParkingDeploymentWrapper._forward_with_additional_inputs'
-  File "/workspace/.cache/bazel/63bf4bd60d62407ea3cc09dd362c8974/execroot/WayveCode/bazel-out/k8-opt/bin/wayve/ai/si/deploy.runfiles/WayveCode/wayve/ai/zoo/deployment/deployment_wrapper.py", line 1923
-        )
-    
-        dict_inputs = self._add_vehicle_gear_direction_input(dict_inputs, vehicle_gear_position)
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ <--- HERE
-        dict_inputs = self._add_driving_controls_inputs(dict_inputs, driving_controls)
-    
-'ParkingDeploymentWrapper._forward_with_additional_inputs' is being compiled since it was called from 'ParkingDeploymentWrapper.forward'
-  File "/tmp/tmp1zak53xo/generated_wrapper.py", line 9
-    def forward(self, camera_timestamp: Tensor, camera_images: Tensor, camera_intrinsics: Tensor, camera_extrinsics: Tensor, camera_distortion: Tensor, vehicle_timestamp: Tensor, vehicle_speed: Tensor, vehicle_curvature: Tensor, vehicle_pose: Tensor, map_speed_limit: 
-Tensor, map_route: Tensor, vehicle_indicator_state: Tensor, gps_latitude_deg: Tensor, gps_longitude_deg: Tensor, vehicle_model: Tensor, vehicle_gear_position: Tensor, driving_controls: Tensor) -> OnBoardDrivingOutput:
-        """Run on the vehicle without radar inputs."""
-        return self._forward_with_additional_inputs(
-               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            camera_timestamp=camera_timestamp,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            camera_images=camera_images,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            camera_intrinsics=camera_intrinsics,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            camera_extrinsics=camera_extrinsics,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            camera_distortion=camera_distortion,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            vehicle_timestamp=vehicle_timestamp,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            vehicle_speed=vehicle_speed,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            vehicle_curvature=vehicle_curvature,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            vehicle_pose=vehicle_pose,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~
-            map_speed_limit=map_speed_limit,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            map_route=map_route,
-            ~~~~~~~~~~~~~~~~~~~~
-            vehicle_indicator_state=vehicle_indicator_state,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            gps_latitude_deg=gps_latitude_deg,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            gps_longitude_deg=gps_longitude_deg,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            vehicle_model=vehicle_model,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            vehicle_gear_position=vehicle_gear_position,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            driving_controls=driving_controls,
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            radar_data=None,
-            ~~~~~~~~~~~~~~~~
-            radar_timestamp=None,
-            ~~~~~~~~~~~~~~~~~~~~~
-            radar_extrinsics=None,
-            ~~~~~~~~~~~~~~~~~~~~~ <--- HERE
-        )
-```
+Tom Boehling  [11:31 AM]  
+
+replied to a thread:
+
+Hi everyone, the mapped Uber data looks really promising! With the filters I have in place now, I only saw relevant data so far.  
+  
+I’ve mapped the Uber PUDO data to our all_data table.  Each PUDO event is matched to the longest standstill segment within a 10-second window.  I’ve created a new table containing three timestamps: the Uber timestamp, the start of standstill, and the end of standstill.  
+  
+Notes:  
+
+- For pre-training one could easily filter for standstill_start - 15s and standstill_end + 15 (should roughly give the whole PUDO event).
+    - [@boris](https://wayve-ai.slack.com/team/U09RQU5V68M), [@tapan.mujumdar](https://wayve-ai.slack.com/team/U09NSLK1Q82), [@alon.davidi](https://wayve-ai.slack.com/team/U09NW7EHKD2) What do you need for training? Is the table enough, or do you have another table schema in mind? I can change it depending on your needs.
+- I included a few columns for training data selection: pickup/dropoff, road_class, very big geo index, night/day, weather, gear_reversed, acceleration, curvature_change)
+- Important: timestamps are in seconds not us (so multiply by 1_000_000)
+
+  
+  
+Statistics and Visualisations: [Databricks](https://adb-7835963732836817.17.azuredatabricks.net/editor/notebooks/246569510427994?o=7835963732836817#command/5825235315928253)  
+  
+A few stats:  
+
+- total data from uber: 344,474 trips -> **688,948** **PUDOs**
+- standstill segments **based on gear**: **124,688 PUDO matches**
+    - bad matching outcome - no further investigation
+- standstill segments **based on speed==0**: **457,174 PUDO matches**
+    - only complete data (excluding beginning/end of runs): 415,138 PUDO matches
+        - **only valid data (excluding wrong uber trip data): 407,030 PUDO matches**
+    - Either gear status is not always correct or Uber drivers often only hit the brakes for PUDO
+-  [@Malik](https://wayve-ai.slack.com/team/U036H2VAXRD) unrelated to PUDO, we could also do some trip based analysis, like how long trips usually are, ... (I don't know if there is a need)
+
+  
+  
+Extended visualisation:  
+
+- I only wanted to add a plot with speed/gear for validation, but Codex decided to also make it look better ![:smile:](https://a.slack-edge.com/production-standard-emoji-assets/14.0/apple-medium/1f604@2x.png)
+- I synced the timestamps with the video
+- See new visualisation below + explanation of timeseries speed/gear plot
+
+
+
+
+**FYI – Urban PUDO testing update**  
+There is now a **dedicated temporary Urban-Only PUDO route** (L1→~~L1~~,L2 Alpha-1 derived, Market Road start/end).  
+**Controls are mandatory:**  
+ • **Model:** must be tagged _Urban-PUDO-Only_ and _Not-For-Highway_, with clear notes on the model timeline  
+ • **Experiment:** description must clearly and obviously state _PUDO urban testing only – no highway use_  
+ • **Licence** **Route:** restricted to urban only  
+[PUDO Temp Urban Licence (expires 01/04/2026) – Start at Market Road](https://console.sso.wayve.ai/route/00bdc0dc-6d04-4df2-a917-adae96ef9176)  
+Models approved under this process **can only be used for PUDO testing**, are **urban-restricted**, **time-limited**, and will be reviewed before the end of Q1.  
+**VSOs are still expected to flag any unsafe or dangerous behaviour observed during these temporary licensing runs**, as per normal processes.  
+**Shift Leads need to be aware of these restrictions** when planning and assigning runs.  
+Please reach out if there are any questions and read attached safety justification (edited)
+
+
+
+FYI there have been a few updates to the PUDO SOP document regarding where/what a good PUDO stop is in the US. Specifically, we've edited a couple of situations/spots where we DO stop, and where we DON"T stop:  
+  
+
+- **Never stop:**
+    - Alongside curbs with "**No Stopping**" signs, whether there's a red curb or not
+- **Allowed to stop:**
+    - Alongside curbs with "**No Parking**" signs, even if there's a red curb
+
+  
+  
+Also, we were initially running PUDO missions and choosing PUDO stop locations with the assumption that the passenger would be waiting there and would just hop in. However, after some consideration, we've decided that it's more likely that we might have to wait a couple minutes for the passenger to come out and get in the vehicle, and we should be choosing PUDO stop locations based on that. If you don't feel comfortable stopping in location for two minutes (double parking on a narrow road, stopping in a red zone, stopping behind parked cars in a parking lot, etc), then choose a new place to stop.  
+  
+Please read the SOP document for more details, and keep in mind that it still may change as we continue testing this feature. And special thanks to [@Victor](https://wayve-ai.slack.com/team/U09E5JQC0ES) for helping me hash these new points out!  
+  
+[https://docs.google.com/document/d/19_supcKMuus13WO_Ub9s3s-cLXWIpE74Rdv6gveTbBM/edit?usp=sharing](https://docs.google.com/document/d/19_supcKMuus13WO_Ub9s3s-cLXWIpE74Rdv6gveTbBM/edit?usp=sharing)

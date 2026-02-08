@@ -161,12 +161,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "interleaving-models-in-parking-deployment-wrapper"
+              "title": "Untitled"
             }
           }
         ],
@@ -346,6 +346,7 @@
   },
   "active": "20561bae802a9484",
   "lastOpenFiles": [
+    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-visualise-interleaving-wrapper.md",
     "codex/WayveCode/how_to/how_to_route-map-signal-thresholds.md",
     "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
@@ -354,7 +355,6 @@
     "codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
     "codex/WayveCode/how_to/how_to_route-end-parking-trigger.md",
     "codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper.md",
-    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-interleaved-deploy-wrapper.md",
     "codex/WayveCode/projects.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-04-deploy-interleaved-run.md",
