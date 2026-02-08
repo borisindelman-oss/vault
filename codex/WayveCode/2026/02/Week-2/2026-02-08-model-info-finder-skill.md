@@ -21,3 +21,6 @@
 ## Notes
 - Skill now contains one file only: `SKILL.md`.
 - All instructions are explicit curl commands, as requested.
+- Updated summary rules:
+- Every summary must include `console_url`.
+- Summaries should be pretty-printed as a table (`jq` + `column`).
