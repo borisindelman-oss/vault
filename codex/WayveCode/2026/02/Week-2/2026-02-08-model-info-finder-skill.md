@@ -2,34 +2,22 @@
 
 ## Summary
 - Created a new Codex skill: `model-info-finder`.
-- Scope v1:
+- Simplified it to curl-only usage (no Python helper script, no extra reference/UI files).
+- Scope:
 - Lookup by `nickname` and `author`.
-- Output modes: `basic` and `deep`.
+- Modes: `basic` search and `deep` details via model ID.
 
 ## What Was Added
 - `~/.codex/skills/model-info-finder/SKILL.md`
-- `~/.codex/skills/model-info-finder/scripts/model_info.py`
-- `~/.codex/skills/model-info-finder/references/model-catalogue-endpoints.md`
-- `~/.codex/skills/model-info-finder/agents/openai.yaml`
 
-## Validation
-- Skill structure validation:
-- `python3 .../skill-creator/scripts/quick_validate.py ~/.codex/skills/model-info-finder`
-- Result: `Skill is valid!`
-
-## Smoke Tests
+## Curl Flows In Skill
 - Nickname basic:
-- `python3 ~/.codex/skills/model-info-finder/scripts/model_info.py --by nickname --query idealistic-opossum-cyan --mode basic --limit 1`
-- Result: 1 model returned.
-
-- Nickname deep:
-- `python3 ~/.codex/skills/model-info-finder/scripts/model_info.py --by nickname --query idealistic-opossum-cyan --mode deep --limit 1`
-- Result: deep details fetched successfully.
-
+- `GET /v2/models/search`
 - Author basic:
-- `python3 ~/.codex/skills/model-info-finder/scripts/model_info.py --by author --query boris --mode basic --limit 3`
-- Result: 0 matches in current dataset for this query.
+- `POST /v2/models`
+- Deep details:
+- `GET /v3/model/<model_id>` after selecting an ID from basic output.
 
 ## Notes
-- Script uses only Python stdlib (`urllib`) so it works without `requests`.
-- Deep mode calls `/v3/model/<model_id>` per search hit.
+- Skill now contains one file only: `SKILL.md`.
+- All instructions are explicit curl commands, as requested.
