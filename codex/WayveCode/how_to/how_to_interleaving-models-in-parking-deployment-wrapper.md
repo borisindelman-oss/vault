@@ -1,73 +1,96 @@
-# The Interleaving Dispatch — Parking + Baseline Wrapper Newsletter
+# The Interleaving Dispatch — February Update (Wrapper + Ingested Modes)
 
-## Issue
-We needed one deployable TorchScript artifact that can drive normally with a baseline model and seamlessly switch to a parking model when parking becomes relevant. The hard part was making TorchScript happy while keeping the switching logic deterministic and debuggable.
+## Why this exists
+We want one deployable session that can run either:
+- baseline driving model, or
+- parking model,
 
-## What shipped
-- A static route‑interleaving wrapper that compiles to TorchScript without codegen surprises.
-- Baseline + parking models loaded from session IDs and packaged like a normal deploy run.
-- Navigation instructions now flow through the parking wrapper too.
-- A switching policy with **near‑end‑of‑route latching**, **auto‑park**, **reverse gear**, and **5 mph hysteresis**.
+while looking like a normal single deployment wrapper model to downstream runtime.
 
-## How the switch works
-We switch into parking mode when **any** of these are true:
-- Near end of route (latched).
-- Initiate auto‑park control is on.
-- Reverse gear is engaged.
+## Current architecture (what actually ships)
+- `RouteInterleavingWrapperImpl` inherits `DeploymentWrapperBase`.
+- It implements `_forward_with_additional_inputs(...)` for branch selection + model dispatch.
+- `make_wrapper_class(...)` generates the public `forward(...)` signature used by compile/runtime.
+- Output type is fixed `RouteInterleavingOutput` (`OnBoardDrivingOutput` fields + interleaving telemetry).
 
-We only switch back to baseline when **all** parking triggers are false **and** speed is above 5 mph.
+## Load modes (latest decision)
+Both models now share the same load-mode choices:
+- `wrapper`
+- `ingested`
+
+The old `torchscript` mode was removed to keep behavior symmetric and reduce path-specific surprises.
+
+### What each mode means
+- `wrapper`: load from session checkpoint with `prepare_deployment_model(...)` path (deploy-like model construction).
+- `ingested`: load already-ingested trace/module path via model ingest metadata.
+
+## Switch behavior
+Normal mode switches by heuristic:
+- enter parking if any trigger is active:
+  - near-end-of-route (latched),
+  - initiate auto-park control,
+  - reverse gear.
+- return to baseline only when all parking triggers are false and speed hysteresis condition is satisfied.
+
+Debug mode bypasses heuristic:
+- `--switch_every_n_forwards N` toggles branch every `N` forward passes.
 
 ```mermaid
 flowchart TD
-    A[near_end_of_route latched] --> D[parking_trigger]
-    B[initiate_auto_park] --> D
-    C[reverse_gear] --> D
-    D -->|true| E[use parking model]
-    D -->|false| F{speed > 5 mph?}
-    F -->|true| G[use baseline model]
-    F -->|false| H[keep current model]
+    A["normal heuristic mode"] --> B["compute trigger + hysteresis"]
+    B --> C["select parking/baseline"]
+    D["debug periodic mode"] --> E["toggle every N forwards"]
+    E --> C
+    C --> F["run selected model wrapper"]
 ```
 
-## Latch behavior in plain English
-Near‑end‑of‑route can be noisy around the boundary. We latch it on first detection, then hold it until the vehicle has driven a configurable distance (default 50 m). Setting the distance to **0** disables the latch. The 5 mph hysteresis still applies.
+## Cache warmup behavior
+After a branch switch, cached output can be returned for early frames:
+- controlled by `--num_cache_warmup_frames`.
+- `0` disables warmup cache reuse.
 
-## End‑of‑route = no route
-We treat **end‑of‑route** as “no route available” (route signal is zero). When that happens the parking wrapper **forces parking mode on** so the system can auto‑stop gracefully.
+This is useful to A/B check whether instability comes from switching itself or post-switch cache warmup behavior.
 
-## Avoid double‑triggering
-For interleaved deploys we explicitly set `enable_end_of_route_parking = False` on the parking wrapper. The interleaving wrapper now owns all near‑end/end‑of‑route logic, so we don’t want two independent systems toggling parking.
+## Telemetry
+Wrapper always emits:
+- `interleaved_id`: active model branch.
+- `interleaved_event`: switch event marker (`1` on switch frame, else `0`).
 
-## Gear output behavior
-The baseline model doesn’t output `policy_gear_position`. When baseline is active we fill that field with `get_none_tensor_token()`. This means “no gear prediction.” The parking model always supplies a real `policy_gear_position`.
-
-## Debug visibility
-We emit two additional debug outputs to mirror `interleaved_wrapper.py`:
-- `interleaved_id`: `0` = baseline, `1` = parking.
-- `interleaved_event`: `1` on a model switch, `0` otherwise.
-
-## Output schema
-`RouteInterleavingOutput` mirrors `OnBoardDrivingOutput` and adds the two debug fields above. That means the compiled artifact preserves the standard DMI‑compatible outputs plus telemetry for which model is active.
-
-## Files to know
-- Wrapper: `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
-- Deploy script: `wayve/ai/si/deploy_interleaved_models.py`
-- Parking wrapper: `wayve/ai/zoo/deployment/deployment_wrapper.py` (now includes nav inputs)
-
-## Example run
-```
-DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- \
+## Commands we used recently
+### Periodic switching + no cache warmup
+```bash
+bazel run //wayve/ai/si:deploy_interleaved_models -- \
   --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac \
+  --baseline_model_load_mode wrapper \
+  --primary_model_load_mode wrapper \
   --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc \
-  --suffix _retrace3 --dilc_on --enable_parking --with_temporal_caching true
+  --suffix interleaving_30_no_cache \
+  --dilc_on \
+  --enable_parking \
+  --with_temporal_caching true \
+  --switch_every_n_forwards 30 \
+  --num_cache_warmup_frames 0 \
+  --upload
 ```
 
-## TorchScript corner
-- We keep the wrapper’s **forward signature fixed** to avoid TorchScript graph churn.
-- Output schema is fixed and optional fields are allowed, so the baseline can omit gear.
-- We derive the static input/output keys from the wrapper signature and `RouteInterleavingOutput` fields to avoid brittle string lists.
+## Known HIL failure signature (important)
+When switching variants fail, the key runtime signature seen is:
+- `RuntimeError: This Python function is annotated to be ignored and cannot be run`
+- stack under perceiver attention path (`use_flash_attention_v2` branch).
 
-## What’s next
-- Make latch distance and speed hysteresis configurable via CLI.
-- Add a small regression test to validate input/output keys for the two models.
+Interpretation:
+- this is not just a timeout;
+- the forward loop crashes in model execution, and then CI reports insufficient forward passes.
 
-That’s the update. If you want deeper traces or a runbook for debugging mismatched keys, I can add a follow‑up edition.
+## Practical checklist before upload
+1. Confirm both load modes explicitly (`wrapper|ingested`) for primary and baseline.
+2. Confirm switch mode (`heuristic` vs `switch_every_n_forwards`).
+3. Confirm cache warmup (`num_cache_warmup_frames`).
+4. Confirm upload suffix is unique for traceability.
+5. Watch logs for the flash-attention ignored-function runtime signature.
+
+## Current test matrix snapshot
+- `__interleaved6`: known-good reference behavior.
+- `interleaved_every_30`: periodic switch variant used to isolate switch-path failures.
+- `__interleaved_every_30_2`: follow-up periodic switch upload.
+- `interleaving_30_no_cache`: periodic switch with warmup cache disabled.

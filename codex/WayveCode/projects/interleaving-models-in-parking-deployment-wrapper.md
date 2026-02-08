@@ -1,181 +1,80 @@
 # Interleaving models in parking deployment wrapper
 
 ## Overview
-- **What it is:** Build a single deployable model that interleaves baseline driving and parking/PUDA models inside a new wrapper.
-- **Why it matters:** On‑vehicle inference should see a standard model session ID, while we switch between two models internally.
-- **Primary users:** Not specified yet.
+- **What it is:** A single deployable interleaving model that runs baseline driving or parking wrapper outputs behind one deployment wrapper interface.
+- **Why it matters:** Vehicle/sim consume one session ID, while model selection happens inside the wrapper.
+- **Primary users:** Parking + deployment validation workflows (sim/HIL/model CI).
 
 ## Status
 - **Phase:** Phase 2
 - **Status:** active
-- **Last updated:** 2026-02-05
+- **Last updated:** 2026-02-08
 - **Current priorities:**
-  - Validate upload path and DMI config generation for the interleaved wrapper.
-  - Decide final output directory strategy (`/mnt/remote` vs workspace output).
-  - Add regression checks for input/output key mismatches.
+  - Confirm switching-path stability in HIL (both trigger-based and periodic switch test mode).
+  - Keep deploy flow parity with `deploy.py` argument/init behavior.
+  - Track and resolve runtime failures related to flash-attention path on switch.
 - **Blockers:**
-  - None
+  - HIL still failing in some switch-path variants (`This Python function is annotated to be ignored and cannot be run` from perceiver flash-attention path).
 
 ## Requirements
-- **Problem statement:** Use two already‑compiled TorchScript models (baseline + parking/PUDA) and ship a single deployable model that switches internally based on parking mode / route heuristics.
-- **Target users:** Not specified yet.
-- **Integrations:** Parking deployment wrapper; session‑ID loaded models; deploy upload pipeline.
+- **Problem statement:** Build one model artifact that can switch between baseline driving and parking behavior while preserving deploy-time compatibility.
+- **Target users:** Deployment engineers validating model behavior in sim/HIL.
+- **Integrations:** `deploy_interleaved_models.py`, `RouteInterleavingWrapperImpl`, model ingest/upload path, model CI.
 - **Constraints:**
-  - Session IDs load TorchScript artifacts; interleaving must produce a new TorchScript artifact.
-  - Both models must share an identical deployment interface.
-- **Success criteria:** A new session ID uploads successfully and behaves like a standard model, while switching internally.
+  - Keep stable output schema for TorchScript.
+  - Keep wrapper interface compatible with existing deploy/runtime expectations.
+  - Preserve nav/gear/control input handling across both branches.
+- **Success criteria:**
+  - Upload succeeds and session is runnable by validation tools.
+  - No crash when branch switches.
+  - Debug telemetry (`interleaved_id`, `interleaved_event`) shows expected transitions.
 
 ## Design
 - **Approach:**
-  - Build a route‑interleaving wrapper with a fixed, static signature for the baseline + parking pair.
-  - Package baseline + parking TorchScript models into a single artifact and save via `save_compiled_model`.
-  - Use unioned deployment config (inputs + outputs), with optional outputs filled via none tokens.
-- **Key decisions:**
-  - Use wrapper‑level interleaving (no `interleave_control`).
-  - Load both models from session IDs externally, then pass them into the wrapper.
-  - Infer primary wrapper input keys from `model.forward` to avoid missing nav‑instruction inputs.
-- **Open questions:**
-  - Exact switch predicate: parking mode only vs parking mode OR end‑of‑route.
-  - How strict to be on deployment_config mismatches.
+  - `RouteInterleavingWrapperImpl` inherits `DeploymentWrapperBase` and implements `_forward_with_additional_inputs(...)`.
+  - `make_wrapper_class(...)` generates the public `forward(...)` signature.
+  - Wrapper decides model branch, calls chosen sub-wrapper, and emits a fixed `RouteInterleavingOutput`.
+- **Model load modes (current decision):**
+  - `--primary_model_load_mode`: `wrapper|ingested`
+  - `--baseline_model_load_mode`: `wrapper|ingested`
+  - `torchscript` mode removed for symmetry and simpler behavior.
+- **Switching modes:**
+  - Normal: heuristic-based decision (`near_end` latch, initiate auto-park, reverse gear, speed hysteresis).
+  - Debug: `--switch_every_n_forwards N` forces periodic branch toggles.
+- **Cache warmup:**
+  - `--num_cache_warmup_frames` controls how many frames return cached output after switch.
+  - `0` disables cached warmup output reuse.
+- **Debug outputs:**
+  - `interleaved_id`: active branch (`0` baseline, `1` parking).
+  - `interleaved_event`: `1` on switch frame, else `0`.
 
 ## Build Phases
 - **Phase:** Phase 1
-  - **Goal:** Wrapper‑level interleaving with a deployable combined model.
-  - **Work items:** Implement wrapper + packer + config checks.
-  - **Validation:** Smoke test compile + run.
+  - **Goal:** First deployable interleaving wrapper and successful compile/upload.
+  - **Validation:** TorchScript compiles, deploy output generated.
 - **Phase:** Phase 2
-  - **Goal:** Harden deploy path for session IDs and production packaging.
-  - **Work items:** Upload validation, strict input/output matching, add regression guardrails.
-  - **Validation:** Successful upload + DMI config generation without manual fixes.
+  - **Goal:** Runtime robustness during branch switching in model CI/HIL.
+  - **Validation:** Forward-pass stability for switching scenarios.
 
 ## Decisions
-- **2026-02-03:**
-  - **Decision:** Use wrapper‑level interleaving and package as a single TorchScript artifact.
-  - **Rationale:** Vehicle/sim expect a standard model session; session IDs are TorchScript.
-- **2026-02-03:**
-  - **Decision:** Do not use `interleave_control` or InterleavedModelRunner for this path.
-  - **Rationale:** We are interleaving inside the wrapper and shipping a single model artifact.
 - **2026-02-05:**
-  - **Decision:** Generate a wrapper with unioned output keys and optional fields filled using none tokens.
-  - **Rationale:** Baseline and parking outputs differ; TorchScript requires a stable output schema.
+  - **Decision:** Use wrapper-level interleaving and ship as one model artifact.
+  - **Rationale:** Keep runtime integration identical to single-session deploy model consumption.
 - **2026-02-05:**
-  - **Decision:** Replace codegen with a static wrapper class tied to the baseline + parking signatures.
-  - **Rationale:** We only need one model pair; static code is simpler and easier to reason about.
-- **2026-02-05:**
-  - **Decision:** Infer primary wrapper input keys from `model.forward`.
-  - **Rationale:** Deployment config input keys can omit nav‑instruction args required by the wrapper.
-- **2026-02-05:**
-  - **Decision:** Fallback to ingested model when session config is unreadable on `/mnt/remote`.
-  - **Rationale:** Config YAML can be missing or blocked by storage permissions; we still need a deploy path.
-- **2026-02-05:**
-  - **Decision:** Use latched **near‑end‑of‑route** (map_route sum threshold) + **initiate auto‑park** + **reverse gear** as parking triggers.
-  - **Rationale:** Keeps switching stable and aligns with parking wrapper semantics while avoiding route flicker.
-- **2026-02-05:**
-  - **Decision:** Keep 5 mph hysteresis to switch back to baseline only when no parking trigger is active.
-  - **Rationale:** Prevents rapid model flapping as parking triggers clear.
-- **2026-02-05:**
-  - **Decision:** Make end‑of‑route latch distance configurable (0 disables latch).
-  - **Rationale:** Allows local tuning without re‑coding the heuristic.
-- **2026-02-05:**
-  - **Decision:** Treat **end‑of‑route** as “no route available” and force parking mode on in the parking wrapper.
-  - **Rationale:** Avoids conflating near‑end with end‑of‑route and aligns auto‑park behavior with missing route data.
-- **2026-02-05:**
-  - **Decision:** Disable `enable_end_of_route_parking` in the parking wrapper for interleaved deploys.
-  - **Rationale:** The interleaving wrapper owns end‑of‑route/near‑end logic; avoids double‑triggering.
-- **2026-02-05:**
-  - **Decision:** Emit `interleaved_id` and `interleaved_event` debug outputs from the interleaving wrapper.
-  - **Rationale:** Exposes which model is active and when switches occur, matching the Torch interleaved wrapper telemetry.
+  - **Decision:** Emit `interleaved_id` and `interleaved_event`.
+  - **Rationale:** Provide direct observability of branch state and transitions.
+- **2026-02-08:**
+  - **Decision:** Standardize both model load modes to `wrapper|ingested`.
+  - **Rationale:** Remove asymmetric behavior and keep both model paths configurable in the same way.
+- **2026-02-08:**
+  - **Decision:** Keep periodic switch mode and cache warmup controls as first-class CLI options.
+  - **Rationale:** Needed for deterministic switch testing and switch-path debugging in HIL.
 
 ## Notes
-- Working deploy runs:
-  - `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix _retrace2 --dilc_on --enable_parking --with_temporal_caching true`
-  - Output: `/mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc_retrace2/traces/model-000100000.torchscript`
-  - `DEV_VM=0 TMPDIR=/workspace/tmp bazel run //wayve/ai/si:deploy_interleaved_models -- --baseline_model_session_id session_2026_01_15_13_16_36_si_candidate_2026_5_3_baseline_rl_with_refreshed_data_with_aac --session_id session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc --suffix _retrace13 --dilc_on --enable_parking --with_temporal_caching true`
-  - Output: `/mnt/remote/azure_session_dir/Parking/parking/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc_retrace13/traces/model-000100000.torchscript`
-
-### Route map thresholds (new math)
-We now set **near‑end‑of‑route** using a route‑signal sum threshold. The route map input is a **uint8 image** and we compute:\n`route_signal = map_route.float()[:, :2].sum(dim=(1,2,3))` (red + green channels only).\n\n**Span in meters** comes directly from config: `map_scale_m` is the radius, so full span = `2 * map_scale_m`.\n\nFor `si_medium_noise` (parking default):\n- `image_size_px = 512`\n- `map_scale_m = 1200` → span ≈ 2400 m\n- `route_width_m = 4`\n\nApproximate pixel density: `px_per_m = image_size_px / (2 * map_scale_m) ≈ 0.213`.\n\nSo for a **50 m** long route line:\n```\nroute_pixels ≈ length_m * route_width_m * (px_per_m ** 2)\n             ≈ 50 * 4 * (0.213^2)\n             ≈ 9.1 pixels\nthreshold ≈ route_pixels * 255 ≈ 2.3e3\n```\n\n**Decision:** set `near_end_of_route_sum_thresh = 5e3` to give headroom for line thickness/antialiasing.\n\nFor **end‑of‑route**, 5 m is roughly:\n- `5 / 50` of the above → ≈ `230` → set `end_of_route_sum_thresh ≈ 2.5e2`.\n+
-
-### Findings: how `zmurez/pudo` implements interleaving (reference)
-- Interleaving is done in C++ via `InterleavedModelRunner` with transition events and warmup.
-- Policy selection:
-  - `interleave_control` output → `ModelControlledSwitchPolicy` (falling‑edge switch).
-  - Otherwise → `TimeBasedRandomSwitchPolicy`.
-- Switching happens in `InterleavedModelRunner::createForwardPass()` and finalizes in `completeTransition()`.
-- Runner initialization lives in `createModelRunner()`; runner indices are based on `model_configs` ordering.
-- `InterleaveControl` is wired end‑to‑end (proto → DMI output handler → ROS publication).
-- Parking wrapper in that branch emits `interleave_control = ~parking` using heuristics.
-- Deployment ops note (per Naman Rawal, lead for this area): interleaving is standard for TRT models via a 2‑model experiment; Torchscript SW interleaving isn’t supported in console today.
-
-### Findings: interleaving wrapper on main (Torch)
-- `wayve/ai/zoo/deployment/interleaved_wrapper.py` defines `InterleavedModelWrapper` + `InterleavedDrivingOutput`.
-- Outputs include:
-  - `interleaved_id` → current model index.
-  - `interleaved_event` → swap flag (1 on swap, 0 otherwise).
-- These are **debug/telemetry outputs**, not switch triggers.
-  - Torch interleaved testing parses them from debug tensors to reconstruct model episodes.
-  - In contrast, TRT interleaving publishes **`InterleavedEvent` proto messages** (`SWITCH_START`, `MODEL_ACTIVE_WARMUP`, `SWITCH_FINISH_CACHE_WARMED`) from C++.
-- Actionable for this project: we should emit `interleaved_id`/`interleaved_event` for logging visibility, but switching stays inside the wrapper.
-
-### Plan: wrapper‑level interleaving (our implementation)
-
-#### 1) New interleaving wrapper
-- Add `InterleavingDeploymentWrapperImpl` in `wayve/ai/zoo/deployment/deployment_wrapper.py`.
-- It holds two sub‑wrappers:
-  - Baseline: `DeploymentWrapperImpl`
-  - Parking: `ParkingDeploymentWrapperImpl`
-- Forward signature = union of inputs (parking needs gear position + driving_controls).
-- Switch predicate: `parking_mode` and/or end‑of‑route heuristic (TBD).
-- Output: `OnBoardDrivingOutput` (parking output already includes `policy_gear_position`).
-- Optional: include `interleaved_id` + `interleaved_event` for debug logging (swap visibility).
-
-### Switching logic (current)
-```mermaid
-flowchart TD
-    A["near_end_of_route (latched)"] --> D[parking_trigger]
-    B["initiate_auto_park"] --> D
-    C["reverse_gear"] --> D
-    D -->|true| E["use parking model"]
-    D -->|false| F{speed > 5 mph?}
-    F -->|true| G["use baseline model"]
-    F -->|false| H["keep current model"]
-```
-
-#### 2) Model provisioning (session IDs → one artifact)
-- Load baseline + parking **TorchScript** models via `load_ingested_model(session_id)`.
-- Validate both deployment configs are compatible (input/output keys, frames, radar, etc.).
-- Pass both ScriptModules into `InterleavingDeploymentWrapperImpl`.
-- Compile to a **single TorchScript artifact** (new session ID).
-
-#### 3) Deploy‑like packaging + upload
-- Add a new script (or extend packer) that mirrors deploy’s upload flow:
-  - Inputs: `--baseline_session_id`, `--parking_session_id`, `--output_dir`, `--suffix`, `--upload`.
-  - Uses `compile_and_save_model(...)` + `upload_compiled_model(...)` so it appears as a standard model.
-- Ensure we pass deploy‑time wrapper options consistently:
-  - `deployment_country`, `deployment_vehicle_model_override`, `dilc_on`, `deployment_driving_controls_keys`, `enable_radar_input`.
-- Temporal caching: must already match in the compiled session IDs (cannot be toggled post‑compile).
-
-```mermaid
-flowchart TD
-    A[Baseline Session ID] --> B[Load TorchScript]
-    C[Parking/PUDA Session ID] --> D[Load TorchScript]
-    B --> E[InterleavingDeploymentWrapperImpl]
-    D --> E
-    E --> F[Compile to Single TorchScript]
-    F --> G[Upload as New Session ID]
-    G --> H[Vehicle Inference Uses Standard Session]
-```
-
-```mermaid
-flowchart TD
-    A["ParkingWrapper - Python"] -->|interleave_control| B["InterleavedModelRunner"]
-    B --> C{InterleavePolicy}
-    C -->|ModelControlledSwitchPolicy| D["Runner selection"]
-    C -->|TimeBasedRandomSwitchPolicy| D
-    D --> E["InterleavingForwardPass"]
-    E --> F["Driving plan + InterleavedEvent"]
-    E --> G["InterleaveControl output"]
-    F --> H["InferenceNode outputs"]
-    G --> H
-    style A fill:#FFE8CC,stroke:#CC8B00,color:#000
-```
+- Notable upload variants used in validation:
+  - `__interleaved6`: known good reference for current branch behavior.
+  - `interleaved_every_30`: periodic switching variant (exposed switch-path runtime failure in HIL).
+  - `__interleaved_every_30_2`: follow-up periodic switching variant under test.
+  - `interleaving_30_no_cache`: periodic switching with `num_cache_warmup_frames=0`.
+- Console link (latest no-cache periodic upload):
+  - `https://console.sso.wayve.ai/model/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bcinterleaving_30_no_cache`
