@@ -97,5 +97,4 @@ flowchart TD
 - We keep these signals aligned so model behavior remains inspectable in the same way.
 
 ## Notes
-- Console link (latest no-cache periodic upload, retained for traceability):
-  - `https://console.sso.wayve.ai/model/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bcinterleaving_30_no_cache`
+- This page documents intended production implementation behavior.

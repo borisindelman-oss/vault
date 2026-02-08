@@ -8,15 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
-> #### 2026-02-08 — Interleaving load modes + switch debug docs
-- Topic: interleaving deployment docs sync with latest implementation
-- Labels: #parking #deployment #interleaving #docs #hil
+> #### 2026-02-08 — Interleaving production-docs refresh
+- Topic: interleaving deployment docs aligned to intended production design
+- Labels: #parking #deployment #interleaving #docs
 - Branch: current
 - PR: none
 - Change type: docs
 - Areas: `codex/WayveCode/projects/`, `codex/WayveCode/how_to/`, `codex/WayveCode/2026/02/Week-2/`
 - Changes:
-  - [[2026/02/Week-2/2026-02-08-interleaving-load-modes-and-switch-debug]]: updated project and newsletter docs to match current `wrapper|ingested` load modes for both models, documented periodic switch mode (`switch_every_n_forwards`), cache warmup control (`num_cache_warmup_frames`), latest upload variants, and active HIL switch-path failure signature.
+  - [[2026/02/Week-2/2026-02-08-interleaving-load-modes-and-switch-debug]]: updated project and newsletter docs to keep `zmurez/pudo` and `main interleaved_wrapper.py` reference notes, restored switching-flow mermaid diagrams, and focused content on intended production switching behavior (not temporary debug variants).
 > #### 2026-02-08 — Interleaved compile vs Zak comparison
 - Topic: route interleaving compile parity with `zmurez/pudo`
 - Labels: #parking #deployment #interleaving #torchscript #debug
