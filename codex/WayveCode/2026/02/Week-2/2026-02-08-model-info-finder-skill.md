@@ -24,3 +24,8 @@
 - Updated summary rules:
 - Every summary must include `console_url`.
 - Summaries should be pretty-printed as a table (`jq` + `column`).
+- Deep summaries must include `commit_id`.
+- `commit_id` resolution order:
+- 1) `<metadata.session_path>/git.hash`
+- 2) parse `+_provenance_metadata.git_commit_hash` from `metadata.run_command`
+- 3) `unknown`
