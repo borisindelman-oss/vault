@@ -16,7 +16,7 @@
 - Change type: code
 - Areas: `~/.codex/skills/model-info-finder/`
 - Changes:
-  - [[2026/02/Week-2/2026-02-08-model-info-finder-skill]]: created and simplified `model-info-finder` into a curl-only skill with nickname/author lookup, basic/deep flows, mandatory `console_url`, table-formatted summaries, `commit_id` extraction from `session_path/git.hash`, and mandatory licensing fields (`license_count`, `licenses`) in deep summaries.
+  - [[2026/02/Week-2/2026-02-08-model-info-finder-skill]]: created and simplified `model-info-finder` into a curl-only skill with nickname/author lookup, basic/deep flows, mandatory `console_url`, table-formatted summaries, `commit_id` extraction from `session_path/git.hash`, mandatory licensing fields (`license_count`, `licenses`) in deep summaries, and per-run console links (`run_url`) for checkpoint runs.
 > #### 2026-02-05 — Interleaved deploy wrapper
 - Topic: route interleaving deploy wrapper + session-id resolution
 - Labels: #parking #deployment #interleaving #torchscript

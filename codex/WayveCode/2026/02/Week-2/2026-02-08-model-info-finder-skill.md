@@ -31,3 +31,5 @@
 - 3) `unknown`
 - Deep summaries must include licensing:
 - `license_count` and `licenses` (unique licenses aggregated across model artefacts/checkpoints).
+- Checkpoint runs output must include per-run console links:
+- `run_url = https://console.sso.wayve.ai/run/<run_id>`
