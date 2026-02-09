@@ -1,4 +1,4 @@
-# The Interleaving Dispatch — Production Design Edition
+# Newsletter: The Interleaving Dispatch — Production Design Edition
 
 ## Goal
 Produce one deployable session that behaves like a normal deployment-wrapper model, but internally switches between:

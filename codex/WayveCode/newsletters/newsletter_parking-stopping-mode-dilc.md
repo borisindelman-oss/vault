@@ -1,4 +1,4 @@
-# Newsletter: teach parking models the difference between PARK and PUDO (stopping_mode)
+# Newsletter: Teaching parking models the difference between PARK and PUDO (stopping_mode)
 
 ## The story in one paragraph
 If you tell a driver "park" versus "drop off," they plan the maneuver differently. Our parking models needed the same clarity. We introduced a new input, `stopping_mode`, and wired it to the on-board DILC toggle so the model can tell the difference between a true park and a pick-up/drop-off (PUDO). The trick was to do this without breaking existing DMI behavior, while still enabling test-time overrides and good training targets.

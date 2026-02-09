@@ -1,4 +1,4 @@
-# Newsletter: align parking maneuver sampling with real-world behavior (Zak classifiers)
+# Newsletter: Aligning parking maneuver sampling with real-world behavior (Zak classifiers)
 
 ## The story in one paragraph
 We had good parking maneuver filters in experimental code, but SI materialization did not use them. That mismatch meant we were sampling the wrong moments, pulling in noisy examples, and missing the maneuvers we actually cared about. This project ports the experimental windowing logic into SI filters, wires in labeled parking/PUDO buckets, and adds tests so the sampling behavior stays stable.

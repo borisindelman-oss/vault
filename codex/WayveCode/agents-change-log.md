@@ -14,7 +14,7 @@
 - Branch: current
 - PR: none
 - Change type: docs
-- Areas: `codex/WayveCode/projects/`, `codex/WayveCode/how_to/`, `codex/WayveCode/2026/02/Week-2/`
+- Areas: `codex/WayveCode/projects/`, `codex/WayveCode/newsletters/`, `codex/WayveCode/2026/02/Week-2/`
 - Changes:
   - [[2026/02/Week-2/2026-02-08-interleaving-load-modes-and-switch-debug]]: updated project and newsletter docs to keep `zmurez/pudo` and `main interleaved_wrapper.py` reference notes, restored switching-flow mermaid diagrams, and focused content on intended production switching behavior (not temporary debug variants).
 > #### 2026-02-08 — Interleaved compile vs Zak comparison
@@ -50,7 +50,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `codex/WayveCode/how_to/`
+- Areas: `codex/WayveCode/newsletters/`
 - Changes:
   - [[2026/02/Week-1/2026-02-05-route-map-signal-thresholds]]: added newsletter-style how-to explaining map span, route signal sums, and `5e4` threshold intuition; updated how-to index.
 > #### 2026-02-05 — Bokeh visualise interleaving wrapper
@@ -86,7 +86,7 @@
 > - Branch: none
 > - PR: none
 > - Change type: docs
-> - Areas: `codex/WayveCode/projects/`, `codex/WayveCode/how_to/`
+> - Areas: `codex/WayveCode/projects/`, `codex/WayveCode/newsletters/`
 > - Changes:
 >   - [[2026/02/Week-1/2026-02-03-interleaving-models-project]]: added project deep dive, mermaid update, and new how-to chapter.
 
@@ -97,7 +97,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `codex/WayveCode/how_to/`
+- Areas: `codex/WayveCode/newsletters/`
 - Changes:
   - [[2026/01/Week-4/2026-01-25-how-to-writeups]]: added how-to index and writeups for active/paused projects.
 

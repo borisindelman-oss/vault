@@ -5,7 +5,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `codex/WayveCode/projects/`, `codex/WayveCode/how_to/`
+- Areas: `codex/WayveCode/projects/`, `codex/WayveCode/newsletters/`
 
 ## Changes
 - Expanded the project summary with a detailed deep dive into `zmurez/pudo` interleaving (switch points, initialization, policy selection).

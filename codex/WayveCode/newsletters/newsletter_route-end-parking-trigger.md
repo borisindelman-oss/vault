@@ -1,4 +1,4 @@
-# Newsletter: trigger parking at end-of-route without retraining (wrapper route-end)
+# Newsletter: Triggering parking at end-of-route without retraining (wrapper route-end)
 
 ## The story in one paragraph
 Sometimes the driver reaches the end of a planned route and the model should switch into parking mode, even if the training data never explicitly taught it to. This project adds an inference-only hook in the parking deployment wrapper so the model can treat "end of route" as a legitimate reason to park, using a lightweight map-route signal instead of retraining.
