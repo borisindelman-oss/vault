@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-09 — Model info finder: Model CI + Shadow Gym debug flow
+- Topic: expand model lookup skill for build status and failure triage
+- Labels: #skill #model-catalogue #model-ci #buildkite #shadow-gym
+- Branch: current
+- PR: none
+- Change type: code
+- Areas: `~/.codex/skills/model-info-finder/`, `codex/WayveCode/2026/02/Week-2/`
+- Changes:
+  - [[2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym]]: added nickname/full-id model resolution, latest Model CI build summary, failed-job Buildkite log retrieval, Eval Studio execution-id check, and Shadow Gym execution/metadata lookup (with robust empty/non-array handling and zsh-safe job-id iteration).
 > #### 2026-02-09 — How-to to newsletter migration
 - Topic: vault docs migration from `how_to` chapters to newsletter issues
 - Labels: #docs #vault #newsletter #migration
