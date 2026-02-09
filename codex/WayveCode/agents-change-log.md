@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-09 — How-to to newsletter migration
+- Topic: vault docs migration from `how_to` chapters to newsletter issues
+- Labels: #docs #vault #newsletter #migration
+- Branch: none
+- PR: none
+- Change type: docs
+- Areas: `codex/WayveCode/newsletters/`, `codex/WayveCode/2026/02/Week-2/`
+- Changes:
+  - [[2026/02/Week-2/2026-02-09-how-to-newsletter-migration]]: moved and renamed all `how_to` pages to `newsletter` pages, updated index and internal links, and removed the old `how_to` directory.
 > #### 2026-02-08 — Interleaving production-docs refresh
 - Topic: interleaving deployment docs aligned to intended production design
 - Labels: #parking #deployment #interleaving #docs
