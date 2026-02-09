@@ -1,4 +1,4 @@
-# How to build an end-to-end inference visualization tool (new vis tool)
+# Newsletter: Building an end-to-end inference visualization tool (new vis tool)
 
 ## The story in one paragraph
 Engineers need to *see* what the model is doing, not just read metrics. The current Bokeh tool gets us part of the way, but we want a clean MVC-style tool that can run end-to-end inference on demand, swap data sources, and render interactive plots in a consistent way. This project maps the existing pipeline and proposes a new architecture using Dash + Plotly.

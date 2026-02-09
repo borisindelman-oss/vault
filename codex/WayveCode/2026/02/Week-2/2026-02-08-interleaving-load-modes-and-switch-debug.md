@@ -19,4 +19,4 @@
 
 ## Notes
 - Project page: `codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper`
-- How-to page: `codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper`
+- How-to page: `codex/WayveCode/newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper`

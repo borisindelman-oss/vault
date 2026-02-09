@@ -16,4 +16,4 @@
 
 ## Links
 - Project: [[codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper]]
-- How-to: [[codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper]]
+- How-to: [[codex/WayveCode/newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper]]
