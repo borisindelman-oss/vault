@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-09 — Model info finder skill cleanup
+- Topic: simplify and harden model lookup skill commands
+- Labels: #skill #model-catalogue #model-ci #refactor
+- Branch: current
+- PR: none
+- Change type: code
+- Areas: `~/.codex/skills/model-info-finder/`, `codex/WayveCode/2026/02/Week-2/`
+- Changes:
+  - [[2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup]]: rewrote skill into helper-based workflows, reduced duplicated command blocks, added explicit no-match/ambiguous/no-build handling, and validated nickname->Model CI->Buildkite logs->Shadow Gym flow.
 > #### 2026-02-09 — Model info finder: Model CI + Shadow Gym debug flow
 - Topic: expand model lookup skill for build status and failure triage
 - Labels: #skill #model-catalogue #model-ci #buildkite #shadow-gym
