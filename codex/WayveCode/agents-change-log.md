@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-10 — Model info finder script extraction in repo skill
+- Topic: split inline skill commands into reusable shell scripts
+- Labels: #skill #model-catalogue #refactor #docs
+- Branch: skill/model-info-finder
+- PR: none
+- Change type: code
+- Areas: `.ai/skills/model-info-finder/`, `codex/WayveCode/2026/02/Week-2/`
+- Changes:
+  - [[2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction]]: added `common.sh` + per-workflow `.sh` entrypoints and rewrote `SKILL.md` to use script calls instead of inlined command blocks.
 > #### 2026-02-09 — Model info finder skill cleanup
 - Topic: simplify and harden model lookup skill commands
 - Labels: #skill #model-catalogue #model-ci #refactor
