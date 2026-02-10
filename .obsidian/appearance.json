@@ -1,5 +1,7 @@
 {
   "cssTheme": "AnuPpuccin",
   "theme": "moonstone",
-  "accentColor": ""
+  "accentColor": "",
+  "textFontFamily": "New York",
+  "monospaceFontFamily": "New York"
 }

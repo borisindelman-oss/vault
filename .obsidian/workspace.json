@@ -187,24 +187,12 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "codex/WayveCode/projects.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "file": "Excalidraw/model_release.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "projects"
+              "icon": "excalidraw-icon",
+              "title": "model_release.excalidraw"
             }
           }
         ],
@@ -265,7 +253,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.50260543823242
+    "width": 379.0065116882324
   },
   "right": {
     "id": "2fc1190a7c137808",
@@ -385,9 +373,10 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "Excalidraw/parking_model_arch.excalidraw.excalidraw",
+    "Excalidraw/model_release.excalidraw.md",
     "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/projects.md",
-    "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md",
     "Excalidraw/head_options.excalidraw.md",
     "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
@@ -412,10 +401,8 @@
     "codex/WayveCode/todo-list.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-visualise-interleaving-wrapper.md",
     "codex/WayveCode/how_to/how_to_route-map-signal-thresholds.md",
-    "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
     "codex/WayveCode/2026/02/Week-1",
     "codex/WayveCode/2026/02",
-    "Excalidraw/parking_model_arch.excalidraw",
     "Pasted Image 20260111140517_906.png",
     "Pasted Image 20260122232147_461.png",
     "codex/WayveCode/how_to",
