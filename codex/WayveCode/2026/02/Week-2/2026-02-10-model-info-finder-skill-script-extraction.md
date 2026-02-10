@@ -5,7 +5,7 @@ Moved `model-info-finder` from inline `SKILL.md` command blocks to dedicated she
 
 ## Changes
 - Added reusable helper module:
-  - `.ai/skills/model-info-finder/common.sh`
+  - `.ai/skills/model-info-finder/model_catalogue_helpers.sh` (renamed from `common.sh` for clearer global search/discovery)
 - Added workflow entry scripts:
   - `.ai/skills/model-info-finder/lookup_by_nickname.sh`
   - `.ai/skills/model-info-finder/lookup_by_author.sh`
