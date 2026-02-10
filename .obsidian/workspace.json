@@ -187,12 +187,24 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md"
+                "file": "codex/WayveCode/projects.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-02-10 15.11.43.excalidraw"
+              "icon": "lucide-file",
+              "title": "projects"
             }
           }
         ],
@@ -373,11 +385,11 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "Excalidraw/head_options.excalidraw.md",
     "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/projects.md",
-    "codex/WayveCode/agents-change-log.md",
     "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md",
+    "Excalidraw/head_options.excalidraw.md",
+    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
     "Untitled.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup.md",
