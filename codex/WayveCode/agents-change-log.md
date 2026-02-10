@@ -16,7 +16,7 @@
 - Change type: code
 - Areas: `.ai/skills/model-info-finder/`, `codex/WayveCode/2026/02/Week-2/`
 - Changes:
-  - [[2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction]]: added `common.sh` + per-workflow `.sh` entrypoints and rewrote `SKILL.md` to use script calls instead of inlined command blocks.
+  - [[2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction]]: added `common.sh` + per-workflow `.sh` entrypoints, rewrote `SKILL.md` to use script calls instead of inlined command blocks, and added explicit missing dependency/token prompts plus script-evolution guidance.
 > #### 2026-02-09 — Model info finder skill cleanup
 - Topic: simplify and harden model lookup skill commands
 - Labels: #skill #model-catalogue #model-ci #refactor
