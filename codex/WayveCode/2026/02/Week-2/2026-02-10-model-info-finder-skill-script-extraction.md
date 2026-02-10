@@ -16,10 +16,10 @@ Moved `model-info-finder` from inline `SKILL.md` command blocks to dedicated she
 - Rewrote `.ai/skills/model-info-finder/SKILL.md` to document script-based usage and expected outputs.
 - Added script-evolution rule in `SKILL.md`: extend/modify `.sh` scripts when workflows are insufficient, instead of re-embedding long inline command blocks.
 - Added preflight and missing-requirement prompts:
-  - Required command checks (`curl`, `jq`, `column`) in `common.sh`
-  - Token guidance prompt when `MODEL_CATALOGUE_TOKEN` is unset
+  - Required command checks (`curl`, `jq`, `column`) in `model_catalogue_api_helpers.sh`
   - Explicit `BUILDKITE_TOKEN` prompt in Model CI flow when failed jobs are present
   - `perl` missing prompt with raw-log fallback for Buildkite log parsing
+- Removed `MODEL_CATALOGUE_TOKEN` handling from helpers/docs so Model Catalogue calls are always unauthenticated in this skill.
 
 ## Validation
 - `bash -n` passed on all new scripts.
