@@ -187,12 +187,12 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "excalidraw",
               "state": {
-                "currentVersion": "1.11.7"
+                "file": "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md"
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.7"
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-02-10 15.11.43.excalidraw"
             }
           }
         ],
@@ -373,9 +373,12 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "Excalidraw/head_options.excalidraw.md",
+    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+    "codex/WayveCode/projects.md",
+    "codex/WayveCode/agents-change-log.md",
     "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
-    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "Untitled.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym.md",
@@ -391,16 +394,13 @@
     "codex/WayveCode/how_to/how_to_interleaving-models-in-parking-deployment-wrapper.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-08-interleaving-load-modes-and-switch-debug.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-08-interleaved-compile-vs-zak.md",
-    "codex/WayveCode/projects.md",
     "codex/WayveCode/projects/model-cli-tool.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-08-model-info-finder-skill.md",
     "codex/WayveCode/2026/02/Week-2",
-    "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/todo-list.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-visualise-interleaving-wrapper.md",
     "codex/WayveCode/how_to/how_to_route-map-signal-thresholds.md",
     "codex/WayveCode/projects/parking-stopping-mode-dilc.md",
-    "codex/WayveCode/2026/02/Week-1/2026-02-05-route-map-signal-thresholds.md",
     "codex/WayveCode/2026/02/Week-1",
     "codex/WayveCode/2026/02",
     "Excalidraw/parking_model_arch.excalidraw",
