@@ -173,16 +173,30 @@
             "id": "7ad3187ea6803ff7",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md"
+                "file": "codex/WayveCode/projects.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-02-10 15.11.43.excalidraw"
+              "icon": "lucide-file",
+              "title": "projects"
+            }
+          },
+          {
+            "id": "286cf908be4fc203",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
             }
           }
         ],
-        "currentTab": 12
+        "currentTab": 13
       }
     ],
     "direction": "vertical"
@@ -357,11 +371,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "7ad3187ea6803ff7",
+  "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
     "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
-    "Excalidraw/Drawing 2026-02-10 15.11.43.excalidraw.md",
     "Untitled.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym.md",
