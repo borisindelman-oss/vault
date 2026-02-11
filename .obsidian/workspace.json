@@ -371,11 +371,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "a287024fe1d62a5b",
+  "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "newsletters/newsletter_index.md",
     "newsletter_index.md",
+    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
+    "newsletters/newsletter_index.md",
     "Excalidraw/head_options.excalidraw.md",
     "Excalidraw/model_release.excalidraw.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
@@ -400,7 +401,6 @@
     "newsletters/newsletter_route-end-parking-trigger.md",
     "newsletters/newsletter_parking-stopping-mode-dilc.md",
     "newsletters/newsletter_parking-maneuver-filters.md",
-    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "newsletters/newsletter_inference-visualization-tool.md",
     "newsletters",
     "agent_tasks/2026/02/Week-2/2026-02-11-vault-structure-reorg.md",
