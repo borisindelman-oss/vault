@@ -189,7 +189,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects.md",
+                "file": "projects/interleaving-models-in-parking-deployment-wrapper.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "projects"
+              "title": "interleaving-models-in-parking-deployment-wrapper"
             }
           }
         ],
@@ -383,20 +383,20 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "421689602b4afc34",
+  "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "projects.md",
+    "todo-list.md",
+    "agents-change-log.md",
+    "newsletter_index.md",
     "Excalidraw/model_release.excalidraw.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
-    "newsletter_index.md",
     "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "newsletters/newsletter_index.md",
     "Excalidraw/head_options.excalidraw.md",
     "Excalidraw/Drawing 2026-01-22 23.21.09.excalidraw.md",
-    "projects.md",
-    "agents-change-log.md",
     "README.md",
-    "todo-list.md",
     "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "WayveCode/projects.md",
     "projects/zak-classifiers-parking-maneuver.md",

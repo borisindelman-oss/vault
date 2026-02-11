@@ -5,7 +5,12 @@
     "fontSize": 16,
     "emojiStyle": "native",
     "iconColor": null,
-    "recentlyUsedIcons": [],
+    "recentlyUsedIcons": [
+      "LiListTodo",
+      "LiLogs",
+      "LiNewspaper",
+      "LiAperture"
+    ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
     "extraMargin": {
@@ -27,5 +32,9 @@
     "lucideIconPackType": "native",
     "debugMode": false,
     "useInternalPlugins": false
-  }
+  },
+  "projects.md": "LiAperture",
+  "newsletter_index.md": "LiNewspaper",
+  "agents-change-log.md": "LiLogs",
+  "todo-list.md": "LiListTodo"
 }
