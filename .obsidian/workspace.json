@@ -189,7 +189,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/pudo-update-current-driving-release.md",
+                "file": "projects/interleaving-models-in-parking-deployment-wrapper.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "pudo-update-current-driving-release"
+              "title": "interleaving-models-in-parking-deployment-wrapper"
             }
           }
         ],
@@ -385,8 +385,9 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "projects.md",
     "projects/pudo-update-current-driving-release.md",
+    "projects/parking-wfm-update.md",
+    "projects.md",
     "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "todo-list.md",
     "agents-change-log.md",
@@ -403,7 +404,6 @@
     "projects/zak-classifiers-parking-maneuver.md",
     "projects/waypoint-clamping-deployment-wrapper.md",
     "projects/projects.json",
-    "projects/parking-wfm-update.md",
     "projects/parking-stopping-mode-dilc.md",
     "projects/parking-deployment-wrapper-route-end.md",
     "projects/new-inference-vis-tool.md",
