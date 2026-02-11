@@ -21,9 +21,6 @@
 - **Latest (new primary parking session):**
   - Session: `session_2026_02_04_13_44_32_si_parking_bc_train_wfm_october_2025_pudo_only_31.01_october_wfm_bc__interleaved_new_primary`
   - Console: `https://console.sso.wayve.ai/model/session_2026_02_04_13_44_32_si_parking_bc_train_wfm_october_2025_pudo_only_31.01_october_wfm_bc__interleaved_new_primary`
-- **Latest cleanup baseline/parking pair:**
-  - Session: `session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc__interleaved_fixed_cleanup`
-  - Console: `https://console.sso.wayve.ai/model/session_2026_01_28_20_56_18_si_parking_bc_train_wfm_october_2025_pudo_7_17.01_october_wfm_bc__interleaved_fixed_cleanup`
 
 ## Requirements
 - **Problem statement:** Build one deployable artifact that can switch baseline/parking behavior without adding runtime orchestration outside the model.
