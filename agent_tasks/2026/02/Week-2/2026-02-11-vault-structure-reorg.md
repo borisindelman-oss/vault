@@ -22,6 +22,7 @@
   - `WayveCode/...` -> `...` (vault top-level paths)
   - `[[2025/...]]` / `[[2026/...]]` -> `[[agent_tasks/2025/...]]` / `[[agent_tasks/2026/...]]`
   - `/home/borisindelman/git/vault/codex/WayveCode/...` and `/home/borisindelman/git/vault/WayveCode/...` -> `/home/borisindelman/git/vault/...`
+  - `newsletters/newsletter_index.md` -> `newsletter_index.md` (top-level index page)
 
 ## Instruction updates
 - `~/.codex/AGENTS.md`
