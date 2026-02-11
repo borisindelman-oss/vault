@@ -54,4 +54,4 @@
   - **Rationale:**
 
 ## Notes
-- [[2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping]]
+- [[agent_tasks/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping]]

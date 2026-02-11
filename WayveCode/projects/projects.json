@@ -3,7 +3,7 @@
     {
       "name": "Waypoint clamping in deployment wrapper",
       "slug": "waypoint-clamping-deployment-wrapper",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/waypoint-clamping-deployment-wrapper.md",
       "status": "active",
       "phase": "Phase 1",
       "last_updated": "2026-02-01"
@@ -11,7 +11,7 @@
     {
       "name": "New Inference Vis Tool",
       "slug": "new-inference-vis-tool",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/new-inference-vis-tool.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/new-inference-vis-tool.md",
       "status": "active",
       "phase": "Phase 1",
       "last_updated": "2026-01-13"
@@ -19,7 +19,7 @@
     {
       "name": "Zak classifiers parking maneuver",
       "slug": "zak-classifiers-parking-maneuver",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/zak-classifiers-parking-maneuver.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/zak-classifiers-parking-maneuver.md",
       "status": "active",
       "phase": "Phase 3",
       "last_updated": "2026-01-13"
@@ -27,7 +27,7 @@
     {
       "name": "Parking WFM Update",
       "slug": "parking-wfm-update",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/parking-wfm-update.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/parking-wfm-update.md",
       "status": "archived",
       "phase": "Phase 1",
       "last_updated": "2026-01-06"
@@ -35,7 +35,7 @@
     {
       "name": "Parking deployment wrapper route-end parking mode",
       "slug": "parking-deployment-wrapper-route-end",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/parking-deployment-wrapper-route-end.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/parking-deployment-wrapper-route-end.md",
       "status": "paused",
       "phase": "Phase 1",
       "last_updated": "2026-01-19"
@@ -43,7 +43,7 @@
     {
       "name": "Parking stopping_mode (DILC -> PUDO)",
       "slug": "parking-stopping-mode-dilc",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/parking-stopping-mode-dilc.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/parking-stopping-mode-dilc.md",
       "status": "active",
       "phase": "Phase 1",
       "last_updated": "2026-01-20"
@@ -51,7 +51,7 @@
     {
       "name": "Model CLI tool",
       "slug": "model-cli-tool",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/model-cli-tool.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/model-cli-tool.md",
       "status": "active",
       "phase": "Phase 1",
       "last_updated": "2026-02-02"
@@ -59,7 +59,7 @@
     {
       "name": "Interleaving models in parking deployment wrapper",
       "slug": "interleaving-models-in-parking-deployment-wrapper",
-      "path": "/home/borisindelman/git/vault/codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+      "path": "/home/borisindelman/git/vault/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
       "status": "active",
       "phase": "Phase 2",
       "last_updated": "2026-02-08"

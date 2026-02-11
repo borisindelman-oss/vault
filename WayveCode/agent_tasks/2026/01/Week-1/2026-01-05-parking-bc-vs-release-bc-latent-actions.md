@@ -14,7 +14,7 @@
 - /workspace/WayveCode/wayve/ai/si/configs/baseline/release.py (main)
 
 ## Reference
-- [[2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]
+- [[agent_tasks/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]
 
 ## Hydra-zen config composition
 - ParkingBcTrainCfg: make_config(bases=(BCWFMSt100xYoloCfg,), model=parking_bc_cfg, ...).

@@ -3,7 +3,7 @@
 - Status: in progress
 - Goal: simplify parking maneuver filters by sharing transition logic and clarifying label-based windows.
 - Branch: boris/2025-12-30/zak-classifiers-parking-maneuver
-- Related: [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]]
+- Related: [[agent_tasks/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]]
 
 ## Progress
 - Added shared helper for parking transition entry/exit indices.

@@ -12,6 +12,6 @@ Think of this as an internal newsletter series: short, practical issues that exp
 
 ## How to Use This Newsletter Series
 - Each issue is a standalone `newsletter_[topic].md` file.
-- All newsletters live in the vault under `~/git/vault/codex/WayveCode/newsletters/`.
+- All newsletters live in the vault under `~/git/vault/WayveCode/newsletters/`.
 - Issues focus on **plain language** explanations, the **actual code paths**, and **lessons learned**.
 - When you add a new newsletter, link it here and keep the ordering intentional.

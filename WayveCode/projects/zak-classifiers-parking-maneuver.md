@@ -206,5 +206,5 @@ Notes:
   - **Rationale:** Align sampling behavior with hazard-specific logic and simplify mask configuration.
 
 ## Notes
-- Task summary: [[2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]].
-- Task summary: [[2026/01/Week-3/2026-01-13-parking-hazard-filter-updates]].
+- Task summary: [[agent_tasks/2025/12/Week-5/2025-12-30-parking-maneuver-filter-task-summary]].
+- Task summary: [[agent_tasks/2026/01/Week-3/2026-01-13-parking-hazard-filter-updates]].

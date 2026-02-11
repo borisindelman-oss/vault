@@ -6,7 +6,7 @@
 - Keep existing parking modes unchanged for A/B comparison.
 
 ## Project
-- [[codex/WayveCode/projects/parking-wfm-update/project]]
+- [[WayveCode/projects/parking-wfm-update]]
 
 ## Changes
 - Added parking_bc_wfm_october_2025_cfg and parking_bc_wfm_october_2025_debug_cfg (StBcCfg-based).
