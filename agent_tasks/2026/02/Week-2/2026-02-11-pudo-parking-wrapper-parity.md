@@ -5,6 +5,14 @@
 - Kept all parking logic in `ParkingDeploymentWrapperImpl` and enabled driving-parity preprocessing (behavior customization + navigation + indicator memory) behind optional parking wrapper inputs.
 - Ported end-of-route parking trigger logic and set threshold to `5.5e2` (~5 meters).
 
+## Follow-up update (same day)
+- Parking-only deployment path was removed by policy for this project.
+- Parking now defaults to driving-parity deployment behavior in `prepare_deployment_model(...)`:
+  - `use_behavior_control_input=True`
+  - `use_navigation_instructions=True`
+- If a caller explicitly disables either of those while `enable_parking=True`, deployment now raises a `ValueError`.
+- `ParkingDeploymentWrapperImpl` forward now requires `driving_parameters` and navigation tensors (instead of optional parity inputs).
+
 ## Code Changes
 - `wayve/ai/zoo/deployment/deployment_wrapper.py`
   - Added optional parity inputs to `ParkingDeploymentWrapperImpl` (`navigation_version_number`, behavior config keys, optional `driving_parameters` + nav tensors in forward).

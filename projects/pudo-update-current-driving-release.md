@@ -94,6 +94,9 @@ flowchart TD
 - **2026-02-11:**
   - **Decision:** Start from branch `boris/train/pudo_11_02_26`, check drift to `main`, and use `boris/train/parking_pudo` bucket config as migration source.
   - **Rationale:** Minimizes integration risk while preserving known-good PUDO bucket definitions and current release alignment.
+- **2026-02-11 (follow-up):**
+  - **Decision:** Disallow parking-only deployment path; parking deployment must run with behavior-control + navigation path by default.
+  - **Rationale:** Keep parking/PUDO deployment aligned with driving deployment architecture and avoid dual-path drift.
 
 ## Phase 1 Summary (2026-02-11)
 - **Branch drift check (`boris/train/pudo_11_02_26` vs `origin/main`):**
@@ -131,3 +134,4 @@ flowchart TD
 - PUDO = Pick Up / Drop Off for the robotaxi solution.
 - Latest prior training reference branch: `boris/train/parking_pudo`.
 - 2026-02-11 update: parking deployment now keeps a single wrapper path (no extra parking wrapper class), includes behavior-control/navigation/indicator preprocessing when enabled, and has end-of-route parking trigger at `5.5e2` route-signal threshold (~5m).
+- 2026-02-11 follow-up: `prepare_deployment_model(...)` now forces parking to behavior+navigation defaults and raises if callers explicitly disable either feature while `enable_parking=True`.
