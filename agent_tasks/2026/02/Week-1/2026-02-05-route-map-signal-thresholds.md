@@ -4,8 +4,8 @@
 Added a new newsletter-style how-to explaining route map span, map_scale_m, and how the route signal sum (e.g. 5e4) maps to pixel counts and physical distance. Also updated the how-to index.
 
 ## Files
-- `WayveCode/newsletters/newsletter_route-map-signal-thresholds.md`
-- `WayveCode/newsletters/newsletter_index.md`
+- `newsletters/newsletter_route-map-signal-thresholds.md`
+- `newsletters/newsletter_index.md`
 
 ## Highlights
 - Clarified that map span is `2 * map_scale_m` meters.

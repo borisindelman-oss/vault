@@ -14,7 +14,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `~/.codex/AGENTS.md`, `~/.codex/skills/project-manager/SKILL.md`, `WayveCode/agent_tasks/`, `WayveCode/projects/`, `WayveCode/projects.md`
+- Areas: `~/.codex/AGENTS.md`, `~/.codex/skills/project-manager/SKILL.md`, `agent_tasks/`, `projects/`, `WayveCode/projects.md`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-11-vault-structure-reorg]]: moved WayveCode out of `vault/codex/`, relocated date-based notes under `agent_tasks/YYYY/MM/Week-N/`, updated instruction/skill path contracts, and rewrote vault links/paths to the new layout.
 > #### 2026-02-10 — Model info finder script extraction in repo skill
@@ -23,7 +23,7 @@
 - Branch: skill/model-info-finder
 - PR: none
 - Change type: code
-- Areas: `.ai/skills/model-info-finder/`, `WayveCode/agent_tasks/2026/02/Week-2/`
+- Areas: `.ai/skills/model-info-finder/`, `agent_tasks/2026/02/Week-2/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction]]: added helper + per-workflow `.sh` entrypoints, renamed helper to `model_catalogue_api_helpers.sh` for clearer discoverability, rewrote `SKILL.md` to use script calls instead of inlined command blocks, removed `MODEL_CATALOGUE_TOKEN` handling, and added explicit missing dependency prompts plus script-evolution guidance.
 > #### 2026-02-09 — Model info finder skill cleanup
@@ -32,7 +32,7 @@
 - Branch: current
 - PR: none
 - Change type: code
-- Areas: `~/.codex/skills/model-info-finder/`, `WayveCode/agent_tasks/2026/02/Week-2/`
+- Areas: `~/.codex/skills/model-info-finder/`, `agent_tasks/2026/02/Week-2/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup]]: rewrote skill into helper-based workflows, reduced duplicated command blocks, added explicit no-match/ambiguous/no-build handling, and validated nickname->Model CI->Buildkite logs->Shadow Gym flow.
 > #### 2026-02-09 — Model info finder: Model CI + Shadow Gym debug flow
@@ -41,7 +41,7 @@
 - Branch: current
 - PR: none
 - Change type: code
-- Areas: `~/.codex/skills/model-info-finder/`, `WayveCode/agent_tasks/2026/02/Week-2/`
+- Areas: `~/.codex/skills/model-info-finder/`, `agent_tasks/2026/02/Week-2/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym]]: added nickname/full-id model resolution, latest Model CI build summary, failed-job Buildkite log retrieval, Eval Studio execution-id check, and Shadow Gym execution/metadata lookup (with robust empty/non-array handling and zsh-safe job-id iteration).
 > #### 2026-02-09 — How-to to newsletter migration
@@ -50,7 +50,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `WayveCode/newsletters/`, `WayveCode/agent_tasks/2026/02/Week-2/`
+- Areas: `newsletters/`, `agent_tasks/2026/02/Week-2/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-09-how-to-newsletter-migration]]: moved and renamed all `how_to` pages to `newsletter` pages, updated index and internal links, and removed the old `how_to` directory.
 > #### 2026-02-08 — Interleaving production-docs refresh
@@ -59,7 +59,7 @@
 - Branch: current
 - PR: none
 - Change type: docs
-- Areas: `WayveCode/projects/`, `WayveCode/newsletters/`, `WayveCode/agent_tasks/2026/02/Week-2/`
+- Areas: `projects/`, `newsletters/`, `agent_tasks/2026/02/Week-2/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-08-interleaving-load-modes-and-switch-debug]]: updated project and newsletter docs to keep `zmurez/pudo` and `main interleaved_wrapper.py` reference notes, restored switching-flow mermaid diagrams, and focused content on intended production switching behavior (not temporary debug variants).
 > #### 2026-02-08 — Interleaved compile vs Zak comparison
@@ -95,7 +95,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `WayveCode/newsletters/`
+- Areas: `newsletters/`
 - Changes:
   - [[agent_tasks/2026/02/Week-1/2026-02-05-route-map-signal-thresholds]]: added newsletter-style how-to explaining map span, route signal sums, and `5e4` threshold intuition; updated how-to index.
 > #### 2026-02-05 — Bokeh visualise interleaving wrapper
@@ -131,7 +131,7 @@
 > - Branch: none
 > - PR: none
 > - Change type: docs
-> - Areas: `WayveCode/projects/`, `WayveCode/newsletters/`
+> - Areas: `projects/`, `newsletters/`
 > - Changes:
 >   - [[agent_tasks/2026/02/Week-1/2026-02-03-interleaving-models-project]]: added project deep dive, mermaid update, and new how-to chapter.
 
@@ -142,7 +142,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `WayveCode/newsletters/`
+- Areas: `newsletters/`
 - Changes:
   - [[agent_tasks/2026/01/Week-4/2026-01-25-how-to-writeups]]: added how-to index and writeups for active/paused projects.
 
@@ -152,7 +152,7 @@
 - Branch: none
 - PR: none
 - Change type: analysis
-- Areas: `WayveCode/agent_tasks/2026/01/Week-4/`
+- Areas: `agent_tasks/2026/01/Week-4/`
 - Changes:
   - [[agent_tasks/2026/01/Week-4/2026-01-22-timestamp-offset-conversion]]: documented Zak-branch conversion logic and microsecond offset note.
 
@@ -162,7 +162,7 @@
 - Branch: boris/stopping_mode
 - PR: none
 - Change type: update
-- Areas: `wayve/ai/lib/data/pipes/`, `wayve/ai/zoo/data/`, `wayve/ai/si/datamodules/`, `wayve/ai/si/configs/parking/`, `WayveCode/projects/`
+- Areas: `wayve/ai/lib/data/pipes/`, `wayve/ai/zoo/data/`, `wayve/ai/si/datamodules/`, `wayve/ai/si/configs/parking/`, `projects/`
 - Changes:
   - [[agent_tasks/2026/01/Week-4/2026-01-21-parking-route-shortening]]: truncate route polyline near parking entry before map generation.
 
@@ -172,7 +172,7 @@
 - Branch: boris/stopping_mode
 - PR: none
 - Change type: update
-- Areas: `wayve/ai/zoo/data/`, `wayve/ai/si/datamodules/`, `wayve/ai/si/configs/parking/`, `WayveCode/projects/`
+- Areas: `wayve/ai/zoo/data/`, `wayve/ai/si/datamodules/`, `wayve/ai/si/configs/parking/`, `projects/`
 - Changes:
   - [[agent_tasks/2026/01/Week-4/2026-01-21-parking-otf-eor-blackout]]: added end-of-route blackout augmentation for parking frames.
 
@@ -182,7 +182,7 @@
 - Branch: boris/stopping_mode
 - PR: none
 - Change type: update
-- Areas: `wayve/ai/zoo/st/`, `wayve/ai/zoo/data/`, `wayve/ai/si/configs/parking/`, `wayve/ai/si/models/`, `WayveCode/projects/`
+- Areas: `wayve/ai/zoo/st/`, `wayve/ai/zoo/data/`, `wayve/ai/si/configs/parking/`, `wayve/ai/si/models/`, `projects/`
 - Changes:
   - [[agent_tasks/2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1]]: implemented the new stopping_mode adaptor and wired it through configs/tests.
 
@@ -192,7 +192,7 @@
 - Branch: none
 - PR: none
 - Change type: analysis
-- Areas: `wayve/ai/foundation/models/world_model/`, `wayve/ai/zoo/`, `wayve/ai/si/`, `WayveCode/agent_tasks/2026/01/Week-3/`
+- Areas: `wayve/ai/foundation/models/world_model/`, `wayve/ai/zoo/`, `wayve/ai/si/`, `agent_tasks/2026/01/Week-3/`
 - Changes:
   - [[agent_tasks/2026/01/Week-3/2026-01-17-wfm-bc-rl-mermaid-diagrams]]: added mermaid diagrams for WFM→BC→RL flow, layer reuse, losses, and WFM model comparison (Oct 0.5B vs 7B vs Dec 2025 vs YOLO), plus Excalidraw link.
 
@@ -212,8 +212,8 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `WayveCode/projects/`
-- Project: [[WayveCode/projects/new-inference-vis-tool]]
+- Areas: `projects/`
+- Project: [[projects/new-inference-vis-tool]]
 - Changes:
   - [[agent_tasks/2026/01/Week-3/2026-01-13-inference-model-design]]: documented InferenceModel plan and smoke test.
 
@@ -223,8 +223,8 @@
 - Branch: none
 - PR: none
 - Change type: analysis
-- Areas: `wayve/ai/si/visualisation/`, `WayveCode/projects/`
-- Project: [[WayveCode/projects/new-inference-vis-tool]]
+- Areas: `wayve/ai/si/visualisation/`, `projects/`
+- Project: [[projects/new-inference-vis-tool]]
 - Changes:
   - [[agent_tasks/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping]]: mapped current visualisation flow and proposed MVC reuse plan.
 
@@ -234,7 +234,7 @@
 - Branch: boris/parking_fixed_reverse_acc
 - PR: none
 - Change type: update
-- Areas: `wayve/ai/si/visualisation/bokeh/plotter/`, `wayve/ai/si/visualisation/bokeh/`, `WayveCode/projects/`
+- Areas: `wayve/ai/si/visualisation/bokeh/plotter/`, `wayve/ai/si/visualisation/bokeh/`, `projects/`
 - Changes:
   - [[agent_tasks/2026/01/Week-2/2026-01-08-parking-waypoints-scatter-plot]]: added XY scatter plot for policy waypoints, live on-demand server mode with slider/timestamps/buttons, wrapped models with parking deployment wrapper, and paused the parking maneuver filter project.
 
@@ -244,8 +244,8 @@
 - Branch: soham/12-18-Parking-model
 - PR: none
 - Change type: update
-- Areas: `WayveCode/projects/`
-- Project: [[WayveCode/projects/parking-wfm-update]]
+- Areas: `projects/`
+- Project: [[projects/parking-wfm-update]]
 - Changes:
   - Closed the project pending formal December WFM release and added re-creation checklist.
 
@@ -256,7 +256,7 @@
 - PR: none
 - Change type: update
 - Areas: `wayve/ai/si/config.py`, `wayve/ai/si/configs/parking/`
-- Project: [[WayveCode/projects/parking-wfm-update]]
+- Project: [[projects/parking-wfm-update]]
 - Changes:
   - [[agent_tasks/2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode]]: added December 2025 WFM base and parking modes.
 
@@ -277,7 +277,7 @@
 - PR: none
 - Change type: update
 - Areas: `wayve/ai/si/configs/parking/`
-- Project: [[WayveCode/projects/parking-wfm-update]]
+- Project: [[projects/parking-wfm-update]]
 - Changes:
   - [[agent_tasks/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode]]: added October 2025 WFM parking configs and modes.
 
@@ -322,7 +322,7 @@
 - Branch: unknown
 - PR: none
 - Change type: add
-- Areas: `WayveCode/agent_tasks/2025/12/Week-5/`
+- Areas: `agent_tasks/2025/12/Week-5/`
 - Changes:
   - [[agent_tasks/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: added task summary.
 
@@ -332,6 +332,6 @@
 - Branch: unknown
 - PR: none
 - Change type: update
-- Areas: `WayveCode/agent_tasks/2025/12/Week-5/`
+- Areas: `agent_tasks/2025/12/Week-5/`
 - Changes:
   - [[agent_tasks/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: appended ST transformer components diagram.

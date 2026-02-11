@@ -5,7 +5,7 @@
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `WayveCode/projects/`, `WayveCode/newsletters/`
+- Areas: `projects/`, `newsletters/`
 
 ## Changes
 - Expanded the project summary with a detailed deep dive into `zmurez/pudo` interleaving (switch points, initialization, policy selection).
@@ -15,5 +15,5 @@
 - Updated the how-to chapter to distinguish TRT runner interleaving vs wrapper-only interleaving and logging outputs.
 
 ## Links
-- Project: [[WayveCode/projects/interleaving-models-in-parking-deployment-wrapper]]
-- How-to: [[WayveCode/newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper]]
+- Project: [[projects/interleaving-models-in-parking-deployment-wrapper]]
+- How-to: [[newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper]]
