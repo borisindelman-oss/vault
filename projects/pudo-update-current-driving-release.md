@@ -10,10 +10,9 @@
 - **Status:** active
 - **Last updated:** 2026-02-11
 - **Current priorities:**
-  - Implement `parking_config.py` bucket migration from parking -> PUDO.
-  - Port end-of-route parking behavior into deployment wrapper.
+  - Finalize `parking_config.py` bucket migration from parking -> PUDO (93% driving / 7% PUDO).
   - Keep `otf.py` parking-flag behavior unchanged unless a regression appears.
-  - Run targeted validation checks before code submission.
+  - Run/collect remaining `wayve/ai/si` validation checks after ACR auth issue is resolved.
 - **Blockers:**
   - High branch drift from `main` (`792` commits in `main` not in branch, `98` commits in branch not in `main`).
 
@@ -86,8 +85,8 @@ flowchart TD
 - **Phase: Phase 2 - Implementation + validation**
   - **Goal:** Apply changes and verify training/deployment behavior.
   - **Work items:**
-    - [ ] Implement approved config/wrapper/OTF updates.
-    - [ ] Run targeted checks/tests and compare against expected PUDO behavior.
+    - [x] Implement approved wrapper updates (single `ParkingDeploymentWrapperImpl` with behavior+nav parity + end-of-route logic).
+    - [ ] Implement remaining config updates and run targeted checks/tests.
   - **Validation:**
     - [ ] All agreed checks pass.
 
@@ -131,3 +130,4 @@ flowchart TD
 ## Notes
 - PUDO = Pick Up / Drop Off for the robotaxi solution.
 - Latest prior training reference branch: `boris/train/parking_pudo`.
+- 2026-02-11 update: parking deployment now keeps a single wrapper path (no extra parking wrapper class), includes behavior-control/navigation/indicator preprocessing when enabled, and has end-of-route parking trigger at `5.5e2` route-signal threshold (~5m).
