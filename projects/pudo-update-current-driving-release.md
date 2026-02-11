@@ -137,8 +137,8 @@ flowchart TD
 - 2026-02-11 update: parking deployment now keeps a single wrapper path (no extra parking wrapper class), includes behavior-control/navigation/indicator preprocessing when enabled, and has end-of-route parking trigger at `5.5e2` route-signal threshold (~5m).
 - 2026-02-11 follow-up: `prepare_deployment_model(...)` now forces parking to behavior+navigation defaults and raises if callers explicitly disable either feature while `enable_parking=True`.
 - 2026-02-11 config follow-up:
-  - `parking_config.py` now routes release-style buckets to `DS_26_01_06_SERVER_GEN2_IPACE`.
-  - Parking/PUDO buckets now use `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc`.
+  - `parking_config.py` uses `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc` for legacy driving buckets, PUDO buckets, and parking validation buckets.
+  - `DS_26_01_06_SERVER_GEN2_IPACE` is kept only for `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, and `pre_ca_all_gen1`.
   - Added release buckets `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, and `pre_ca_all_gen1`.
   - `binary_version` updated to `3.0.1`.
   - Driving sampling scale re-normalized to preserve 93% driving target after adding release buckets (`driving_weight = 0.93 / 0.695`).
