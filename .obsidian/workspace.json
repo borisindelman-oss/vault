@@ -189,7 +189,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/interleaving-models-in-parking-deployment-wrapper.md",
+                "file": "projects/pudo-update-current-driving-release.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "interleaving-models-in-parking-deployment-wrapper"
+              "title": "pudo-update-current-driving-release"
             }
           }
         ],
@@ -386,6 +386,8 @@
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
     "projects.md",
+    "projects/pudo-update-current-driving-release.md",
+    "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "todo-list.md",
     "agents-change-log.md",
     "newsletter_index.md",
@@ -397,7 +399,6 @@
     "Excalidraw/head_options.excalidraw.md",
     "Excalidraw/Drawing 2026-01-22 23.21.09.excalidraw.md",
     "README.md",
-    "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "WayveCode/projects.md",
     "projects/zak-classifiers-parking-maneuver.md",
     "projects/waypoint-clamping-deployment-wrapper.md",
