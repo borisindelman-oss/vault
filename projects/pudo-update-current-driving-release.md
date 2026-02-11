@@ -43,6 +43,31 @@
   - Which parts of current `main` should be backported before final training, given current drift.
   - Do PUDO buckets need adaptation for current training data schemas?
 
+## Release vs Parking/PUDO Model Diagram
+```mermaid
+flowchart TD
+    A[Release Input Stack<br/>Cameras + Vehicle + Route + Radar + Nav] --> B[Preprocess<br/>Reduced blind spot + release focals]
+    B --> C[WFMStOctober2025 Encoder]
+    C --> D[Release Heads<br/>Waypoints + Indicator + Behavior Control]
+
+    A --> E[Parking/PUDO Extra Inputs]
+    E --> C
+    C --> F[Parking/PUDO Output Adaptors]
+    F --> G[Parking/PUDO Heads<br/>Waypoints + Indicator + Gear Direction + Parking Mode]
+
+    H[Release Data Buckets] --> D
+    I[PUDO Data Buckets<br/>93% driving + 7% PUDO] --> G
+
+    classDef base fill:#eef5ff,stroke:#5b7fbf,stroke-width:1px,color:#111;
+    classDef added fill:#e9f8ef,stroke:#2f8f46,stroke-width:2px,color:#111;
+
+    class A,B,C,D,H base;
+    class E,F,G,I added;
+```
+
+- Parking and PUDO share the same model architecture.
+- The difference is data composition (`parking` buckets vs `PUDO` buckets).
+
 ## Build Phases
 - **Phase: Phase 1 - Discovery and parity mapping**
   - **Goal:** Establish exact deltas and lock implementation plan.
