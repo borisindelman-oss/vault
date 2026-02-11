@@ -142,3 +142,11 @@ flowchart TD
   - Added release buckets `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, and `pre_ca_all_gen1`.
   - `binary_version` updated to `3.0.1`.
   - Driving sampling scale re-normalized to preserve 93% driving target after adding release buckets (`driving_weight = 0.93 / 0.695`).
+- 2026-02-11 indicator/bucket parity follow-up:
+  - Added missing release BC train buckets `dc_dilc_indicator_off_{day,night}_{usa,uk,deu,jpn}` with root `DS_26_01_06_SERVER_GEN2_IPACE`.
+  - Re-normalized driving sampling scale to keep the exact `93%` driving / `7%` PUDO split after adding those 8 buckets (`driving_weight = 0.93 / 0.715`).
+  - Indicator deployment flow check:
+    - Parking wrapper can zero `VEHICLE_INDICATOR_STATE` when `dilc_on=False` via `prepare_base_inputs(...)`.
+    - Release driving behavior+nav wrapper path keeps `dilc_on=True` in wrapper forward path.
+  - Hazard-state check:
+    - Dataset mapping includes `HAZARD=3`, but BC indicator loss masks labels `>2` and the output head is 3-class (off/right/left), so hazards are excluded from supervised indicator prediction in current BC path.
