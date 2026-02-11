@@ -187,24 +187,12 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "projects/pudo-update-current-driving-release.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "file": "Excalidraw/model_release.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "pudo-update-current-driving-release"
+              "icon": "excalidraw-icon",
+              "title": "model_release.excalidraw"
             }
           }
         ],
@@ -386,8 +374,8 @@
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
     "projects.md",
-    "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "projects/pudo-update-current-driving-release.md",
+    "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "projects/parking-wfm-update.md",
     "todo-list.md",
     "agents-change-log.md",
