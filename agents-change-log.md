@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-11 — PUDO parking wrapper parity (single wrapper)
+- Topic: keep parking deployment in a single wrapper while adding driving-parity + end-of-route behavior
+- Labels: #parking #pudo #deployment #wrapper #tests
+- Branch: boris/train/pudo_11_02_26
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/zoo/deployment/`, `wayve/ai/si/models/`, `wayve/ai/si/test/`, `wayve/ai/si/configs/parking/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity]]: merged behavior-control/navigation/indicator support into `ParkingDeploymentWrapperImpl` (no new wrapper class), ported end-of-route parking trigger with `5.5e2` threshold (~5m), updated deployment selection logic and regression tests, hardened wrapper codegen default-arg handling, and renamed parking train mode alias for release visibility.
 > #### 2026-02-11 — Vault structure reorg
 - Topic: remove `codex/` and `WayveCode/` layers and normalize task/project layout
 - Labels: #vault #structure #docs #migration
