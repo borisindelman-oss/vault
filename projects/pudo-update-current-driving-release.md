@@ -150,3 +150,7 @@ flowchart TD
     - Release driving behavior+nav wrapper path keeps `dilc_on=True` in wrapper forward path.
   - Hazard-state check:
     - Dataset mapping includes `HAZARD=3`, but BC indicator loss masks labels `>2` and the output head is 3-class (off/right/left), so hazards are excluded from supervised indicator prediction in current BC path.
+- 2026-02-11 hazard enablement update:
+  - Parking/PUDO output adaptor now uses `num_indicator_classes=4` so hazard is representable at the model head.
+  - Indicator CE losses are now class-count aware (`max_class_label = logits.shape[-1] - 1`) instead of hard-clamping to `0..2`.
+  - Scope is intentionally targeted to parking/PUDO config (`parking_config.py`) while keeping default output adaptor behavior unchanged for non-parking models.
