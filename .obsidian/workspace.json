@@ -187,24 +187,12 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "file": "Excalidraw/model_release.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "newsletter_interleaving-models-in-parking-deployment-wrapper"
+              "icon": "excalidraw-icon",
+              "title": "model_release.excalidraw"
             }
           }
         ],
@@ -265,7 +253,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 379.0065116882324
+    "width": 261.01258087158203
   },
   "right": {
     "id": "2fc1190a7c137808",
@@ -385,16 +373,17 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity.md",
-    "newsletter_index.md",
-    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
-    "projects/pudo-update-current-driving-release.md",
-    "projects/interleaving-models-in-parking-deployment-wrapper.md",
-    "Excalidraw/model_release.excalidraw.md",
     "projects.md",
+    "Excalidraw/model_release.excalidraw.md",
+    "newsletter_index.md",
+    "agents-change-log.md",
+    "newsletters/newsletter_inference-visualization-tool.md",
+    "projects/pudo-update-current-driving-release.md",
+    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
+    "agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity.md",
+    "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "projects/parking-wfm-update.md",
     "todo-list.md",
-    "agents-change-log.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "newsletters/newsletter_index.md",
@@ -414,7 +403,6 @@
     "newsletters/newsletter_route-map-signal-thresholds.md",
     "newsletters/newsletter_route-end-parking-trigger.md",
     "newsletters/newsletter_parking-stopping-mode-dilc.md",
-    "newsletters/newsletter_parking-maneuver-filters.md",
     "newsletters",
     "agent_tasks/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "agent_tasks/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
