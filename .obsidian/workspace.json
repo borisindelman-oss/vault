@@ -187,12 +187,24 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/model_release.excalidraw.md"
+                "file": "projects.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "excalidraw-icon",
-              "title": "model_release.excalidraw"
+              "icon": "lucide-file",
+              "title": "projects"
             }
           }
         ],
@@ -373,8 +385,13 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "WayveCode/projects.md",
+    "agents-change-log.md",
+    "projects.md",
+    "README.md",
     "todo-list.md",
+    "projects/interleaving-models-in-parking-deployment-wrapper.md",
+    "Excalidraw/model_release.excalidraw.md",
+    "WayveCode/projects.md",
     "projects/zak-classifiers-parking-maneuver.md",
     "projects/waypoint-clamping-deployment-wrapper.md",
     "projects/projects.json",
@@ -383,10 +400,8 @@
     "projects/parking-deployment-wrapper-route-end.md",
     "projects/new-inference-vis-tool.md",
     "projects/model-cli-tool.md",
-    "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "projects/active-project.txt",
     "projects",
-    "projects.md",
     "newsletters/newsletter_route-map-signal-thresholds.md",
     "newsletters/newsletter_route-end-parking-trigger.md",
     "newsletters/newsletter_parking-stopping-mode-dilc.md",
@@ -395,14 +410,11 @@
     "newsletters/newsletter_inference-visualization-tool.md",
     "newsletters/newsletter_index.md",
     "newsletters",
-    "agents-change-log.md",
     "agent_tasks/2026/02/Week-2/2026-02-11-vault-structure-reorg.md",
     "agent_tasks/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
     "agent_tasks/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup.md",
     "agent_tasks/2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym.md",
     "agent_tasks/2026/02/Week-2/2026-02-09-how-to-newsletter-migration.md",
-    "agent_tasks/2026/02/Week-2/2026-02-08-model-info-finder-skill.md",
-    "agent_tasks/2026/02/Week-2/2026-02-08-interleaving-load-modes-and-switch-debug.md",
     "agent_tasks/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "agent_tasks/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
     "agent_tasks/2026/02/Week-2",
