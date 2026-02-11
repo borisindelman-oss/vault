@@ -187,12 +187,24 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/model_release.excalidraw.md"
+                "file": "WayveCode/projects.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "excalidraw-icon",
-              "title": "model_release.excalidraw"
+              "icon": "lucide-file",
+              "title": "projects"
             }
           }
         ],
@@ -373,6 +385,9 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "Excalidraw/model_release.excalidraw.md",
+    "WayveCode/agent_tasks/2026/02/Week-2/2026-02-11-vault-structure-reorg.md",
+    "2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.md",
     "WayveCode/agent_tasks/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
     "WayveCode/agent_tasks/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup.md",
     "WayveCode/agent_tasks/2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym.md",
@@ -397,10 +412,7 @@
     "WayveCode/agent_tasks/2026/01/Week-1/2026-01-06-parking-reverse-constant-accel-waypoints.md",
     "WayveCode/agent_tasks/2026/01/Week-3/2026-01-13-new-inference-vis-tool-initial-mapping.md",
     "WayveCode/agent_tasks/2026/01/Week-3/2026-01-13-inference-model-design.md",
-    "WayveCode/agent_tasks/2026/01/Week-1/2026-01-06-parking-wfm-october-2025-mode.md",
-    "WayveCode/agent_tasks/2026/01/Week-1/2026-01-06-parking-wfm-december-2025-mode.md",
     "WayveCode/agent_tasks/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
-    "WayveCode/agent_tasks/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.md",
     "WayveCode/agent_tasks/2026/02/Week-2",
     "WayveCode/agent_tasks/2026/02/Week-1",
     "WayveCode/agent_tasks/2026/01/Week-4",
