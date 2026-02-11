@@ -1,6 +1,5 @@
 {
   "anuppuccin-theme-settings@@anuppuccin-accent-toggle": true,
-  "anuppuccin-theme-settings@@ctp-custom-peach@@light": "#DD7F67",
   "anuppuccin-theme-settings@@ctp-custom-teal@@dark": "#11B7C5",
   "anuppuccin-theme-settings@@ctp-custom-teal@@light": "#1A7DA4",
   "anuppuccin-theme-settings@@ctp-custom-subtext1@@light": "#EE653A",
@@ -67,7 +66,7 @@
   "anuppuccin-theme-settings@@anp-card-layout-filebrowser": true,
   "anuppuccin-theme-settings@@anp-border-radius": 16,
   "anuppuccin-theme-settings@@anp-border-padding": 20,
-  "anuppuccin-theme-settings@@anuppuccin-theme-accents": "ctp-accent-lavender",
+  "anuppuccin-theme-settings@@anuppuccin-theme-accents": "ctp-accent-peach",
   "anuppuccin-theme-settings@@anuppuccin-theme-dark": "ctp-mocha",
   "anuppuccin-theme-settings@@anuppuccin-theme-light": "ctp-latte",
   "anuppuccin-theme-settings@@anuppuccin-light-theme-accents": "ctp-accent-light-lavender"
