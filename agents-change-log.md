@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-11 — PUDO hazard indicator enablement
+- Topic: enable hazard as an indicator class in parking/PUDO model outputs
+- Labels: #parking #pudo #indicator #losses #outputs #tests
+- Branch: boris/train/pudo_11_02_26
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/si/configs/parking/`, `wayve/ai/zoo/outputs/`, `wayve/ai/zoo/losses/`, `wayve/ai/zoo/outputs/test/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-hazard-indicator-enable]]: set parking output adaptor indicator classes to 4 (hazard enabled), made indicator CE losses class-count aware in BC/KD paths, kept default non-parking behavior at 3 classes, and added output-head regression coverage.
 > #### 2026-02-11 — PUDO parking wrapper parity (single wrapper)
 - Topic: keep parking deployment in a single wrapper while adding driving-parity + end-of-route behavior
 - Labels: #parking #pudo #deployment #wrapper #tests
