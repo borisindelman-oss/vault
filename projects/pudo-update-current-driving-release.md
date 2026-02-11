@@ -1,7 +1,7 @@
 # PUDO update to current driving release
 
 ## Overview
-- **What it is:** A follow-up project connected to [Parking WFM Update](projects/parking-wfm-update) to align the PUDO (Pick Up / Drop Off) stack with the current driving release.
+- **What it is:** A follow-up project connected to [[projects/parking-wfm-update]] to align the PUDO (Pick Up / Drop Off) stack with the current driving release.
 - **Why it matters:** We need architecture and data-bucket parity with the current driving release while preserving PUDO/parking behavior needed for robotaxi pickup and dropoff.
 - **Primary users:** Training/inference engineers working on parking + PUDO deployment and model release readiness.
 
