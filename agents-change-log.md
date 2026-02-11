@@ -16,7 +16,7 @@
 - Change type: code
 - Areas: `wayve/ai/zoo/deployment/`, `wayve/ai/si/models/`, `wayve/ai/si/test/`, `wayve/ai/si/configs/parking/`
 - Changes:
-  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity]]: merged behavior-control/navigation/indicator support into `ParkingDeploymentWrapperImpl` (no new wrapper class), ported end-of-route parking trigger with `5.5e2` threshold (~5m), updated deployment selection logic and regression tests, hardened wrapper codegen default-arg handling, and renamed parking train mode alias for release visibility.
+  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity]]: merged behavior-control/navigation/indicator support into `ParkingDeploymentWrapperImpl` (no new wrapper class), ported end-of-route parking trigger with `5.5e2` threshold (~5m), updated deployment selection logic and regression tests, hardened wrapper codegen default-arg handling, renamed parking train mode alias for release visibility, and enforced parking deployment defaults to behavior-control + navigation (rejecting explicit parking-only config).
 > #### 2026-02-11 — Vault structure reorg
 - Topic: remove `codex/` and `WayveCode/` layers and normalize task/project layout
 - Labels: #vault #structure #docs #migration
