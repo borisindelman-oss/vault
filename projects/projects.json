@@ -1,6 +1,14 @@
 {
   "projects": [
     {
+      "name": "PUDO update to current driving release",
+      "slug": "pudo-update-current-driving-release",
+      "path": "/home/borisindelman/git/vault/projects/pudo-update-current-driving-release.md",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-02-11"
+    },
+    {
       "name": "Waypoint clamping in deployment wrapper",
       "slug": "waypoint-clamping-deployment-wrapper",
       "path": "/home/borisindelman/git/vault/projects/waypoint-clamping-deployment-wrapper.md",

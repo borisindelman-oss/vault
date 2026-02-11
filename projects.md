@@ -2,6 +2,7 @@
 
 | Project                                                                                                         | Status   | Phase   | Last updated | no  |
 | --------------------------------------------------------------------------------------------------------------- | -------- | ------- | ------------ | --- |
+| [PUDO update to current driving release](projects/pudo-update-current-driving-release) | active   | Phase 1 | 2026-02-11   | no  |
 | [Interleaving models in parking deployment wrapper](projects/interleaving-models-in-parking-deployment-wrapper) | active   | Phase 2 | 2026-02-08   | no  |
 | [Model CLI tool](projects/model-cli-tool)                                                                       | active   | Phase 1 | 2026-02-02   | no  |
 | [Waypoint clamping in deployment wrapper](projects/waypoint-clamping-deployment-wrapper)                        | active   | Phase 1 | 2026-02-01   | no  |
