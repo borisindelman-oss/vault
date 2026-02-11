@@ -5,7 +5,7 @@ Added a new newsletter-style how-to explaining route map span, map_scale_m, and 
 
 ## Files
 - `newsletters/newsletter_route-map-signal-thresholds.md`
-- `newsletters/newsletter_index.md`
+- `newsletter_index.md`
 
 ## Highlights
 - Clarified that map span is `2 * map_scale_m` meters.
