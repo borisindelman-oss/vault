@@ -18,5 +18,5 @@
   - `interleaved_event`
 
 ## Notes
-- Project page: `WayveCode/projects/interleaving-models-in-parking-deployment-wrapper`
-- How-to page: `WayveCode/newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper`
+- Project page: `projects/interleaving-models-in-parking-deployment-wrapper`
+- How-to page: `newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper`

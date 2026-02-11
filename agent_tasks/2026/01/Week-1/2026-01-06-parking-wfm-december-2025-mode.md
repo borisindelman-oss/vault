@@ -6,7 +6,7 @@
 - Preserve parking-specific overrides while switching training module defaults to StBcCfg in the new configs.
 
 ## Project
-- [[WayveCode/projects/parking-wfm-update]]
+- [[projects/parking-wfm-update]]
 
 ## Changes
 - Added WFMStDecember2025Cfg, wfm_space_time_december_2025_bc_cfg, and BCWFMStDecember2025Cfg.

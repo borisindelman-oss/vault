@@ -8,11 +8,11 @@
 
 ## Details
 - Source template: `/home/borisindelman/downloads/claude_project_creator.md` (GitHub tracker references removed).
-- Registry stays in `/home/borisindelman/git/vault/WayveCode/projects/`.
+- Registry stays in `/home/borisindelman/git/vault/projects/`.
 
 ## Files
 - `~/.codex/skills/project-manager/SKILL.md`
 - `~/.codex/skills/project-manager/assets/templates/project.md`
 - `~/.codex/prompts/project-*.md`
-- `/home/borisindelman/git/vault/WayveCode/projects.md`
-- `/home/borisindelman/git/vault/WayveCode/projects/dummy-project/project.md`
+- `/home/borisindelman/git/vault/projects.md`
+- `/home/borisindelman/git/vault/projects/dummy-project/project.md`
