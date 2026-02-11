@@ -189,8 +189,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newsletter_index.md",
-                "mode": "source",
+                "file": "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
+                "mode": "preview",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "newsletter_index"
+              "title": "newsletter_interleaving-models-in-parking-deployment-wrapper"
             }
           }
         ],
@@ -385,8 +385,9 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
+    "agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity.md",
     "newsletter_index.md",
+    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "projects/pudo-update-current-driving-release.md",
     "projects/interleaving-models-in-parking-deployment-wrapper.md",
     "Excalidraw/model_release.excalidraw.md",
@@ -414,7 +415,6 @@
     "newsletters/newsletter_route-end-parking-trigger.md",
     "newsletters/newsletter_parking-stopping-mode-dilc.md",
     "newsletters/newsletter_parking-maneuver-filters.md",
-    "newsletters/newsletter_inference-visualization-tool.md",
     "newsletters",
     "agent_tasks/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "agent_tasks/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
