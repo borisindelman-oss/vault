@@ -187,12 +187,24 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/model_release.excalidraw.md"
+                "file": "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "excalidraw-icon",
-              "title": "model_release.excalidraw"
+              "icon": "lucide-file",
+              "title": "interleaving-models-in-parking-deployment-wrapper"
             }
           }
         ],
@@ -371,17 +383,19 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "286cf908be4fc203",
+  "active": "421689602b4afc34",
   "lastOpenFiles": [
+    "Pasted Image 20260111140517_906.png",
+    "Pasted Image 20260122232147_461.png",
+    "Untitled.md",
     "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
+    "Excalidraw/model_release.excalidraw.md",
+    "Excalidraw/head_options.excalidraw.md",
     "2026-02-11.md",
     "codex/WayveCode/projects.md",
-    "Excalidraw/model_release.excalidraw.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
-    "Excalidraw/head_options.excalidraw.md",
     "codex/WayveCode/agents-change-log.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-10-model-info-finder-skill-script-extraction.md",
-    "Untitled.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-skill-cleanup.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-model-info-finder-modelci-shadowgym.md",
     "codex/WayveCode/2026/02/Week-2/2026-02-09-how-to-newsletter-migration.md",
@@ -401,11 +415,8 @@
     "codex/WayveCode/2026/02/Week-2",
     "codex/WayveCode/todo-list.md",
     "codex/WayveCode/2026/02/Week-1/2026-02-05-visualise-interleaving-wrapper.md",
-    "codex/WayveCode/how_to/how_to_route-map-signal-thresholds.md",
     "codex/WayveCode/2026/02/Week-1",
     "codex/WayveCode/2026/02",
-    "Pasted Image 20260111140517_906.png",
-    "Pasted Image 20260122232147_461.png",
     "codex/WayveCode/how_to",
     "codex/WayveCode/2026/01/Week-3/2026-01-17-wfm-bc-rl-excalidraw.excalidraw",
     "codex/WayveCode/2026/01/Week-1/2026-01-05-parking-bc-vs-release-bc-latent-actions.excalidraw",
