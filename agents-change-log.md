@@ -17,6 +17,15 @@
 - Areas: `wayve/ai/zoo/deployment/`, `wayve/ai/si/models/`, `wayve/ai/si/test/`, `wayve/ai/si/configs/parking/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity]]: merged behavior-control/navigation/indicator support into `ParkingDeploymentWrapperImpl` (no new wrapper class), ported end-of-route parking trigger with `5.5e2` threshold (~5m), updated deployment selection logic and regression tests, hardened wrapper codegen default-arg handling, renamed parking train mode alias for release visibility, and enforced parking deployment defaults to behavior-control + navigation (rejecting explicit parking-only config).
+> #### 2026-02-11 — PUDO bucket root and binary update
+- Topic: align parking/PUDO data roots and binary with current migration plan
+- Labels: #parking #pudo #datamodule #config
+- Branch: boris/train/pudo_11_02_26
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/si/configs/parking/`, `projects/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-bucket-root-and-binary-update]]: set release buckets to `DS_26_01_06_SERVER_GEN2_IPACE`, set parking/PUDO buckets to `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc`, added `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, `pre_ca_all_gen1`, and bumped `binary_version` to `3.0.1`.
 > #### 2026-02-11 — Vault structure reorg
 - Topic: remove `codex/` and `WayveCode/` layers and normalize task/project layout
 - Labels: #vault #structure #docs #migration

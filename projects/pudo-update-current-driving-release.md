@@ -10,9 +10,9 @@
 - **Status:** active
 - **Last updated:** 2026-02-11
 - **Current priorities:**
-  - Finalize `parking_config.py` bucket migration from parking -> PUDO (93% driving / 7% PUDO).
+  - Run/collect remaining `wayve/ai/si` validation checks after recent `parking_config.py` root/binary updates.
   - Keep `otf.py` parking-flag behavior unchanged unless a regression appears.
-  - Run/collect remaining `wayve/ai/si` validation checks after ACR auth issue is resolved.
+  - Re-check branch drift impact before final training kickoff.
 - **Blockers:**
   - High branch drift from `main` (`792` commits in `main` not in branch, `98` commits in branch not in `main`).
 
@@ -84,9 +84,10 @@ flowchart TD
 
 - **Phase: Phase 2 - Implementation + validation**
   - **Goal:** Apply changes and verify training/deployment behavior.
-  - **Work items:**
-    - [x] Implement approved wrapper updates (single `ParkingDeploymentWrapperImpl` with behavior+nav parity + end-of-route logic).
-    - [ ] Implement remaining config updates and run targeted checks/tests.
+- **Work items:**
+  - [x] Implement approved wrapper updates (single `ParkingDeploymentWrapperImpl` with behavior+nav parity + end-of-route logic).
+  - [x] Implement `parking_config.py` root/bucket/binary updates for release+PUDO split.
+  - [ ] Run remaining targeted checks/tests (blocked previously by ACR auth for one `py_test` target).
   - **Validation:**
     - [ ] All agreed checks pass.
 
@@ -135,3 +136,8 @@ flowchart TD
 - Latest prior training reference branch: `boris/train/parking_pudo`.
 - 2026-02-11 update: parking deployment now keeps a single wrapper path (no extra parking wrapper class), includes behavior-control/navigation/indicator preprocessing when enabled, and has end-of-route parking trigger at `5.5e2` route-signal threshold (~5m).
 - 2026-02-11 follow-up: `prepare_deployment_model(...)` now forces parking to behavior+navigation defaults and raises if callers explicitly disable either feature while `enable_parking=True`.
+- 2026-02-11 config follow-up:
+  - `parking_config.py` now routes release-style buckets to `DS_26_01_06_SERVER_GEN2_IPACE`.
+  - Parking/PUDO buckets now use `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc`.
+  - Added release buckets `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, and `pre_ca_all_gen1`.
+  - `binary_version` updated to `3.0.1`.
