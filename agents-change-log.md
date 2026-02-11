@@ -9,14 +9,14 @@
 > [!note] 2026-02
 
 > #### 2026-02-11 — Vault structure reorg
-- Topic: remove `codex/` layer and normalize task/project layout
+- Topic: remove `codex/` and `WayveCode/` layers and normalize task/project layout
 - Labels: #vault #structure #docs #migration
 - Branch: none
 - PR: none
 - Change type: docs
-- Areas: `~/.codex/AGENTS.md`, `~/.codex/skills/project-manager/SKILL.md`, `agent_tasks/`, `projects/`, `WayveCode/projects.md`
+- Areas: `~/.codex/AGENTS.md`, `~/.codex/skills/project-manager/SKILL.md`, `agent_tasks/`, `projects/`, `projects.md`
 - Changes:
-  - [[agent_tasks/2026/02/Week-2/2026-02-11-vault-structure-reorg]]: moved WayveCode out of `vault/codex/`, relocated date-based notes under `agent_tasks/YYYY/MM/Week-N/`, updated instruction/skill path contracts, and rewrote vault links/paths to the new layout.
+  - [[agent_tasks/2026/02/Week-2/2026-02-11-vault-structure-reorg]]: flattened `vault/codex/WayveCode` into `vault/`, relocated date-based notes under `agent_tasks/YYYY/MM/Week-N/`, updated instruction/skill path contracts, and rewrote vault links/paths to the top-level layout.
 > #### 2026-02-10 — Model info finder script extraction in repo skill
 - Topic: split inline skill commands into reusable shell scripts
 - Labels: #skill #model-catalogue #refactor #docs

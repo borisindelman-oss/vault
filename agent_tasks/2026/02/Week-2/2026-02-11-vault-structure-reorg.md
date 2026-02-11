@@ -1,23 +1,27 @@
 # 2026-02-11 — Vault structure reorg
 
 ## Summary
-- Removed the `codex/` layer from the WayveCode notes root.
+- Removed the `codex/` and `WayveCode/` hierarchy layers from the notes layout.
 - Moved dated task notes under `agent_tasks/YYYY/MM/Week-N/`.
-- Kept `projects.md` at WayveCode top level with per-project files in `projects/`.
+- Kept `projects.md` at vault top level with per-project files in `projects/`.
 - Updated global agent instructions and the `project-manager` skill to the new paths/layout.
 
 ## What changed
-- Moved:
+- Flattened hierarchy in two steps:
   - `/home/borisindelman/git/vault/codex/WayveCode` -> `/home/borisindelman/git/vault/WayveCode`
+  - `/home/borisindelman/git/vault/WayveCode/*` -> `/home/borisindelman/git/vault/*`
 - Moved date trees:
-  - `/home/borisindelman/git/vault/2025` -> `/home/borisindelman/git/vault/agent_tasks/2025`
-  - `/home/borisindelman/git/vault/2026` -> `/home/borisindelman/git/vault/agent_tasks/2026`
+  - `/home/borisindelman/git/vault/WayveCode/2025` -> `/home/borisindelman/git/vault/agent_tasks/2025`
+  - `/home/borisindelman/git/vault/WayveCode/2026` -> `/home/borisindelman/git/vault/agent_tasks/2026`
 - Removed empty legacy folder:
   - `/home/borisindelman/git/vault/codex`
+- Removed empty intermediate folder:
+  - `/home/borisindelman/git/vault/WayveCode`
 - Updated references:
-  - `codex/WayveCode/...` -> `WayveCode/...`
+  - `codex/WayveCode/...` -> `...` (vault top-level paths)
+  - `WayveCode/...` -> `...` (vault top-level paths)
   - `[[2025/...]]` / `[[2026/...]]` -> `[[agent_tasks/2025/...]]` / `[[agent_tasks/2026/...]]`
-  - `/home/borisindelman/git/vault/codex/WayveCode/...` -> `/home/borisindelman/git/vault/...`
+  - `/home/borisindelman/git/vault/codex/WayveCode/...` and `/home/borisindelman/git/vault/WayveCode/...` -> `/home/borisindelman/git/vault/...`
 
 ## Instruction updates
 - `~/.codex/AGENTS.md`
@@ -28,5 +32,5 @@
   - Continue workflow now reads `<slug>.md` (single-file project format).
 
 ## Validation
-- Verified no remaining `codex/WayveCode` or old absolute vault root references in WayveCode docs.
+- Verified no remaining operational `codex/WayveCode` or `/git/vault/WayveCode` references in the active vault structure docs.
 - Verified `projects/projects.json` now points to `/home/borisindelman/git/vault/projects/*.md`.
