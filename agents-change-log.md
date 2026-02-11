@@ -25,7 +25,7 @@
 - Change type: code
 - Areas: `wayve/ai/si/configs/parking/`, `projects/`
 - Changes:
-  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-bucket-root-and-binary-update]]: set release buckets to `DS_26_01_06_SERVER_GEN2_IPACE`, set parking/PUDO buckets to `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc`, added `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, `pre_ca_all_gen1`, and bumped `binary_version` to `3.0.1`.
+  - [[agent_tasks/2026/02/Week-2/2026-02-11-pudo-bucket-root-and-binary-update]]: set release buckets to `DS_26_01_06_SERVER_GEN2_IPACE`, set parking/PUDO buckets to `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc`, added `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, `pre_ca_all_gen1`, bumped `binary_version` to `3.0.1`, and re-normalized driving scale to keep 93% driving target.
 > #### 2026-02-11 — Vault structure reorg
 - Topic: remove `codex/` and `WayveCode/` layers and normalize task/project layout
 - Labels: #vault #structure #docs #migration

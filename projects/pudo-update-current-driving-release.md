@@ -141,3 +141,4 @@ flowchart TD
   - Parking/PUDO buckets now use `materialised/si/parking/dev/2026_02_03_10_30_34_server_parking_pudo_buckets_bc`.
   - Added release buckets `dc_high_lateral_acceleration_uk`, `dc_high_lateral_acceleration_usa`, and `pre_ca_all_gen1`.
   - `binary_version` updated to `3.0.1`.
+  - Driving sampling scale re-normalized to preserve 93% driving target after adding release buckets (`driving_weight = 0.93 / 0.695`).
