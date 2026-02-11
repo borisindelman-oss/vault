@@ -187,24 +187,12 @@
             "id": "286cf908be4fc203",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "file": "Excalidraw/model_release.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "interleaving-models-in-parking-deployment-wrapper"
+              "icon": "excalidraw-icon",
+              "title": "model_release.excalidraw"
             }
           }
         ],
@@ -383,12 +371,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "421689602b4afc34",
+  "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "Pasted Image 20260111140517_906.png",
     "Pasted Image 20260122232147_461.png",
     "Untitled.md",
-    "codex/WayveCode/projects/interleaving-models-in-parking-deployment-wrapper.md",
     "Excalidraw/model_release.excalidraw.md",
     "Excalidraw/head_options.excalidraw.md",
     "2026-02-11.md",
