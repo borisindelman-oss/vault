@@ -162,3 +162,15 @@ flowchart TD
   - Next failure was strict input-adaptor loading from October pretraining checkpoint after enabling parking adaptors (`gear_direction`, `parking_mode`).
   - Updated `load_multi_input_sttransformer_from_wfm_october_pretraining(...)` to seed missing `gear_direction`/`parking_mode` adaptor params from initialized model defaults before strict load.
   - Validation: `bazel test //wayve/ai/si:test_config` passed.
+- 2026-02-12 behavior-customization control-key follow-up:
+  - Next failure (`koala-perplexing-blush-125494`) was `ValueError('Unsupported driving control key: 0')` in `BehaviorCustomizer.forward(...)`.
+  - Updated behavior customization to consume only `DILC_MODE` and ignore other control keys passed for parking/PUDO wrappers/processors.
+  - Added regression coverage for non-DILC and mixed parking+DILC key lists.
+  - Validation:
+    - `bazel test //wayve/ai/zoo/deployment:test_deployment_py_test --test_arg='-k=test_behavior_customizer_ignores_non_dilc_control_keys or test_behavior_customizer_mixed_controls_applies_dilc_only'`
+    - `bazel test //wayve/ai/si:test_deployment_wrapper`
+- Experiment run ledger (latest batch):
+  - `black-flamingo-fiery-125307`: failed on output-adaptor init mismatch; fixed in prior patch.
+  - `jellyfish-moccasin-singing-125420`: failed after checkpoint/data updates; progressed failure path to behavior-control processing.
+  - `koala-perplexing-blush-125494`: failed on non-DILC control key rejection (`0`); fixed by behavior-customization patch.
+- Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix]]
