@@ -158,3 +158,7 @@ flowchart TD
   - Failed run `black-flamingo-fiery-125307` was caused by `OutputAdaptor` init (`enable_behavior_control=True` with missing `latent_action_encoder`).
   - Fixed in `parking_config.py` by setting `latent_action_encoder=ActionsDiscretizerCfg()` with explicit `enable_latent_action=False`.
   - Validation: `bazel test //wayve/ai/si:test_config` passed.
+- 2026-02-12 checkpoint-load follow-up:
+  - Next failure was strict input-adaptor loading from October pretraining checkpoint after enabling parking adaptors (`gear_direction`, `parking_mode`).
+  - Updated `load_multi_input_sttransformer_from_wfm_october_pretraining(...)` to seed missing `gear_direction`/`parking_mode` adaptor params from initialized model defaults before strict load.
+  - Validation: `bazel test //wayve/ai/si:test_config` passed.

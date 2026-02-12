@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO checkpoint load fix for parking adaptors
+- Topic: fix strict checkpoint loading mismatch after enabling parking adaptors
+- Labels: #parking #pudo #checkpoint #input-adaptor #training
+- Branch: boris/train/pudo_11_02_26
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/zoo/st/checkpoints.py`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-input-adaptor-checkpoint-load-fix]]: updated October pretraining loader to seed missing `gear_direction`/`parking_mode` input-adaptor weights from model defaults before strict load, resolving `InputAdaptor` missing-key failures while preserving strict checks for existing checkpointed components.
 > #### 2026-02-12 — PUDO train fix: OutputAdaptor behavior-control init
 - Topic: fix `parking_bc_train_release_2026_5_4` startup failure in OutputAdaptor construction
 - Labels: #parking #pudo #training #config #output-adaptor
