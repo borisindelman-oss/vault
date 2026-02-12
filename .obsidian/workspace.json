@@ -189,7 +189,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/pudo-update-current-driving-release.md",
+                "file": "projects.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "pudo-update-current-driving-release"
+              "title": "projects"
             }
           }
         ],
@@ -265,7 +265,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261.01258087158203
+    "width": 366.01258087158203
   },
   "right": {
     "id": "2fc1190a7c137808",
@@ -385,13 +385,14 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
-    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix.md",
+    "newsletters/newsletter_route-end-parking-trigger.md",
+    "projects/pudo-update-current-driving-release.md",
     "projects.md",
+    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix.md",
     "Excalidraw/model_release.excalidraw.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-dilc-control-key-wrapper-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-input-adaptor-checkpoint-load-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-train-output-adaptor-fix.md",
-    "projects/pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-11-pudo-hazard-indicator-enable.md",
     "agent_tasks/2026/02/Week-2/2026-02-11-pudo-bucket-root-and-binary-update.md",
     "newsletter_index.md",
@@ -412,7 +413,6 @@
     "projects/zak-classifiers-parking-maneuver.md",
     "projects/waypoint-clamping-deployment-wrapper.md",
     "projects/projects.json",
-    "projects/parking-stopping-mode-dilc.md",
     "projects/active-project.txt",
     "projects",
     "newsletters",
