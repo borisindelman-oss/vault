@@ -19,25 +19,23 @@ Branch: `boris/train/pudo_11_02_26`
   - `wayve/ai/zoo/st/input_adaptors/gear_direction.py`
   - `wayve/ai/zoo/st/input_adaptors/parking_mode.py`
 
-## Model components diagram (release-aligned, with parking/PUDO additions)
+## Model components diagram (`torch.nn.Module` only)
 ```mermaid
 flowchart LR
-    A[Release Data Buckets<br/>BC driving set] --> B[Parking BC Datamodule]
-    A2[PUDO Buckets<br/>7% sampling] --> B
+    A[InputAdaptor nn.Module] --> B[MIMOSTTransformer / ST backbone nn.Module]
+    B --> C[OutputAdaptor nn.Module]
 
-    B --> C[Input Adaptors]
-    C --> D[ST Backbone]
-    D --> E[Output Adaptors]
-    E --> F[Heads]
+    A1[Behavior inputs adaptor<br/>nn.Module] --> A
+    A2[Navigation inputs adaptor<br/>nn.Module] --> A
+    A3[GearDirection adaptor<br/>nn.Module] --> A
+    A4[ParkingMode adaptor<br/>nn.Module] --> A
 
-    C1[Release Inputs<br/>behavior + navigation] --> C
-    C2[Parking/PUDO Add<br/>gear_direction + parking_mode] --> C
-
-    F1[Release Heads<br/>waypoints + indicators] --> F
-    F2[Parking/PUDO Add<br/>gear_direction head] --> F
+    C1[Waypoint head<br/>nn.Module] --> C
+    C2[Indicator head<br/>nn.Module] --> C
+    C3[GearDirection head<br/>nn.Module] --> C
 
     classDef add fill:#ffe6cc,stroke:#d97904,color:#222,stroke-width:2px;
-    class A2,C2,F2 add;
+    class A3,A4,C3 add;
 ```
 
 ## Takeaway
