@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — Naive stopping_mode project planning kickoff
+- Topic: initialize scoped project for naive parking stopping_mode heuristic
+- Labels: #parking #stopping-mode #planning #otf #input-adaptor
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: docs/planning
+- Areas: `projects/`, `projects.md`, `projects/projects.json`, `projects/active-project.txt`, `agent_tasks/2026/02/Week-2/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-project-plan]]: created project page `parking-stopping-mode-naive-heuristic`, set it active, summarized required scoped behavior, and mapped minimal files to reuse from `boris/stopping_mode`.
 > #### 2026-02-12 — PUDO release-alignment newsletter
 - Topic: publish project newsletter for PUDO update to current driving release
 - Labels: #parking #pudo #release #newsletter #docs
