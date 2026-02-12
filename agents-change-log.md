@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO train fix: OutputAdaptor behavior-control init
+- Topic: fix `parking_bc_train_release_2026_5_4` startup failure in OutputAdaptor construction
+- Labels: #parking #pudo #training #config #output-adaptor
+- Branch: boris/train/pudo_11_02_26
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/si/configs/parking/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-train-output-adaptor-fix]]: investigated Datadog logs for `black-flamingo-fiery-125307`, fixed missing `latent_action_encoder` in `ParkingOutputAdaptorCfg` while keeping `enable_latent_action=False`, and validated with `bazel test //wayve/ai/si:test_config`.
 > #### 2026-02-11 — PUDO hazard indicator enablement
 - Topic: enable hazard as an indicator class in parking/PUDO model outputs
 - Labels: #parking #pudo #indicator #losses #outputs #tests
