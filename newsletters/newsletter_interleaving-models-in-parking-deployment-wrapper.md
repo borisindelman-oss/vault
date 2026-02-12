@@ -20,10 +20,6 @@ The interleaving decision is based on route completion signals, parking controls
   - `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
 - Deploy entrypoint:
   - `wayve/ai/si/deploy_interleaved_models.py`
-- Wrapper codegen path:
-  - `wayve/ai/zoo/deployment/deployment_wrapper_codegen.py`
-- Route-map options (window/scale/width):
-  - `wayve/ai/zoo/route_map.py`
 
 ## 3) How to Run Deployment Command
 ```bash
