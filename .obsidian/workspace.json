@@ -213,7 +213,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
+                "file": "PUDO Update.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -228,7 +228,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "newsletter_pudo-update-january-driving-release-2026-5-4"
+              "title": "PUDO Update"
             }
           }
         ],
@@ -408,9 +408,10 @@
   },
   "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
+    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-parking-wrapper-torchscript-continue-fix.md",
+    "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
     "agent_tasks/2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1.md",
     "agent_tasks/2026/01/Week-3/2026-01-17-wfm-bc-rl-mermaid-diagrams.md",
-    "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-torchscript-continue-fix.md",
     "PUDO Update.md",
     "projects/parking-stopping-mode-naive-heuristic.md",
@@ -433,7 +434,6 @@
     "agents-change-log.md",
     "newsletters/newsletter_inference-visualization-tool.md",
     "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
-    "agent_tasks/2026/02/Week-2/2026-02-11-pudo-parking-wrapper-parity.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "projects/projects.json",
     "projects/active-project.txt",
