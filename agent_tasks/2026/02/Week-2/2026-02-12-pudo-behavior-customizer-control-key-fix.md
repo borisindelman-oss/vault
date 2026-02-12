@@ -42,5 +42,5 @@
   - Outcome: fail with `Unsupported driving control key: 0`; fixed by this patch.
 
 ## Related
-- Project: [[projects/pudo-update-current-driving-release]]
+- Project: [[projects/pudo-update-january-driving-release-2026-5-4]]
 - Branch: `boris/train/pudo_11_02_26`

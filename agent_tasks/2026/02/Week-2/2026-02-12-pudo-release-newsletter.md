@@ -6,7 +6,7 @@
 - Added architecture flow (Mermaid), concrete code references, and key commit list.
 
 ## Files
-- `newsletters/newsletter_pudo-update-current-driving-release.md`
+- `newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md`
 - `newsletter_index.md`
 
 ## Notes

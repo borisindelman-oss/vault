@@ -24,5 +24,5 @@
   - Passed (`4/4`): mypy, flake8, pylint, config pytest.
 
 ## Related
-- Project: [[projects/pudo-update-current-driving-release]]
+- Project: [[projects/pudo-update-january-driving-release-2026-5-4]]
 - Branch: `boris/train/pudo_11_02_26`

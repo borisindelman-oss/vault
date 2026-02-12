@@ -21,4 +21,4 @@
 - `python3 -m py_compile wayve/ai/si/configs/parking/parking_config.py` passed.
 
 ## Links
-- Project: [[projects/pudo-update-current-driving-release]]
+- Project: [[projects/pudo-update-january-driving-release-2026-5-4]]

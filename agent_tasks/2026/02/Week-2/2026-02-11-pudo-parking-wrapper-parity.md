@@ -46,7 +46,7 @@
   - Fails at analysis due external ACR auth fetch: `azure-storage_azurite` `401 Unauthorized`.
 
 ## Project Update
-- Related project: [[projects/pudo-update-current-driving-release]]
+- Related project: [[projects/pudo-update-january-driving-release-2026-5-4]]
 - Phase 2 progress:
   - Wrapper parity path: done.
   - End-of-route parking path: done.

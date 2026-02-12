@@ -27,6 +27,6 @@
 - Log-based root-cause validation is complete and deterministic.
 
 ## Related
-- Project: [[projects/pudo-update-current-driving-release]]
+- Project: [[projects/pudo-update-january-driving-release-2026-5-4]]
 - Branch: `boris/train/pudo_11_02_26`
 - Job: `125420` (`jellyfish-moccasin-singing-125420`)
