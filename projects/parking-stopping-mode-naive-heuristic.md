@@ -6,14 +6,14 @@
 - **Primary users:** Parking model training owners and data pipeline maintainers.
 
 ## Status
-- **Phase:** Phase 1
+- **Phase:** Phase 2
 - **Status:** active
 - **Last updated:** 2026-02-12
 - **Branch:** 02-12-park-pudo-stopping-mode-heuristic
 - **Current priorities:**
-  - Add `stopping_mode` input adaptor + config/model flag, disabled by default.
   - Extend OTF parking lookahead loading with indicator-light data (same path as gear lookahead).
   - Implement naive stopping_mode assignment in `parking.py` under flag control.
+  - Add/extend tests for heuristic branches in parking/OTF path.
 - **Blockers:**
   - Confirm expected hazard encoding in the loaded indicator field (`"hazard"` string vs numeric enum) in current data.
 
@@ -74,6 +74,7 @@
     - Add/extend parking config flags so feature remains disabled by default.
   - **Validation:**
     - Unit/import checks and config sanity test(s).
+  - **Status:** Completed (2026-02-12).
 
 - **Phase 3: OTF + parking heuristic wiring**
   - **Goal:** Compute stopping_mode from naive rules when enabled.
@@ -99,6 +100,9 @@
 - **2026-02-12:**
   - **Decision:** Keep all new behavior behind explicit flags that default to off.
   - **Rationale:** Prevents accidental training/inference behavior changes during integration.
+- **2026-02-12:**
+  - **Decision:** Add explicit BC/RL config migrations for stopping-mode adaptor fields and bump config versions.
+  - **Rationale:** Keeps legacy config loading stable while introducing new model arguments.
 
 ## Notes
 - Reference project: [[projects/parking-stopping-mode-dilc]]
