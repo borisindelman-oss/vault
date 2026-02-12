@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO train fix: BehaviorCustomizer TorchScript continue
+- Topic: fix TorchScript compile failure caused by `continue` in behavior-customizer control loop
+- Labels: #parking #pudo #training #deployment #behavior-control #torchscript
+- Branch: boris/train/pudo_11_02_26
+- PR: draft #96219
+- Change type: code
+- Areas: `wayve/ai/zoo/deployment/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-torchscript-continue-fix]]: diagnosed run `125547` failure (TorchScript loop-unroll restriction on `continue`), removed `continue` from `BehaviorCustomizer.forward` control-loop while preserving DILC-only behavior customization, and validated on `//wayve/ai/zoo/deployment:test_deployment_py_test`.
 > #### 2026-02-12 — PUDO train fix: Indicator output head TorchScript int capture
 - Topic: fix TorchScript compile failure in parking/PUDO indicator output head
 - Labels: #parking #pudo #training #torchscript #outputs
