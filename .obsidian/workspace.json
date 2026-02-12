@@ -189,8 +189,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newsletters/newsletter_pudo-update-current-driving-release.md",
-                "mode": "source",
+                "file": "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
+                "mode": "preview",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "newsletter_pudo-update-current-driving-release"
+              "title": "newsletter_pudo-update-january-driving-release-2026-5-4"
             }
           }
         ],
@@ -367,8 +367,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -385,14 +384,16 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "projects/pudo-update-january-driving-release-2026-5-4.md",
+    "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
+    "projects.md",
+    "projects/pudo-update-current-driving-release.md",
+    "newsletters/newsletter_pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-project-plan.md",
     "projects/parking-stopping-mode-naive-heuristic.md",
-    "projects.md",
-    "newsletters/newsletter_pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-release-newsletter.md",
     "newsletters/newsletter_route-end-parking-trigger.md",
-    "projects/pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix.md",
     "Excalidraw/model_release.excalidraw.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-dilc-control-key-wrapper-fix.md",
@@ -410,8 +411,6 @@
     "todo-list.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
-    "newsletters/newsletter_index.md",
-    "Excalidraw/head_options.excalidraw.md",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
