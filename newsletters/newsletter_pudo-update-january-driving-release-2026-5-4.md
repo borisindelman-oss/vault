@@ -25,6 +25,7 @@ Branch: `boris/train/pudo_11_02_26`
 ```mermaid
 flowchart LR
     subgraph IA[InputAdaptor nn.Module]
+        direction TB
         A1[RouteSTAdaptor]
         A2[StepAndLaneInfoSTAdaptor]
         A3[SpeedSTAdaptor]
