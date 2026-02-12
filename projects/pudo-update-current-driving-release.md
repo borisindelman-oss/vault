@@ -154,3 +154,7 @@ flowchart TD
   - Parking/PUDO output adaptor now uses `num_indicator_classes=4` so hazard is representable at the model head.
   - Indicator CE losses are now class-count aware (`max_class_label = logits.shape[-1] - 1`) instead of hard-clamping to `0..2`.
   - Scope is intentionally targeted to parking/PUDO config (`parking_config.py`) while keeping default output adaptor behavior unchanged for non-parking models.
+- 2026-02-12 train failure follow-up:
+  - Failed run `black-flamingo-fiery-125307` was caused by `OutputAdaptor` init (`enable_behavior_control=True` with missing `latent_action_encoder`).
+  - Fixed in `parking_config.py` by setting `latent_action_encoder=ActionsDiscretizerCfg()` with explicit `enable_latent_action=False`.
+  - Validation: `bazel test //wayve/ai/si:test_config` passed.
