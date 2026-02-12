@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO release-alignment newsletter
+- Topic: publish project newsletter for PUDO update to current driving release
+- Labels: #parking #pudo #release #newsletter #docs
+- Branch: boris/train/pudo_11_02_26
+- PR: none
+- Change type: docs
+- Areas: `newsletters/`, `newsletter_index.md`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-release-newsletter]]: added `newsletter_pudo-update-current-driving-release.md` with release-vs-PUDO architecture flow, key code references, and commit highlights; updated newsletter index entry.
 > #### 2026-02-12 — PUDO parking wrapper DILC control-key crash fix
 - Topic: fix parking wrapper export crash on `DrivingControlKey.DILC_MODE`
 - Labels: #parking #pudo #deployment #wrapper #dilc #training
