@@ -24,23 +24,19 @@ Branch: `boris/train/pudo_11_02_26`
 ## Model components diagram (`torch.nn.Module` only)
 ```mermaid
 flowchart LR
-    subgraph IA[InputAdaptor nn.Module]
-        direction TB
-        A1[RouteSTAdaptor]
-        A2[StepAndLaneInfoSTAdaptor]
-        A3[SpeedSTAdaptor]
-        A4[SpeedLimitSTAdaptor]
-        A5[IndicatorSTAdaptor]
-        A6[CountrySTAdaptor]
-        A7[DrivingSideSTAdaptor]
-        A8[PoseSTAdaptor]
-        A9[WaypointsSTAdaptor]
-        A10[VideoSTAdaptor]
-        A11[GearDirectionSTAdaptor]
-        A12[ParkingModeSTAdaptor]
-    end
+    A1[RouteSTAdaptor] --> ST[STTransformer encoder nn.Module]
+    A2[StepAndLaneInfoSTAdaptor] --> ST
+    A3[SpeedSTAdaptor] --> ST
+    A4[SpeedLimitSTAdaptor] --> ST
+    A5[IndicatorSTAdaptor] --> ST
+    A6[CountrySTAdaptor] --> ST
+    A7[DrivingSideSTAdaptor] --> ST
+    A8[PoseSTAdaptor] --> ST
+    A9[WaypointsSTAdaptor] --> ST
+    A10[VideoSTAdaptor] --> ST
+    A11[GearDirectionSTAdaptor] --> ST
+    A12[ParkingModeSTAdaptor] --> ST
 
-    IA --> ST[STTransformer encoder nn.Module]
     ST --> OA[Parking OutputAdaptor nn.Module]
     R[RadarInputAdaptor nn.Module<br/>late fusion] --> OA
 
