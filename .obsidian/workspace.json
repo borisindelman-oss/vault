@@ -189,7 +189,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects.md",
+                "file": "newsletters/newsletter_pudo-update-current-driving-release.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "projects"
+              "title": "newsletter_pudo-update-current-driving-release"
             }
           }
         ],
@@ -385,11 +385,12 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "projects/parking-stopping-mode-naive-heuristic.md",
+    "projects.md",
     "newsletters/newsletter_pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-release-newsletter.md",
     "newsletters/newsletter_route-end-parking-trigger.md",
     "projects/pudo-update-current-driving-release.md",
-    "projects.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix.md",
     "Excalidraw/model_release.excalidraw.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-dilc-control-key-wrapper-fix.md",
@@ -411,7 +412,6 @@
     "Excalidraw/head_options.excalidraw.md",
     "Excalidraw/Drawing 2026-01-22 23.21.09.excalidraw.md",
     "README.md",
-    "WayveCode/projects.md",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
