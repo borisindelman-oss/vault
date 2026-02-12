@@ -53,6 +53,15 @@
 - Areas: `projects/`, `projects.md`, `projects/projects.json`, `projects/active-project.txt`, `agent_tasks/2026/02/Week-2/`
 - Changes:
   - [[agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-project-plan]]: created project page `parking-stopping-mode-naive-heuristic`, set it active, summarized required scoped behavior, and mapped minimal files to reuse from `boris/stopping_mode`.
+> #### 2026-02-12 — Naive stopping_mode Phase 2 adaptor plumbing
+- Topic: add `stopping_mode` model input plumbing behind default-off flags
+- Labels: #parking #stopping-mode #input-adaptor #config-migrations #tests
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/zoo/st/`, `wayve/ai/zoo/data/`, `wayve/ai/si/configs/versioning/`, `wayve/ai/si/test/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-phase2-adaptor-plumbing]]: added `STOPPING_MODE` key + adaptor wiring and ST model flags, bumped BC/RL config versions with migration functions, regenerated migration sample configs (`bc/v14`, `rl/v17`), updated baseline reference config snapshots, and validated with `bazel test //wayve/ai/si:test_config_py_test`.
 > #### 2026-02-12 — PUDO release-alignment newsletter
 - Topic: publish project newsletter for PUDO update to January driving release 2026.5.4
 - Labels: #parking #pudo #release #newsletter #docs
