@@ -1,68 +1,44 @@
 # Newsletter: PUDO update to current driving release
 
-## Why this work was needed
-Parking/PUDO had to stay aligned with the active driving release while still preserving robotaxi-specific behavior (pickup/dropoff cues, parking transitions, deployment controls).  
-This update focused on keeping architecture parity with release, aligning data semantics, and removing deployment-time mismatches that were causing training/runtime failures.
+Branch: `boris/train/pudo_11_02_26`
 
-## Branch and scope
-- Branch: `boris/train/pudo_11_02_26`
-- Project note: `projects/pudo-update-current-driving-release.md`
-- Main objective: keep parking/PUDO model behavior close to release BC behavior, then layer parking/PUDO-specific inputs and heuristics where needed.
+## Summary
+- Data: use release driving data and add PUDO data, with `93% driving / 7% PUDO`.
+- Architecture: align parking/PUDO with release behavior+navigation path.
+- Model deltas: add parking/PUDO-specific input adaptors (`gear_direction`, `parking_mode`) and keep gear-direction output head in the parking/PUDO adaptor stack.
 
-## Release baseline we aligned to
-Release BC in `wayve/ai/si/configs/baseline/release.py` is centered on:
-- `WFMStOctober2025Cfg` model stack and preprocess (`wayve/ai/si/configs/baseline/release.py:212`)
-- release dataset partitions rooted at `DS_26_01_06_SERVER_GEN2_IPACE` (`wayve/ai/si/configs/baseline/release.py:53`)
-- behavior-control-capable output adaptor flow inherited from config core (`wayve/ai/si/config.py:1911`, `wayve/ai/si/config.py:1931`)
+## Config-level changes
+- Release baseline config:
+  - `wayve/ai/si/configs/baseline/release.py`
+- Parking/PUDO training config:
+  - `wayve/ai/si/configs/parking/parking_config.py`
+- Output adaptor / heads:
+  - `wayve/ai/zoo/outputs/output_adaptor.py`
+  - `wayve/ai/zoo/outputs/gear_direction_output_head.py`
+- ST + input adaptor paths:
+  - `wayve/ai/zoo/st/input_adaptors/gear_direction.py`
+  - `wayve/ai/zoo/st/input_adaptors/parking_mode.py`
 
-In short: release BC remains the reference architecture and data profile.
-
-## What changed in this PUDO stream
-
-### 1) Parking mode heuristic was made explicit and test-backed
-- Added parking-mode computation around neutral-gear entry windows in `wayve/ai/zoo/data/parking.py:15`.
-- Added insertion path and guardrails requiring additional lookahead gear/speed data in `wayve/ai/zoo/data/parking.py:106`.
-- Integrated helper paths in driving datapipe support (`wayve/ai/zoo/data/driving.py:243`, `wayve/ai/zoo/data/driving.py:257`).
-
-### 2) Gear-direction data handling was hardened
-- Standardized unavailable/unknown gear direction encoding to int8 sentinel:
-  `GEAR_DIRECTION_UNKNOWN_INT8 = 2` in `wayve/ai/zoo/data/driving.py:103`.
-- Updated adaptor import/use of unavailable direction in
-  `wayve/ai/zoo/st/input_adaptors/gear_direction.py:6` and mapping logic at `wayve/ai/zoo/st/input_adaptors/gear_direction.py:33`.
-
-### 3) Deployment behavior customization stopped rejecting valid parking/PUDO controls
-- `BehaviorCustomizer` now applies only DILC behavior and ignores non-DILC control keys:
-  `wayve/ai/zoo/deployment/behavior_customization.py:133`.
-- Regression tests cover both non-DILC-only and mixed control tuples:
-  `wayve/ai/zoo/deployment/test/test_behavior_customization.py:212`,
-  `wayve/ai/zoo/deployment/test/test_behavior_customization.py:234`.
-
-## Architecture view (release parity + PUDO additions)
+## Model components diagram (release-aligned, with parking/PUDO additions)
 ```mermaid
 flowchart LR
-    A[Release BC Input Stack] --> B[WFMStOctober2025Cfg]
-    B --> C[Release BC Heads]
-    D[Release BC Buckets<br/>DS_26_01_06_SERVER_GEN2_IPACE] --> C
+    A[Release Data Buckets<br/>BC driving set] --> B[Parking BC Datamodule]
+    A2[PUDO Buckets<br/>7% sampling] --> B
 
-    A --> E[PUDO/Parking Extra Signals<br/>gear direction + parking mode]
-    E --> B
-    B --> F[PUDO/Parking Behavior Layer]
-    G[Parking/PUDO Heuristic Labels<br/>parking.py] --> F
+    B --> C[Input Adaptors]
+    C --> D[ST Backbone]
+    D --> E[Output Adaptors]
+    E --> F[Heads]
 
-    H[Deployment Controls<br/>mixed driving controls] --> I[BehaviorCustomizer]
-    I --> J[Apply DILC only<br/>ignore non-DILC keys]
+    C1[Release Inputs<br/>behavior + navigation] --> C
+    C2[Parking/PUDO Add<br/>gear_direction + parking_mode] --> C
+
+    F1[Release Heads<br/>waypoints + indicators] --> F
+    F2[Parking/PUDO Add<br/>gear_direction head] --> F
+
+    classDef add fill:#ffe6cc,stroke:#d97904,color:#222,stroke-width:2px;
+    class A2,C2,F2 add;
 ```
 
-## Key commits in this branch (PUDO/release-alignment stream)
-- `e4a40f2b7b1` parking mode heuristic + tests
-- `18471f00bd1` gear direction unavailable fix
-- `eef49fd0ecf` gear direction adaptor import fix
-- `8a26aa7eba7` behavior customization mixed-control fix
-
-## Practical takeaway
-This branch keeps release BC as the architectural anchor and narrows PUDO-specific differences to:
-- data/label semantics for parking transitions,
-- gear-direction/parking-mode handling,
-- deployment control interpretation (DILC-only behavior customization).
-
-That keeps parity high while still supporting robotaxi pickup/dropoff behavior.
+## Takeaway
+Parking/PUDO now follows the release-style model path (behavior + nav) and differs mainly in data mix plus the parking/PUDO-specific gear/parking-mode IO additions.
