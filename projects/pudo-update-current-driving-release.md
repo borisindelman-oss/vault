@@ -169,8 +169,16 @@ flowchart TD
   - Validation:
     - `bazel test //wayve/ai/zoo/deployment:test_deployment_py_test --test_arg='-k=test_behavior_customizer_ignores_non_dilc_control_keys or test_behavior_customizer_mixed_controls_applies_dilc_only'`
     - `bazel test //wayve/ai/si:test_deployment_wrapper`
+- 2026-02-12 TorchScript compile follow-up:
+  - Next failure (`wrasse-cosmic-rose-125532`) hit TorchScript compilation in `IndicatorOutputHead._forward(...)` with:
+    - `python value of type 'int' cannot be used as a value ... NUM_PREDICTED_VEHICLE_INDICATORS`
+  - Root cause was a closed-over global int constant used inside `Tensor.expand(...)` during scripted graph compilation.
+  - Updated indicator expansion to use shape-preserving `expand(-1, self.future_frames, -1)` (no closed-over global in scripted forward).
+  - Validation:
+    - `bazel test //wayve/ai/zoo:test_outputs_py_test --test_arg='-k=indicator_output_head'`
 - Experiment run ledger (latest batch):
   - `black-flamingo-fiery-125307`: failed on output-adaptor init mismatch; fixed in prior patch.
   - `jellyfish-moccasin-singing-125420`: failed after checkpoint/data updates; progressed failure path to behavior-control processing.
   - `koala-perplexing-blush-125494`: failed on non-DILC control key rejection (`0`); fixed by behavior-customization patch.
+  - `wrasse-cosmic-rose-125532`: failed in TorchScript compile due to closed-over indicator-class int in output head; fixed by shape-preserving expand update.
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix]]
