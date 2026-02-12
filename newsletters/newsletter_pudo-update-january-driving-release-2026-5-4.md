@@ -12,6 +12,8 @@ Branch: `boris/train/pudo_11_02_26`
   - `wayve/ai/si/configs/baseline/release.py`
 - Parking/PUDO training config:
   - `wayve/ai/si/configs/parking/parking_config.py`
+- Model assembly path:
+  - `wayve/ai/zoo/st/models.py` (`build_space_time_model`)
 - Output adaptor / heads:
   - `wayve/ai/zoo/outputs/output_adaptor.py`
   - `wayve/ai/zoo/outputs/gear_direction_output_head.py`
@@ -22,21 +24,39 @@ Branch: `boris/train/pudo_11_02_26`
 ## Model components diagram (`torch.nn.Module` only)
 ```mermaid
 flowchart LR
-    A[InputAdaptor nn.Module] --> B[MIMOSTTransformer / ST backbone nn.Module]
-    B --> C[OutputAdaptor nn.Module]
+    subgraph IA[InputAdaptor nn.Module]
+        A1[RouteSTAdaptor]
+        A2[StepAndLaneInfoSTAdaptor]
+        A3[SpeedSTAdaptor]
+        A4[SpeedLimitSTAdaptor]
+        A5[IndicatorSTAdaptor]
+        A6[CountrySTAdaptor]
+        A7[DrivingSideSTAdaptor]
+        A8[PoseSTAdaptor]
+        A9[WaypointsSTAdaptor]
+        A10[VideoSTAdaptor]
+        A11[GearDirectionSTAdaptor]
+        A12[ParkingModeSTAdaptor]
+    end
 
-    A1[Behavior inputs adaptor<br/>nn.Module] --> A
-    A2[Navigation inputs adaptor<br/>nn.Module] --> A
-    A3[GearDirection adaptor<br/>nn.Module] --> A
-    A4[ParkingMode adaptor<br/>nn.Module] --> A
+    IA --> ST[STTransformer encoder nn.Module]
+    ST --> OA[Parking OutputAdaptor nn.Module]
+    R[RadarInputAdaptor nn.Module<br/>late fusion] --> OA
 
-    C1[Waypoint head<br/>nn.Module] --> C
-    C2[Indicator head<br/>nn.Module] --> C
-    C3[GearDirection head<br/>nn.Module] --> C
+    OA --> B1[BehaviorLabelCalculator nn.Module]
+    OA --> B2[BehaviorLabelEncoder nn.Module]
+    OA --> H1[WaypointOutputHead]
+    OA --> H2[IndicatorOutputHead]
+    OA --> H3[WaypointLogVarianceOutputHead]
+    OA --> H4[GearDirectionOutputHead]
 
     classDef add fill:#ffe6cc,stroke:#d97904,color:#222,stroke-width:2px;
-    class A3,A4,C3 add;
+    class A11,A12,H4 add;
 ```
+
+Notes:
+- The module list above is from both config wiring and model-construction code, not config-only.
+- Relative to release BC 2026.5.4, parking/PUDO additions are the highlighted modules: `GearDirectionSTAdaptor`, `ParkingModeSTAdaptor`, and `GearDirectionOutputHead`.
 
 ## Takeaway
 Parking/PUDO now follows the release-style model path (behavior + nav) and differs mainly in data mix plus the parking/PUDO-specific gear/parking-mode IO additions.
