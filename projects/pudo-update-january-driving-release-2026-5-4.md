@@ -183,12 +183,21 @@ flowchart TD
   - Updated behavior-customizer control loop to remove `continue` while preserving semantics (consume only `DILC_MODE`, ignore other controls).
   - Validation:
     - `bazel test //wayve/ai/zoo/deployment:test_deployment_py_test --test_arg='-k=behavior_customizer'`
+- 2026-02-12 Parking wrapper TorchScript follow-up:
+  - Next failure (`magenta-wolverine-topographical-125575`) hit TorchScript compilation in `ParkingDeploymentWrapperWithRadar._add_driving_controls_inputs(...)` with:
+    - `... do not support break or continue inside the body of these loops`
+  - Root cause was `continue` in the parking-wrapper `dilc_mode` branch.
+  - Updated parking-wrapper control loop to remove `continue` while preserving semantics (`dilc_mode` branch now explicit no-op).
+  - Validation:
+    - `bazel test //wayve/ai/zoo/deployment:test_deployment_py_test --test_arg='-k=deployment_wrapper or behavior_customizer or parking'`
 - Experiment run ledger (latest batch):
   - `black-flamingo-fiery-125307`: failed on output-adaptor init mismatch; fixed in prior patch.
   - `jellyfish-moccasin-singing-125420`: failed after checkpoint/data updates; progressed failure path to behavior-control processing.
   - `koala-perplexing-blush-125494`: failed on non-DILC control key rejection (`0`); fixed by behavior-customization patch.
   - `wrasse-cosmic-rose-125532`: failed in TorchScript compile due to closed-over indicator-class int in output head; fixed by shape-preserving expand update.
   - `velociraptor-proficient-ivory-125547`: failed in TorchScript compile due to `continue` in behavior-customizer control loop; fixed by branch-only loop update.
+  - `magenta-wolverine-topographical-125575`: failed in TorchScript compile due to `continue` in parking-wrapper control loop; fixed by branch-only loop update.
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix]]
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix]]
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-torchscript-continue-fix]]
+- Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-parking-wrapper-torchscript-continue-fix]]
