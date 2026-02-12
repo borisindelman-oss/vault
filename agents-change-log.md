@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO parking wrapper DILC control-key crash fix
+- Topic: fix parking wrapper export crash on `DrivingControlKey.DILC_MODE`
+- Labels: #parking #pudo #deployment #wrapper #dilc #training
+- Branch: boris/train/pudo_11_02_26
+- PR: draft #96219
+- Change type: code
+- Areas: `wayve/ai/zoo/deployment/`, `wayve/ai/si/test/interfaces/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-dilc-control-key-wrapper-fix]]: diagnosed run `125420` failure (`Unsupported driving control key: 2`), updated `ParkingDeploymentWrapperImpl` to accept `DILC_MODE` in driving controls (no parking-specific tensor derivation there), and added regression coverage for parking wrappers configured with DILC.
 > #### 2026-02-12 — PUDO checkpoint load fix for parking adaptors
 - Topic: fix strict checkpoint loading mismatch after enabling parking adaptors
 - Labels: #parking #pudo #checkpoint #input-adaptor #training
