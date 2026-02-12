@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO train fix: path/frame binary compatibility
+- Topic: fix master-side path data failures caused by incompatible binary version
+- Labels: #parking #pudo #training #datamodule #binary-version #data-compat
+- Branch: boris/train/pudo_11_02_26
+- PR: draft #96219
+- Change type: code
+- Areas: `wayve/ai/si/configs/parking/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-path-binary-compatibility-fix]]: diagnosed run `125607` master failure (`DistanceOutOfRangeException` + `bad_path` compatibility warnings on `driving/release/2.7.93/wo_path_data`) and reverted parking datamodule `binary_version` to release-compatible `2.7.73`.
 > #### 2026-02-12 — PUDO train fix: Parking wrapper TorchScript continue
 - Topic: fix TorchScript compile failure caused by `continue` in parking wrapper driving-controls loop
 - Labels: #parking #pudo #training #deployment #wrapper #torchscript

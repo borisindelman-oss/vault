@@ -197,6 +197,7 @@ flowchart TD
   - `wrasse-cosmic-rose-125532`: failed in TorchScript compile due to closed-over indicator-class int in output head; fixed by shape-preserving expand update.
   - `velociraptor-proficient-ivory-125547`: failed in TorchScript compile due to `continue` in behavior-customizer control loop; fixed by branch-only loop update.
   - `magenta-wolverine-topographical-125575`: failed in TorchScript compile due to `continue` in parking-wrapper control loop; fixed by branch-only loop update.
+  - `koala-crimson-unclouded-125607`: failed on master with repeated `DistanceOutOfRangeException` and `bad_path` warnings for `driving/release/2.7.93/wo_path_data`; fixed by reverting parking datamodule `binary_version` to release-compatible `2.7.73`.
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix]]
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix]]
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-torchscript-continue-fix]]
