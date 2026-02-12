@@ -182,3 +182,4 @@ flowchart TD
   - `koala-perplexing-blush-125494`: failed on non-DILC control key rejection (`0`); fixed by behavior-customization patch.
   - `wrasse-cosmic-rose-125532`: failed in TorchScript compile due to closed-over indicator-class int in output head; fixed by shape-preserving expand update.
 - Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix]]
+- Reference: [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix]]

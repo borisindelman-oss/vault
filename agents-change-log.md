@@ -8,6 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-12 — PUDO train fix: Indicator output head TorchScript int capture
+- Topic: fix TorchScript compile failure in parking/PUDO indicator output head
+- Labels: #parking #pudo #training #torchscript #outputs
+- Branch: boris/train/pudo_11_02_26
+- PR: draft #96219
+- Change type: code
+- Areas: `wayve/ai/zoo/outputs/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix]]: diagnosed run `125532` failure (`python value of type 'int' cannot be used as a value` in `IndicatorOutputHead._forward`), replaced constant-based expand with shape-preserving `expand(-1, self.future_frames, -1)`, and validated on `//wayve/ai/zoo:test_outputs_py_test`.
 > #### 2026-02-12 — Naive stopping_mode project planning kickoff
 - Topic: initialize scoped project for naive parking stopping_mode heuristic
 - Labels: #parking #stopping-mode #planning #otf #input-adaptor
