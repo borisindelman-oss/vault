@@ -206,9 +206,33 @@
               "icon": "lucide-file",
               "title": "parking-stopping-mode-naive-heuristic"
             }
+          },
+          {
+            "id": "669cbd2fd3c67afc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PUDO Update.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "PUDO Update"
+            }
           }
         ],
-        "currentTab": 13
+        "currentTab": 14
       }
     ],
     "direction": "vertical"
@@ -382,8 +406,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "286cf908be4fc203",
+  "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
+    "projects/parking-stopping-mode-naive-heuristic.md",
+    "PUDO Update.md",
     "projects.md",
     "projects/pudo-update-january-driving-release-2026-5-4.md",
     "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
@@ -391,7 +417,6 @@
     "newsletters/newsletter_pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-project-plan.md",
-    "projects/parking-stopping-mode-naive-heuristic.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-release-newsletter.md",
     "newsletters/newsletter_route-end-parking-trigger.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix.md",
@@ -410,7 +435,6 @@
     "projects/parking-wfm-update.md",
     "todo-list.md",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
-    "Excalidraw/Drawing 2025-12-16 11.02.08.excalidraw.md",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
