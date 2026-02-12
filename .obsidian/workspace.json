@@ -189,7 +189,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
+                "file": "projects/parking-stopping-mode-naive-heuristic.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -204,7 +204,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "newsletter_pudo-update-january-driving-release-2026-5-4"
+              "title": "parking-stopping-mode-naive-heuristic"
             }
           }
         ],
@@ -384,9 +384,9 @@
   },
   "active": "286cf908be4fc203",
   "lastOpenFiles": [
+    "projects.md",
     "projects/pudo-update-january-driving-release-2026-5-4.md",
     "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
-    "projects.md",
     "projects/pudo-update-current-driving-release.md",
     "newsletters/newsletter_pudo-update-current-driving-release.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix.md",
