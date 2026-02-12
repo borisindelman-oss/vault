@@ -9,7 +9,7 @@ Think of this as an internal newsletter series: short, practical issues that exp
 4. [Newsletter: Interleaving baseline + parking/PUDA models in the deployment wrapper](newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md)
 5. [Newsletter: Building an end-to-end inference visualization tool (new vis tool)](newsletters/newsletter_inference-visualization-tool.md)
 6. [Newsletter: Route map signal thresholds (near-end-of-route)](newsletters/newsletter_route-map-signal-thresholds.md)
-7. [Newsletter: PUDO update to current driving release](newsletters/newsletter_pudo-update-current-driving-release.md)
+7. [Newsletter: PUDO update to January driving release 2026.5.4](newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md)
 
 ## How to Use This Newsletter Series
 - Each issue is a standalone `newsletter_[topic].md` file.

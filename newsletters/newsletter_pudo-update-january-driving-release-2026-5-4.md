@@ -1,4 +1,4 @@
-# Newsletter: PUDO update to current driving release
+# Newsletter: PUDO update to January driving release 2026.5.4
 
 Branch: `boris/train/pudo_11_02_26`
 
