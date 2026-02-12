@@ -46,6 +46,21 @@ Notes:
 - `route_no_sum_thresh` is the effectively-no-route trigger.
 - SI medium route config uses `window_size=(50, 2000)`, so the map includes `50m` behind ego.
 
+### Meters -> pixels / threshold conversion
+For `si_medium` defaults (`image_size_px=512`, `map_scale_m=1200`):
+
+- Along-route pixels per meter:
+  - `px_per_m = image_size_px / map_scale_m = 512 / 1200 = 0.4267`
+- So route length in pixels is:
+  - `route_length_px ~= distance_m * 0.4267`
+- For threshold planning with a single-pixel-thick line and one active channel:
+  - `signal_per_meter ~= 255 * px_per_m = 108.8`
+  - `threshold ~= visible_route_m * 108.8`
+
+Examples:
+- `50m -> ~21.3 px` and `~5440` signal units
+- `5m -> ~2.13 px` and `~544` signal units
+
 ## 4) How Interleaving Works
 Each frame, the wrapper computes:
 - route-based trigger (near-end/no-route from route map sum)
