@@ -1,6 +1,14 @@
 {
   "projects": [
     {
+      "name": "Parking stopping_mode naive heuristic",
+      "slug": "parking-stopping-mode-naive-heuristic",
+      "path": "/home/borisindelman/git/vault/projects/parking-stopping-mode-naive-heuristic.md",
+      "status": "active",
+      "phase": "Phase 1",
+      "last_updated": "2026-02-12"
+    },
+    {
       "name": "PUDO update to current driving release",
       "slug": "pudo-update-current-driving-release",
       "path": "/home/borisindelman/git/vault/projects/pudo-update-current-driving-release.md",
