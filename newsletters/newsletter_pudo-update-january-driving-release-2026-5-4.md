@@ -24,21 +24,22 @@ Branch: `boris/train/pudo_11_02_26`
 ## Model components diagram (`torch.nn.Module` only)
 ```mermaid
 flowchart LR
-    A1[RouteSTAdaptor] --> ST[STTransformer encoder nn.Module]
-    A2[StepAndLaneInfoSTAdaptor] --> ST
-    A3[SpeedSTAdaptor] --> ST
-    A4[SpeedLimitSTAdaptor] --> ST
-    A5[IndicatorSTAdaptor] --> ST
-    A6[CountrySTAdaptor] --> ST
-    A7[DrivingSideSTAdaptor] --> ST
-    A8[PoseSTAdaptor] --> ST
-    A9[WaypointsSTAdaptor] --> ST
-    A10[VideoSTAdaptor] --> ST
-    A11[GearDirectionSTAdaptor] --> ST
-    A12[ParkingModeSTAdaptor] --> ST
+    A1[RouteSTAdaptor] --> IA[InputAdaptor nn.Module]
+    A2[StepAndLaneInfoSTAdaptor] --> IA
+    A3[SpeedSTAdaptor] --> IA
+    A4[SpeedLimitSTAdaptor] --> IA
+    A5[IndicatorSTAdaptor] --> IA
+    A6[CountrySTAdaptor] --> IA
+    A7[DrivingSideSTAdaptor] --> IA
+    A8[PoseSTAdaptor] --> IA
+    A9[WaypointsSTAdaptor] --> IA
+    A10[VideoSTAdaptor] --> IA
+    A11[GearDirectionSTAdaptor] --> IA
+    A12[ParkingModeSTAdaptor] --> IA
 
+    IA --> ST[STTransformer encoder nn.Module]
     ST --> OA[Parking OutputAdaptor nn.Module]
-    R[RadarInputAdaptor nn.Module<br/>late fusion] --> OA
+    R[RadarInputAdaptor nn.Module<br/>late fusion in this config] --> OA
 
     OA --> B1[BehaviorLabelCalculator nn.Module]
     OA --> B2[BehaviorLabelEncoder nn.Module]
@@ -54,6 +55,7 @@ flowchart LR
 Notes:
 - The module list above is from both config wiring and model-construction code, not config-only.
 - Relative to release BC 2026.5.4, parking/PUDO additions are the highlighted modules: `GearDirectionSTAdaptor`, `ParkingModeSTAdaptor`, and `GearDirectionOutputHead`.
+- Radar path in this parking/PUDO config is late-fusion (`radar_late_fusion=True`), so radar tokens go to `OutputAdaptor` and not through `STTransformer`.
 
 ## Takeaway
 Parking/PUDO now follows the release-style model path (behavior + nav) and differs mainly in data mix plus the parking/PUDO-specific gear/parking-mode IO additions.
