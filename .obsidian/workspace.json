@@ -213,8 +213,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/parking-stopping-mode-naive-heuristic.md",
-                "mode": "preview",
+                "file": "projects.md",
+                "mode": "source",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -228,7 +228,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "parking-stopping-mode-naive-heuristic"
+              "title": "projects"
             }
           }
         ],
@@ -408,11 +408,13 @@
   },
   "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
-    "agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-phase2-adaptor-plumbing.md",
+    "Excalidraw/parking_model_arch.excalidraw.excalidraw",
+    "projects/parking-stopping-mode-naive-heuristic.md",
     "projects.md",
-    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
+    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "Excalidraw/model_release.excalidraw.md",
+    "agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-phase2-adaptor-plumbing.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-path-binary-compatibility-fix.md",
     "newsletters/newsletter_inference-visualization-tool.md",
     "PUDO Update.md",
@@ -420,7 +422,6 @@
     "agent_tasks/2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1.md",
     "agent_tasks/2026/01/Week-3/2026-01-17-wfm-bc-rl-mermaid-diagrams.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-torchscript-continue-fix.md",
-    "projects/parking-stopping-mode-naive-heuristic.md",
     "projects/pudo-update-january-driving-release-2026-5-4.md",
     "projects/pudo-update-current-driving-release.md",
     "newsletters/newsletter_pudo-update-current-driving-release.md",
@@ -433,8 +434,6 @@
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-input-adaptor-checkpoint-load-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-train-output-adaptor-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-11-pudo-hazard-indicator-enable.md",
-    "agent_tasks/2026/02/Week-2/2026-02-11-pudo-bucket-root-and-binary-update.md",
-    "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
