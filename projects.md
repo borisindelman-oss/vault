@@ -2,7 +2,7 @@
 
 | Project                                                                                                         | Status   | Phase   | Last updated | no  |
 | --------------------------------------------------------------------------------------------------------------- | -------- | ------- | ------------ | --- |
-| [Parking stopping_mode naive heuristic](projects/parking-stopping-mode-naive-heuristic)                         | active   | Phase 2 | 2026-02-12   | no  |
+| [Parking stopping_mode naive heuristic](projects/parking-stopping-mode-naive-heuristic)                         | active   | Phase 3 | 2026-02-17   | no  |
 | [PUDO update to January driving release 2026.5.4](projects/pudo-update-january-driving-release-2026-5-4)        | active   | Phase 1 | 2026-02-11   | no  |
 | [Interleaving models in parking deployment wrapper](projects/interleaving-models-in-parking-deployment-wrapper) | active   | Phase 2 | 2026-02-08   | no  |
 | [Model CLI tool](projects/model-cli-tool)                                                                       | active   | Phase 1 | 2026-02-02   | no  |
