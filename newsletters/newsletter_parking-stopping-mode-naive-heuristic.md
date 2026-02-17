@@ -8,6 +8,10 @@ In practice, this PR is scoped on top of `02-11-parking_mode_heuristic`, and foc
 - setting `stopping_mode` inside parking data logic,
 - keeping default-off behavior.
 
+## Branch and PR
+- Branch: `02-12-park-pudo-stopping-mode-heuristic`
+- PR: `#96911`
+
 ## Why this is intentionally naive
 This logic is called naive because it does **not** use ground-truth intent labels. It uses simple heuristics:
 - parking-window detection from gear/speed,

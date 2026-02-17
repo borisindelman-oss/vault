@@ -10,6 +10,7 @@
 - **Status:** active
 - **Last updated:** 2026-02-17
 - **Branch:** 02-12-park-pudo-stopping-mode-heuristic
+- **PR:** #96911
 - **Current priorities:**
   - Keep this PR stack minimal and clean on top of `02-11-parking_mode_heuristic`.
   - Keep behavior strictly default-off unless explicit flags are enabled.
