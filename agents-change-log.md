@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-17 — Remove interleaving id/event outputs from stopping wrapper
+- Topic: remove `interleaved_id` and `interleaved_event` outputs from route interleaving stopping wrapper
+- Labels: #parking #pudo #deployment #interleaving #cleanup
+- Branch: boris/train/parking_pudo_interleaving
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/zoo/deployment/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-17-remove-interleaving-id-event-from-stopping-wrapper]]: removed interleaving id/event from `RouteInterleavingOutput`, stopped forcing these keys into deployment config outputs, and kept switching diagnostics via print logs.
+
 > #### 2026-02-17 — Remove legacy route interleaving codegen module
 - Topic: remove unused codegen path for route interleaving deployment wrapper
 - Labels: #parking #pudo #deployment #interleaving #cleanup
