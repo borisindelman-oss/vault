@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-17 — Remove legacy route interleaving codegen module
+- Topic: remove unused codegen path for route interleaving deployment wrapper
+- Labels: #parking #pudo #deployment #interleaving #cleanup
+- Branch: boris/train/parking_pudo_interleaving
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/zoo/deployment/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-17-remove-interleaving-stopping-codegen]]: deleted `interleaving_stopping_codegen.py` after confirming no deploy/runtime references remained.
+
 > #### 2026-02-17 — Naive stopping_mode hazard heuristic before otf-gear-input
 - Topic: scope naive stopping-mode hazard diff to stack on `02-11` and precede `#94961`
 - Labels: #parking #stopping-mode #hazard #otf #stacked-pr #tests
