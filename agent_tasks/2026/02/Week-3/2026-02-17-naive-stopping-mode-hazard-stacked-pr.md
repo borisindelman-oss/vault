@@ -10,16 +10,18 @@
 - Commits:
   - `4a16c64fce5` — `feat: add naive stopping mode hazard heuristic`
   - `ad689381282` — `fix: use legacy stopping_mode key on otf-gear-input stack`
+  - `e4c093c2b4c` — `fix: base naive stopping mode on parking window`
 
 ## Code Changes
 - `wayve/ai/zoo/data/parking.py`
   - Added naive stopping-mode heuristic:
-    - no neutral detected -> random PARK/PUDO
-    - neutral + hazard -> PUDO
-    - neutral + no hazard -> PARK
+    - `parking_mode == False` -> random PARK/PUDO
+    - `parking_mode == True` + hazard -> PUDO
+    - `parking_mode == True` + no hazard -> PARK
   - Added stack compatibility by writing `"stopping_mode"` key directly.
 - `wayve/ai/zoo/data/test/test_parking.py`
   - Added naive stopping-mode behavior tests + missing indicator guard.
+  - Added regression that hazard is ignored when `parking_mode=False` (random branch still used).
   - Updated assertions to use `"stopping_mode"` key on this stack base.
 
 ## Validation
