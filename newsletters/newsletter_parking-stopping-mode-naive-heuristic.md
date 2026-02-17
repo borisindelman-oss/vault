@@ -50,8 +50,8 @@ flowchart TD
   C -->|No| D[stopping_mode = random choice in 0 or 1]
   C -->|Yes| E[Check hazard in additional_parking_indicator_light]
   E --> F{hazard present?}
-  F -->|Yes| G[stopping_mode = 0 (PUDO)]
-  F -->|No| H[stopping_mode = 1 (PARK)]
+  F -->|Yes| G[stopping_mode = 0 PUDO]
+  F -->|No| H[stopping_mode = 1 PARK]
   D --> I[Write DataKeys.STOPPING_MODE]
   G --> I
   H --> I
