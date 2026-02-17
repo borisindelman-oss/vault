@@ -211,12 +211,24 @@
             "id": "669cbd2fd3c67afc",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/model_release.excalidraw.md"
+                "file": "projects/parking-stopping-mode-naive-heuristic.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "excalidraw-icon",
-              "title": "model_release.excalidraw"
+              "icon": "lucide-file",
+              "title": "parking-stopping-mode-naive-heuristic"
             }
           }
         ],
@@ -379,7 +391,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -396,18 +409,23 @@
   },
   "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
-    "Excalidraw/model_release.excalidraw.md",
-    "Excalidraw/head_options.excalidraw.md",
+    "agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-hazard-stacked-pr.md",
     "projects.md",
+    "Excalidraw/model_release.excalidraw.md",
+    "newsletters/newsletter_inference-visualization-tool.md",
+    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
+    "newsletters/newsletter_parking-maneuver-filters.md",
+    "newsletters/newsletter_parking-stopping-mode-dilc.md",
+    "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
+    "newsletters/newsletter_route-end-parking-trigger.md",
+    "newsletters/newsletter_route-map-signal-thresholds.md",
+    "Excalidraw/head_options.excalidraw.md",
     "agent_tasks/2026/02/Week-3/2026-02-15-interleaved-route-threshold-calibration.md",
     "agent_tasks/2026/02/Week-3",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "projects/parking-stopping-mode-naive-heuristic.md",
-    "newsletters/newsletter_pudo-update-january-driving-release-2026-5-4.md",
-    "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-phase2-adaptor-plumbing.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-path-binary-compatibility-fix.md",
-    "newsletters/newsletter_inference-visualization-tool.md",
     "PUDO Update.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-parking-wrapper-torchscript-continue-fix.md",
     "agent_tasks/2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1.md",
@@ -419,11 +437,6 @@
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-naive-stopping-mode-project-plan.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-release-newsletter.md",
-    "newsletters/newsletter_route-end-parking-trigger.md",
-    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-behavior-customizer-control-key-fix.md",
-    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-dilc-control-key-wrapper-fix.md",
-    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-input-adaptor-checkpoint-load-fix.md",
-    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-train-output-adaptor-fix.md",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
