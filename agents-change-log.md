@@ -14,9 +14,9 @@
 - Branch: boris/stopping_mode_hazard_stack
 - PR: pending
 - Change type: code
-- Areas: `wayve/ai/zoo/data/`
+- Areas: `wayve/ai/zoo/data/`, `wayve/ai/zoo/st/`
 - Changes:
-  - [[agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-hazard-stacked-pr]]: rebased hazard-only naive stopping-mode changes onto `origin/02-11-parking_mode_heuristic` (before `#94961`), kept diff limited to parking heuristic/tests, and wrote legacy `\"stopping_mode\"` key for this stack level.
+  - [[agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-hazard-stacked-pr]]: rebased hazard-only naive stopping-mode changes onto `origin/02-11-parking_mode_heuristic` (before `#94961`), updated parking stopping-mode assignment to be parking-window-based, and added `stopping_mode` ST adaptor wiring/tests/checkpoint compatibility.
 
 > #### 2026-02-12 — PUDO train fix: path/frame binary compatibility
 - Topic: fix master-side path data failures caused by incompatible binary version
