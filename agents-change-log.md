@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-17 — Naive stopping_mode hazard heuristic stacked on otf-gear-input
+- Topic: scope naive stopping-mode hazard diff to stack cleanly on `#94961` lineage
+- Labels: #parking #stopping-mode #hazard #otf #stacked-pr #tests
+- Branch: boris/stopping_mode_hazard_stack
+- PR: pending
+- Change type: code
+- Areas: `wayve/ai/si/datamodules/`, `wayve/ai/zoo/data/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-hazard-stacked-pr]]: applied hazard-only naive stopping-mode wiring on top of `origin/soham/otf-gear-input`, added indicator lookahead + stopping-mode heuristic behavior/tests, and added base-compat fix to write legacy `\"stopping_mode\"` key on this stack.
+
 > #### 2026-02-12 — PUDO train fix: path/frame binary compatibility
 - Topic: fix master-side path data failures caused by incompatible binary version
 - Labels: #parking #pudo #training #datamodule #binary-version #data-compat
