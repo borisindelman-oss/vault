@@ -213,7 +213,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/parking-stopping-mode-naive-heuristic.md",
+                "file": "newsletters/newsletter_parking-stopping-mode-naive-heuristic.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -228,7 +228,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "parking-stopping-mode-naive-heuristic"
+              "title": "newsletter_parking-stopping-mode-naive-heuristic"
             }
           }
         ],
@@ -409,10 +409,10 @@
   },
   "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
+    "projects/parking-stopping-mode-naive-heuristic.md",
+    "projects.md",
     "newsletters/newsletter_parking-stopping-mode-naive-heuristic.md",
     "agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-project-page-and-newsletter.md",
-    "projects.md",
-    "projects/parking-stopping-mode-naive-heuristic.md",
     "agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-hazard-stacked-pr.md",
     "Excalidraw/model_release.excalidraw.md",
     "newsletters/newsletter_inference-visualization-tool.md",
