@@ -408,6 +408,7 @@
   },
   "active": "a6cdcc3493cdeb21",
   "lastOpenFiles": [
+    "agent_tasks/2026/02/Week-3/2026-02-17-remove-interleaving-stopping-codegen.md",
     "projects/parking-stopping-mode-naive-heuristic.md",
     "projects.md",
     "newsletters/newsletter_parking-stopping-mode-naive-heuristic.md",
@@ -435,7 +436,6 @@
     "projects/pudo-update-january-driving-release-2026-5-4.md",
     "projects/pudo-update-current-driving-release.md",
     "newsletters/newsletter_pudo-update-current-driving-release.md",
-    "agent_tasks/2026/02/Week-2/2026-02-12-pudo-indicator-output-head-torchscript-fix.md",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
