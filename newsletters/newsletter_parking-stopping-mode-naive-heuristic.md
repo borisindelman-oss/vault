@@ -44,14 +44,15 @@ Hazard detection uses canonical mapping (not hardcoded literals):
 ## Flow sketch
 ```mermaid
 flowchart TD
-  A[Additional parking lookahead data] --> B[_compute_parking_mode]
-  A --> C[_contains_hazard_light]
-  B --> D{parking_mode?}
-  D -->|False| E[random 0/1]
-  D -->|True| F{hazard present?}
-  F -->|Yes| G[stopping_mode = 0 PUDO]
-  F -->|No| H[stopping_mode = 1 PARK]
-  E --> I[write DataKeys.STOPPING_MODE]
+  A[enable_naive_stopping_mode?] -->|No| Z[Do not write stopping_mode]
+  A -->|Yes| B[Compute parking_mode from gear and speed lookahead]
+  B --> C{parking_mode at origin?}
+  C -->|No| D[stopping_mode = random choice in {0,1}]
+  C -->|Yes| E[Check hazard in additional_parking_indicator_light]
+  E --> F{hazard present?}
+  F -->|Yes| G[stopping_mode = 0 (PUDO)]
+  F -->|No| H[stopping_mode = 1 (PARK)]
+  D --> I[Write DataKeys.STOPPING_MODE]
   G --> I
   H --> I
 ```
