@@ -27,7 +27,7 @@
 - `wayve/ai/zoo/data/keys.py`
   - Added `STOPPING_MODE` key constant.
 - `wayve/ai/zoo/st/input_adaptors/stopping_mode.py`
-  - Added `StoppingModeSTAdaptor` with tokenization for `STOPPING_MODE` values (`2=park`, `3=pudo`) and dropout fallback for out-of-range values.
+  - Added `StoppingModeSTAdaptor` with tokenization for `STOPPING_MODE` values (`0=pudo`, `1=park`) and dropout fallback for out-of-range values.
 - `wayve/ai/zoo/st/input_adaptors/_input_adaptor.py`
   - Added `stopping_mode` into adaptor ordering.
 - `wayve/ai/zoo/st/input_adaptors/__init__.py`

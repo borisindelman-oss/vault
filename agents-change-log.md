@@ -17,6 +17,15 @@
 - Areas: `wayve/ai/zoo/data/`, `wayve/ai/zoo/st/`
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-hazard-stacked-pr]]: rebased hazard-only naive stopping-mode changes onto `origin/02-11-parking_mode_heuristic` (before `#94961`), updated parking stopping-mode assignment to be parking-window-based, and added `stopping_mode` ST adaptor wiring/tests/checkpoint compatibility.
+> #### 2026-02-17 — Naive stopping_mode docs refresh (project + newsletter)
+- Topic: document exact naive stopping-mode rules and enum values
+- Labels: #parking #stopping-mode #docs #newsletter
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: #96911
+- Change type: docs
+- Areas: `projects/`, `newsletters/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-17-naive-stopping-mode-project-page-and-newsletter]]: updated active project page with explicit stopping-mode assignment logic (`0=PUDO`, `1=PARK`), synced project registry metadata, added newsletter issue for the naive heuristic context/design, and linked it from `newsletter_index.md`.
 
 > #### 2026-02-12 — PUDO train fix: path/frame binary compatibility
 - Topic: fix master-side path data failures caused by incompatible binary version
