@@ -214,7 +214,7 @@
               "type": "markdown",
               "state": {
                 "file": "newsletters/newsletter_parking-stopping-mode-naive-heuristic.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -391,8 +391,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -407,7 +406,7 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "669cbd2fd3c67afc",
+  "active": "a6cdcc3493cdeb21",
   "lastOpenFiles": [
     "projects/parking-stopping-mode-naive-heuristic.md",
     "projects.md",
