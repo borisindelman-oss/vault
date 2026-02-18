@@ -500,3 +500,13 @@
 - Areas: `agent_tasks/2025/12/Week-5/`
 - Changes:
   - [[agent_tasks/2025/12/Week-5/2025-12-29-release-bc-model-mermaid-summary]]: appended ST transformer components diagram.
+
+#### 2026-02-18 — Interleaved RL baseline deploy hotfix (temporary)
+- Topic: Interleaved deploy debugging (RL baseline + parking primary)
+- Labels: #deploy #offline-rl #interleaving #torchscript #debug
+- Branch: `zmurez/pudo`
+- PR: none
+- Change type: temporary code/debug
+- Areas: `wayve/ai/si/deploy_interleaved_models.py`, `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-interleaved-rl-baseline-deploy-hotfix]]: added debugging summary and run ledger; final run compiled and saved TorchScript locally.
