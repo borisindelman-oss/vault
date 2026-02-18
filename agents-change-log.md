@@ -520,3 +520,13 @@
 - Areas: Notion newsletter page
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-radar-baseline-deploy-section]]: added section on radar RL baseline deploy and corrupted-config remediation.
+
+#### 2026-02-18 — Notion top warning for TorchScript contract
+- Topic: Interleaving newsletter safety note
+- Labels: #docs #notion #torchscript #interleaving
+- Branch: `boris/train/parking_pudo_interleaving_w_radar`
+- PR: none
+- Change type: content update
+- Areas: Notion newsletter page
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-add-top-warning]]: added warning at start about fixed wrapper/input/output contract for TorchScript.
