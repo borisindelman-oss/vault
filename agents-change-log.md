@@ -540,3 +540,13 @@
 - Areas: Notion newsletter page
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-remove-interleaved-id-event-usage]]: updated section to explain removal of active interleaved id/event outputs and structured-testing metric interference rationale.
+
+#### 2026-02-18 — Notion mermaid alignment for no-event output
+- Topic: Interleaving state machine docs consistency
+- Labels: #docs #notion #interleaving #torchscript
+- Branch: `boris/train/parking_pudo_interleaving_w_radar`
+- PR: none
+- Change type: content update
+- Areas: Notion newsletter page
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-mermaid-align-no-event-output]]: updated Mermaid and nearby text to match removal of active interleaved event/id outputs.
