@@ -510,3 +510,13 @@
 - Areas: `wayve/ai/si/deploy_interleaved_models.py`, `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-interleaved-rl-baseline-deploy-hotfix]]: added debugging summary and run ledger; final run compiled and saved TorchScript locally.
+
+#### 2026-02-18 — Notion newsletter radar baseline section
+- Topic: Interleaving newsletter update
+- Labels: #docs #notion #deploy #offline-rl
+- Branch: `boris/train/parking_pudo_interleaving_w_radar`
+- PR: none
+- Change type: content update
+- Areas: Notion newsletter page
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-radar-baseline-deploy-section]]: added section on radar RL baseline deploy and corrupted-config remediation.
