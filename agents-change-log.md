@@ -530,3 +530,13 @@
 - Areas: Notion newsletter page
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-add-top-warning]]: added warning at start about fixed wrapper/input/output contract for TorchScript.
+
+#### 2026-02-18 — Notion update: interleaved id/event usage status
+- Topic: Interleaving telemetry contract clarification
+- Labels: #docs #notion #structured-testing #metrics
+- Branch: `boris/train/parking_pudo_interleaving_w_radar`
+- PR: none
+- Change type: content update
+- Areas: Notion newsletter page
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-remove-interleaved-id-event-usage]]: updated section to explain removal of active interleaved id/event outputs and structured-testing metric interference rationale.
