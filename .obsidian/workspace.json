@@ -397,6 +397,7 @@
   },
   "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
+    "agent_tasks/2026/02/Week-3/2026-02-18-notion-remove-interleaved-id-event-usage.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-notion-add-top-warning.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-notion-radar-baseline-deploy-section.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-interleaved-rl-baseline-deploy-hotfix.md",
@@ -424,7 +425,6 @@
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-path-binary-compatibility-fix.md",
     "PUDO Update.md",
     "agent_tasks/2026/02/Week-2/2026-02-12-pudo-parking-wrapper-torchscript-continue-fix.md",
-    "agent_tasks/2026/01/Week-4/2026-01-21-stopping-mode-adaptor-stage1.md",
     "projects/projects.json",
     "projects/active-project.txt",
     "projects",
