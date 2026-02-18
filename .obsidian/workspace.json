@@ -211,12 +211,24 @@
             "id": "669cbd2fd3c67afc",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/model_release.excalidraw.md"
+                "file": "todo-list.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "excalidraw-icon",
-              "title": "model_release.excalidraw"
+              "icon": "lucide-file",
+              "title": "todo-list"
             }
           }
         ],
@@ -397,13 +409,13 @@
   },
   "active": "669cbd2fd3c67afc",
   "lastOpenFiles": [
+    "Excalidraw/model_release.excalidraw.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-notion-mermaid-align-no-event-output.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-notion-remove-interleaved-id-event-usage.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-notion-add-top-warning.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-notion-radar-baseline-deploy-section.md",
     "agent_tasks/2026/02/Week-3/2026-02-18-interleaved-rl-baseline-deploy-hotfix.md",
     "projects/parking-stopping-mode-naive-heuristic.md",
-    "Excalidraw/model_release.excalidraw.md",
     "projects.md",
     "projects/pudo-update-january-driving-release-2026-5-4.md",
     "newsletters/newsletter_parking-stopping-mode-naive-heuristic.md",

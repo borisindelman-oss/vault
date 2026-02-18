@@ -1,2 +1,4 @@
-- [ ] parking-stopping-mode-naive-heuristic: add OTF parking indicator lookahead loading behind flag
-- [ ] parking-stopping-mode-naive-heuristic: implement naive stopping_mode heuristic in `parking.py` + tests
+- [ ] interlieving with latest
+- [ ] stopping mode train
+- [ ] classifiers
+- [ ] end of route augmentation
