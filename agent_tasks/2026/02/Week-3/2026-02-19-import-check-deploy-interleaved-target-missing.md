@@ -42,3 +42,30 @@ Failed before runtime/import stage due missing Bazel target in `wayve/ai/si/BUIL
 - Run 5: failed TorchScript on closed-over global constant in indicator normalization helper.
 - Run 6: **success**. Command completed with exit code 0 and saved TorchScript to:
   - `/mnt/remote/azure_session_dir/Parking/parking/session_2026_02_15_13_01_33_si_parking_bc_train_release_2026_5_4_pud_only_bc_release_2026_5_4_b3.0.1__interleaved_silver-harmonious-lark/traces/model-000100000.torchscript`
+
+## Upload run (`--upload`) with fixed suffix
+
+Command:
+```bash
+bazel run //wayve/ai/si:deploy_interleaved_models -- \
+  --baseline_model_session_path /mnt/remote/azure_session_dir/BaselineCandidates/candidate-structured-testing/session_2026_01_23_09_39_08_si_candidate_2026_5_4_baseline_rl_bl_45_65_85_flourishing-pink-roadrunner \
+  --session_id session_2026_02_15_13_01_33_si_parking_bc_train_release_2026_5_4_pud_only_bc_release_2026_5_4_b3.0.1 \
+  --suffix __interleaved_silver-harmonious-lark \
+  --enable_parking \
+  --with_temporal_caching true \
+  --baseline_model_load_mode wrapper \
+  --primary_model_load_mode wrapper \
+  --dilc_on \
+  --upload
+```
+
+Outcome:
+- Exit code: `0`
+- Upload completed for session:
+  - `session_2026_02_15_13_01_33_si_parking_bc_train_release_2026_5_4_pud_only_bc_release_2026_5_4_b3.0.1__interleaved_silver-harmonious-lark`
+- Console URL:
+  - `https://console.sso.wayve.ai/model/session_2026_02_15_13_01_33_si_parking_bc_train_release_2026_5_4_pud_only_bc_release_2026_5_4_b3.0.1__interleaved_silver-harmonious-lark`
+
+Notes:
+- Non-fatal warning in ONNX artefact upload path (`OnnxExportAsset.path=None`) because ONNX export is disabled.
+- Core model trace + checkpoint + configs uploaded successfully.

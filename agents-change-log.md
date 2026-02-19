@@ -590,3 +590,13 @@
 - Areas: `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-19-import-check-deploy-interleaved-target-missing]]: enforced radar-only call contract for both branches, fixed TorchScript/import/interface errors, and verified deploy command exits successfully.
+
+#### 2026-02-19 — Uploaded interleaved radar-only model session
+- Topic: Upload interleaved model session with fixed suffix
+- Labels: #deploy #upload #interleaving #radar
+- Branch: `boris/interleaved/updated_pudo_15_02_26`
+- PR: none
+- Change type: validation/runtime
+- Areas: deployment runtime + Training API upload
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-19-import-check-deploy-interleaved-target-missing]]: executed `--upload` run, confirmed successful model upload and session registration.
