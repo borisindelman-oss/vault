@@ -570,3 +570,13 @@
 - Areas: `wayve/ai/si/`, `wayve/ai/zoo/deployment/`
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-copy-interleaving-files-to-updated-pudo-branch]]: copied `deploy_interleaved_models.py` and `interleaving_stopping_wrapper.py` from `boris/train/parking_pudo_interleaving_w_radar`.
+
+#### 2026-02-19 — Import check blocked by missing Bazel target
+- Topic: Validate interleaved deploy entrypoint on updated PUDO branch
+- Labels: #build #bazel #interleaving #debug
+- Branch: `boris/interleaved/updated_pudo_15_02_26`
+- PR: none
+- Change type: validation
+- Areas: `wayve/ai/si/BUILD`, `wayve/ai/zoo/deployment/BUILD`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-19-import-check-deploy-interleaved-target-missing]]: ran requested command; identified missing BUILD wiring for deploy target and deployment library srcs.
