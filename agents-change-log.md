@@ -550,3 +550,13 @@
 - Areas: Notion newsletter page
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-notion-mermaid-align-no-event-output]]: updated Mermaid and nearby text to match removal of active interleaved event/id outputs.
+
+#### 2026-02-18 — Merge planning: interleaving branch vs latest PUDO
+- Topic: Branch divergence and conflict assessment
+- Labels: #git #merge #interleaving #pudo
+- Branch: `boris/train/parking_pudo_interleaving_w_radar`
+- PR: none
+- Change type: analysis
+- Areas: git history / branch planning
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-branch-merge-planning-interleaving-vs-pudo]]: recorded ahead/behind counts and simulated conflicts.
