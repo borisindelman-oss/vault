@@ -560,3 +560,13 @@
 - Areas: git history / branch planning
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-18-branch-merge-planning-interleaving-vs-pudo]]: recorded ahead/behind counts and simulated conflicts.
+
+#### 2026-02-18 — Copy interleaving files to updated PUDO branch
+- Topic: Bring interleaving deploy code onto latest PUDO branch
+- Labels: #git #branching #interleaving #deploy
+- Branch: `boris/interleaved/updated_pudo_15_02_26`
+- PR: none
+- Change type: code import/copy
+- Areas: `wayve/ai/si/`, `wayve/ai/zoo/deployment/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-18-copy-interleaving-files-to-updated-pudo-branch]]: copied `deploy_interleaved_models.py` and `interleaving_stopping_wrapper.py` from `boris/train/parking_pudo_interleaving_w_radar`.
