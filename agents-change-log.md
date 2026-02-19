@@ -580,3 +580,13 @@
 - Areas: `wayve/ai/si/BUILD`, `wayve/ai/zoo/deployment/BUILD`
 - Changes:
   - [[agent_tasks/2026/02/Week-3/2026-02-19-import-check-deploy-interleaved-target-missing]]: ran requested command; identified missing BUILD wiring for deploy target and deployment library srcs.
+
+#### 2026-02-19 — Radar-only interleaving deploy fix (updated PUDO branch)
+- Topic: Make interleaved deploy work with radar baseline + radar parking
+- Labels: #deploy #interleaving #radar #torchscript #debug
+- Branch: `boris/interleaved/updated_pudo_15_02_26`
+- PR: none
+- Change type: bugfix + validation
+- Areas: `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py`
+- Changes:
+  - [[agent_tasks/2026/02/Week-3/2026-02-19-import-check-deploy-interleaved-target-missing]]: enforced radar-only call contract for both branches, fixed TorchScript/import/interface errors, and verified deploy command exits successfully.

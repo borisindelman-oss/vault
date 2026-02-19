@@ -23,3 +23,22 @@ Failed before runtime/import stage due missing Bazel target in `wayve/ai/si/BUIL
 ## Missing build wiring compared to source branch
 - `wayve/ai/si/BUILD`: missing `py_binary(name = "deploy_interleaved_models", ...)` (and `deploy_interleaved` block)
 - `wayve/ai/zoo/deployment/BUILD`: `interleaving_stopping_wrapper.py` missing from `py_library(name = "deployment", srcs=[...])`
+
+## Follow-up debugging (radar baseline + radar parking)
+
+### What changed
+- Switched `wayve/ai/zoo/deployment/interleaving_stopping_wrapper.py` to a radar-only interleaving contract for both branches:
+  - baseline call path always includes `driving_parameters` + radar tensors
+  - parking call path always includes `driving_parameters` + radar tensors
+- Removed conditional call paths that attempted non-radar signatures (TorchScript compiled all branches and failed).
+- Added local timestamp formatter in interleaving wrapper (no dependency on private helper from `deployment_wrapper.py`).
+- Normalized `policy_indicator_weights` to 4 channels (`[off, right, left, hazard]`) to satisfy deploy interface checks.
+
+### Run ledger
+- Run 1: failed with `ImportError` for `_format_timestamp_hhmmss_mmm` import from `deployment_wrapper`.
+- Run 2: failed with `TypeError` missing radar args for `ParkingDeploymentWrapperWithRadar.forward`.
+- Run 3: failed in TorchScript compile due branch path calling baseline wrapper without radar args.
+- Run 4: failed deploy interface check: expected `policy_indicator_weights` shape `(1, 11, 4)`, got `(1, 11, 3)`.
+- Run 5: failed TorchScript on closed-over global constant in indicator normalization helper.
+- Run 6: **success**. Command completed with exit code 0 and saved TorchScript to:
+  - `/mnt/remote/azure_session_dir/Parking/parking/session_2026_02_15_13_01_33_si_parking_bc_train_release_2026_5_4_pud_only_bc_release_2026_5_4_b3.0.1__interleaved_silver-harmonious-lark/traces/model-000100000.torchscript`
