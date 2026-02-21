@@ -8,15 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
-> #### 2026-02-21 — SI config migration conflict skill (BC/RL)
-- Topic: add a reusable skill for resolving BC/RL SI migration version conflicts during merges/rebases
+> #### 2026-02-21 — Config migration skill (BC/RL)
+- Topic: add a reusable skill for BC/RL migration version conflicts and fresh migrate-method creation
 - Labels: #si #config #migrations #bc #rl #skill #docs
 - Branch: 02-12-park-pudo-stopping-mode-heuristic
 - PR: none
 - Change type: docs/tooling
 - Areas: `.ai/skills/`, `wayve/ai/si/configs/versioning/`, `wayve/ai/si/test/data/sample_configs/`
 - Changes:
-  - [[agent_tasks/2026/02/Week-4/2026-02-21-si-config-migration-conflict-skill]]: created `si-config-migration-conflicts` skill with explicit BC/RL source-of-truth paths, migration-map update steps, incoming-snapshot handling rules, sample-regeneration commands, and BC vs RL test differences.
+  - [[agent_tasks/2026/02/Week-4/2026-02-21-si-config-migration-conflict-skill]]: created `config-migration` skill with explicit BC/RL source-of-truth paths, migration-map update steps, incoming-snapshot handling rules, new migrate-method creation flow, sample-regeneration commands, and BC vs RL test differences.
 
 > #### 2026-02-17 — Remove interleaving id/event outputs from stopping wrapper
 - Topic: remove `interleaved_id` and `interleaved_event` outputs from route interleaving stopping wrapper
