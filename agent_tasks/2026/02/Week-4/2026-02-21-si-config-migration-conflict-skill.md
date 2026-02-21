@@ -1,10 +1,10 @@
-# SI Config Migration Conflict Skill (BC/RL)
+# Config Migration Skill (BC/RL)
 
 ## Summary
-Added a new Codex skill to standardize how to resolve SI config migration merge conflicts for both BC and RL.
+Added a new Codex skill to standardize BC/RL config migrations for both conflict resolution and fresh migration creation.
 
 ## What was added
-- New skill: `.ai/skills/si-config-migration-conflicts/SKILL.md`
+- New skill: `.ai/skills/config-migration/SKILL.md`
 - Workflow encoded in the skill:
   - bump config version
   - renumber `migrate_to_v*` to the next available version
@@ -12,6 +12,7 @@ Added a new Codex skill to standardize how to resolve SI config migration merge 
   - accept incoming existing sample snapshot(s)
   - regenerate a new sample snapshot via bazel script
   - update reference config version fields and migration tests
+  - when no migration exists yet, create a new `migrate_to_v*` method and register it
 
 ## BC vs RL differences captured
 - BC version source: `wayve/ai/si/config.py` (`bc_version.version_number`)
