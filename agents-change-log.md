@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-22 — Obs Flyte skill installer for WayveCode `.ai/skills`
+- Topic: add local installer script to copy `obs-flyte-execution` into repo-local skills
+- Labels: #skill #flyte #tooling
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: docs/tooling
+- Areas: `~/.codex/skills/obs-flyte-execution/`, `WayveCode/.ai/skills/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-4/2026-02-22-obs-flyte-skill-local-installer]]: added `install_to_wayvecode_ai_skills.sh`, documented install usage in `SKILL.md`, and validated copy into `/workspace/WayveCode/.ai/skills/obs-flyte-execution`.
+
 > #### 2026-02-22 — SI config migration conflict resolution after main merge
 - Topic: resolve BC migration version collision from merge and restore config test consistency
 - Labels: #si #config #migrations #bc #rl #merge-conflict
