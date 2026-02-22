@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-22 — SI config migration conflict resolution after main merge
+- Topic: resolve BC migration version collision from merge and restore config test consistency
+- Labels: #si #config #migrations #bc #rl #merge-conflict
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: code
+- Areas: `wayve/ai/si/config.py`, `wayve/ai/si/configs/versioning/bc_migrations.py`, `wayve/ai/si/test/data/sample_configs/bc/`, `wayve/ai/si/test/test_config_inputs/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-4/2026-02-22-si-config-migration-merge-main-conflict]]: kept `origin/main` BC `v17` migration/snapshot, moved stopping-mode migration logic to BC `v18`, bumped BC refs and generated `bc/v18.yaml`; then fixed pre-existing RL baseline reference mismatch (`21` -> `22`) uncovered by full config tests.
+
 > #### 2026-02-22 — Model skill tree foundations (model + observability)
 - Topic: add foundational Flyte/Datadog/Buildkite/model-catalogue skills and rewire model skills to depend on them
 - Labels: #skill #model-catalogue #observability #refactor #tooling
