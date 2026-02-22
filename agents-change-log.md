@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-22 — Flyte status + task-log skill
+- Topic: add a reusable skill and CLI to inspect Flyte execution status and task log URIs from a Flyte console URL
+- Labels: #flyte #logs #skill #tooling #observability
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: code/tooling
+- Areas: `wayve/prototypes/robotics/vehicle_dynamics/tools/flyte_status_logs/`, `.ai/skills/flyte-status-logs/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-4/2026-02-22-flyte-status-logs-skill]]: added `inspect_execution_logs_cli` Bazel target using existing Flyte inspection code paths, created `flyte-status-logs` skill with wrapper script and troubleshooting reference, validated skill and CLI, and confirmed the provided execution returns status plus log links.
+
 > #### 2026-02-21 — Config migration skill (BC/RL)
 - Topic: add a reusable skill for BC/RL migration version conflicts and fresh migrate-method creation
 - Labels: #si #config #migrations #bc #rl #skill #docs
