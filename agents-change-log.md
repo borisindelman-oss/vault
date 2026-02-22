@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-22 — Model skill tree foundations (model + observability)
+- Topic: add foundational Flyte/Datadog/Buildkite/model-catalogue skills and rewire model skills to depend on them
+- Labels: #skill #model-catalogue #observability #refactor #tooling
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: docs/tooling
+- Areas: `~/.codex/skills/model-catalogue-core/`, `~/.codex/skills/obs-flyte-execution/`, `~/.codex/skills/obs-buildkite-jobs/`, `~/.codex/skills/obs-datadog-logs/`, `~/.codex/skills/model-info-finder/`, `~/.codex/skills/modelci-shadowgym-debug/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-4/2026-02-22-model-skill-tree-foundations]]: created foundational skills for model primitives and observability, removed duplicated model helper copies from composite skills, rewired modelci Buildkite log extraction to shared observability scripts, converted `model-info-finder` to explicit tree routing, and kept `flyte-status-logs` as a compatibility alias to the new Flyte foundation.
+
 > #### 2026-02-22 — Split model-info-finder into focused skills
 - Topic: decompose monolithic model-info-finder into dedicated model lookup/summary/checkpoint/modelci skills
 - Labels: #skill #model-catalogue #refactor #tooling
