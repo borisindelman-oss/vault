@@ -8,15 +8,15 @@
 ## 2026-02
 > [!note] 2026-02
 
-> #### 2026-02-22 — Obs Flyte skill installer for WayveCode `.ai/skills`
-- Topic: add local installer script to copy `obs-flyte-execution` into repo-local skills
-- Labels: #skill #flyte #tooling
+> #### 2026-02-22 — Obs Flyte runtime install layout for Bazel target
+- Topic: keep skill source in `~/.codex` and install only runtime `BUILD` + Python into `WayveCode/.ai/skills` for `bazel run`
+- Labels: #skill #flyte #bazel #tooling
 - Branch: 02-12-park-pudo-stopping-mode-heuristic
 - PR: none
-- Change type: docs/tooling
-- Areas: `~/.codex/skills/obs-flyte-execution/`, `WayveCode/.ai/skills/`
+- Change type: tooling
+- Areas: `~/.codex/skills/obs-flyte-execution/`, `WayveCode/.ai/skills/obs-flyte-execution/`
 - Changes:
-  - [[agent_tasks/2026/02/Week-4/2026-02-22-obs-flyte-skill-local-installer]]: added `install_to_wayvecode_ai_skills.sh`, documented install usage in `SKILL.md`, and validated copy into `/workspace/WayveCode/.ai/skills/obs-flyte-execution`.
+  - [[agent_tasks/2026/02/Week-4/2026-02-22-obs-flyte-bazel-runtime-install-layout]]: moved runtime files (`BUILD`, `inspect_execution_logs_cli.py`) into skill source, rewired wrapper to `//.ai/skills/obs-flyte-execution:inspect_execution_logs_cli`, made `install.sh` copy only runtime files, and validated Bazel query/run end-to-end.
 
 > #### 2026-02-22 — SI config migration conflict resolution after main merge
 - Topic: resolve BC migration version collision from merge and restore config test consistency
