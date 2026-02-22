@@ -8,6 +8,16 @@
 ## 2026-02
 > [!note] 2026-02
 
+> #### 2026-02-22 — Split model-info-finder into focused skills
+- Topic: decompose monolithic model-info-finder into dedicated model lookup/summary/checkpoint/modelci skills
+- Labels: #skill #model-catalogue #refactor #tooling
+- Branch: 02-12-park-pudo-stopping-mode-heuristic
+- PR: none
+- Change type: docs/tooling
+- Areas: `~/.codex/skills/model-info-finder/`, `~/.codex/skills/model-lookup-basic/`, `~/.codex/skills/model-deep-summary/`, `~/.codex/skills/model-checkpoint-inspector/`, `~/.codex/skills/modelci-shadowgym-debug/`
+- Changes:
+  - [[agent_tasks/2026/02/Week-4/2026-02-22-model-info-finder-skill-split]]: created four focused skills with self-contained scripts and dedicated trigger descriptions, fixed generated `default_prompt` values to include `$skill-name`, converted `model-info-finder` into a router/deprecation bridge, and validated/smoke-tested all split skills.
+
 > #### 2026-02-22 — Flyte status + task-log skill
 - Topic: add a reusable skill and CLI to inspect Flyte execution status and task log URIs from a Flyte console URL
 - Labels: #flyte #logs #skill #tooling #observability
