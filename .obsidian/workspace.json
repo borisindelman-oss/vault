@@ -397,6 +397,7 @@
   },
   "active": "5c9f965d66127133",
   "lastOpenFiles": [
+    "agent_tasks/2026/02/Week-4/2026-02-22-si-config-migration-merge-main-conflict.md",
     "agent_tasks/2026/02/Week-4/2026-02-22-model-skill-tree-foundations.md",
     "agent_tasks/2026/02/Week-4/2026-02-22-model-info-finder-skill-split.md",
     "Excalidraw/model_release.excalidraw.md",
@@ -423,7 +424,6 @@
     "newsletters/newsletter_inference-visualization-tool.md",
     "newsletters/newsletter_interleaving-models-in-parking-deployment-wrapper.md",
     "newsletters/newsletter_parking-maneuver-filters.md",
-    "newsletters/newsletter_parking-stopping-mode-dilc.md",
     "agent_tasks/2026/02/Week-3",
     "Excalidraw/parking_model_arch.excalidraw.excalidraw",
     "projects/projects.json",
